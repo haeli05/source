@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 52 52" style="enable-background:new 0 0 52 52;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#666666;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+</style>
+<title>Asset 11</title>
+<g id="Layer_2_1_">
+	<g id="_64px">
+		<g id="Outline">
+			<g id="Construction">
+				<g id="level">
+					<path class="st0" d="M6,1h40c2.8,0,5,2.2,5,5v40c0,2.8-2.2,5-5,5H6c-2.8,0-5-2.2-5-5V6C1,3.2,3.2,1,6,1z"/>
+					<circle class="st0" cx="26" cy="26" r="21"/>
+					<circle class="st0" cx="26" cy="26" r="17"/>
+					<line class="st0" x1="9.9" y1="21" x2="42.1" y2="21"/>
+					<line class="st0" x1="9.9" y1="31" x2="42.1" y2="31"/>
+					<ellipse class="st0" cx="26" cy="23" rx="5" ry="2"/>
+					<line class="st0" x1="17" y1="21" x2="17" y2="31"/>
+					<line class="st0" x1="35" y1="21" x2="35" y2="31"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

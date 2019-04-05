@@ -1,0 +1,3447 @@
+/* ========================================================================== */
+//                                                                            //
+//                                                                            //
+//                                                                            //
+//                                                                            //
+//                                                                            //
+//            ███████╗ ██████╗ ██╗   ██╗██████╗  ██████╗███████╗              //
+//            ██╔════╝██╔═══██╗██║   ██║██╔══██╗██╔════╝██╔════╝              //
+//            ███████╗██║   ██║██║   ██║██████╔╝██║     █████╗                //
+//            ╚════██║██║   ██║██║   ██║██╔══██╗██║     ██╔══╝                //
+//            ███████║╚██████╔╝╚██████╔╝██║  ██║╚██████╗███████╗              //
+//            ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚══════╝              //
+//                                                                            //
+//                                                                            //
+//                                                                            //
+//                                                                            //
+//                                                                            //
+/* ========================================================================== */
+
+
+/* ================================ COLOURS ================================ */
+$Surface: #F0EFEF;
+$Light: #FBFAFA;
+$Dark: #C0BFBF;
+$Darker: #42484c;
+$Darkest: #212426;
+$Error: #C64444;
+
+$PrimaryLight: #9BA3B1;
+$Primary: #5E6572;
+$PrimaryDark: #1E242F;
+
+
+
+/* ================================= FONTS ================================= */
+
+@font-face {
+    font-family: 'gotham_htfblack';
+    src: url('gothamhtf-black-webfont.woff2') format('woff2'),
+         url('gothamhtf-black-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'gotham_htfblack_italic';
+    src: url('gothamhtf-blackitalic-webfont.woff2') format('woff2'),
+         url('gothamhtf-blackitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'gotham_htfbold';
+    src: url('gothamhtf-bold-webfont.woff2') format('woff2'),
+         url('gothamhtf-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'gotham_htfbold_italic';
+    src: url('gothamhtf-bolditalic-webfont.woff2') format('woff2'),
+         url('gothamhtf-bolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'gotham_htfbook';
+    src: url('gothamhtf-book-webfont.woff2') format('woff2'),
+         url('gothamhtf-book-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'gotham_htfbook_italic';
+    src: url('gothamhtf-bookitalic-webfont.woff2') format('woff2'),
+         url('gothamhtf-bookitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'gotham_htfextrabold_italic';
+    src: url('gothamhtf-extrabolditalic-webfont.woff2') format('woff2'),
+         url('gothamhtf-extrabolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'gotham_htflight';
+    src: url('gothamhtf-light-webfont.woff2') format('woff2'),
+         url('gothamhtf-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'gotham_htflight_italic';
+    src: url('gothamhtf-lightitalic-webfont.woff2') format('woff2'),
+         url('gothamhtf-lightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'gotham_htfmedium';
+    src: url('gothamhtf-medium-webfont.woff2') format('woff2'),
+         url('gothamhtf-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'gotham_htfmedium_italic';
+    src: url('gothamhtf-mediumitalic-webfont.woff2') format('woff2'),
+         url('gothamhtf-mediumitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'gotham_htfthin';
+    src: url('gothamhtf-thin-webfont.woff2') format('woff2'),
+         url('gothamhtf-thin-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'gotham_htfthin_italic';
+    src: url('gothamhtf-thinitalic-webfont.woff2') format('woff2'),
+         url('gothamhtf-thinitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'gotham_htfultra';
+    src: url('gothamhtf-ultra-webfont.woff2') format('woff2'),
+         url('gothamhtf-ultra-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'gotham_htfxlight';
+    src: url('gothamhtf-xlight-webfont.woff2') format('woff2'),
+         url('gothamhtf-xlight-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-family: 'gotham_htfxlight_italic';
+    src: url('gothamhtf-xlightitalic-webfont.woff2') format('woff2'),
+         url('gothamhtf-xlightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// Main font
+body {
+  font-kerning: none;
+  font-family: "gotham_htfbook", Arial, sans-serif;
+  color: #231f20;
+  margin: 0;
+  font-size: 13px;
+  background-color: $Surface;
+  line-height: 22px;
+  text-align: left;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased; /* This needs to be set or some font faced fonts look bold on Mac in Chrome/Webkit based browsers. */
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// Link styles
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+.LinkBold:hover {
+  font-family: "gotham_htfmedium";
+}
+.LinkUnderline:hover {
+  text-decoration: underline;
+}
+
+// Removing margins from all text
+p, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+p {
+  font-family: "gotham_htfbook";
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Header fonts and weights
+h1  {
+  font-size: 6em;
+  font-family: "gotham_htflight";
+  color: rgba(0,0,0,0.87);
+  letter-spacing: -0.058em;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1;
+}
+h2 {
+  line-height: 1;
+  font-size: 5em;
+  font-family: "gotham_htflight";
+  color: rgba(0,0,0,0.87);
+  letter-spacing: -0.004em;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h3 {
+  line-height: 1;
+  font-size: 3em;
+  font-family: "gotham_htfbook";
+  color: rgba(0,0,0,0.87);
+  letter-spacing: 0em;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h4, {
+  line-height: 1;
+  font-size: 2.25em;
+  font-family: "gotham_htfbook";
+  color: rgba(0,0,0,0.87);
+  letter-spacing: 0.015625em;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h5 {
+  line-height: 1;
+  font-size: 1.5em;
+  font-family: "gotham_htfmedium";
+  color: rgba(0,0,0,0.87);
+  letter-spacing: 0;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h6 {
+  line-height: 1;
+  font-size: 1.25em;
+  font-family: "gotham_htfmedium";
+  color: rgba(0,0,0,0.87);
+  letter-spacing: 0.015625em;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+//golden ratio keyboard display
+kbd {
+ background-color: #fff;
+ padding: 3px 4px;
+ border-radius: 4px;
+ box-shadow: 0 0 4px 0 rgba(0,0,0,0.45);
+ margin: 0 1px;
+}
+
+blockquote {
+  margin: 0;
+  margin-top: -3px!important;
+  margin-bottom: -3px!important;
+  display: flex;
+  align-items: center;
+}
+blockquote br {
+  margin-top: 13px;
+}
+blockquote:before {
+  content: "";
+  height: 25px;
+  width: 5px;
+  background-color: lightgrey;
+  font-size: 17px;
+  border-radius: 2px;
+  margin-right: 10px;
+}
+time {
+  //font-size: 0.8125em;
+  font-family: "gotham_htfbook";
+}
+
+// User quill content
+.UserQuillContent, .ql-editor {
+  p {
+    margin-bottom: 10px;
+    text-align: justify;
+  }
+  h4 {
+    margin-top: 30px;
+    margin-bottom: 5px;
+  }
+  h5 {
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+  code {
+    margin-bottom: -13px;
+    border-radius: 2px;
+    padding: 0 5px;
+    display: block;
+    background-color: lightgrey;
+    font-size: 85%;
+  }
+}
+
+/* ================================= ICONS ================================= */
+
+// These are the generic ReactSVGIcon rules
+.ReactSVGIcon{
+  margin: 0px;
+  padding: 0px;
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+  color: currentColor;
+}
+.Icon25 {
+  width: 25px;
+  height: 25px;
+}
+.White {
+  fill: #FFFFFF;
+  stroke: #FFF;
+}
+.Gear {
+  margin-top: 4px;
+}
+.SmallIcon {
+  width: 0.7rem;
+  height: 1.1rem;
+}
+.HelmetGogglesIcon {
+  width: 0.7rem;
+  height: 1.1rem;
+}
+.SmallTickIcon {
+  width: 0.7rem;
+  height: 1.3rem;
+}
+.BinIcon {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+
+/* ================================== MISC ================================== */
+
+// Root page margins for all pages
+.RootMargins {
+  padding-bottom: 25px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+// This is a special rule which is needed so that the footer stays at the
+// bottom of the page and so that the top of the page has enough space for the
+// navbar.
+.TheEntirePageMinusFooter {
+  padding-top: 56px;
+  min-height: 70vh;
+  min-height: -webkit-calc(100vh - 58px);
+  min-height: -moz-calc(100vh - 58px);
+  min-height: calc(100vh - 58px);
+}
+
+// Full page loading
+.GenericLoading {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Linear loading (not full page)
+.GenericLinearLoading {
+  padding-top: 25px;
+  min-width: 100px;
+}
+
+// All page titles
+.PageTitle {
+  .OverlineAndButtons {
+    padding-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: -10px;
+    .OverlineButtons {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      right: 6%;
+      .SingleOverlineButtonDiv {
+        margin-bottom: 15px;
+      }
+    }
+  }
+  .VoteButtonsDiv {
+    position: fixed;
+    left: 6%;
+    top: 65px;
+  }
+  .Title {
+    display: flex;
+    align-items: baseline;
+    .ProjectName {
+      cursor: pointer;
+    }
+    .Separator {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.CardUtilityButtons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: right;
+  .IndividualUtilityButton {
+    float: right;
+    margin-left: 16px;
+  }
+}
+
+.When {
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  .ClockIcon {
+    margin-right: 5px;
+    width: 0.6rem;
+    padding-bottom: 5px;
+    color: currentColor;
+  }
+}
+
+.ExploreCard {
+  background-color: $Light;
+  margin-top: 8px;
+  border-radius: 0px;
+  border: 1px solid #e5e5e5;
+  transition: 0.5s ease;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 10px;
+  padding-right: 16px;
+  .VoteButtons {
+    padding-right: 8px;
+    fill: black;
+  }
+  .Header {
+    display: flex;
+    align-items: center;
+    .Title {
+      margin-right: 15px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .Author {
+      margin-right: 10px;
+      margin-left: 5px;
+    }
+    .When {
+      color: rgba(0,0,0,0.6);
+      font-size: 0.8125em;
+    }
+  }
+  .Body {
+    margin-top: 3px;
+  }
+  .Bottom {
+    display: flex;
+    align-items: center;
+    .Comments {
+      display: flex;
+      align-items: flex-end;
+    }
+    .ExploreCardTags {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      .ExploreCardTag {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+.ExploreCard:hover {
+  //box-shadow: 0px 1px 3px 0px #ababab;
+  border: 1px solid #a7a8a9;
+}
+
+// Quill
+.ql-editor {
+  min-height: 200px!important;
+}
+.quill {
+  background-color: $Light;
+}
+.ql-tooltip {
+  z-index: 99999;
+}
+
+// Pointer cursor
+.Pointer {
+  cursor: pointer;
+}
+
+// Flex
+.Flex {
+  display: flex;
+}
+
+// Justify content centre
+.JustifyCenter {
+  justify-content: center;
+}
+
+// Justify content space between
+.JustifyBetween {
+  justify-content: space-between;
+}
+
+// Align items center
+.AlignCenter {
+  align-items: center;
+}
+
+.AlignBaseline {
+  align-items: baseline;
+}
+
+// Align text center
+.TextCenter {
+  text-align: center;
+}
+
+// Hidden
+.Hidden {
+  visibility: hidden;
+}
+
+// Basic margins
+.MarginRight10 {
+  margin-right: 10px!important;
+}
+.MarginLeft10 {
+  margin-left: 10px!important;
+}
+.MarginTop10 {
+  margin-top: 10px!important;
+}
+.MarginBottom10 {
+  margin-bottom: 10px!important;
+}
+.MarginBottom8 {
+  margin-bottom: 8px!important;
+}
+.MarginTop0 {
+  margin-top: 0px!important;
+}
+
+// Text white
+.TextWhite {
+  color: white!important;
+}
+
+// Text overflow
+.TextOverflowEllipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* ================================= PAGES ================================= */
+/* ================================ EXPLORE ================================ */
+/* ---------------------------- explorePage.js ---------------------------- */
+.ExplorePage {
+  padding-bottom: 25px;
+  .Body{
+    display: flex;
+    .Content {
+      width: calc(100% - 225px);
+    }
+    .PaginationDiv {
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-end;
+      .PaginationButtonRight:hover, .PaginationButtonLeft:hover {
+        background-color: transparent;
+        border: solid 1px rgba(0,0,0,0.6);
+      }
+      .PaginationButtonRight{
+        transition: 0.5s ease;
+        border: solid 1px transparent;
+        padding: 0;
+        height: 25px;
+        width: 25px;
+        padding-top: 2px;
+        padding-left: 2px;
+      }
+      .PaginationButtonLeft{
+        transition: 0.5s ease;
+        border: solid 1px transparent;
+        padding: 0;
+        height: 25px;
+        width: 25px;
+        padding-top: 2px;
+        padding-right: 2px;
+      }
+      .PaginationButtonIcon {
+        width: 0.4rem;
+      }
+      .PaginationPageNumber {
+        margin: 0px 5px;
+        cursor: pointer;
+      }
+    }
+    .Sidebar {
+      padding-top: 20px;
+      max-width: 200px;
+      min-width: 200px;
+      margin-left: 25px;
+      .Topics {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+/* ---------------------------- exploreIdeas.js ---------------------------- */
+
+
+/* ---------------------------- explorePeople.js ---------------------------- */
+
+
+/* --------------------------- exploreProjects.js --------------------------- */
+
+
+/* ----------------------------- exploreApps.js ----------------------------- */
+
+.ExploreApps {
+  .Body {
+    .Content{
+      .AppCards {
+        display: inline-flex;
+      }
+    }
+  }
+}
+
+/* =========================== EXPLORE COMPONENTS============================ */
+/* ------------------------------- appCard.js ------------------------------- */
+
+.AppCard {
+  margin-top: 3px;
+  margin-right: 5px;
+  max-width: 200px;
+  .Image{
+    display: flow-root;
+    height: 200px;
+  }
+}
+
+/* ------------------------------ ideaCard.js ------------------------------ */
+
+.IdeaCard {
+  display: flex;
+  .Main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .Header {
+      display: flex;
+      width: 100%;
+      .Info {
+        display: inline-flex;
+        align-items: baseline;
+        .Title {
+          margin-right: 15px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 500px;
+          padding-right: 1px;
+        }
+        .Author {
+          white-space: nowrap;
+          margin-left: 8px;
+        }
+        .When {
+          color: rgba(0,0,0,0.6);
+        }
+      }
+    }
+    .Body {
+      display: inline-flex;
+      justify-content:flex-start;
+      align-items: flex-start;
+      margin-top: 1px;
+      .BodyText{
+        color: rgba(0,0,0,0.87);
+      }
+    }
+  }
+  .Bottom {
+    margin-top: 8px;
+    .CommentsIcon {
+      width: 1.2rem;
+      margin-right: 5px;
+      height: 1.2rem;
+    }
+  }
+}
+
+/* ----------------------------- personCard.js ----------------------------- */
+
+.PersonCard {
+  padding: 8px;
+  display: flex;
+  border-radius: 100px;
+  overflow: hidden;
+  .Avatar {
+    height: 115px;
+    width: 115px;
+    border-radius: 50%;
+  }
+  .Right {
+    margin-left: 10px;
+    width: calc(100% - 180px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .Title {
+      display: flex;
+      align-items: baseline;
+    }
+    .PersonCardDetails {
+      .PersonQuick {
+        display: flex;
+        align-items: baseline;
+        white-space: nowrap;
+        .Separator {
+          margin: 0 8px;
+        }
+      }
+      .PersonCardBio {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+/* ------------------------------ repoCard.js ------------------------------ */
+
+.RepoCard {
+  padding: 0;
+  display: flex;
+  .VoteButtons {
+    padding: 8px;
+    padding-top: 16px;
+  }
+  .LeftImage {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: flex-end;
+    .StarIcon {
+      width: 1.5rem;
+      margin-top: 14px;
+      margin-right: 5px;
+      cursor: pointer;
+      color: lightgrey;
+      transition: 0.5s ease;
+      mix-blend-mode: difference;
+    }
+    .StarIcon:hover {
+      transform: scale(1.1);
+    }
+    .StarIcon:active {
+      transform: scale(1);
+    }
+  }
+  .RightDetails {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 10px;
+    padding-right: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    .Header {
+      display: flex;
+      align-items: baseline;
+      .Title {
+        margin-right: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 500px;
+      }
+      .Author {
+        margin-right: 10px;
+      }
+      .When {
+        color: rgba(0,0,0,0.6);
+        font-size: 0.8125em;
+      }
+    }
+    .Body {
+
+    }
+    .Bottom {
+      padding-top: 5px;
+      padding-right: 4px;
+      .CodeLanguageIcon {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+      .CodeForkIcon {
+        width: 1rem;
+        height: 1rem;
+      }
+      .IssueIcon {
+        width: 1.3rem;
+        height: 1.3rem;
+      }
+      .Stats {
+        display: flex;
+        align-items: center;
+        .StatDiv {
+          display: flex;
+          align-items: center;
+          margin-right: 24px;
+          .Stat {
+            margin-left: 5px;
+          }
+        }
+        .StatDivToken {
+          display: flex;
+          margin-right: 24px;
+          color: #eac600;
+          .Stat {
+            margin-left: 5px;
+            color: #eac600;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/* ================================= GLOBAL ================================= */
+.ChatWindow {
+  position: fixed;
+  bottom: 0%;
+  right: 0%;
+  .ChatHeader {
+    padding: 8px;
+    background-color: $Dark;
+    width: 250px;
+  }
+
+}
+
+//UserChip
+.UserChip {
+  display:inline-flex;
+  align-items: center;
+  border-radius: 15px;
+  border: 1px black;
+}
+
+//EditButton
+.EditButton {
+  margin-left: auto;
+}
+
+/* ------------------------------ payButton.js ------------------------------ */
+.PayButton{
+  display: inline-flex;
+  align-items: center;
+  padding-right: 2px;
+  border-radius: 36px;
+  background-color: $Darkest;
+  color: $Light;
+  height: 36px;
+  min-width: 450px;
+  .PayCurrency {
+    color: #FFFFFF;
+    margin-right: auto;
+  }
+  .PayCurrency:hover {
+    color: #FFFFFF;
+  }
+  .PayForm {
+    padding-left: 4px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 32px;
+    border-radius: 16px;
+    color: #FFFFFF;
+  }
+  .PayForm::before {
+    color: #FFFFFF;
+  }
+  .PayLabel {
+    margin-right:8px;
+    color: #FFFFFF;
+  }
+  .Pay{
+    margin-left: auto;
+    .CopyIcon {
+      margin-right: 5px;
+    }
+  }
+}
+
+/* ------------------------------ errorPage.js ------------------------------ */
+
+.ErrorPage {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  .ErrorPageActions {
+    margin-top: 50px;
+  }
+}
+
+/* ---------------------------- four0FourPage.js ---------------------------- */
+
+.Four0FourPage {
+  margin-top: 10%;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  .Four0FourPageTitle {
+    margin-bottom: 50px;
+  }
+  .Four0FourPageActions {
+    margin-top: 50px;
+  }
+}
+
+/* ------------------------ YouMustBeLoggedInPage.js ------------------------ */
+
+.YouMustBeLoggedInPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10%;
+}
+.YouMustBeLoggedInDialog {
+  padding: 25px;
+  padding-top: 50px;
+  align-items: center;
+  justify-content: center;
+}
+.MustBeActions {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .MustBeActionsSeperator {
+    margin: 25px;
+  }
+}
+
+
+/* ========================== GLOBAL COMPONENTS ============================ */
+/* -------------------------------- chip.js -------------------------------- */
+
+.Tag {
+  opacity: 0.6;
+  height: 22px;
+  padding-left: 15px;
+  padding-right: 10px;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  position: relative;
+  transition: 0.5s ease;
+  border-radius: 25px;
+  border: solid 1px transparent;
+  max-height: 18px;
+  cursor: pointer;
+  p {
+    padding: 0;
+  }
+  .TagLabel {
+    vertical-align: middle;
+    color: rgba(0,0,0,0.6);
+    transition: 0.5s ease;
+    padding-bottom: 0px;
+    margin-bottom: -1px;
+  }
+  &:after {
+    content: "";
+  	position: absolute;
+  	top: 6px;
+  	left: 5px;
+  	float: left;
+  	width: 4px;
+  	height: 4px;
+  	-moz-border-radius: 2px;
+  	-webkit-border-radius: 2px;
+  	border-radius: 5px;
+    border: solid 1px $Darkest;
+    transition: 0.5s ease;
+  }
+}
+.Tag:hover {
+  opacity: 1;
+  border: solid 1px $Darkest;
+  &:after {
+    background-color: $Darkest;
+  }
+}
+.TagFollowing {
+  opacity: 0.87;
+  border: solid 1px transparent;
+  color: black;
+  &:after {
+    background-color: $Darkest;
+  }
+}
+
+/* ------------------------------- footer.js ------------------------------- */
+
+.Footer {
+  background-color: #e7e7e7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .Left {
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    .LanguageButton {
+      margin-left: 5px;
+    }
+  }
+  .Middle {
+    margin-bottom: -5px;
+  }
+  .Icons {
+      display: flex;
+      justify-content: flex-end;
+      margin: 3px;
+      padding: 3px;
+      .twitter, .medium, .steem {
+        margin-left: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: solid transparent 1px;
+        width: 32px;
+        height: 32px;
+        transition: 0.5s ease;
+      }
+      .twitter:hover, .medium:hover, .telegram:hover, .steem:hover {
+        border: solid #221f20 1px;
+      }
+      .twitter:active, .medium:active, .telegram:active, .steem:active {
+        transform: scale(0.9);
+      }
+      .twittericon {
+        display: flex!important;
+      }
+      // Telegram plane looks off center so we have to move it left a little
+      .telegram {
+        margin-left: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: solid transparent 1px;
+        width: 29px;
+        height: 32px;
+        padding-right: 3px;
+        transition: 0.5s ease;
+      }
+      a {
+        color: inherit;
+      }
+
+  }
+}
+
+/* ---------------------------- joinQueue.js ------------------------------- */
+
+.JoinQueuePopUp {
+  padding: 25px;
+  .Actions {
+    display: flex;
+    .Cancel {
+      margin-right: 10px;
+    }
+  }
+}
+.SuccessPopUp {
+  padding: 25px;
+  .Thanks {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .CloseButton {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* ----------------------------- loginPrompt.js ----------------------------- */
+
+.LoginPrompt{
+  position: absolute;
+  padding: 10px;
+  background-color: $Surface!important;
+  height: 100%;
+  color: black;
+}
+
+/* ------------------------- majorActionButtons.js ------------------------- */
+
+.MajorActionButtonsHorizontal {
+  display: flex;
+  .MajorActionButtonDiv {
+    margin-left: 15px;
+  }
+}
+
+.MajorActionButtonsVertical {
+  display: flex;
+  flex-direction: column;
+  .MajorActionButtonDiv {
+    margin-bottom: 15px;
+  }
+}
+
+/* WIP
+.FollowButtonItself {
+  border-radius: 25px!important;
+}
+
+.FollowButtonItself:hover {
+  width: 100px;
+  border-radius: 25px;
+  content: "hello";
+}
+*/
+
+.SupportButton {
+  .WalletCoin {
+    width: 1.1rem;
+    height: 1.4rem;
+  }
+}
+
+.ShareButton {
+  position: relative;
+  background-color: inherit;
+  .MainButton {
+    .ShareIcon {
+      height: 1rem;
+      width: 1rem;
+    }
+  }
+  .ShareIcons {
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.1);
+    filter: blur(15px);
+    border-radius: 20px;
+    border: none;
+    position: absolute;
+    right: 120%;
+    top: 0;
+    padding: 0px;
+    display: inline-flex;
+    filter: contrast(1.1) brightness(1.1);
+    .SocialButton {
+      margin-left: 2px;
+      cursor: pointer;
+    }
+    .SocialButton:hover {
+      opacity: 0.8;
+    }
+    .SocialButtonLast {
+      cursor: pointer;
+    }
+    .SocialButtonLast:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.ShareButtonMini {
+  position: relative;
+  background-color: inherit;
+  .MainButton {
+    height: 20px;
+    width: 20px;
+    .ShareIcon {
+      height: 0.8rem;
+      width: 0.8rem;
+    }
+  }
+  .ShareIcons {
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.1);
+    filter: blur(15px);
+    border-radius: 20px;
+    border: none;
+    position: absolute;
+    right: 120%;
+    top: -7px;
+    padding: 0px;
+    display: inline-flex;
+    filter: contrast(1.1) brightness(1.1);
+    .SocialButton {
+      margin-left: 2px;
+      cursor: pointer;
+    }
+    .SocialButton:hover {
+      opacity: 0.8;
+    }
+    .SocialButtonLast {
+      cursor: pointer;
+    }
+    .SocialButtonLast:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.DeleteButtonRoot {
+  .DeleteConfirmationMenu {
+    background-color: $Error;
+    color: white;
+  }
+}
+
+.DeleteButtonMini {
+  .DeleteButton {
+    margin-right: 8px;
+    height: 20px;
+    width: 20px;
+    .BinIcon {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+  .DeleteConfirmationMenu {
+    background-color: $Error;
+    color: white;
+  }
+}
+
+.SupportDialog {
+  padding: 10px;
+  .SupportDialogHeader {
+    display: flex;
+    justify-content: space-between;
+  }
+  .SupportDialogBody {
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
+  }
+}
+
+/* ---------------------------- messageBanner.js ---------------------------- */
+
+.MessagesBanner {
+  margin: 2px;
+  background-color: $Surface;
+  border-radius: 65px;
+  padding-left: 3px;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  .MessagesAvatar {
+    borderRadius:"50%";
+    background-color: $Light;
+    height: 66px;
+    width: 66px;
+  }
+}
+
+/* ------------------------------- navbar.js ------------------------------- */
+
+@keyframes navfadein {
+  0% {
+    opacity: 0;
+    z-index: 99;
+  }
+  100% {
+    opacity: 1;
+    z-index: 99;
+  }
+}
+
+@keyframes navfadeout {
+  0% {
+    opacity: 1;
+    z-index: 99;
+  }
+  100% {
+    opacity: 0;
+    z-index: 99;
+  }
+}
+
+.Navbar {
+  opacity: 1;
+  animation: navfadein 0.5s ease-in;
+}
+.NavbarHidden {
+  opacity: 0;
+  animation: navfadeout 0.5s ease-in;
+}
+.Navbar, .NavbarHidden {
+  .AppBar {
+    position: fixed;
+    background-color: $Darkest;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    transition: 0.3s ease;
+    color: white;
+    box-shadow: none;
+    .Logo {
+      .NavbarTitle {
+        display: flex;
+        align-items: center;
+        width: 78px;
+        .LogoImage {
+          width: 100%;
+        }
+      }
+      .NavbarTitle:hover {
+        cursor: pointer;
+      }
+    }
+    .Tabs {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      margin-left: 25px;
+      float: left;
+      position: relative;
+      border-bottom: none!important;
+    }
+    .Right {
+      margin-left: auto;
+      .Actions {
+        min-width: 209px;
+        display: flex;
+        .NavbarButton {
+          color: white;
+        }
+      }
+      .Menu {
+        .MenuItem {
+          // can't get these styles working unless they're inline
+          // they will have to be moved to index.js CSS overrides
+          font-family: "gotham_htfbook";
+          color: inherit;
+        }
+      }
+    }
+  }
+}
+.DrawerRight {
+  width: 400px;
+  .ProfileSection {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    .Avatar {
+      width: 100px;
+      height: 100px;
+      margin-right: 25px;
+      cursor: pointer;
+    }
+    .Username {
+      cursor: pointer;
+    }
+  }
+  .QuickControlls {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+  }
+  a {
+    text-decoration: none;
+    margin: 0;
+    display: flex;
+  }
+  .MessageBanner {
+    .MessageCard:hover{
+      cursor: pointer;
+    }
+  }
+}
+
+/* ------------------------- notificationBanner.js ------------------------- */
+
+.Notifications {
+//  position: absolute;
+//  padding: 10px;
+  margin:1px;
+  background-color: $Surface!important;
+  .Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .CloseButton {
+      height: 24px;
+      width: 24px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+/* ----------------------------- personChip.js ----------------------------- */
+
+.PersonChipSmall {
+  display: flex;
+  align-items: center;
+  border-radius: 32px;
+  padding-right: 10px;
+  transition: 0.5s ease;
+  border: solid 1px transparent;
+  max-height: 26px;
+  .Avatar {
+    margin-right: 5px;
+    height: 24px;
+    width: 24px;
+  }
+  .PersonChipText {
+    .Name {
+      font-family: "gotham_htfmedium";
+      margin-bottom: -6px;
+      margin-top: -3px;
+    }
+    .Username{
+      font-family: "gotham_htfbook";
+      margin-bottom: -3px;
+    }
+  }
+}
+.PersonChipSmall:hover {
+  border: solid 1px lightgrey;
+}
+
+.PersonChipLarge {
+  display: flex;
+  align-items: center;
+  border-radius: 32px;
+  padding-right: 20px;
+  transition: 0.5s ease;
+  border: solid 1px transparent;
+  .Avatar {
+    margin-right: 5px;
+    height: 50px;
+    width: 50px;
+  }
+  .PersonChipText {
+    .Name {
+      font-size: 1.2em;
+      font-family: "gotham_htfmedium";
+    }
+    .Username{
+      font-size: 1.2em;
+      font-family: "gotham_htfbook";
+    }
+  }
+}
+.PersonChipLarge:hover {
+  border: solid 1px lightgrey;
+}
+
+/* -------------------------- reactQuillEditor.js -------------------------- */
+
+.ReactQuillEditor {
+  .QuillActionButtons {
+    margin-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    .QuillCancel {
+      margin-right: 25px;
+    }
+  }
+}
+
+/* ------------------------------ search.js --------------------------------- */
+
+// https://codepen.io/912lab/pen/LsplC?editors=0100
+.NavSearch {
+  padding-left: 5px;
+  outline-color: black;
+  outline-width: 1px;
+  input:-moz-placeholder {
+    color: #999;
+  }
+  input::-webkit-input-placeholder {
+    color: #999;
+  }
+  #demo-2 input[type=search] {
+    width: 15px;
+
+    padding-left: 10px;
+    color: transparent;
+    cursor: pointer;
+  }
+  #demo-2 input[type=search]:hover {
+    background-color: $Dark;
+  }
+  #demo-2 input[type=search]:focus {
+    width: 200px;
+    padding-left: 32px;
+    color: #000;
+    background-color: $Light;
+    cursor: auto;
+  }
+  #demo-2 input:-moz-placeholder {
+    color: transparent;
+  }
+  #demo-2 input::-webkit-input-placeholder {
+    color: transparent;
+  }
+  input[type=search] {
+    -webkit-appearance: textfield;
+    -webkit-box-sizing: content-box;
+    font-family: inherit;
+    font-size: 100%;
+  }
+  input::-webkit-search-decoration, input::-webkit-search-cancel-button {
+    display: none;
+  }
+  input[type=search] {
+    background: $Dark url('./../icon-pack-1/MAGNIFYING_GLASS.svg') no-repeat 4px center;
+    background-size: 25px;
+    border: solid 1px #ccc;
+    padding: 10px 8px 10px 32px;
+    width: 55px;
+    -webkit-border-radius: 10em;
+    -moz-border-radius: 10em;
+    border-radius: 10em;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+    font-size: 0.85731933292em;
+    letter-spacing: 1.25px;
+  }
+  input[type=search]:focus {
+    width: 200px;
+    background-color: $Light;
+    border-color: #5e6572;
+    //-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+    //-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+    //box-shadow: 0 0 5px rgba(109,207,246,.5);
+  }
+}
+
+.SearchResults {
+  padding: 10px;
+  background-color: $Surface!important;
+  height: 100%;
+  color: black;
+  overflow: auto;
+  min-height: 83vh;
+  max-height: 83vh;
+  .SearchResultsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .SearchTabAndSort {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    .SearchResultsTabs {
+      max-width: 70%;
+    }
+    .FilterByTagInput {
+      margin-right: 8px;
+
+    }
+  }
+  .NoResults {
+    padding-top: 50px;
+    text-align: center;
+    padding-bottom: 50px;
+  }
+  .SearchResultsBody {
+    padding-bottom: 10px;
+  }
+}
+
+/* --------------------------- sendFeedback.js ------------------------------ */
+
+.SentSuccessfullyPopUp {
+  .Action {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+}
+
+/* -------------------------- settingsButton.js ----------------------------- */
+
+.SettingsDialog {
+  height: 100%;
+  padding: 10px;
+  .SettingsDialogHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+  }
+  .SettingsDialogBody {
+    .ProjectSettings, .UserSettings {
+      width: 100%;
+      .InputFull{
+        margin: 8px;
+        margin-bottom: 18px;
+        width: 100%;
+      }
+      .Label {
+        margin: 8px;
+      }
+      .SaveButton {
+        align: middle;
+      }
+    }
+    .UserSettings {
+      display: flex;
+      justify-content: space-between;
+      .UserSettingsLeft, .UserSettingsRight {
+        width: 49%;
+      }
+      .ProfileDropzoneDiv {
+        display: flex;
+        justify-content: center;
+        .AvatarPreview {
+          height: 250px;
+          width: 250px;
+        }
+        .EditPictureOverlay {
+          position: absolute;
+          width: 250px;
+          height: 250px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+        .EditText {
+          visibility: hidden;
+        }
+        .EditPictureOverlay:hover {
+          background-color: rgba(0,0,0,0.5);
+        }
+        .EditPictureOverlay:hover > .EditText {
+          visibility: visible;
+          color: white;
+        }
+        .ProfilePictureDropzone {
+          margin-bottom: 14.5px;
+          border: dashed 2px lightgrey;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          cursor: pointer;
+          h6 {
+            max-width: 100px;
+          }
+        }
+      }
+      .ProfilePictureEditor {
+        display: flex;
+        align-items: flex-end;
+        height: 268.5px;
+        .ProfilePictureOptions {
+          margin-left: 10px;
+          .ZoomSlider {
+            width: 93%;
+            margin-bottom: 15px;
+          }
+          .NewPictureButton {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+          }
+        }
+      }
+      .SourcePayInputs {
+        background-color: $Darkest;
+        padding: 10px;
+        border-radius: 5px;
+        color: white;
+        .NewWalletInput {
+          .WalletTypeInput {
+            max-width: 130px;
+          }
+          .AddButton {
+            margin-top: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*----------------------------- snackBar.js ---------------------------------*/
+
+
+
+/* --------------------------- voteButtons.js ------------------------------ */
+
+.VoteButtonsRoot{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .VoteButton:hover {
+    background-color: transparent;
+    border: solid 1px rgba(0,0,0,0.6);
+  }
+  .VoteButton {
+    padding: 0;
+    //center the arrows
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: justify-content;
+    fill: currentColor;
+    transition: 0.5s ease;
+    border: solid 1px transparent;
+    .Up {
+      width: 0.6rem;
+      line-height: 0rem;
+      transform: rotate(90deg);
+    }
+    .Down {
+      width: 0.6rem;
+      line-height: 0rem;
+      transform: rotate(270deg);
+    }
+  }
+  .UpVoteActive {
+    border: solid 1px rgba(0,0,0,0.87);
+  }
+  .DownVoteActive {
+    border: solid 1px rgba(0,0,0,0.87);
+  }
+  .VoteScore {
+    color: currentColor;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+}
+
+/*------------------------------ topicBar.js ---------------------------------*/
+
+.TopicBar {
+  margin-top: 10px;
+  background-color: transparent!important;
+  padding-bottom: 15px;
+  .TopicBarTitle {
+    text-align: center;
+    padding-top: 10px;
+    margin-bottom: 10px;
+  }
+  .TopicBarAllChips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 10px;
+    .TopicBarChipDiv {
+      min-width: 70px;
+      margin: 10px 5px;
+    }
+  }
+  .NoTopics {
+    text-align: center;
+  }
+}
+
+
+/* ================================== IDEA ================================== */
+/* --------------------------- editIdeaPage.js ------------------------------ */
+
+.EditIdeaPage {
+  padding-bottom: 25px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 10px;
+  display: flex;
+  .Body {
+    margin-right: 10px;
+    width: 100%;
+    .PageTitle {
+      margin-bottom: 25px;
+
+    }
+    .IdeaInput {
+      .SubmitButton {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+  .Sidebar {
+    padding-top: 55px;
+    min-width: 200px;
+    max-width: 200px;
+    margin-left: 25px;
+    .Topics {
+      .Topic {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .AddTopic {
+        display: flex;
+        flex-direction: column;
+        .AddButton {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+.EditForbidden {
+  text-align: center;
+  padding-top: 30vh;
+  padding-left: 10%;
+  padding-right: 10%;
+  .GoBack {
+    margin-top: 50px;
+  }
+}
+
+/* ---------------------------- ideaPage.js ------------------------------- */
+
+.IdeaPage {
+  display: flex;
+  justify-content: center;
+  .IdeaPageTop {
+    position: absolute;
+    .VoteButtonsDiv {
+      position: relative;
+      right: 40px;
+      top: 12px;
+    }
+    .MajorActionButtonsDiv {
+      position: relative;
+      left: 710px;
+      top: -58px;
+    }
+  }
+  .IdeaPageInner {
+    max-width: 720px;
+    width: 700px;
+  }
+  .Content {
+    display: flex;
+    width: 100%;
+    .Body {
+      margin-top: 3em;
+      width: 100%;
+      .IdeaDiv {
+        margin-bottom: 4%;
+        .TheIdeaItself {
+          padding: 8px;
+          padding-top: 2%;
+          img {
+            padding: 0 50px;
+            max-width: calc(100% - 100px);
+          }
+        }
+        .RowBelow {
+          display: flex;
+          align-items: center;
+          margin-top: 15px;
+          .CreatorActions {
+            display: flex;
+            .EditButton, .DeleteButton, .CancelButton {
+              margin-right: 10px;
+            }
+          }
+          .Topics {
+            margin-left: auto;
+            .IdeaChip {
+              float: left;
+              margin-right: 10px;
+            }
+          }
+          .RelevantProjectsDiv {
+            margin-left: auto;
+          }
+        }
+      }
+      .Discussion {
+        .AddComment {
+          padding-top: 25px;
+          padding-bottom: 25px;
+        }
+      }
+    }
+  }
+  .SignInToComment {
+    margin-top: 25px;
+    text-align: center;
+  }
+}
+
+/* --------------------------- newIdeaPage.js ------------------------------ */
+
+.NewIdeaPage {
+  padding-bottom: 25px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 10px;
+  display: flex;
+  .Body {
+    margin-right: 10px;
+    width: 100%;
+  }
+  .NewIdeaSidebar {
+    margin-left: 25px;
+    padding-left: 25px;
+    padding-top: 55px;
+    min-width: 200px;
+    max-width: 200px;
+    .Topics {
+      text-align: center;
+      .TopicsDiscussedTitle {
+        margin-bottom: 25px;
+      }
+      .TopicDiv {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 25px;
+        .RemoveIcon {
+          cursor: pointer;
+        }
+      }
+      .AddTopic {
+        display: flex;
+        flex-direction: column;
+        .AddButton {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+
+/* ============================ IDEA COMPONENTS ============================ */
+/* ----------------------------- comment.js -------------------------------- */
+
+.Comment {
+  margin-top: 5px;
+  display: flex;
+  .LeftMin {
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    transition: 0.5s ease;
+  }
+  .Left {
+    transition: 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 33px;
+    padding: 4px;
+  }
+  .CommentAvatar {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+    transition: 0.5s ease;
+  }
+  .CommentAvatarSmall {
+    width: 21px;
+    height: 21px;
+    transition: 0.5s ease;
+  }
+  .Right {
+    width: 100%;
+    .CommentMinimiseButton {
+      cursor: pointer;
+      width: 1rem;
+      margin-left: auto;
+    }
+    .CommentMaximiseButton {
+      cursor: pointer;
+      width: 1rem;
+      margin-left: auto;
+    }
+    .DeletedHeader {
+      display: flex;
+      padding: 5px 5px 5px 0px;
+      .DeletedTitle {
+        font-size: 0.8125em;
+        color: rgba(0,0,0,0.6);
+      }
+    }
+    .Header {
+      vertical-align: text-top;
+      display: flex;
+      align-items: center;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      padding-right: 5px;
+      color: rgba(0,0,0,0.6);
+      .CommentName {
+        font-size: 0.8125em;
+        font-family: "gotham_htfmedium";
+        color: rgba(0,0,0,0.6);
+        margin-right: 5px;
+      }
+      .CommentUsername {
+        font-size: 0.8125em;
+        color: rgba(0,0,0,0.6);
+      }
+      .CommentTime {
+        color: rgba(0,0,0,0.6);
+        font-size: 0.8125em;
+      }
+      .Edited{
+        margin-left: 15px;
+        font-size: 0.8125em;
+        color: rgba(0,0,0,0.6);
+        display: flex;
+        align-items: center;
+        p {
+          color: rgba(0,0,0,0.6);
+        }
+        .PencilIcon {
+          height: 19px;
+          width: 0.6rem;
+          padding-bottom: 1px;
+          margin-right: 5px;
+        }
+      }
+    }
+    .Body {
+      margin-top: -6px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .TheIdeaItself {
+        min-height: 67px;
+      }
+      .Actions {
+        display: flex;
+        align-items: flex-end;
+        .ActionButton {
+          margin-right: 8px;
+          height: 20px;
+          width: 20px;
+          .ReplyIcon, .EditIcon{
+            width: 0.8rem;
+            height: 0.8rem;
+          }
+          .CancelIcon {
+            width: 0.6rem;
+            height: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/* ================================ NEW REPO ================================ */
+/* --------------------------- newRepoPage.js ------------------------------ */
+
+.NewRepoPage {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .Form {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    .SubmitButton {
+      margin-top: 50px;
+    }
+  }
+}
+
+
+/* ================================== REPO ================================== */
+/* ----------------------------- repoPage.js -------------------------------- */
+
+.RepoPage {
+  .PageTitle {
+    .Info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+      margin-bottom: -20px;
+    }
+  }
+  .Tabs {
+    margin-top: 4px;
+    .Card{
+      padding:0 16px;
+    }
+  }
+  .ReadMeMD {
+    margin-top: 25px;
+    padding: 25px;
+  }
+}
+
+.ContainedMessage {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+
+/* ============================ REPO COMPONENTS ============================ */
+/* ------------------------- contractRoleCard.js ---------------------------- */
+
+                                    // TO DO
+
+/* -------------------------- emptyRepoMessage.js -------------------------- */
+
+.EmptyRepoMessage {
+  padding: 25px;
+  .EmptyOption {
+    margin-top: 25px;
+    .TerminalInputs {
+      border-radius: 12px;
+      padding: 8px;
+      overflow: scroll;
+      background-color: $Darker;
+      pre {
+        color: $Surface;
+        margin: 0;
+        padding: 0 10px;
+      }
+      pre::before {
+        content: "$";
+        padding-right: 10px;
+      }
+    }
+  }
+}
+
+/* ----------------------------- tabAbout.js -------------------------------- */
+
+.TabAbout {
+  padding:16px;
+  .TabAboutDetails {
+    display: flex;
+    .DetailsLeft {
+      width: 30%;
+      max-width: 220px;
+      padding-right: 10px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      vertical-align: middle;
+      .ProjectAvatar {
+        width: 200px;
+        height: 200px;
+      }
+      .SocialDiv {
+        padding-top: 24px;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
+    .DetailsRight {
+      padding-left: 16px;
+      width: 70%;
+      .ProjectDescription {
+        margin-bottom: 20px;
+        min-height: 3em;
+      }
+      .ProjectStatistics {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        display: flex;
+        align-items: left;
+        .StatDiv {
+          .StatLoading {
+            display: flex;
+            align-items: left;
+            .StatLoadingCircle {
+              margin-left: 10px;
+            }
+          }
+          display: flex;
+          align-items: center;
+          margin-right: 35px;
+          .Token {
+            color: #eac600;
+            white-space: nowrap;
+          }
+          .Stat {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+  .TabAboutRecentUpdates {
+
+  }
+}
+
+/* --------------------------- tabContracts.js ------------------------------ */
+
+.RepoContracts {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  width: 100%;
+  padding: 25px;
+  .Role {
+    border-radius: 6px;
+    width: 22%;
+    padding: 15px;
+    .RoleRep {
+      margin-bottom: 25px;
+    }
+    .RoleActions {
+      .Table {
+        .Row {
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid lightgrey;
+          .Title {
+            color: grey;
+          }
+          .Action {
+            width: 40%;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ------------------------------ tabFiles.js ------------------------------ */
+
+.TabFiles {
+  padding-top: 10px;
+  padding-bottom: 18px;
+  .FilesHeaderActions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    .BranchMenuInner {
+      display: flex;
+      align-items: center;
+      .NewBranchButton {
+        margin-left: 25px;
+      }
+    }
+    .ForkAndDownload {
+      display: flex;
+      .ForkMenu {
+        .CodeForkIcon {
+          width: 15px;
+          height: 12px;
+        }
+      }
+    }
+  }
+  .FileNameCellDiv {
+    display: flex;
+    .FileIcon, .FolderIcon {
+      margin-right: 10px;
+      width: 1rem;
+      height: 1rem;
+      margin-top: 2px;
+    }
+  }
+  .TableRow:hover {
+    background-color: #ebebeb;
+  }
+}
+
+.NewBranchDialog {
+  width: 400px;
+  padding-top: 10px;
+  .SourceBranch {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    .SourceBranchInput {
+      min-width: 200px;
+      margin-right: 25px;
+    }
+  }
+}
+
+.GitLinkDiv {
+  display: flex;
+  align-items: center;
+  max-width: 300px;
+  .GitLink {
+    margin-right: 25px;
+    text-align: left;
+    overflow: auto;
+    min-width: 80px;
+    max-width: 80px;
+    margin-right: 20px;
+  }
+  .GitLinkPre {
+    margin: 0;
+    line-height: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+}
+
+/* ---------------------------- tabIssues.js ------------------------------- */
+
+.TabIssues {
+  .NewIssueButton {
+    padding: 10px;
+  }
+  .IssuesList {
+    p {
+      margin: 0;
+      padding: 0;
+    }
+    .IssueText {
+      flex: 0 0 auto;
+    }
+    .IssueOpenedDate {
+      flex: 1 1 auto;
+    }
+    .IssueBounty {
+      display: flex;
+      align-items: center;
+      margin-right: 30px;
+    }
+  }
+}
+.IssueDialog {
+  display: flex;
+  min-height: 52vh;
+  .IssueDialogLeft {
+    width: 100%;
+    margin-right: 25px;
+  }
+  .IssueDialogRight {
+    max-width: 200px;
+    min-width: 200px;
+    .Tags {
+      text-align: center;
+      margin-top: 25px;
+      .TagsDiscussedTitle {
+        margin-bottom: 25px;
+      }
+      .TagDiv {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0px;
+        .RemoveIcon {
+          cursor: pointer;
+        }
+      }
+      .AddTag {
+        display: flex;
+        flex-direction: column;
+        .AddButton {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+/* ------------------------- tabMergeRequests.js ---------------------------- */
+
+.TabMergeRequests {
+  .NewMergeButton {
+    padding: 10px;
+  }
+}
+.MergeDialog {
+  width: 500px;
+  padding-top: 10px;
+  .MergeNameInput {
+    margin-bottom: 20px;
+  }
+  .BranchesInputs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .BranchInput{
+      min-width: 150px;
+    }
+  }
+}
+
+/* ------------------------------ tabTasks.js ------------------------------ */
+
+.TabTasks {
+  min-height: 400px;
+}
+
+/* ================================== FILE ================================== */
+/* ------------------------------ filePage.js ------------------------------ */
+
+body {
+  counter-reset: line;
+}
+.FileContents {
+  margin-top: 15px;
+  border-top: solid 1px #e5e5e5;
+  background-color: #f2f2f2;
+  overflow: auto;
+  white-space: nowrap;
+  code {
+    display: block;
+    line-height: 1.5rem;
+  }
+  code::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    border-right: 1px solid #ddd;
+    padding: 0 .5em;
+    margin-right: .5em;
+    color: #888;
+    min-width: 31px;
+    text-align: right;
+  }
+}
+// This is the regular SASS block
+.FilePage {
+  .PageTitle {
+    .Title {
+      display: flex;
+      .ProjectName {
+        cursor: pointer;
+      }
+      .Separator {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+  }
+  .Info {
+    margin-top: 25px;
+    .Header {
+      padding-left: 25px;
+      padding-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      .Actions {
+        display: flex;
+      }
+    }
+  }
+}
+
+/* ------------------------------ treePage.js ------------------------------ */
+
+.TreePage {
+  .TreePageContent {
+    margin-top: 25px;
+    .FileNameCellDiv {
+      display: flex;
+      .FileIcon, .FolderIcon {
+        margin-right: 10px;
+        width: 1rem;
+        height: 1rem;
+        margin-top: 2px;
+      }
+    }
+    .TableRow:hover {
+      background-color: #ebebeb;
+    }
+  }
+}
+
+/* ================================= INVEST ================================= */
+/* ---------------------------- investPage.js ------------------------------- */
+
+.InvestPage {
+  padding-bottom: 25px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 10px;
+  .Header {
+    margin-bottom: 50px;
+  }
+  .Body {
+    .VestingCliff {
+      display: flex;
+      align-items: flex-end;
+      .SeletVestingPeriod {
+        margin-right: 50px;
+      }
+    }
+    .Milestones {
+      margin-top: 25px;
+      display: flex;
+      .Stone {
+        margin-right: 25px;
+        margin-left: 25px;
+      }
+    }
+  }
+}
+
+/* ================================= ISSUE ================================= */
+/* ---------------------------- issuePage.js ------------------------------- */
+
+.IssuePage {
+  .IssuePagePaper {
+    padding: 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    .IssueHeader {
+      display: flex;
+      .IssueDetails {
+        display: flex;
+        align-items: baseline;
+        .IssueTitle {
+          font-family: "gotham_htflight";
+        }
+        .IssueAuthor {
+          margin-left: 20px;
+        }
+      }
+      .IssueActions {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        .IssueActionButton {
+          margin-left: 10px;
+        }
+      }
+    }
+    .IssueBody {
+      padding-top: 10px;
+    }
+  }
+  .SignInToComment {
+    margin-top: 25px;
+    text-align: center;
+  }
+}
+
+
+/* ============================ ISSUE COMPONENTS ============================ */
+/* ----------------------------- issueComment.js -------------------------------- */
+
+                                    // TO DO
+
+
+/* ============================ MAINTAINER PANEL ============================ */
+/* ------------------------- maintainerPanelPage.js ------------------------- */
+
+.MaintainerPanelPage {
+  padding-bottom: 25px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 10px;
+  .Header {
+    margin-bottom: 50px;
+  }
+  .Body {
+    .Container1 {
+      display: flex;
+      margin-bottom: 25px;
+      .MergeRequests {
+        width: 50%;
+        margin-right: 25px;
+        .MergeRequestsTitle {
+          padding-left: 25px;
+          padding-right: 25px;
+          display: flex;
+          justify-content: space-between;
+        }
+        .ListItem {
+          display: flex;
+          justify-content: space-between;
+          .Left {
+            .Title {
+              display: flex;
+              align-items: baseline;
+              .Name {
+                margin-right: 10px;
+              }
+              .By {
+                margin-right: 10px;
+              }
+            }
+            .Branches {
+              display: flex;
+              align-items: baseline;
+              .Source {
+                margin-right: 10px;
+              }
+              .To {
+                margin-right: 10px;
+              }
+            }
+          }
+          .Right {
+            .Button {
+              padding: 10px;
+              min-width: 0;
+              margin-right: 10px;
+            }
+          }
+        }
+        .ViewAll {
+          display: flex;
+          justify-content: center;
+        }
+      }
+      .OpenIssues {
+        width: 50%;
+        margin-left: 25px;
+        .OpenIssuesTitle {
+          padding-left: 25px;
+          padding-right: 25px;
+          display: flex;
+          justify-content: space-between;
+        }
+        .ListItem {
+          display: flex;
+          justify-content: space-between;
+          .Left {
+            .Title {
+              display: flex;
+              align-items: baseline;
+              .Name {
+                margin-right: 10px;
+              }
+              .By {
+                margin-right: 10px;
+              }
+            }
+          }
+          .Right {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+        .ViewAll {
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+    .Container2 {
+      .RolesTitle {
+        margin-bottom: 10px;
+        margin-left: 15px;
+      }
+      .Roles {
+        display: flex;
+        .Role {
+          border-radius: 6px;
+          width: 22%;
+          padding: 15px;
+          .RoleRep {
+            margin-bottom: 25px;
+          }
+          .RoleActions {
+            margin-bottom: 10px;
+            .Table {
+              .Row {
+                padding-top: 5px;
+                padding-bottom: 5px;
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 1px solid lightgrey;
+                .Title {
+                  color: grey;
+                }
+                .Action {
+                  width: 40%;
+                }
+              }
+            }
+          }
+          .Modify {
+            display: flex;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ============================== MERGEREQUEST ============================== */
+/* -------------------------- mergeRequestPage.js -------------------------- */
+
+.MergeRequestPage {
+  .MergeRequestPagePaper {
+    padding: 10px;
+    margin-top: 25px;
+  }
+  .MergeAuthor {
+    margin-left: 10px;
+    margin-right: 5px;
+  }
+  .MergeRequestActionButton, .CommitMsgInput {
+    margin-left: 10px;
+  }
+  .MergeRequestDescription {
+    margin-top: 10px;
+  }
+}
+
+
+/* =============================== SIGN UP/IN =============================== */
+/* ------------------------ createAccountPage.js --------------------------- */
+
+.CreateAccountPage {
+  margin-top: 100px;
+  padding-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .Form {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    .UsernameInputDiv {
+      display: flex;
+      width: 330px;
+      .UsernameInput {
+        width: 300px;
+      }
+      .UsernameAvailabilityCheck {
+        margin-left: 10px;
+        padding-top: 30px;
+      }
+    }
+    .SubmitButton {
+      margin-top: 25px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+/* ---------------------------- loginPage.js ------------------------------- */
+
+.LoginPage {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .Form {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    .SubmitButton {
+      margin-top: 25px;
+    }
+    .Recovery {
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+}
+
+/* ------------------------------ recovery.js ------------------------------ */
+
+.RecoveryPage {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .Form {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    .SubmitButton {
+      margin-top: 25px;
+    }
+    a {
+      text-align: center;
+      margin-top: 25px;
+      margin-bottom: 50px;
+    }
+    .Recovery {
+      margin-top: 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}
+/* ================================== APP ================================== */
+/* ----------------------------- appPage.js -------------------------------- */
+.AppPage {
+  .Content .Body .AppDiv .TheAppItself {
+    margin-top: 15px;
+    display: inline-flex;
+    .Left {
+        margin-right: 20px;
+        max-width: 330px;
+        padding-top: 8px;
+        padding-left: 3px;
+        .Image {
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 25px;
+            max-width: 320px;
+            max-height: 400px;
+        }
+        .Magnification {
+          width: 750px;
+          height: 750px;
+        }
+        .Thumbnails {
+          padding: 8px;
+            display: flex;
+            .Thumbnail {
+              border-radius: 0px;
+              margin-right: 8px;
+            }
+        }
+    }
+  }
+    .Middle {
+      width: 100%;
+      padding: 8px;
+      .Paper {
+        padding: 16px 8px;
+        .Description {
+          min-height: 3em;
+        }
+        .Topics {
+          display: flex;
+        }
+        .Options {
+          padding: 8px 4px;
+          .Thumbnails{
+          display: flex;
+        }
+
+        }
+      }
+    }
+    .Right {
+      padding: 8px;
+      text-align: center;
+      width: 100%;
+      max-width: 300px;
+      .Paper {
+        padding: 8px;
+      }
+    }
+    .FooterTabs {
+      display: flex;
+    }
+}
+
+/* ================================== USER ================================== */
+/* ----------------------------- userPage.js -------------------------------- */
+
+.UserPage {
+  display: flex;
+  .UserProfileLeft {
+    margin-top: 15px;
+    margin-left: 10%;
+    margin-right: 20px;
+    max-width: 300px;
+    padding-top: 5px;
+    padding-left: 3px;
+    .Avatar {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 25px;
+      width: 250px;
+      height: 250px;
+    }
+    .DescriptionDiv, .WebsiteDiv, .NameDiv {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .SkillsDiv {
+      text-align: center;
+      margin-bottom: 50px;
+      .ChipsDiv {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        .IndividualChip {
+          margin-right: 10px;
+          margin-top: 10px;
+        }
+      }
+    }
+    .SocialDiv {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 50px;
+    }
+  }
+  .UserProfileRight{
+    width: 100%;
+    min-height: 100vh;
+    margin-right: 8%;
+    padding-right: 14px;
+    padding-top: 15px;
+    padding-left: 8px;
+    background-color: $Light;
+    .UserTabAbout {
+      padding: 10px 0;
+    }
+  }
+}
+
+/* ---------------------------- walletPage.js ------------------------------- */
+
+.WalletPage {
+  padding-bottom: 25px;
+  padding-left: 10%;
+  padding-right: 10%;
+
+  .Paper {
+    padding: 25px;
+    .Graph {
+      margin-bottom: 25px;
+    }
+    .Balance {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f7f7f7;
+      margin-left: -25px;
+      margin-right: -25px;
+      padding: 25px;
+      border-radius: 1px;
+      margin-bottom: 25px;
+    }
+    .Transactions {
+      .History {
+        margin-top: 25px;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        border-top: solid 1px lightgrey;
+        border-bottom: solid 1px lightgrey;
+      }
+    }
+  }
+}
+
+
+/* ============================ USER COMPONENTS ============================ */
+/* ------------------------------ graph.js --------------------------------- */
+
+                                    // TO DO
+
+/* ------------------------------ heatMap.js --------------------------------- */
+
+
+/* --------------------------- transactions.js ------------------------------ */
+
+                                    // TO DO
+
+/* -------------------------- transferButton.js ----------------------------- */
+
+
+
+/* ================================ WELCOME ================================ */
+/* --------------------------- welcomePage.js ------------------------------ */
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeinHero {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeinHero2 {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes herofade {
+  0% {
+    padding-top: 40vh;
+  }
+  75% {
+    padding-top: 40vh;
+  }
+  100% {
+    padding-top: 20vh;
+  }
+}
+
+.WelcomePage {
+  .Hero {
+    animation: herofade 3s ease;
+    padding-top: 20vh;
+    padding-bottom: 200px;
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    .WelcomeLogo {
+      animation: fadeinHero 2s linear;
+      margin-bottom: 75px;
+      img {
+        width: 175px;
+      }
+      .Header {
+        margin-bottom: 10px;
+      }
+    }
+    h3 {
+      opacity: 0.87;
+    }
+    .MissionHiddenStart {
+      opacity: 0;
+    }
+    .Mission {
+      opacity: 1;
+      animation: fadein 0.75s linear;
+    }
+    .MissionHidden {
+      opacity: 0;
+      animation: fadeout 0.75s linear;
+    }
+    .JoinNow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 30px 0px;
+      .SignUpInput {
+        width: 300px;
+      }
+      .JoinButton {
+        margin-top: 10px;
+      }
+    }
+    .WhatIsSource {
+      margin-top: 26px;
+      text-align: left;
+      padding-left: 28%;
+    }
+    .WelcomeSignUp {
+      animation: fadeinHero2 4s linear;
+    }
+  }
+  .Section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-left: 10%;
+    padding-right: 10%;
+    .SectionTitle {
+      margin-bottom: 50px;
+    }
+    .WelcomeButton {
+      margin-top: 50px;
+      display: inline-flex;
+      justify-content: center;
+    }
+  }
+  .Section2 {
+    background-color: #FBFAFA;
+    .TypingDiv {
+      opacity: 0.87;
+      line-height: 1.3;
+      min-height: 200px;
+      max-width: 700px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+  }
+  .Section3, .Section4 {
+    .SectionTitle {
+      color: white;
+    }
+    .SectionTagline {
+      color: white;
+      opacity: 0.87;
+    }
+  }
+  .Section3 {
+    background-color: #1B212B;
+  }
+  .Section4 {
+    background-color: #C0BFBF;
+  }
+}
+
+
+/* =========================== WELCOME COMPONENTS =========================== */
+/* ---------------------------- joinQueue.js ------------------------------- */
+
+.JoinQueue {
+  text-align: center;
+  display: inline-block;
+}
+
+
+/* ================================ WORKFLOW ================================ */
+/* ------------------------------ Board.js --------------------------------- */
+
+.Board {
+  width: 100%;
+  max-width: 100%;
+  background-color: $Dark;
+  .Header{
+    display: inline-flex;
+    align-items: center;
+    width: calc(100% - 20px);
+    padding: 10px;
+    .Actions {
+      margin-left: auto;
+    }
+  }
+  .Body {
+    display: inline-flex;
+    background-color: $Dark;
+    width: 100%;
+    min-height: 80vh;
+    max-height: 80vh;
+    overflow-x: scroll;
+    .NewColumn {
+      min-width: 350px;
+      height: 138px;
+      border-radius: 8px;
+      background-color: rgba(0,0,0,0.2);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .NewColumn:hover {
+      background-color: rgba(0,0,0,0.4);
+    }
+  }
+}
+
+/* ------------------------------ Column.js --------------------------------- */
+
+.Column {
+  padding: 8px;
+  .ColumnHeader {
+    padding: 4px 8px 0px 8px;
+    //border-radius: 6px 6px 0px 0px;
+    background-color: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: flex-end;
+    .Actions {
+      margin-left: auto;
+      min-height: 32px;
+    }
+  }
+  .Lane {
+    min-height: 100px;
+    max-height: 60vh;
+    overflow-y: scroll;
+    width: 350px;
+    padding: 8px 8px 1px 8px;
+    //border-radius: 0px 0px 6px 6px;
+    background-color: rgba(255,255,255,0.7);
+  }
+  .NewCard {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    .NewCardButton {
+      background-color: rgba(255,255,255,0.5);
+      width: 25px;
+      height: 23px;
+      padding-bottom: 2px;
+      border-radius: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .NewCardButton:hover {
+      background-color: rgba(255,255,255,0.3);
+    }
+  }
+}
+
+/* ---------------------------- KanbanCard.js ------------------------------- */
+
+.KanbanCard {
+  border: solid 1px transparent;
+  margin-bottom: 8px;
+  background-color: white;
+  //border-radius: 3px;
+  padding: 4px;
+  .KanbanHeader {
+    width: 100%;
+    .Actions {
+      margin-left: auto;
+      min-height: 32px;
+    }
+  }
+  .KanbanLabels {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    .KanbanLabel {
+      border: solid 1px rgba(0,0,0,0.87);
+      margin-right: 10px;
+      border-radius: 25px;
+      padding: 0px 5px;
+      margin-top: 5px;
+      p {
+        font-size: 0.8125em;
+      }
+    }
+    .Due {
+      border: solid 1px #61bd4f;
+      p {
+        color: #61bd4f;
+      }
+    }
+    .OverDue {
+      border: solid 1px #ec9488;
+      p {
+        color: #ec9488;
+      }
+    }
+    .Compensation {
+      border: solid 1px black;
+      background-color: black;
+      p {
+        color: white;
+      }
+    }
+    .Assigned {
+      display: flex;
+      padding: 0;
+      padding-right: 5px;
+      border: solid 1px lightgrey;
+      .Avatar{
+        height: 17px;
+        width: 17px;
+        margin-right: 5px;
+      }
+      .Name {
+        margin-right: 5px;
+      }
+      .Username {
+        font-family: "gotham_htfbook"
+      }
+    }
+  }
+}
+.KanbanCardDragging {
+  border: solid 1px lightgrey;
+}
+.KanbanCardDialog {
+  width: 550px;
+  min-height: 400px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  .KanbanCardDialogBody {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .KanbanCardDialogLabels {
+      display: flex;
+      align-items: flex-end;
+      margin-top: 10px;
+    }
+  }
+  .Title {
+    border: solid 1px transparent;
+    border-radius: 4px;
+    padding: 5px 0;
+  }
+  .Title:hover {
+    background-color: rgba(240,240,240,1);
+    cursor: text;
+  }
+  .EditTitleInput {
+    border: solid 1px lightgrey;
+    border-radius: 4px;
+    padding: 5px 0px;
+    line-height: 1;
+    font-size: 3em;
+    font-family: "gotham_htfbook";
+    color: rgba(0,0,0,0.87);
+    letter-spacing: 0em;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+  }
+  .Description {
+    border: solid 1px transparent;
+    border-radius: 4px;
+    padding: 5px 0;
+  }
+  .Description:hover {
+    background-color: rgba(240,240,240,1);
+    cursor: text;
+  }
+  .EditDescriptionInput {
+    border: solid 1px lightgrey;
+    border-radius: 4px;
+    padding: 5px 0px;
+    font-size: 1em;
+    font-family: "gotham_htfbook";
+    color: rgba(0, 0, 0, 0.87);
+    letter-spacing: 0.009375em;
+    line-height: 1.618;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 200px;
+  }
+}
+
+
+/* ================================== END ================================== */
