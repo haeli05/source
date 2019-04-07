@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import Eos from 'eosjs';
 import WalletGraph from './components/graph';
 import TransferButton2 from './components/transferButton2';
 import Transactions from './components/transactions';
@@ -94,15 +93,15 @@ let user = history.location.pathname.split("/")[2];
       handleTabChange(event, value){
         this.setState({ value });
       }
-      handleSubmit(PrivateKey,TargetAddress,amount){
-        let keyProvider= PrivateKey
-        let eos2=Eos({keyProvider});
-        amount = amount.toString()+" "+"SYS";
-        eos2.transfer(this.props.match.params.user,TargetAddress,amount,'').then((err,res)=>{
-          if(!err) {alert("ERROR TRANSFER");console.log(err);}
-          else alert(`SENT TRANSACTION TO ${TargetAddress}`);
-        });
-      }
+      // handleSubmit(PrivateKey,TargetAddress,amount){
+      //   let keyProvider= PrivateKey
+      //   let eos2=Eos({keyProvider});
+      //   amount = amount.toString()+" "+"SYS";
+      //   eos2.transfer(this.props.match.params.user,TargetAddress,amount,'').then((err,res)=>{
+      //     if(!err) {alert("ERROR TRANSFER");console.log(err);}
+      //     else alert(`SENT TRANSACTION TO ${TargetAddress}`);
+      //   });
+      // }
       render(){
          const { value } = this.state;
         return(

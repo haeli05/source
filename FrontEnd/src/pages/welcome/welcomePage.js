@@ -84,18 +84,25 @@ class WelcomePage extends Component {
         repeat: true
       }
       malarkey(callback1, options1)
-        .type(`social collaboration platform`)
+        .type(`developers`)
         .pause()
         .delete()
-        .type(`distributed incubator`)
+        .type(`designers`)
         .pause()
         .delete()
-        .type(`decentralized hackathon`)
+        .type(`engineers`)
         .pause()
         .delete()
-        .type(`open workplace`)
+        .type(`backers`)
         .pause()
         .delete()
+        .type(`investors`)
+        .pause()
+        .delete()
+        .type(`fans`)
+        .pause()
+        .delete()
+
 
         const element2 = document.querySelector('#audience')
         function callback2 (text) {
@@ -197,24 +204,31 @@ class WelcomePage extends Component {
             <img src={logo} alt="source"/>
           </div>
           <div className="WelcomeSignUp">
-            <Typography className="Mission" color="textPrimary" variant="h3">
-            Our mission is to unleash the creativity of the internet.
+            <Typography className="Mission" color="textPrimary" variant="h2">
+            The Internet's Tech Incubator
             </Typography>
             <div className="WhatIsSource">
-              <Typography className="Mission" variant="h4" color="textSecondary">
-              Source is a <div style={{display:"inline"}} id="whatissource"/>
+              <Typography className="Mission" variant="h4" color="textPrimary">
+              We crowdsource <div style={{display:"inline"}} id="whatissource"/> for your digital projects.
               </Typography>
+              <Button>
+              Get Started
+              </Button>
+              <Typography>If you're a <div style={{display:"inline"}} id="whatissource"/>, we help you monetize your skills.</Typography>
+              <Button>
+              Learn more
+              </Button>
             </div>
             <div className="JoinNow">
               <TextField
-                label="Username"
-                type="username"
+                label="Sign up for our mailing list"
+                type="email"
                 onChange={this.handleChangeSignUp}
                 margin="normal"
                 variant="outlined"
                 className="SignUpInput"
               />
-              <Button variant="contained" color="primary" className="JoinButton" component={Link} to={{pathname:"/createaccount", state:{username:this.state.username}}}>Join Now</Button>
+              <Button variant="contained" color="primary" className="JoinButton" component={Link} to={{pathname:"/createaccount", state:{username:this.state.username}}}>Sign up</Button>
             </div>
 
           </div>
@@ -222,7 +236,7 @@ class WelcomePage extends Component {
         <div className="Section Section2">
           <Typography variant="h1" className="SectionTitle">Just build it</Typography>
           <Typography variant="h4" className="TypingDiv" color="textSecondary"><div id="typeElement"/></Typography>
-          <Typography className="SectionTagline" variant="h4">Discuss ideas, build projects, and connect to those who matter.</Typography>
+          <Typography className="SectionTagline" variant="h4">"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" /n - Patrick Collison, CEO @ Stripe</Typography>
           <div className="WelcomeButton">
             <Button variant="contained" color="primary" size="large" component={Link} to="/explore/ideas">Explore Ideas</Button>
           </div>
