@@ -1,0 +1,310 @@
+/* =================== GLOBAL =================== */
+
+/* ------------------- FONTS ------------------- */
+@font-face {
+    font-family: 'gotham_htfblack';
+    src: url('gothamhtf-black-webfont.woff2') format('woff2'),
+         url('gothamhtf-black-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham_htfblack_italic';
+    src: url('gothamhtf-blackitalic-webfont.woff2') format('woff2'),
+         url('gothamhtf-blackitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham_htfbold';
+    src: url('gothamhtf-bold-webfont.woff2') format('woff2'),
+         url('gothamhtf-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham_htfbold_italic';
+    src: url('gothamhtf-bolditalic-webfont.woff2') format('woff2'),
+         url('gothamhtf-bolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham_htfbook';
+    src: url('gothamhtf-book-webfont.woff2') format('woff2'),
+         url('gothamhtf-book-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham_htfbook_italic';
+    src: url('gothamhtf-bookitalic-webfont.woff2') format('woff2'),
+         url('gothamhtf-bookitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham_htfextrabold_italic';
+    src: url('gothamhtf-extrabolditalic-webfont.woff2') format('woff2'),
+         url('gothamhtf-extrabolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham_htflight';
+    src: url('gothamhtf-light-webfont.woff2') format('woff2'),
+         url('gothamhtf-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham_htflight_italic';
+    src: url('gothamhtf-lightitalic-webfont.woff2') format('woff2'),
+         url('gothamhtf-lightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham_htfmedium';
+    src: url('gothamhtf-medium-webfont.woff2') format('woff2'),
+         url('gothamhtf-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham_htfmedium_italic';
+    src: url('gothamhtf-mediumitalic-webfont.woff2') format('woff2'),
+         url('gothamhtf-mediumitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham_htfthin';
+    src: url('gothamhtf-thin-webfont.woff2') format('woff2'),
+         url('gothamhtf-thin-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham_htfthin_italic';
+    src: url('gothamhtf-thinitalic-webfont.woff2') format('woff2'),
+         url('gothamhtf-thinitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham_htfultra';
+    src: url('gothamhtf-ultra-webfont.woff2') format('woff2'),
+         url('gothamhtf-ultra-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham_htfxlight';
+    src: url('gothamhtf-xlight-webfont.woff2') format('woff2'),
+         url('gothamhtf-xlight-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham_htfxlight_italic';
+    src: url('gothamhtf-xlightitalic-webfont.woff2') format('woff2'),
+         url('gothamhtf-xlightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// Default font for the body + background color
+body {
+  font-family: "gotham_htflight", Arial, sans-serif;
+  color: #221f20;
+  background-color: #f0efef;
+  padding: 0;
+  margin: 0;
+}
+
+// Fonts for the headers
+h1, h2, h3, h4 { font-family: "gotham_htfbook"; }
+h5, h6 { font-family: "gotham_htflight"; }
+
+/* =================== LANDING PAGE =================== */
+
+// Main App
+.App {
+  display: flex;
+  justify-content: center;
+  .Page{
+    //background-color: #d5d6d0;
+    background-color: #f0efef;
+    width: 100%;
+    //max-width: 1200px;
+    // Twitter, Telegram, Medium links
+    .toplinks {
+      display: flex;
+      justify-content: flex-end;
+      padding: 30px;
+      .twitter, .medium, .steem {
+        margin-left: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: solid #bcbbbb 1px;
+        width: 45px;
+        height: 45px;
+        transition: 0.5s ease;
+      }
+      .twitter:hover, .medium:hover, .telegram:hover, .steem:hover {
+        border: solid #221f20 1px;
+      }
+      .twitter:active, .medium:active, .telegram:active, .steem:active {
+        transform: scale(0.9);
+      }
+      // Telegram plane looks off center so we have to move it left a little
+      .telegram {
+        margin-left: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: solid #bcbbbb 1px;
+        width: 42px;
+        height: 45px;
+        padding-right: 3px;
+        transition: 0.5s ease;
+      }
+      a {
+        color: inherit;
+      }
+    }
+    .all {
+      .header {
+        text-align: center;
+        h1 {
+          padding: 0!important;
+          margin: 0!important;
+        }
+        h5 {
+          margin: 0;
+          padding: 0;
+        }
+        p {
+          margin-top: 30px;
+          padding: 0;
+        }
+      }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 100px;
+      .content {
+        margin-top: 42px;
+        max-width: 355px;
+        padding-left: 7%;
+        padding-right: 7%;
+        p {
+          color: #231f20;
+          //color: #665e63;
+          letter-spacing: 0px;
+          font-size: 13px;
+          line-height: 165%;
+          font-family: 'gotham_htfbook';
+          text-align: justify;
+          -webkit-hyphens: auto;
+          -moz-hyphens: auto;
+          -ms-hyphens: auto;
+          hyphens: auto;
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+}
+
+
+// One Pager
+.OnePagerUnlocked {
+  display: flex;
+  justify-content: center;
+  .Page {
+    padding-top: 107px;
+    max-width: 500px;
+    margin-left: 5%;
+    margin-right: 5%;
+    .Top {
+      text-align: center;
+      margin-bottom: 57px;
+      .Header {
+        margin-bottom: 11px;
+      }
+    }
+    .Body {
+      text-align: justify;
+      .Title {
+        margin-bottom: 10px;
+      }
+      .Para {
+        font-family: gotham_htfbook;
+        font-size: 13px;
+        letter-spacing: 0px;
+        margin-bottom: 10px;
+      }
+      .MainPara {
+        font-family: gotham_htfbook;
+        font-size: 13px;
+        letter-spacing: 0px;
+        margin-bottom: 25px;
+      }
+      .List {
+        font-family: gotham_htfbook;
+        font-size: 13px;
+        letter-spacing: 0px;
+        margin-bottom: 25px;
+        .ListItem {
+          display: flex;
+          .Bullet {
+            margin-right: 10px;
+          }
+          .Name {
+            min-width: 125px;
+          }
+        }
+      }
+    }
+    .DeckButtonDiv {
+      display: flex;
+      justify-content: center;
+      .DeckButton {
+        margin-top: 25px;
+        margin-bottom: 100px;
+      }
+    }
+  }
+}
+
+
+/* ------------------- MEDIA QUERIES ------------------- */
+
+@media screen and (max-width: 900px) {
+  .App {
+    .Page{
+      .all {
+        padding-bottom: 90px;
+      }
+    }
+    .toplinks {
+      justify-content: center!important;
+      .twitter, .telegram, .medium, .steem {
+        margin: 10px;
+        margin-bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: solid #bcbbbb 1px;
+        width: 55px;
+        height: 55px;
+      }
+    }
+  }
+}
