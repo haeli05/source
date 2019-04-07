@@ -16,7 +16,8 @@
 //                                                                            //
 //                                                                            //
 /* ========================================================================== */
-
+//License
+// For non-commercial use only. We reserve the right to sue anyone who violate these terms
 
 /* ================================ COLOURS ================================ */
 $Surface: #F0EFEF;
@@ -3138,6 +3139,7 @@ body {
       opacity: 0;
     }
     .Mission {
+      align:left;
       opacity: 1;
       animation: fadein 0.75s linear;
     }

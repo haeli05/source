@@ -234,15 +234,13 @@ class WelcomePage extends Component {
           </div>
         </div>
         <div className="Section Section2">
-          <Typography variant="h1" className="SectionTitle">Just build it</Typography>
+
           <Typography variant="h4" className="TypingDiv" color="textSecondary"><div id="typeElement"/></Typography>
           <Typography className="SectionTagline" variant="h4">"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" /n - Patrick Collison, CEO @ Stripe</Typography>
-          <div className="WelcomeButton">
-            <Button variant="contained" color="primary" size="large" component={Link} to="/explore/ideas">Explore Ideas</Button>
-          </div>
         </div>
         <div className="Section Section3">
-          <Typography className="SectionTitle" variant="h1">The Internet is your Incubator</Typography>
+          <Typography className="SectionTitle" variant="h2">Can building technology be as simple as writing a blog post?</Typography>
+          <Typography variant="h4">We connect </Typography>
           <Typography className="SectionTitle" variant="h3" color="textSecondary">Find <div style={{display:"inline"}} id="audience" /></Typography>
           <Typography className="SectionTagline" variant="h4">Connect with collaborators, and receive funding and support.</Typography>
           <div className="WelcomeButton">
