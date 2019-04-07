@@ -8,6 +8,7 @@ config/shopify.yml
 npm-debug.log
 .env
 .env.*
+.cache
 
 # Packages #
 ############
