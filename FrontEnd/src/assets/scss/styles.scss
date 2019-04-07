@@ -3117,11 +3117,11 @@ body {
 .WelcomePage {
   .Hero {
     animation: herofade 3s ease;
-    padding-top: 20vh;
+    padding-top: 4vh;
     padding-bottom: 200px;
     text-align: center;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
     .WelcomeLogo {
       animation: fadeinHero 2s linear;
       margin-bottom: 75px;
@@ -3139,7 +3139,7 @@ body {
       opacity: 0;
     }
     .Mission {
-      align:left;
+      text-align:left;
       opacity: 1;
       animation: fadein 0.75s linear;
     }

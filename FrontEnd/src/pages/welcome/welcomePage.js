@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 // Components
 import JoinQueue from './components/joinQueue';
 // MISC
@@ -179,7 +180,7 @@ class WelcomePage extends Component {
     var a = keyArray.join()
     var b = [38,38,40,40,37,39,37,39,65,66].join()
     if(a===b){
-      alert("carlos sucks major donkey balls")
+      alert("Carlos sucks major donkey balls")
     }
   }
 
@@ -204,21 +205,30 @@ class WelcomePage extends Component {
             <img src={logo} alt="source"/>
           </div>
           <div className="WelcomeSignUp">
-            <Typography className="Mission" color="textPrimary" variant="h2">
-            The Internet's Tech Incubator
-            </Typography>
-            <div className="WhatIsSource">
-              <Typography className="Mission" variant="h4" color="textPrimary">
-              We crowdsource <div style={{display:"inline"}} id="whatissource"/> for your digital projects.
-              </Typography>
+          <Typography className="Mission" color="textPrimary" variant="h3">
+          The Internet's Tech Incubator
+          </Typography>
+          <Grid container spacing={24}>
+        <Grid item xs={6}>
+          <Typography className="Mission" variant="h4" color="textPrimary">
+          We crowdsource <div style={{display:"inline"}} id="whatissource"/> for your digital projects.
+          </Typography>
+          <Button>
+          Learn more
+          </Button>
+        </Grid>
+        <Grid item xs={6}>
+              <div className="WhatIsSource">
+              <Typography variant="h4">If you're a <div style={{display:"inline"}} id="whatissource"/>, source lets you monetize your skills.</Typography>
               <Button>
               Get Started
               </Button>
-              <Typography>If you're a <div style={{display:"inline"}} id="whatissource"/>, we help you monetize your skills.</Typography>
-              <Button>
-              Learn more
-              </Button>
-            </div>
+              </div>
+              </Grid>
+          </Grid>
+
+
+
             <div className="JoinNow">
               <TextField
                 label="Sign up for our mailing list"
@@ -239,8 +249,9 @@ class WelcomePage extends Component {
           <Typography className="SectionTagline" variant="h4">"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" /n - Patrick Collison, CEO @ Stripe</Typography>
         </div>
         <div className="Section Section3">
-          <Typography className="SectionTitle" variant="h2">Can building technology be as simple as writing a blog post?</Typography>
-          <Typography variant="h4">We connect </Typography>
+          <Typography className="SectionTitle" variant="h3">Can building technology be as simple as writing a blog post?</Typography>
+          <Typography variant="h4">We think so.</Typography>
+          <Typography variant="h4">Because the best developers are already online, you just need their attention.</Typography>
           <Typography className="SectionTitle" variant="h3" color="textSecondary">Find <div style={{display:"inline"}} id="audience" /></Typography>
           <Typography className="SectionTagline" variant="h4">Connect with collaborators, and receive funding and support.</Typography>
           <div className="WelcomeButton">
