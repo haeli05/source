@@ -216,31 +216,30 @@ class WelcomePage extends Component {
             <Button>
             Learn more
             </Button>
-
             </Grid>
-        <Grid item xs={6}>
-        <div className="JoinNow">
-          <TextField
-            label="Join the mailing list."
-            type="email"
-            onChange={this.handleChangeSignUp}
-            margin="normal"
-            variant="outlined"
-            className="SignUpInput"
-          />
-          <Button variant="contained" color="primary" className="JoinButton" component={Link} to={{pathname:"/createaccount", state:{username:this.state.username}}}>Sign up</Button>
-        </div>
-        </Grid>
-        <Grid item xs={6}>
-              <div className="WhatIsSource">
-              <Typography variant="h4">If you're a <div style={{display:"inline"}} id="audience" />,<br/> source lets you monetize your skills.</Typography>
-              <Button>
-              Get Started
-              </Button>
-              </div>
-              </Grid>
+            <Grid item xs={6}>
+            <div className="JoinNow">
+              <TextField
+                label="Join the mailing list."
+                type="email"
+                onChange={this.handleChangeSignUp}
+                margin="normal"
+                variant="outlined"
+                className="SignUpInput"
+              />
+              <Button variant="contained" color="primary" className="JoinButton" component={Link} to={{pathname:"/createaccount", state:{username:this.state.username}}}>Sign up</Button>
+            </div>
+            </Grid>
+            <Grid item xs={6}>
+                  <div className="WhatIsSource">
+                  <Typography variant="h4">If you're a <div style={{display:"inline"}} id="audience" />,<br/> source lets you monetize your skills.</Typography>
+                  <Button>
+                  Get Started
+                  </Button>
+                  </div>
+            </Grid>
           </Grid>
-
+          Help Build this out
           </div>
         </div>
         <div className="Section Section2">
@@ -252,7 +251,7 @@ class WelcomePage extends Component {
           <br/>
           <br/>
           <Typography variant="h4">Because the best developers are already online, <br/><br/> you just need their attention.</Typography>
-          <Typography variant="h4" className="TypingDiv"><div id="typeElement"/></Typography>
+          <Typography variant="h5" className="TypingDiv"><div id="typeElement"/></Typography>
         </div>
         <div className="Section Section3">
         <Typography variant="h3">Monetized Microtasks</Typography>
