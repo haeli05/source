@@ -1,5 +1,5 @@
 const config = {
-  mongoURL: process.env.MONGO_URL || 'mongodb://peterpotamus:thatthing1sentcha@3.209.134.42:27017/source',
+  mongoURL: process.env.MONGO_URL || 'mongodb://peterpotamus:nope@3.209.134.42:27017/source',
   //mongoURL: process.env.MONGO_URL || 'mongodb://thanatos666:rainingbl00d@ec2-54-166-154-133.compute-1.amazonaws.com:27017/source', //ec2-34-204-199-169.compute-1.amazonaws.com
   //mongoURL: process.env.MONGO_URL || 'mongodb://localhost:27017',
   port: process.env.PORT || 8000,
