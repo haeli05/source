@@ -35,7 +35,7 @@ import Four0FourPage from './pages/global/four0FourPage';
 import Navbar from './pages/global/components/navbar';
 import Footer from './pages/global/components/footer';
 import SnackBar from './pages/global/components/snackBar';
-import Exchange from './pages/exchange';
+//import Exchange from './pages/exchange';
 //le Demo
 import QuantStamp from './pages/app/quantstamp';
 
@@ -79,8 +79,7 @@ let Routes =()=>(
           <Route exact path="/requestpassword" render={()=><RequestNewPass/>}/>
 
           {/* I don't know */}
-          <Route exact path="/app/quantstamp" render={props=><QuantStamp {...props}/>}/>
-          <Route exact path="/exchange" render={props=><Exchange {...props}/>}/>
+//          <Route exact path="/app/quantstamp" render={props=><QuantStamp {...props}/>}/>
           <Route render={props=><Four0FourPage {...props}/>}/>
         </Switch>
       </div>
