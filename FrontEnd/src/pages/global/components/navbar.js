@@ -311,7 +311,6 @@ class MenuAppBar extends React.Component {
           </AppBar>
         </div>
         <div>
-          <ChatPopUp />
         </div>
       </div>
     );

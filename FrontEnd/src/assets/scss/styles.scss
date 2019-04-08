@@ -222,7 +222,7 @@ p {
 
 // Header fonts and weights
 h1  {
-  font-size: 6em;
+  font-size: 	5.653em;
   font-family: "gotham_htflight";
   color: rgba(0,0,0,0.87);
   letter-spacing: -0.058em;
@@ -233,7 +233,7 @@ h1  {
 }
 h2 {
   line-height: 1;
-  font-size: 5em;
+  font-size: 3.998em;
   font-family: "gotham_htflight";
   color: rgba(0,0,0,0.87);
   letter-spacing: -0.004em;
@@ -243,7 +243,7 @@ h2 {
 }
 h3 {
   line-height: 1;
-  font-size: 3em;
+  font-size: 2.827em;
   font-family: "gotham_htfbook";
   color: rgba(0,0,0,0.87);
   letter-spacing: 0em;
@@ -253,7 +253,7 @@ h3 {
 }
 h4, {
   line-height: 1;
-  font-size: 2.25em;
+  font-size: 1.999em;
   font-family: "gotham_htfbook";
   color: rgba(0,0,0,0.87);
   letter-spacing: 0.015625em;
@@ -263,7 +263,7 @@ h4, {
 }
 h5 {
   line-height: 1;
-  font-size: 1.5em;
+  font-size: 1.414em;
   font-family: "gotham_htfmedium";
   color: rgba(0,0,0,0.87);
   letter-spacing: 0;
@@ -273,7 +273,7 @@ h5 {
 }
 h6 {
   line-height: 1;
-  font-size: 1.25em;
+  font-size: 1em;
   font-family: "gotham_htfmedium";
   color: rgba(0,0,0,0.87);
   letter-spacing: 0.015625em;
@@ -3117,11 +3117,11 @@ body {
 .WelcomePage {
   .Hero {
     animation: herofade 3s ease;
-    padding-top: 4vh;
-    padding-bottom: 200px;
+    padding-top: 7vh;
+    padding-bottom: 14vh;
     text-align: center;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 7%;
+    padding-right: 7%;
     .WelcomeLogo {
       animation: fadeinHero 2s linear;
       margin-bottom: 75px;
@@ -3149,14 +3149,16 @@ body {
     }
     .JoinNow {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      margin: 30px 0px;
+      margin-left: 0px;
+      margin-top: 4em;
       .SignUpInput {
         width: 300px;
       }
       .JoinButton {
-        margin-top: 10px;
+        margin-top: 5px;
+        margin-left: 30px;
       }
     }
     .WhatIsSource {
@@ -3169,16 +3171,15 @@ body {
     }
   }
   .Section {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-top: 7vh;
+    padding-bottom: 7vh;
+    padding-left: 5%;
+    padding-right: 5%;
     .SectionTitle {
       margin-bottom: 50px;
     }
@@ -3190,24 +3191,30 @@ body {
   }
   .Section2 {
     background-color: #FBFAFA;
+    text-align: center;
+    padding-bottom: 5vh;
     .TypingDiv {
       opacity: 0.87;
       line-height: 1.3;
-      min-height: 200px;
+      min-height: 250px;
       max-width: 700px;
       display: flex;
       align-items: center;
-      margin-bottom: 25px;
+    }
+    .SectionTagline {
+      padding-top: 2vh;
+      padding-bottom: 2vh;
+      opacity: 0.87;
+      line-height: 1.3;
     }
   }
-  .Section3, .Section4 {
+  .Section3 {
+    color: white;
+    colo
     .SectionTitle {
       color: white;
     }
-    .SectionTagline {
-      color: white;
-      opacity: 0.87;
-    }
+
   }
   .Section3 {
     background-color: #1B212B;

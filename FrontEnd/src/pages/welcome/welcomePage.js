@@ -46,10 +46,10 @@ class WelcomePage extends Component {
       .type(`Hey guys, let's build a decentralized collaboration platform!`)
       .pause()
       .delete()
-      .type(`Help needed for my project: Vault. It's an IKEv2 server that is deployable anywhere.`)
+      .type(`Seeking Ruby Engineers for a smart contract platform`)
       .pause()
       .delete()
-      .type("区块链上的项目开发平台")
+      .type("急需区块链工程师，自己开发太慢了！")
       .pause()
       .delete()
       .type(`Seeking developers! We are building a TCR based POS/POA/POW hybrid blockchain with AI and Quantum proof hashgraph consensus algorithms for everyone's IOT device that will cure cancer and bring world peace.`)
@@ -65,9 +65,6 @@ class WelcomePage extends Component {
       .pause()
       .delete()
       .type("I'm building a blockchain for grandmothers and non-techies!")
-      .pause()
-      .delete()
-      .type("My name is Andrew Ryan, let's build a city under the sea!")
       .pause()
       .delete()
       .type(`Such wow, much platform, very technology. Wow. Amazing. Much amaze`)
@@ -205,33 +202,25 @@ class WelcomePage extends Component {
             <img src={logo} alt="source"/>
           </div>
           <div className="WelcomeSignUp">
-          <Typography className="Mission" color="textPrimary" variant="h3">
-          The Internet's Tech Incubator
-          </Typography>
+
           <Grid container spacing={24}>
-        <Grid item xs={6}>
-          <Typography className="Mission" variant="h4" color="textPrimary">
-          We crowdsource <div style={{display:"inline"}} id="whatissource"/> for your digital projects.
-          </Typography>
-          <Button>
-          Learn more
-          </Button>
-        </Grid>
-        <Grid item xs={6}>
-              <div className="WhatIsSource">
-              <Typography variant="h4">If you're a <div style={{display:"inline"}} id="whatissource"/>, source lets you monetize your skills.</Typography>
-              <Button>
-              Get Started
-              </Button>
-              </div>
-              </Grid>
-          </Grid>
-
-
-
+            <Grid item xs={6}>
+            <Typography className="Mission" color="textPrimary" variant="h2">
+            The Internet's <br/>Tech Incubator
+            </Typography>
+            </Grid>
+            <Grid item xs={6}>
+            <Typography className="Mission" variant="h4" color="textPrimary">
+            We crowdsource <div style={{display:"inline"}} id="whatissource"/> <br/>for your digital projects.
+            </Typography>
+            <Button>
+            Learn more
+            </Button>
+            </Grid>
+            <Grid item xs={6}>
             <div className="JoinNow">
               <TextField
-                label="Sign up for our mailing list"
+                label="Join the mailing list."
                 type="email"
                 onChange={this.handleChangeSignUp}
                 margin="normal"
@@ -240,28 +229,45 @@ class WelcomePage extends Component {
               />
               <Button variant="contained" color="primary" className="JoinButton" component={Link} to={{pathname:"/createaccount", state:{username:this.state.username}}}>Sign up</Button>
             </div>
-
+            </Grid>
+            <Grid item xs={6}>
+                  <div className="WhatIsSource">
+                  <Typography variant="h4">If you're a <div style={{display:"inline"}} id="audience" />,<br/> source lets you monetize your skills.</Typography>
+                  <Button>
+                  Get Started
+                  </Button>
+                  </div>
+            </Grid>
+          </Grid>
+          Help Build this out
           </div>
         </div>
         <div className="Section Section2">
-
-          <Typography variant="h4" className="TypingDiv" color="textSecondary"><div id="typeElement"/></Typography>
-          <Typography className="SectionTagline" variant="h4">"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" /n - Patrick Collison, CEO @ Stripe</Typography>
-        </div>
-        <div className="Section Section3">
+          <Typography className="SectionTagline" variant="h4">"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" <br/><br/> - Patrick Collison, CEO @ Stripe</Typography>
+          <br/>
+          <br/>
           <Typography className="SectionTitle" variant="h3">Can building technology be as simple as writing a blog post?</Typography>
           <Typography variant="h4">We think so.</Typography>
-          <Typography variant="h4">Because the best developers are already online, you just need their attention.</Typography>
-          <Typography className="SectionTitle" variant="h3" color="textSecondary">Find <div style={{display:"inline"}} id="audience" /></Typography>
-          <Typography className="SectionTagline" variant="h4">Connect with collaborators, and receive funding and support.</Typography>
-          <div className="WelcomeButton">
-            <Button variant="contained" size="large" component={Link} to="/explore/people">Find People</Button>
-          </div>
+          <br/>
+          <br/>
+          <Typography variant="h4">Because the best developers are already online, <br/><br/> you just need their attention.</Typography>
+          <Typography variant="h5" className="TypingDiv"><div id="typeElement"/></Typography>
+        </div>
+        <div className="Section Section3">
+        <Typography variant="h3">Monetized Microtasks</Typography>
         </div>
         <div className="Section Section5">
-          <Typography variant="h1" className="SectionTitle">Build something great</Typography>
-          <Typography variant="h3" className="SectionTitle">Your ideas can change the world</Typography>
+          Help us build this out!
+          <Typography variant="h2" className="SectionTitle">source</Typography>
+          <Typography variant="h3" className="SectionTitle">This is probably the first platform designed to build itself. </Typography>
+          Pitch ideas, start projects and find your audience.
+
+          JKDSA
+
+
+          Trello goes here
           <div className="WelcomeButton">
+          Contact us to discuss the build out,
             <Button variant="contained" color="primary" size="large" component={Link} to="/explore/projects">Discover Projects</Button>
           </div>
         </div>
