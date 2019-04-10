@@ -79,9 +79,9 @@ app.post("/mail", (req, res)=>{
   let email = req.body.email
 
   let mailOptions = {
-      from: '"Source Team" <source@source.lol>', // sender address
+      from: '"Source Team" <source@sourcenetwork.io>', // sender address
       to: email, // list of receivers
-      cc: "source@source.lol",
+      cc: "source@sourcenetwork.io",
       subject: 'Thank you for your feedback', // Subject line
       text: 'We are constantly working hard to improve Source and we value your input.', // plain text body
       html: emailHtml
@@ -108,8 +108,8 @@ app.post("/mail2", (req, res)=>{
   let feedback = req.body.feedback
 
   let mailOptions = {
-      from: '"Source Team" <source@source.lol>', // sender address
-      to: "source@source.lol", // list of receivers
+      from: '"Source Team" <source@sourcenetwork.io>', // sender address
+      to: "source@sourcenetwork.io", // list of receivers
       subject: `User Feedback from ${email}`, // Subject line
       text: feedback, // plain text body
   };

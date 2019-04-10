@@ -9,6 +9,8 @@ npm-debug.log
 .env
 .env.*
 .cache
+config.js
+mail.js
 
 # Packages #
 ############
