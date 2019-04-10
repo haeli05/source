@@ -6,10 +6,13 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 // Components
 import JoinQueue from './components/joinQueue';
+import PayButton from '../payments/payButton';
 // MISC
 import logo from './img/logo.png';
 import {Link} from 'react-router-dom';
 import Board from './../workflow/Board';
+
+import { PayPalButton } from "react-paypal-button-v2";
 
 const malarkey = require('malarkey');
 const ScrollMagic = require("scrollmagic");
@@ -243,9 +246,8 @@ class WelcomePage extends Component {
           </div>
         </div>
         <div className="Section Section2">
-          <Typography className="SectionTagline" variant="h4">"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" <br/><br/> - Patrick Collison, CEO @ Stripe</Typography>
-          <br/>
-          <br/>
+          <Typography className="SectionTagline" variant="h5" paragraph={true}>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" <br/><br/> - Patrick Collison, CEO @ Stripe</Typography>
+
           <Typography className="SectionTitle" variant="h3">Can building technology be as simple as writing a blog post?</Typography>
           <Typography variant="h4">We think so.</Typography>
           <br/>
@@ -259,11 +261,44 @@ class WelcomePage extends Component {
         <div className="Section Section5">
           Help us build this out!
           <Typography variant="h2" className="SectionTitle">source</Typography>
-          <Typography variant="h3" className="SectionTitle">This is probably the first platform designed to build itself. </Typography>
-          Pitch ideas, start projects and find your audience.
+          <PayButton />
+          <Typography variant="h4" className="SectionTitle">This is probably the first platform designed to build itself. </Typography>
+          <Typography variant="body2" paragraph={true}>
+          Scope:
 
-          JKDSA
+          Source is designed to facilitate discussion, collaboration and crowdsourcing to build the internet's most exciting projects.
 
+          Components:
+
+          Ideas includes a social-blog like text area to discuss, well, ideas and potential projects
+          Functionality: Comments (Done)
+
+          The Project component hosts a project's files, its contributors, task boards and displays links for crowdfunding.
+
+          Git-hosting(Needs work), Payment()
+
+          People: Social integration, allows users to filter their site experience based on relevant skills, while also allowing project managers to track and find contributors.
+
+          How to Contribute:
+
+          Money: Use the Pay button above
+
+          Skills: Check the todo list and message us on telegram or <> if you want to take over the development for a component. We pay for good work.
+          </Typography>
+          <PayPalButton
+           amount="10.01"
+           onSuccess={(details, data) => {
+             alert("Transaction completed by " + details.payer.name.given_name);
+
+             // OPTIONAL: Call your server to save the transaction
+             return fetch("/paypal-transaction-complete", {
+               method: "post",
+               body: JSON.stringify({
+                 orderID: data.orderID
+               })
+             });
+           }}
+         />
 
           Trello goes here
           <div className="WelcomeButton">

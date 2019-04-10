@@ -12,6 +12,8 @@ import {clipboard} from 'react-icons-kit/ionicons/clipboard'
 // SVG
 import ReactSVG from 'react-svg';
 import WalletCoin from './../../assets/svg/walletcoin.svg';
+//PayPal
+import { PayPalButton } from "react-paypal-button-v2";
 
 export default class PayButton extends Component {
   constructor(props) {
@@ -61,9 +63,8 @@ export default class PayButton extends Component {
             <MenuItem value="BTC" className="PayCurrency"><Typography className="PayCurrency" variant="overline">Bitcoin</Typography></MenuItem>
             <MenuItem value="BCH" className="PayCurrency"><Typography className="PayCurrency" variant="overline">Bitcoin Cash</Typography></MenuItem>
             <MenuItem value="ETH" className="PayCurrency"><Typography className="PayCurrency" variant="overline">Ether</Typography></MenuItem>
-            <MenuItem value="QTM" className="PayCurrency"><Typography className="PayCurrency" variant="overline">Quantum</Typography></MenuItem>
-            <MenuItem value="EOS" className="PayCurrency"><Typography className="PayCurrency" variant="overline">EOS</Typography></MenuItem>
-            <MenuItem value="XRP" className="PayCurrency"><Typography className="PayCurrency" variant="overline">Ripple</Typography></MenuItem>
+            <MenuItem value="DAI" className="PayCurrency"><Typography className="PayCurrency" variant="overline">DAI</Typography></MenuItem>
+            <MenuItem value="PayPal" className="PayCurrency"><Typography className="PayCurrency" variant="overline">PayPal</Typography></MenuItem>
           </Select>
         </FormControl>
         <Typography variant="subtitle1" className="PayLabel">
@@ -71,7 +72,7 @@ export default class PayButton extends Component {
             <Tooltip title={this.state.copied} placement="top">
               <pre className="Pointer Margin0 PayLabel" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>1E2fGPCKyaWkRgzhjE3AyRpXrhVNfxVWYg</pre>
             </Tooltip>        )}
-          {this.state.currency==="BCH" && (
+          {this.state.currency==="BCHAB" && (
             <Tooltip title={this.state.copied} placement="top">
               <pre className="Pointer Margin0 PayLabel" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>test</pre>
             </Tooltip>        )}
@@ -79,19 +80,27 @@ export default class PayButton extends Component {
             <Tooltip title={this.state.copied} placement="top">
               <pre className="Pointer Margin0" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>test</pre>
             </Tooltip>        )}
-          {this.state.currency==="QTM" && (
+          {this.state.currency==="DAI" && (
             <Tooltip title={this.state.copied} placement="top">
               <pre className="Pointer Margin0" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>test</pre>
             </Tooltip>        )}
-          {this.state.currency==="EOS" && (
-            <Tooltip title={this.state.copied} placement="top">
-              <pre className="Pointer Margin0" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>test</pre>
-            </Tooltip>        )}
-          {this.state.currency==="XRP" && (
-            <Tooltip title={this.state.copied} placement="top">
-              <pre className="Pointer Margin0" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>test</pre>
-            </Tooltip>
-          )}
+          {this.state.currency==="PAYPAL" && (
+            
+                  <PayPalButton
+                   amount="10.01"
+                   onSuccess={(details, data) => {
+                     alert("Transaction completed by " + details.payer.name.given_name);
+
+                     // OPTIONAL: Call your server to save the transaction
+                     return fetch("/paypal-transaction-complete", {
+                       method: "post",
+                       body: JSON.stringify({
+                         orderID: data.orderID
+                       })
+                     });
+                   }}
+                 />
+                )}
         </Typography>
         <Button variant="contained" className="Pay"><Icon icon={clipboard} className="CopyIcon"/>Copy</Button>
       </div>
