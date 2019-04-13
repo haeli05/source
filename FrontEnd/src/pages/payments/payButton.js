@@ -6,6 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 // Icons
 import Icon from 'react-icons-kit';
 import {clipboard} from 'react-icons-kit/ionicons/clipboard'
@@ -21,8 +22,10 @@ export default class PayButton extends Component {
     this.state={
       currency: "BTC",
       copied: "copy",
+      AMOUNT: 0,
     }
     this.handleLinkChange=this.handleLinkChange.bind(this);
+    this.handleChange=this.handleChange.bind(this);
     this.copy=this.copy.bind(this)
     this.resetCopy=this.resetCopy.bind(this)
     this.resetCopy2=this.resetCopy2.bind(this)
@@ -31,6 +34,11 @@ export default class PayButton extends Component {
   handleLinkChange(e){
     this.setState({ currency: e.target.value});
   }
+
+  handleChange = (event) => {
+  const { target: { name, value } } = event;
+  this.setState(() => ({ form[name]: value }))
+}
 
   copy(toCopy) {
     var inp = document.createElement('input');
@@ -64,45 +72,59 @@ export default class PayButton extends Component {
             <MenuItem value="BCH" className="PayCurrency"><Typography className="PayCurrency" variant="overline">Bitcoin Cash</Typography></MenuItem>
             <MenuItem value="ETH" className="PayCurrency"><Typography className="PayCurrency" variant="overline">Ether</Typography></MenuItem>
             <MenuItem value="DAI" className="PayCurrency"><Typography className="PayCurrency" variant="overline">DAI</Typography></MenuItem>
-            <MenuItem value="PayPal" className="PayCurrency"><Typography className="PayCurrency" variant="overline">PayPal</Typography></MenuItem>
+            <MenuItem value="PAYPAL" className="PayCurrency"><Typography className="PayCurrency" variant="overline">PayPal</Typography></MenuItem>
           </Select>
         </FormControl>
-        <Typography variant="subtitle1" className="PayLabel">
           {this.state.currency==="BTC" && (
+            <Typography variant="subtitle1" className="PayLabel">
             <Tooltip title={this.state.copied} placement="top">
               <pre className="Pointer Margin0 PayLabel" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>1E2fGPCKyaWkRgzhjE3AyRpXrhVNfxVWYg</pre>
-            </Tooltip>        )}
+            </Tooltip>
+            </Typography>       )}
+
           {this.state.currency==="BCHAB" && (
+            <Typography variant="subtitle1" className="PayLabel">
             <Tooltip title={this.state.copied} placement="top">
               <pre className="Pointer Margin0 PayLabel" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>test</pre>
-            </Tooltip>        )}
-          {this.state.currency==="ETH" && (
-            <Tooltip title={this.state.copied} placement="top">
-              <pre className="Pointer Margin0" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>test</pre>
-            </Tooltip>        )}
-          {this.state.currency==="DAI" && (
-            <Tooltip title={this.state.copied} placement="top">
-              <pre className="Pointer Margin0" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>test</pre>
-            </Tooltip>        )}
-          {this.state.currency==="PAYPAL" && (
-            
-                  <PayPalButton
-                   amount="10.01"
-                   onSuccess={(details, data) => {
-                     alert("Transaction completed by " + details.payer.name.given_name);
+            </Tooltip>
+            </Typography>      )}
 
-                     // OPTIONAL: Call your server to save the transaction
-                     return fetch("/paypal-transaction-complete", {
-                       method: "post",
-                       body: JSON.stringify({
-                         orderID: data.orderID
-                       })
-                     });
-                   }}
-                 />
-                )}
-        </Typography>
-        <Button variant="contained" className="Pay"><Icon icon={clipboard} className="CopyIcon"/>Copy</Button>
+          {this.state.currency==="ETH" && (
+            <Typography variant="subtitle1" className="PayLabel">
+            <Tooltip title={this.state.copied} placement="top">
+              <pre className="Pointer Margin0" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>test</pre>
+            </Tooltip>
+            </Typography>
+            )}
+
+          {this.state.currency==="DAI" && (
+            <Typography variant="subtitle1" className="PayLabel">
+            <Tooltip title={this.state.copied} placement="top">
+              <pre className="Pointer Margin0" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>test</pre>
+            </Tooltip>
+            </Typography>
+            )}
+            {this.state.currency==="PAYPAL" && (
+                  <div className="PayPalDiv">
+                      <TextField
+                      id="PayPalAmount"
+                      name="AMOUNT"
+                      label="Amount"
+                      type="number"
+                      value={this.state.AMOUNT}
+                      onChange={(e) => this.setInputState(e, 'AMOUNT')}
+                      margin="normal"
+                      variant="outlined"
+                      />
+
+                   </div>
+                  )}
+
+              <Button variant="contained" className="Pay"><Icon icon={clipboard} className="CopyIcon"/>Copy</Button>
+
+
+
+
       </div>
     )
   }

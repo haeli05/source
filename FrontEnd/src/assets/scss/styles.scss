@@ -930,11 +930,14 @@ time {
   border-radius: 36px;
   background-color: $Darkest;
   color: $Light;
-  height: 36px;
+  min-height: 36px;
   min-width: 450px;
   .PayCurrency {
     color: #FFFFFF;
     margin-right: auto;
+  }
+  .PayPalDiv {
+    min-height: 72px;
   }
   .PayCurrency:hover {
     color: #FFFFFF;

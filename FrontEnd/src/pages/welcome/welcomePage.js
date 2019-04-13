@@ -262,8 +262,23 @@ class WelcomePage extends Component {
           Help us build this out!
           <Typography variant="h2" className="SectionTitle">source</Typography>
           <PayButton />
+          <PayPalButton
+           clientID="AdDXxtq0tmyVlS0r8YbRbLXrKXcq2676G_s1ExuJviAus0eQy1htqamaG4ZTnJkn2in60R2s-lj9K2Rp"
+           amount={this.state.AMOUNT}
+           onSuccess={(details, data) => {
+             alert("Transaction completed by " + details.payer.name.given_name);
+
+             // OPTIONAL: Call your server to save the transaction
+             return fetch("/paypal-transaction-complete", {
+               method: "post",
+               body: JSON.stringify({
+                 orderID: data.orderID
+               })
+             });
+           }}
+         />
           <Typography variant="h4" className="SectionTitle">This is probably the first platform designed to build itself. </Typography>
-          <Typography variant="body2" paragraph={true}>
+          <Typography variant="body" paragraph={true}>
           Scope:
 
           Source is designed to facilitate discussion, collaboration and crowdsourcing to build the internet's most exciting projects.
@@ -283,23 +298,10 @@ class WelcomePage extends Component {
 
           Money: Use the Pay button above
 
-          Skills: Check the todo list and message us on telegram or <> if you want to take over the development for a component. We pay for good work.
+          Skills: Check the todo list and message us on telegram or spectrum if you want to take over the development for a component. We pay for good work.
           </Typography>
-          <PayPalButton
-           amount="10.01"
-           onSuccess={(details, data) => {
-             alert("Transaction completed by " + details.payer.name.given_name);
 
-             // OPTIONAL: Call your server to save the transaction
-             return fetch("/paypal-transaction-complete", {
-               method: "post",
-               body: JSON.stringify({
-                 orderID: data.orderID
-               })
-             });
-           }}
-         />
-
+          <Board />
           Trello goes here
           <div className="WelcomeButton">
           Contact us to discuss the build out,
