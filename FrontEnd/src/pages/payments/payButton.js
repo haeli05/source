@@ -7,6 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
 // Icons
 import Icon from 'react-icons-kit';
 import {clipboard} from 'react-icons-kit/ionicons/clipboard'
@@ -35,10 +36,9 @@ export default class PayButton extends Component {
     this.setState({ currency: e.target.value});
   }
 
-  handleChange = (event) => {
-  const { target: { name, value } } = event;
-  this.setState(() => ({ form[name]: value }))
-}
+  handleChange = prop => event => {
+    this.setState({ [prop]: event.target.value });
+  };
 
   copy(toCopy) {
     var inp = document.createElement('input');
@@ -69,7 +69,7 @@ export default class PayButton extends Component {
             style={{color:"#FFF", fill:"#FFF", stroke: "#FFF"}}
           >
             <MenuItem value="BTC" className="PayCurrency"><Typography className="PayCurrency" variant="overline">Bitcoin</Typography></MenuItem>
-            <MenuItem value="BCH" className="PayCurrency"><Typography className="PayCurrency" variant="overline">Bitcoin Cash</Typography></MenuItem>
+            <MenuItem value="BCH" className="PayCurrency"><Typography className="PayCurrency" variant="overline">BCHAB</Typography></MenuItem>
             <MenuItem value="ETH" className="PayCurrency"><Typography className="PayCurrency" variant="overline">Ether</Typography></MenuItem>
             <MenuItem value="DAI" className="PayCurrency"><Typography className="PayCurrency" variant="overline">DAI</Typography></MenuItem>
             <MenuItem value="PAYPAL" className="PayCurrency"><Typography className="PayCurrency" variant="overline">PayPal</Typography></MenuItem>
@@ -112,16 +112,34 @@ export default class PayButton extends Component {
                       label="Amount"
                       type="number"
                       value={this.state.AMOUNT}
-                      onChange={(e) => this.setInputState(e, 'AMOUNT')}
+                      onChange={this.handleChange('AMOUNT')}
                       margin="normal"
                       variant="outlined"
+                      InputProps={{
+                         startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                       }}
                       />
+                      <PayPalButton
+                       clientID="AdDXxtq0tmyVlS0r8YbRbLXrKXcq2676G_s1ExuJviAus0eQy1htqamaG4ZTnJkn2in60R2s-lj9K2Rp"
+                       amount={this.state.AMOUNT}
+                       onSuccess={(details, data) => {
+                         alert("Transaction completed by " + details.payer.name.given_name);
+
+                         // OPTIONAL: Call your server to save the transaction
+                         return fetch("/paypal-transaction-complete", {
+                           method: "post",
+                           body: JSON.stringify({
+                             orderID: data.orderID
+                           })
+                         });
+                       }}
+                     />
 
                    </div>
                   )}
-
+          {this.state.currency!="PAYPAL" && (
               <Button variant="contained" className="Pay"><Icon icon={clipboard} className="CopyIcon"/>Copy</Button>
-
+            )}
 
 
 

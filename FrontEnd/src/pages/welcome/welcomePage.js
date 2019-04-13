@@ -85,13 +85,16 @@ class WelcomePage extends Component {
         repeat: true
       }
       malarkey(callback1, options1)
-        .type(`developers`)
+        .type(`software developers`)
+        .pause()
+        .delete()
+        .type(`product managers`)
         .pause()
         .delete()
         .type(`designers`)
         .pause()
         .delete()
-        .type(`engineers`)
+        .type(`blockchain engineers`)
         .pause()
         .delete()
         .type(`backers`)
@@ -105,6 +108,7 @@ class WelcomePage extends Component {
         .delete()
 
 
+
         const element2 = document.querySelector('#audience')
         function callback2 (text) {
           element2.textContent = text
@@ -116,21 +120,17 @@ class WelcomePage extends Component {
           repeat: true
         }
         malarkey(callback2, options2)
-          .type(`developers`)
+          .type(`developer`)
           .pause()
           .delete()
-          .type(`entrepreneurs`)
+          .type(`engineer`)
           .pause()
           .delete()
-          .type(`designers`)
+          .type(`designer`)
           .pause()
           .delete()
-          .type(`businesses`)
-          .pause()
-          .delete()
-          .type(`you`)
-          .pause()
-          .delete()
+
+
 
 
     window.addEventListener('scroll', this.listenScrollEvent);
@@ -242,41 +242,60 @@ class WelcomePage extends Component {
                   </div>
             </Grid>
           </Grid>
-          Help Build this out
+          <Typography variant="body">Want to get paid for your skills today?</Typography>
+          <Button variant="outlined">
+          Help us build the beta
+          </Button>
           </div>
         </div>
-        <div className="Section Section2">
+        <div className="Quote">
           <Typography className="SectionTagline" variant="h5" paragraph={true}>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" <br/><br/> - Patrick Collison, CEO @ Stripe</Typography>
-
+        </div>
+        <div className="Section Section2">
+          <Typography variant="h4" className="TypingDiv"><div id="typeElement"/></Typography>
           <Typography className="SectionTitle" variant="h3">Can building technology be as simple as writing a blog post?</Typography>
           <Typography variant="h4">We think so.</Typography>
           <br/>
           <br/>
-          <Typography variant="h4">Because the best developers are already online, <br/><br/> you just need their attention.</Typography>
-          <Typography variant="h5" className="TypingDiv"><div id="typeElement"/></Typography>
+          <Typography variant="h4">Because the best developers are already online, <br/><br/> you just need their <b>attention.</b></Typography>
         </div>
         <div className="Section Section3">
-        <Typography variant="h3">Monetized Microtasks</Typography>
+        <Typography variant="h3">How it works</Typography>
+        <Typography variant="h4" paragraph={true}>
+        This is a digital tech incubator.
+        <br />
+        A space to crowdsource talent for your digital projects, and for you to monetize your skills
+        <br />
+        Pitch ideas, start projects, find collaborators, and monetize your skills.
+
+        Talent sources:
+
+        Devshop partners, tech providers, community!
+
+        Selective Privacy
+
+        Source Breaks down your project into micro tasks.
+
+        1. Assign a project manager
+
+        2. Outline the scope for every task
+
+        3. Set cash or cryptocurrency rewards per Microtask
+
+        4. Contributors get paid upon satisfactory completion!
+
+        Monetize your skills.
+
+        1. Find tasks relevant to your skillset.
+        2. Work with the team, deliver the goods.
+        3. ???
+        4. Profit.
+        </Typography>
         </div>
         <div className="Section Section5">
-          Help us build this out!
+          Help us build the beta!
           <Typography variant="h2" className="SectionTitle">source</Typography>
           <PayButton />
-          <PayPalButton
-           clientID="AdDXxtq0tmyVlS0r8YbRbLXrKXcq2676G_s1ExuJviAus0eQy1htqamaG4ZTnJkn2in60R2s-lj9K2Rp"
-           amount={this.state.AMOUNT}
-           onSuccess={(details, data) => {
-             alert("Transaction completed by " + details.payer.name.given_name);
-
-             // OPTIONAL: Call your server to save the transaction
-             return fetch("/paypal-transaction-complete", {
-               method: "post",
-               body: JSON.stringify({
-                 orderID: data.orderID
-               })
-             });
-           }}
-         />
           <Typography variant="h4" className="SectionTitle">This is probably the first platform designed to build itself. </Typography>
           <Typography variant="body" paragraph={true}>
           Scope:
@@ -302,9 +321,11 @@ class WelcomePage extends Component {
           </Typography>
 
           <Board />
-          Trello goes here
+
           <div className="WelcomeButton">
-          Contact us to discuss the build out,
+          <Typography variant="h2">Contact us</Typography>
+            <Typography variant="h4">Reach out if you have a project to list here!</Typography>
+
             <Button variant="contained" color="primary" size="large" component={Link} to="/explore/projects">Discover Projects</Button>
           </div>
         </div>

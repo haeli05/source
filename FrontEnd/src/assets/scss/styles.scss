@@ -938,6 +938,7 @@ time {
   }
   .PayPalDiv {
     min-height: 72px;
+    color: White;
   }
   .PayCurrency:hover {
     color: #FFFFFF;
@@ -3183,6 +3184,7 @@ body {
     padding-bottom: 7vh;
     padding-left: 5%;
     padding-right: 5%;
+    height: 100vh;
     .SectionTitle {
       margin-bottom: 50px;
     }
@@ -3192,20 +3194,29 @@ body {
       justify-content: center;
     }
   }
+  .Quote {
+    padding-top: 7vh;
+    padding-bottom: 7vh;
+    padding-left: 14%;
+    padding-right: 14%;
+    text-align: center;
+    background-color: white;
+    background-blend-mode: difference;
+  }
   .Section2 {
     background-color: #FBFAFA;
     text-align: center;
-    padding-bottom: 5vh;
+    padding-bottom: 2vh;
     .TypingDiv {
       opacity: 0.87;
       line-height: 1.3;
-      min-height: 250px;
-      max-width: 700px;
+      min-height: 100px;
+      max-width: 770px;
       display: flex;
       align-items: center;
+        padding-bottom: 2vh;
     }
     .SectionTagline {
-      padding-top: 2vh;
       padding-bottom: 2vh;
       opacity: 0.87;
       line-height: 1.3;
@@ -3213,14 +3224,11 @@ body {
   }
   .Section3 {
     color: white;
-    colo
+      background-color: #1B212B;
     .SectionTitle {
       color: white;
     }
 
-  }
-  .Section3 {
-    background-color: #1B212B;
   }
   .Section4 {
     background-color: #C0BFBF;
