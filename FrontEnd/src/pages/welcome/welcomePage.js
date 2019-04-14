@@ -67,7 +67,7 @@ class WelcomePage extends Component {
       .type("Let's build a city in the sky and name it Columbia!!")
       .pause()
       .delete()
-      .type("I'm building a blockchain for grandmothers and non-techies!")
+      .type("Software Engineers required. I'm building a blockchain for grandmothers and non-techies!")
       .pause()
       .delete()
       .type(`Such wow, much platform, very technology. Wow. Amazing. Much amaze`)
