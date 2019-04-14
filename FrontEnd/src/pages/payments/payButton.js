@@ -122,6 +122,12 @@ export default class PayButton extends Component {
                       <PayPalButton
                        clientID="AdDXxtq0tmyVlS0r8YbRbLXrKXcq2676G_s1ExuJviAus0eQy1htqamaG4ZTnJkn2in60R2s-lj9K2Rp"
                        amount={this.state.AMOUNT}
+                       style={{
+                          layout:  'horizontal',
+                          color:   'gold',
+                          shape:   'pill',
+                          label:   'paypal',
+                        }}
                        onSuccess={(details, data) => {
                          alert("Transaction completed by " + details.payer.name.given_name);
 
