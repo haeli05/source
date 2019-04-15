@@ -107,6 +107,7 @@ export default class PayButton extends Component {
             )}
             {this.state.currency==="PAYPAL" && (
                   <div className="PayPalDiv">
+                  $
                       <InputBase
                       autoFocus={true}
                       className="Amount"
