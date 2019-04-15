@@ -107,14 +107,15 @@ export default class PayButton extends Component {
             {this.state.currency==="PAYPAL" && (
                   <div className="PayPalDiv">
                       <TextField
+                      className="Amount"
                       id="PayPalAmount"
                       name="AMOUNT"
-                      label="Amount"
+
                       type="number"
                       value={this.state.AMOUNT}
                       onChange={this.handleChange('AMOUNT')}
-                      margin="normal"
-                      variant="outlined"
+                      margin="dense"
+                      style={{ color:'white' }}
                       InputProps={{
                          startAdornment: <InputAdornment position="start">$</InputAdornment>,
                        }}
@@ -127,6 +128,7 @@ export default class PayButton extends Component {
                           color:   'gold',
                           shape:   'pill',
                           label:   'paypal',
+                          tagline: 'false'
                         }}
                        onSuccess={(details, data) => {
                          alert("Transaction completed by " + details.payer.name.given_name);

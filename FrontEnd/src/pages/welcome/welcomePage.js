@@ -216,7 +216,7 @@ class WelcomePage extends Component {
             <Typography className="Mission" variant="h4" color="textPrimary">
             We crowdsource <div style={{display:"inline"}} id="whatissource"/> <br/>for your digital projects.
             </Typography>
-            <Button>
+            <Button variant="outlined">
             Learn more
             </Button>
             </Grid>
@@ -236,7 +236,7 @@ class WelcomePage extends Component {
             <Grid item xs={6}>
                   <div className="WhatIsSource">
                   <Typography variant="h4">If you're a <div style={{display:"inline"}} id="audience" />,<br/> source lets you monetize your skills.</Typography>
-                  <Button>
+                  <Button variant="outlined">
                   Get Started
                   </Button>
                   </div>
@@ -260,7 +260,7 @@ class WelcomePage extends Component {
           <Typography variant="h4">Because the best developers are already online, <br/><br/> you just need their <b>attention.</b></Typography>
         </div>
         <div className="Section Section3">
-        <Typography variant="h3">How it works</Typography>
+        <Typography className="SectionTitle" variant="h3">How it works</Typography>
         <Typography variant="h4" paragraph={true}>
         This is a digital tech incubator.
         <br />
@@ -293,6 +293,7 @@ class WelcomePage extends Component {
         </Typography>
         </div>
         <div className="Section Section5">
+
           Help us build the beta!
           <Typography variant="h2" className="SectionTitle">source</Typography>
           <PayButton />
@@ -321,13 +322,11 @@ class WelcomePage extends Component {
           </Typography>
 
           <Board />
+        </div>
+        <div>
+        <Typography variant="h2">Contact us</Typography>
+          <Typography variant="h4">Reach out if you have a project to list here!</Typography>
 
-          <div className="WelcomeButton">
-          <Typography variant="h2">Contact us</Typography>
-            <Typography variant="h4">Reach out if you have a project to list here!</Typography>
-
-            <Button variant="contained" color="primary" size="large" component={Link} to="/explore/projects">Discover Projects</Button>
-          </div>
         </div>
       </div>
     );
