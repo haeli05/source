@@ -323,10 +323,11 @@ class WelcomePage extends Component {
 
           <Board />
         </div>
-        <div>
+        <div className="Section">
         <Typography variant="h2">Contact us</Typography>
           <Typography variant="h4">Reach out if you have a project to list here!</Typography>
-
+          <Button>Chat</Button>
+          <Button>Email</Button>
         </div>
       </div>
     );

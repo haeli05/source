@@ -938,10 +938,10 @@ time {
   }
   .PayPalDiv {
     display: inline-flex;
-    min-height: 72px;
-    align-items:center;
+    align-items: center;
     .Amount{
       color: white;
+      padding-right: 3px;
     }
   }
   .PayCurrency:hover {
@@ -3188,7 +3188,6 @@ body {
     padding-bottom: 7vh;
     padding-left: 5%;
     padding-right: 5%;
-    height: 100vh;
     .SectionTitle {
       margin-bottom: 50px;
     }
@@ -3208,6 +3207,7 @@ body {
     background-blend-mode: difference;
   }
   .Section2 {
+    background-image: url("./images/SquareTexture.png");
     background-color: #FBFAFA;
     text-align: center;
     padding-bottom: 2vh;

@@ -8,6 +8,7 @@ import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import InputBase from '@material-ui/core/InputBase';
 // Icons
 import Icon from 'react-icons-kit';
 import {clipboard} from 'react-icons-kit/ionicons/clipboard'
@@ -23,7 +24,7 @@ export default class PayButton extends Component {
     this.state={
       currency: "BTC",
       copied: "copy",
-      AMOUNT: 0,
+      AMOUNT: 5.00,
     }
     this.handleLinkChange=this.handleLinkChange.bind(this);
     this.handleChange=this.handleChange.bind(this);
@@ -106,16 +107,14 @@ export default class PayButton extends Component {
             )}
             {this.state.currency==="PAYPAL" && (
                   <div className="PayPalDiv">
-                      <TextField
+                      <InputBase
+                      autoFocus={true}
                       className="Amount"
-                      id="PayPalAmount"
                       name="AMOUNT"
-
-                      type="number"
                       value={this.state.AMOUNT}
                       onChange={this.handleChange('AMOUNT')}
-                      margin="dense"
-                      style={{ color:'white' }}
+                      type="number"
+                      defaultValue="Amount"
                       InputProps={{
                          startAdornment: <InputAdornment position="start">$</InputAdornment>,
                        }}
