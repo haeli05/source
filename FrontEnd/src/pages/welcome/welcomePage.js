@@ -296,6 +296,7 @@ class WelcomePage extends Component {
 
           Help us build the beta!
           <Typography variant="h2" className="SectionTitle">source</Typography>
+          <Typography variant="overline2" className="SectionTitle">Support this project</Typography>
           <PayButton />
           <Typography variant="h4" className="SectionTitle">This is probably the first platform designed to build itself. </Typography>
           <Typography variant="body" paragraph={true}>

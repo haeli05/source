@@ -930,7 +930,8 @@ time {
   border-radius: 36px;
   background-color: $Darkest;
   color: $Light;
-  min-height: 36px;
+  height: 36px;
+
   min-width: 450px;
   .PayCurrency {
     color: #FFFFFF;
@@ -942,6 +943,10 @@ time {
     .Amount{
       color: white;
       padding-right: 3px;
+    }
+    .PayPalButton{
+      margin-top: 5px;
+      margin-left: 26px;
     }
   }
   .PayCurrency:hover {
@@ -3189,7 +3194,7 @@ body {
     padding-left: 5%;
     padding-right: 5%;
     .SectionTitle {
-      margin-bottom: 50px;
+    //  margin-bottom: 50px;
     }
     .WelcomeButton {
       margin-top: 50px;
@@ -3207,7 +3212,8 @@ body {
     background-blend-mode: difference;
   }
   .Section2 {
-    background-image: url("./images/SquareTexture.png");
+    // background-image: url("../images/SquareTexture.png");
+    // background-repeat: space;
     background-color: #FBFAFA;
     text-align: center;
     padding-bottom: 2vh;
