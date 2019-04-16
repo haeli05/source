@@ -208,7 +208,7 @@ class WelcomePage extends Component {
 
           <Grid container spacing={24}>
             <Grid item xs={6}>
-            <Typography className="Mission" color="textPrimary" variant="h2">
+            <Typography className="Mission" color="textPrimary" variant="h1">
             The Internet's <br/>Tech Incubator
             </Typography>
             </Grid>
@@ -261,34 +261,36 @@ class WelcomePage extends Component {
         </div>
         <div className="Section Section3">
         <Typography className="SectionTitle" variant="h3">How it works</Typography>
-        <Typography variant="h4" paragraph={true}>
-        This is a digital tech incubator.
+        <Typography variant="h6" paragraph={true} style={{color:"white"}}>
+        The Internet's best developers at your fingertips.
+        </Typography>
+        <Typography variant="h5" paragraph={true} style={{color:"white", textAlign:"left"}}>
+        We partnered
+
+                Source breaks down your project lifecycle into specific tasks.
+                <br/>
+                <br/>
+                1. Describe your idea or project through a post.
+                <br/>
+                2. Project managers outline the scope and set rewards
+                <br/>
+                3. Build it with the community!
+                <br/>
         <br />
-        A space to crowdsource talent for your digital projects, and for you to monetize your skills
+          </Typography>
+        <br/>
+        <Typography className="SectionTitle" variant="h3">Next level Crowdsourcing</Typography>
+        <Typography variant="h6" paragraph={true} style={{color:"white"}}>
+            Meet Talent, Monetize your skills/community engagement?
+        </Typography>
+          <Typography variant="h5" paragraph={true} style={{color:"white"}}>
         <br />
-        Pitch ideas, start projects, find collaborators, and monetize your skills.
-
-        Talent sources:
-
-        Devshop partners, tech providers, community!
-
-        Selective Privacy
-
-        Source Breaks down your project into micro tasks.
-
-        1. Assign a project manager
-
-        2. Outline the scope for every task
-
-        3. Set cash or cryptocurrency rewards per Microtask
-
-        4. Contributors get paid upon satisfactory completion!
-
-        Monetize your skills.
-
         1. Find tasks relevant to your skillset.
+        <br/>
         2. Work with the team, deliver the goods.
+        <br/>
         3. ???
+        <br/>
         4. Profit.
         </Typography>
         </div>
@@ -296,13 +298,19 @@ class WelcomePage extends Component {
 
           Help us build the beta!
           <Typography variant="h2" className="SectionTitle">source</Typography>
+          <Typography variant="h4" className="SectionTitle">The Internet's Tech Incubator. </Typography>
+
           <Typography variant="overline2" className="SectionTitle">Support this project</Typography>
           <PayButton />
-          <Typography variant="h4" className="SectionTitle">This is probably the first platform designed to build itself. </Typography>
+
           <Typography variant="body" paragraph={true}>
-          Scope:
+          <b>Scope:</b>
 
           Source is designed to facilitate discussion, collaboration and crowdsourcing to build the internet's most exciting projects.
+
+          Our stack combines a react front end with modular backend components.
+
+
 
           Components:
 
@@ -315,9 +323,10 @@ class WelcomePage extends Component {
 
           People: Social integration, allows users to filter their site experience based on relevant skills, while also allowing project managers to track and find contributors.
 
-          How to Contribute:
+          <b>How to Contribute:</b>
+          To donate: Use the Pay button above
 
-          Money: Use the Pay button above
+          Suggestions: Use the email feedback or use spectrum
 
           Skills: Check the todo list and message us on telegram or spectrum if you want to take over the development for a component. We pay for good work.
           </Typography>

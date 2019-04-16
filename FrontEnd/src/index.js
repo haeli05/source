@@ -76,40 +76,40 @@ const theme = createMuiTheme({
 
     //legacy. New here:
     h1: {
-      fontSize: "6em",
+      fontSize: "5.653em",
       fontFamily: "gotham_htflight",
       color: "rgba(0,0,0,0.87)",
       letterSpacing: "-0.058em",
 
     },
     h2: {
-      fontSize: "5em",
+      fontSize: "3.998em",
       fontFamily: "gotham_htflight",
       color: "rgba(0, 0, 0, 0.87)",
       letterSpacing: "-0.004em",
       fontWeight: 400,
     },
     h3: {
-      fontSize: "3em",
+      fontSize: "2.827em",
       fontFamily: "gotham_htfbook",
       color: "rgba(0, 0, 0, 0.87)",
       letterSpacing: "0em",
       fontWeight: 400,
     },
     h4: {
-      fontSize: "2.125em",
+      fontSize: "1.999em",
       fontFamily: "gotham_htfbook",
       color: "rgba(0, 0, 0, 0.87)",
       letterSpacing: "0.015625em",
     },
     h5: {
-      fontSize: "1.4868em",
+      fontSize: "1.414em",
       fontFamily: "gotham_htfmedium",
       color: "rgba(0, 0, 0, 0.87)",
       letterSpacing: "0",
     },
     h6:{
-      fontSize: "1.23875em",
+      fontSize: "1em",
       fontFamily: "gotham_htfmedium",
       color: "rgba(0, 0, 0, 0.87)",
       letterSpacing: "0.015625em",
