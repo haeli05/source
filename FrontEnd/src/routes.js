@@ -4,6 +4,7 @@ import {Router, Route, Switch} from 'react-router-dom';
 import history from './history';
 // Main
 import App from './app';
+import GetStarted from './pages/welcome/getStarted';
 // Explore
 import Ideas from './pages/explore/exploreIdeas';
 import Projects from './pages/explore/exploreProjects';
@@ -81,6 +82,7 @@ let Routes =()=>(
           {/* I don't know */}
 //          <Route exact path="/app/quantstamp" render={props=><QuantStamp {...props}/>}/>
           <Route render={props=><Four0FourPage {...props}/>}/>
+          <Route exact path="/getstarted" render={props=><GetStarted {...props}/>}/>
         </Switch>
       </div>
       <Route path ="/" render={props=><Footer {...props}/>}/>

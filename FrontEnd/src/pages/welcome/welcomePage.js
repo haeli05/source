@@ -4,11 +4,14 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import Fab from '@material-ui/core/Fab';
 // Components
 import JoinQueue from './components/joinQueue';
 import PayButton from '../payments/payButton';
+import ReactSVG from 'react-svg';
 // MISC
 import logo from './img/logo.png';
+import WalletCoin from '../../assets/svg/walletcoin.svg';
 import {Link} from 'react-router-dom';
 import Board from './../workflow/Board';
 
@@ -130,7 +133,32 @@ class WelcomePage extends Component {
           .pause()
           .delete()
 
-
+          const element3 = document.querySelector('#CustProjects')
+          function callback3 (text) {
+            element3.textContent = text
+          }
+          const options3 = {
+            typeSpeed: 80,
+            deleteSpeed: 15,
+            pauseDuration: 1900,
+            repeat: true
+          }
+          malarkey(callback3, options3)
+            .type(`Blockchain project`)
+            .pause()
+            .delete()
+            .type(`Web app`)
+            .pause()
+            .delete()
+            .type(`iOS app`)
+            .pause()
+            .delete()
+            .type(`Android app`)
+            .pause()
+            .delete()
+            .type(`bespoke software`)
+            .pause()
+            .delete()
 
 
     window.addEventListener('scroll', this.listenScrollEvent);
@@ -221,17 +249,7 @@ class WelcomePage extends Component {
             </Button>
             </Grid>
             <Grid item xs={6}>
-            <div className="JoinNow">
-              <TextField
-                label="Join the mailing list."
-                type="email"
-                onChange={this.handleChangeSignUp}
-                margin="normal"
-                variant="outlined"
-                className="SignUpInput"
-              />
-              <Button variant="contained" color="primary" className="JoinButton" component={Link} to={{pathname:"/createaccount", state:{username:this.state.username}}}>Sign up</Button>
-            </div>
+
             </Grid>
             <Grid item xs={6}>
                   <div className="WhatIsSource">
@@ -250,22 +268,39 @@ class WelcomePage extends Component {
         </div>
         <div className="Quote">
           <Typography className="SectionTagline" variant="h5" paragraph={true}>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" <br/><br/> - Patrick Collison, CEO @ Stripe</Typography>
+          <div className="JoinMailing">
+            <TextField
+
+              label="Sign up for email updates"
+              type="email"
+              onChange={this.handleChangeSignUp}
+              margin="wide"
+              variant="outlined"
+              className="SignUpInput"
+            />
+            <Button variant="outlined" className="SignUpButton" component={Link} to={{pathname:"/createaccount", state:{username:this.state.username}}}>Sign Up</Button>
+          </div>
         </div>
         <div className="Section Section2">
           <Typography variant="h4" className="TypingDiv"><div id="typeElement"/></Typography>
           <Typography className="SectionTitle" variant="h3">Can building technology be as simple as writing a blog post?</Typography>
-          <Typography variant="h4">We think so.</Typography>
           <br/>
           <br/>
-          <Typography variant="h4">Because the best developers are already online, <br/><br/> you just need their <b>attention.</b></Typography>
+          <Typography variant="h4">Yes. Because the best developers are already online, <br/><br/> you just need their <b>attention.</b></Typography>
+          <Typography variant="h5" paragraph={true} style={{color:"white"}}>
+          A global team of developers at your fingertips.
+          </Typography>
+          <Typography variant="h5" paragraph={true} style={{color:"white", textAlign:"left"}}>
+          We have partnered with devshops, technology providers and educational institutions around the world
+          <br/>
+          to help build your <div id="CustProjects"/>
+          </Typography>
+          <br/>
         </div>
         <div className="Section Section3">
         <Typography className="SectionTitle" variant="h3">How it works</Typography>
-        <Typography variant="h6" paragraph={true} style={{color:"white"}}>
-        The Internet's best developers at your fingertips.
-        </Typography>
-        <Typography variant="h5" paragraph={true} style={{color:"white", textAlign:"left"}}>
-        We partnered
+
+  <Typography variant="h5" paragraph={true} style={{color:"white", textAlign:"left"}}>
 
                 Source breaks down your project lifecycle into specific tasks.
                 <br/>
@@ -333,12 +368,7 @@ class WelcomePage extends Component {
 
           <Board />
         </div>
-        <div className="Section">
-        <Typography variant="h2">Contact us</Typography>
-          <Typography variant="h4">Reach out if you have a project to list here!</Typography>
-          <Button>Chat</Button>
-          <Button>Email</Button>
-        </div>
+
       </div>
     );
   }

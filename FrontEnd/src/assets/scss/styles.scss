@@ -3209,6 +3209,17 @@ body {
     text-align: center;
     background-color: white;
     background-blend-mode: difference;
+    .JoinMailing {
+      padding-top: 3vh;
+      display: inline-flex;
+      align-items: center;
+      .SignUpInput {
+        width: 250px;
+      }
+      .SignUpButton {
+        margin-left: 14px;
+      }
+    }
   }
   .Section2 {
     // background-image: url("../images/SquareTexture.png");
