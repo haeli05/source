@@ -367,7 +367,6 @@ class MajorActionButtons extends React.Component {
       orientation: (this.props.orientation==="horizontal") ? "MajorActionButtonsHorizontal" : "MajorActionButtonsVertical",
     }
   }
-
   render() {
     if (this.props.user.id!==this.props.id) {
       return (

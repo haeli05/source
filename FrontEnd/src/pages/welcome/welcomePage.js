@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 // Material UI
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
+import Fade from '@material-ui/core/Fade';
 // Components
 import JoinQueue from './components/joinQueue';
 import PayButton from '../payments/payButton';
 import ReactSVG from 'react-svg';
+
+import { ShareButton, MessageButton, SupportButton } from './../global/components/majorActionButtons';
+
 // MISC
 import logo from './img/logo.png';
+import developerImage from './img/devImage.png';
 import WalletCoin from '../../assets/svg/walletcoin.svg';
-import {Link} from 'react-router-dom';
 import Board from './../workflow/Board';
+import RightBracket from './../../assets/svg/rightbracket.svg';
 
 import { PayPalButton } from "react-paypal-button-v2";
 
@@ -88,6 +94,12 @@ class WelcomePage extends Component {
         repeat: true
       }
       malarkey(callback1, options1)
+        .type(`blockchain engineers`)
+        .pause()
+        .delete()
+        .type(`technology professional`)
+        .pause()
+        .delete()
         .type(`software developers`)
         .pause()
         .delete()
@@ -95,9 +107,6 @@ class WelcomePage extends Component {
         .pause()
         .delete()
         .type(`designers`)
-        .pause()
-        .delete()
-        .type(`blockchain engineers`)
         .pause()
         .delete()
         .type(`backers`)
@@ -234,19 +243,20 @@ class WelcomePage extends Component {
           </div>
           <div className="WelcomeSignUp">
 
-          <Grid container spacing={24}>
-            <Grid item xs={6}>
+          <Grid container spacing={4}>
+            <Grid item xs={5}>
             <Typography className="Mission" color="textPrimary" variant="h1">
             The Internet's <br/>Tech Incubator
             </Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={7}>
             <Typography className="Mission" variant="h4" color="textPrimary">
-            We crowdsource <div style={{display:"inline"}} id="whatissource"/> <br/>for your digital projects.
+            Source connects <div style={{display:"inline"}} id="whatissource"/> <br/>to your digital projects.
             </Typography>
-            <Button variant="outlined">
-            Learn more
-            </Button>
+              <Button variant="contained" component={Link} to="/getstarted">
+              Get started
+              <ReactSVG className="ReactSVGIcon" src={RightBracket} />
+              </Button>
             </Grid>
             <Grid item xs={6}>
 
@@ -267,49 +277,55 @@ class WelcomePage extends Component {
           </div>
         </div>
         <div className="Quote">
+        <div className="JoinMailing">
+          <TextField
+            label="Sign up for email updates"
+            type="email"
+            onChange={this.handleChangeSignUp}
+            margin="wide"
+            variant="outlined"
+            className="SignUpInput"
+          />
+          <Button variant="outlined" className="SignUpButton" component={Link} to={{pathname:"/createaccount", state:{username:this.state.username}}}>Sign Up</Button>
+        </div>
           <Typography className="SectionTagline" variant="h5" paragraph={true}>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" <br/><br/> - Patrick Collison, CEO @ Stripe</Typography>
-          <div className="JoinMailing">
-            <TextField
-
-              label="Sign up for email updates"
-              type="email"
-              onChange={this.handleChangeSignUp}
-              margin="wide"
-              variant="outlined"
-              className="SignUpInput"
-            />
-            <Button variant="outlined" className="SignUpButton" component={Link} to={{pathname:"/createaccount", state:{username:this.state.username}}}>Sign Up</Button>
-          </div>
         </div>
         <div className="Section Section2">
           <Typography variant="h4" className="TypingDiv"><div id="typeElement"/></Typography>
           <Typography className="SectionTitle" variant="h3">Can building technology be as simple as writing a blog post?</Typography>
           <br/>
+          <Typography variant="h4">Yes</Typography>
           <br/>
-          <Typography variant="h4">Yes. Because the best developers are already online, <br/><br/> you just need their <b>attention.</b></Typography>
+          <Typography variant="h4">Because the best developers are already online, <br/><br/> you just need their <b>attention.</b></Typography>
           <Typography variant="h5" paragraph={true} style={{color:"white"}}>
-          A global team of developers at your fingertips.
+          Find developers for your projects
           </Typography>
-          <Typography variant="h5" paragraph={true} style={{color:"white", textAlign:"left"}}>
-          We have partnered with devshops, technology providers and educational institutions around the world
-          <br/>
-          to help build your <div id="CustProjects"/>
-          </Typography>
+          <Grid container spacing={4}>
+            <Grid item xs={4}>
+              <Typography variant="h5" paragraph={true} style={{textAlign:"left"}}>
+              Source is a platform with technology professionals, development shops, and Computer Science graduates
+              <br/>
+              designed to help build your <div id="CustProjects"/>
+              </Typography>
+            </Grid>
+            <Grid item xs={8}>
+              <Fade in={true}>
+                <img className="DevImage" src={developerImage} alt="developers"/>
+              </Fade>
+            </Grid>
+          </Grid>
           <br/>
         </div>
         <div className="Section Section3">
         <Typography className="SectionTitle" variant="h3">How it works</Typography>
-
-  <Typography variant="h5" paragraph={true} style={{color:"white", textAlign:"left"}}>
-
-                Source breaks down your project lifecycle into specific tasks.
+        <Typography variant="h5" paragraph={true} style={{color:"white", textAlign:"left"}}>
                 <br/>
                 <br/>
-                1. Describe your idea or project through a post.
+                1. Describe your idea or scope your project.
                 <br/>
-                2. Project managers outline the scope and set rewards
+                2. Determine your price points for individual features
                 <br/>
-                3. Build it with the community!
+                3. Our community of talent delivers
                 <br/>
         <br />
           </Typography>
@@ -334,13 +350,24 @@ class WelcomePage extends Component {
           Help us build the beta!
           <Typography variant="h2" className="SectionTitle">source</Typography>
           <Typography variant="h4" className="SectionTitle">The Internet's Tech Incubator. </Typography>
-
-          <Typography variant="overline2" className="SectionTitle">Support this project</Typography>
-          <PayButton />
-
-          <Typography variant="body" paragraph={true}>
+          <Grid container spacing={4}>
+            <Grid item xs={6}>
+            <Typography variant="overline2" className="SectionTitle">Support this project</Typography>
+            <PayButton />
+            </Grid>
+            <Grid item xs={6}>
+              <div className="MajorActionButtonsHorizontal">
+                <div className="MajorActionButtonDiv">
+                  <MessageButton {...this.props} goToRoom={this.props.goToRoom}/>
+                </div>
+                <div className="MajorActionButtonDiv">
+                  <ShareButton {...this.props} title={this.props.title} url={this.props.url}/>
+                </div>
+              </div>
+            </Grid>
+          </Grid>
+          <Typography className="Scope" variant="body" paragraph={true}>
           <b>Scope:</b>
-
           Source is designed to facilitate discussion, collaboration and crowdsourcing to build the internet's most exciting projects.
 
           Our stack combines a react front end with modular backend components.

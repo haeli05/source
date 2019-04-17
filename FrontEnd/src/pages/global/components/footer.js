@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import Icon from 'react-icons-kit';
 import { medium } from 'react-icons-kit/fa/medium';
 import { socialTwitter } from 'react-icons-kit/ionicons/socialTwitter';
@@ -18,7 +20,10 @@ class Footer extends Component {
     return (
       <div className='Footer'>
         <div className="Left">
+        <div className="Feedback">
           <SendFeedback props={this.props} className="SendFeedbackButton"/>
+        </div>  
+          <Button variant="outlined" component={Link} to="/getstarted">Contact</Button>
         </div>
         <div className="Middle">
           <Typography variant="caption" gutterBottom align="center">Designed in Brooklyn © 2018 </Typography>

@@ -1102,8 +1102,14 @@ time {
     margin-left: 5px;
     display: flex;
     align-items: center;
+    .Feedback{
+      margin-right: 7px;
+    }
     .LanguageButton {
       margin-left: 5px;
+    }
+    .Feedback{
+      margin-right: 7px;
     }
   }
   .Middle {
@@ -3224,7 +3230,7 @@ body {
   .Section2 {
     // background-image: url("../images/SquareTexture.png");
     // background-repeat: space;
-    background-color: #FBFAFA;
+    background-color: $Light;
     text-align: center;
     padding-bottom: 2vh;
     .TypingDiv {
@@ -3237,6 +3243,9 @@ body {
       align-items: center;
       text-align: left;
         padding-bottom: 2vh;
+    }
+    .DevImage {
+      width: 50vw;
     }
     .SectionTagline {
       padding-bottom: 2vh;
@@ -3257,7 +3266,7 @@ body {
     background-color: #C0BFBF;
   }
   .Section5 {
-    background-color: #C0BFBF;
+    background-color: white;
   }
 }
 
