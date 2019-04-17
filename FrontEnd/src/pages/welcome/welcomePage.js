@@ -97,7 +97,7 @@ class WelcomePage extends Component {
         .type(`blockchain engineers`)
         .pause()
         .delete()
-        .type(`technology professional`)
+        .type(`technology professionals`)
         .pause()
         .delete()
         .type(`software developers`)
@@ -243,30 +243,41 @@ class WelcomePage extends Component {
           </div>
           <div className="WelcomeSignUp">
 
-          <Grid container spacing={4}>
-            <Grid item xs={5}>
+          <Grid container spacing={18}>
+            <Grid item xs={6}>
             <Typography className="Mission" color="textPrimary" variant="h1">
             The Internet's <br/>Tech Incubator
             </Typography>
             </Grid>
-            <Grid item xs={7}>
-            <Typography className="Mission" variant="h4" color="textPrimary">
-            Source connects <div style={{display:"inline"}} id="whatissource"/> <br/>to your digital projects.
-            </Typography>
-              <Button variant="contained" component={Link} to="/getstarted">
-              Get started
-              <ReactSVG className="ReactSVGIcon" src={RightBracket} />
-              </Button>
-            </Grid>
             <Grid item xs={6}>
+
+                    <Typography className="Mission" variant="h4" color="textPrimary">
+                    Source connects <div style={{display:"inline"}} id="whatissource"/> <br/>to your digital projects.
+                    </Typography>
+                  <Button variant="outlined" className="GetStarted" component={Link} to="/getstarted">
+                  Get started
+                  </Button>
 
             </Grid>
             <Grid item xs={6}>
+            <div className="JoinMailing">
+              <TextField
+                label="Sign up for email updates"
+                type="email"
+                onChange={this.handleChangeSignUp}
+                margin="wide"
+                variant="outlined"
+                className="SignUpInput"
+              />
+              <Button variant="outlined" className="SignUpButton" component={Link} to={{pathname:"/createaccount", state:{username:this.state.username}}}>Sign Up</Button>
+            </div>
+            </Grid>
+            <Grid item xs={6}>
                   <div className="WhatIsSource">
-                  <Typography variant="h4">If you're a <div style={{display:"inline"}} id="audience" />,<br/> source lets you monetize your skills.</Typography>
-                  <Button variant="outlined">
-                  Get Started
-                  </Button>
+                    <Typography variant="h4">If you're a <div style={{display:"inline"}} id="audience" />,<br/> source lets you monetize your skills.</Typography>
+                    <Button variant="outlined">
+                    Get Started
+                    </Button>
                   </div>
             </Grid>
           </Grid>
@@ -277,24 +288,14 @@ class WelcomePage extends Component {
           </div>
         </div>
         <div className="Quote">
-        <div className="JoinMailing">
-          <TextField
-            label="Sign up for email updates"
-            type="email"
-            onChange={this.handleChangeSignUp}
-            margin="wide"
-            variant="outlined"
-            className="SignUpInput"
-          />
-          <Button variant="outlined" className="SignUpButton" component={Link} to={{pathname:"/createaccount", state:{username:this.state.username}}}>Sign Up</Button>
-        </div>
+
           <Typography className="SectionTagline" variant="h5" paragraph={true}>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" <br/><br/> - Patrick Collison, CEO @ Stripe</Typography>
         </div>
         <div className="Section Section2">
           <Typography variant="h4" className="TypingDiv"><div id="typeElement"/></Typography>
           <Typography className="SectionTitle" variant="h3">Can building technology be as simple as writing a blog post?</Typography>
           <br/>
-          <Typography variant="h4">Yes</Typography>
+          <Typography variant="h4">We think so.</Typography>
           <br/>
           <Typography variant="h4">Because the best developers are already online, <br/><br/> you just need their <b>attention.</b></Typography>
           <Typography variant="h5" paragraph={true} style={{color:"white"}}>

@@ -909,6 +909,11 @@ time {
 
 }
 
+.RightBracket {
+  height: 6px;
+}
+
+
 //UserChip
 .UserChip {
   display:inline-flex;
@@ -3186,6 +3191,10 @@ body {
     }
     .WelcomeSignUp {
       animation: fadeinHero2 4s linear;
+      .GetStarted{
+        margin-top: 1em;
+        display: inline-block
+      }
     }
   }
   .Section {
@@ -3245,7 +3254,7 @@ body {
         padding-bottom: 2vh;
     }
     .DevImage {
-      width: 50vw;
+      width: 40vw;
     }
     .SectionTagline {
       padding-bottom: 2vh;
