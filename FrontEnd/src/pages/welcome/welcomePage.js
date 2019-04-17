@@ -44,44 +44,44 @@ class WelcomePage extends Component {
 
   componentDidMount(){
     document.addEventListener("keydown", this._handleKeyDown.bind(this));
-    const element = document.querySelector('#typeElement')
-    function callback (text) {
-      element.textContent = text
-    }
-    const options = {
-      typeSpeed: 50,
-      deleteSpeed: 10,
-      pauseDuration: 1600,
-      repeat: true
-    }
-    malarkey(callback, options)
-      .type(`Hey guys, let's build a decentralized collaboration platform!`)
-      .pause()
-      .delete()
-      .type(`Seeking Ruby Engineers for a smart contract platform`)
-      .pause()
-      .delete()
-      .type("急需区块链工程师，自己开发太慢了！")
-      .pause()
-      .delete()
-      .type(`Seeking developers! We are building a TCR based POS/POA/POW hybrid blockchain with AI and Quantum proof hashgraph consensus algorithms for everyone's IOT device that will cure cancer and bring world peace.`)
-      .pause()
-      .delete()
-      .type(`Checkout Catnip: Tinder for CryptoKitties! Meow!`)
-      .pause()
-      .delete()
-      .type(`Ich suche developers die mir mit ein iOS app helfen können`)
-      .pause()
-      .delete()
-      .type("Let's build a city in the sky and name it Columbia!!")
-      .pause()
-      .delete()
-      .type("Software Engineers required. I'm building a blockchain for grandmothers and non-techies!")
-      .pause()
-      .delete()
-      .type(`Such wow, much platform, very technology. Wow. Amazing. Much amaze`)
-      .pause()
-      .delete()
+    // const element = document.querySelector('#typeElement')
+    // function callback (text) {
+    //   element.textContent = text
+    // }
+    // const options = {
+    //   typeSpeed: 50,
+    //   deleteSpeed: 10,
+    //   pauseDuration: 1600,
+    //   repeat: true
+    // }
+    // malarkey(callback, options)
+    //   .type(`Hey guys, let's build a decentralized collaboration platform!`)
+    //   .pause()
+    //   .delete()
+    //   .type(`Seeking Ruby Engineers for a smart contract platform`)
+    //   .pause()
+    //   .delete()
+    //   .type("急需区块链工程师，自己开发太慢了！")
+    //   .pause()
+    //   .delete()
+    //   .type(`Seeking developers! We are building a TCR based POS/POA/POW hybrid blockchain with AI and Quantum proof hashgraph consensus algorithms for everyone's IOT device that will cure cancer and bring world peace.`)
+    //   .pause()
+    //   .delete()
+    //   .type(`Checkout Catnip: Tinder for CryptoKitties! Meow!`)
+    //   .pause()
+    //   .delete()
+    //   .type(`Ich suche developers die mir mit ein iOS app helfen können`)
+    //   .pause()
+    //   .delete()
+    //   .type("Let's build a city in the sky and name it Columbia!!")
+    //   .pause()
+    //   .delete()
+    //   .type("Software Engineers required. I'm building a blockchain for grandmothers and non-techies!")
+    //   .pause()
+    //   .delete()
+    //   .type(`Such wow, much platform, very technology. Wow. Amazing. Much amaze`)
+    //   .pause()
+    //   .delete()
 
       const element1 = document.querySelector('#whatissource')
       function callback1 (text) {
@@ -120,27 +120,27 @@ class WelcomePage extends Component {
         .delete()
 
 
-
-        const element2 = document.querySelector('#audience')
-        function callback2 (text) {
-          element2.textContent = text
-        }
-        const options2 = {
-          typeSpeed: 80,
-          deleteSpeed: 15,
-          pauseDuration: 1900,
-          repeat: true
-        }
-        malarkey(callback2, options2)
-          .type(`developer`)
-          .pause()
-          .delete()
-          .type(`engineer`)
-          .pause()
-          .delete()
-          .type(`designer`)
-          .pause()
-          .delete()
+        //
+        // const element2 = document.querySelector('#audience')
+        // function callback2 (text) {
+        //   element2.textContent = text
+        // }
+        // const options2 = {
+        //   typeSpeed: 80,
+        //   deleteSpeed: 15,
+        //   pauseDuration: 1900,
+        //   repeat: true
+        // }
+        // malarkey(callback2, options2)
+        //   .type(`developer`)
+        //   .pause()
+        //   .delete()
+        //   .type(`engineer`)
+        //   .pause()
+        //   .delete()
+        //   .type(`designer`)
+        //   .pause()
+        //   .delete()
 
           const element3 = document.querySelector('#CustProjects')
           function callback3 (text) {
@@ -237,10 +237,6 @@ class WelcomePage extends Component {
     return (
       <div className="WelcomePage">
         <div className="Hero">
-          <div className="WelcomeLogo">
-            <Typography className="Header" variant="caption">Welcome to</Typography>
-            <img src={logo} alt="source"/>
-          </div>
           <div className="WelcomeSignUp">
 
           <Grid container spacing={18}>
@@ -250,14 +246,13 @@ class WelcomePage extends Component {
             </Typography>
             </Grid>
             <Grid item xs={6}>
-
                     <Typography className="Mission" variant="h4" color="textPrimary">
-                    Source connects <div style={{display:"inline"}} id="whatissource"/> <br/>to your digital projects.
+                    Source connects <div style={{display:"inline"}} id="whatissource"/>
+                    <br/>to build your digital projects, while helping them monetize their skills.
                     </Typography>
                   <Button variant="outlined" className="GetStarted" component={Link} to="/getstarted">
                   Get started
                   </Button>
-
             </Grid>
             <Grid item xs={6}>
             <div className="JoinMailing">
@@ -273,12 +268,7 @@ class WelcomePage extends Component {
             </div>
             </Grid>
             <Grid item xs={6}>
-                  <div className="WhatIsSource">
-                    <Typography variant="h4">If you're a <div style={{display:"inline"}} id="audience" />,<br/> source lets you monetize your skills.</Typography>
-                    <Button variant="outlined">
-                    Get Started
-                    </Button>
-                  </div>
+
             </Grid>
           </Grid>
           <Typography variant="body">Want to get paid for your skills today?</Typography>
@@ -292,7 +282,6 @@ class WelcomePage extends Component {
           <Typography className="SectionTagline" variant="h5" paragraph={true}>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" <br/><br/> - Patrick Collison, CEO @ Stripe</Typography>
         </div>
         <div className="Section Section2">
-          <Typography variant="h4" className="TypingDiv"><div id="typeElement"/></Typography>
           <Typography className="SectionTitle" variant="h3">Can building technology be as simple as writing a blog post?</Typography>
           <br/>
           <Typography variant="h4">We think so.</Typography>
@@ -304,8 +293,7 @@ class WelcomePage extends Component {
           <Grid container spacing={4}>
             <Grid item xs={4}>
               <Typography variant="h5" paragraph={true} style={{textAlign:"left"}}>
-              Source is a platform with technology professionals, development shops, and Computer Science graduates
-              <br/>
+              Source supports your projects from ideation to implementation, through a bias-free technological approach. Our consultants and associates strive to deliver actionable insight and measurable added value, based on the technology that suits you best.
               designed to help build your <div id="CustProjects"/>
               </Typography>
             </Grid>
@@ -313,6 +301,14 @@ class WelcomePage extends Component {
               <Fade in={true}>
                 <img className="DevImage" src={developerImage} alt="developers"/>
               </Fade>
+            </Grid>
+            <Grid item xs={6}>
+            <Typography variant="h5" paragraph={true} style={{textAlign:"left"}}>
+            Developer as a service: Pay at any price point.
+            </Typography>
+            Free: Crowdfunding + open Source
+            Minimal: 
+            Bespoke: Tailored technical solutions
             </Grid>
           </Grid>
           <br/>
@@ -347,7 +343,6 @@ class WelcomePage extends Component {
         </Typography>
         </div>
         <div className="Section Section5">
-
           Help us build the beta!
           <Typography variant="h2" className="SectionTitle">source</Typography>
           <Typography variant="h4" className="SectionTitle">The Internet's Tech Incubator. </Typography>
@@ -369,7 +364,9 @@ class WelcomePage extends Component {
           </Grid>
           <Typography className="Scope" variant="body" paragraph={true}>
           <b>Scope:</b>
-          Source is designed to facilitate discussion, collaboration and crowdsourcing to build the internet's most exciting projects.
+          Source is building a sharing economy around development skills.
+
+           designed to facilitate discussion, collaboration and crowdsourcing to build the internet's most exciting projects.
 
           Our stack combines a react front end with modular backend components.
 
