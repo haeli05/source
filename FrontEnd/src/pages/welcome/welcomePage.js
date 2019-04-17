@@ -271,7 +271,7 @@ class WelcomePage extends Component {
         </div>
         <div className="Quote">
 
-          <Typography className="SectionTagline" variant="h5" paragraph={true}>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" <br/><br/> - Patrick Collison, CEO @ Stripe</Typography>
+          <Typography variant="h5" paragraph={true}>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" <br/><br/> - Patrick Collison, CEO @ Stripe</Typography>
         </div>
         <div className="Section Section2">
           <Typography className="SectionTitle" variant="h3">Can building technology be as simple as writing a blog post?</Typography>
@@ -390,10 +390,14 @@ class WelcomePage extends Component {
 
           People: Social integration, allows users to filter their site experience based on relevant skills, while also allowing project managers to track and find contributors.
 
-          <b>How to Contribute:</b>
+          <b>Interested in Contributing:</b>
           To donate: Use the Pay button above
 
           Suggestions: Use the email feedback or use spectrum
+
+          Important!!
+          Please reach out to discuss your implementation first before starting work.
+          We will not pay for code that do not fit our criteria.
 
           Skills: Check the todo list and message us on telegram or spectrum if you want to take over the development for a component. We pay for good work.
           </Typography>
