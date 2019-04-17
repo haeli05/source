@@ -246,35 +246,27 @@ class WelcomePage extends Component {
             </Typography>
             </Grid>
             <Grid item xs={6}>
-                    <Typography className="Mission" variant="h4" color="textPrimary">
-                    Source connects <div style={{display:"inline"}} id="whatissource"/>
+                    <Typography className="Mission" style={{marginTop:"1em"}} variant="h4" color="textPrimary">
+                    Source finds <div style={{display:"inline"}} id="whatissource"/>
                     <br/>to build your digital projects, while helping them monetize their skills.
                     </Typography>
-                  <Button variant="outlined" className="GetStarted" component={Link} to="/getstarted">
+                  <Button variant="outlined" style={{align:"left"}} className="GetStarted" component={Link} to="/getstarted">
                   Get started
                   </Button>
             </Grid>
             <Grid item xs={6}>
-            <div className="JoinMailing">
-              <TextField
-                label="Sign up for email updates"
-                type="email"
-                onChange={this.handleChangeSignUp}
-                margin="wide"
-                variant="outlined"
-                className="SignUpInput"
-              />
-              <Button variant="outlined" className="SignUpButton" component={Link} to={{pathname:"/createaccount", state:{username:this.state.username}}}>Sign Up</Button>
-            </div>
+
             </Grid>
             <Grid item xs={6}>
 
             </Grid>
           </Grid>
-          <Typography variant="body">Want to get paid for your skills today?</Typography>
-          <Button variant="outlined">
-          Help us build the beta
+          <div className="GetPaid">
+          <Typography variant="body">Want to get paid today?</Typography>
+          <Button className="TodoButton" variant="outlined" href="#todo">
+          Help us build the beta!
           </Button>
+          </div>
           </div>
         </div>
         <div className="Quote">
@@ -287,13 +279,28 @@ class WelcomePage extends Component {
           <Typography variant="h4">We think so.</Typography>
           <br/>
           <Typography variant="h4">Because the best developers are already online, <br/><br/> you just need their <b>attention.</b></Typography>
+          <div className="JoinMailing">
+            <TextField
+              label="Sign up for email updates"
+              type="email"
+              onChange={this.handleChangeSignUp}
+              margin="wide"
+              variant="outlined"
+              className="SignUpInput"
+            />
+            <Button variant="outlined" className="SignUpButton" component={Link} to={{pathname:"/createaccount", state:{username:this.state.username}}}>Sign Up</Button>
+          </div>
+
           <Typography variant="h5" paragraph={true} style={{color:"white"}}>
           Find developers for your projects
           </Typography>
           <Grid container spacing={4}>
             <Grid item xs={4}>
               <Typography variant="h5" paragraph={true} style={{textAlign:"left"}}>
-              Source supports your projects from ideation to implementation, through a bias-free technological approach. Our consultants and associates strive to deliver actionable insight and measurable added value, based on the technology that suits you best.
+              Source supports your projects from ideation to implementation.
+
+              Our community, partners and associates deliver actionable insight, feedback and code
+              based on your ideas and projects.
               designed to help build your <div id="CustProjects"/>
               </Typography>
             </Grid>
@@ -304,10 +311,10 @@ class WelcomePage extends Component {
             </Grid>
             <Grid item xs={6}>
             <Typography variant="h5" paragraph={true} style={{textAlign:"left"}}>
-            Developer as a service: Pay at any price point.
+            Find developers for your project at any price point.
             </Typography>
-            Free: Crowdfunding + open Source
-            Minimal: 
+            Free: Crowdfunding + Open Source
+            Minimal:
             Bespoke: Tailored technical solutions
             </Grid>
           </Grid>
@@ -327,7 +334,7 @@ class WelcomePage extends Component {
         <br />
           </Typography>
         <br/>
-        <Typography className="SectionTitle" variant="h3">Next level Crowdsourcing</Typography>
+        <Typography className="SectionTitle" variant="h3">Are you a developer?</Typography>
         <Typography variant="h6" paragraph={true} style={{color:"white"}}>
             Meet Talent, Monetize your skills/community engagement?
         </Typography>
@@ -342,7 +349,7 @@ class WelcomePage extends Component {
         4. Profit.
         </Typography>
         </div>
-        <div className="Section Section5">
+        <div className="Section Section5" id="todo">
           Help us build the beta!
           <Typography variant="h2" className="SectionTitle">source</Typography>
           <Typography variant="h4" className="SectionTitle">The Internet's Tech Incubator. </Typography>
