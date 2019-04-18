@@ -16,7 +16,7 @@ import { ShareButton, MessageButton, SupportButton } from './../global/component
 
 // MISC
 import logo from './img/logo.png';
-import developerImage from './img/devImage.png';
+import developerImage from './img/devs.jpg';
 import WalletCoin from '../../assets/svg/walletcoin.svg';
 import Board from './../workflow/Board';
 import RightBracket from './../../assets/svg/rightbracket.svg';
@@ -246,9 +246,9 @@ class WelcomePage extends Component {
             </Typography>
             </Grid>
             <Grid item xs={6}>
-                    <Typography className="Mission" style={{marginTop:"1em"}} variant="h4" color="textPrimary">
+                    <Typography className="Mission WhatIsSource" style={{marginTop:"0em"}} variant="h4" color="textPrimary">
                     Source finds <div style={{display:"inline"}} id="whatissource"/>
-                    <br/>to build your digital projects, while helping them monetize their skills.
+                    <br/>for your digital projects, while helping them monetize their skills.
                     </Typography>
                   <Button variant="outlined" style={{align:"left"}} className="GetStarted" component={Link} to="/getstarted">
                   Get started
@@ -270,15 +270,7 @@ class WelcomePage extends Component {
           </div>
         </div>
         <div className="Quote">
-
           <Typography variant="h5" paragraph={true}>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" <br/><br/> - Patrick Collison, CEO @ Stripe</Typography>
-        </div>
-        <div className="Section Section2">
-          <Typography className="SectionTitle" variant="h3">Can building technology be as simple as writing a blog post?</Typography>
-          <br/>
-          <Typography variant="h4">We think so.</Typography>
-          <br/>
-          <Typography variant="h4">Because the best developers are already online, <br/><br/> you just need their <b>attention.</b></Typography>
           <div className="JoinMailing">
             <TextField
               label="Sign up for email updates"
@@ -290,39 +282,47 @@ class WelcomePage extends Component {
             />
             <Button variant="outlined" className="SignUpButton" component={Link} to={{pathname:"/createaccount", state:{username:this.state.username}}}>Sign Up</Button>
           </div>
-
-          <Typography variant="h5" paragraph={true} style={{color:"white"}}>
-          Find developers for your projects
-          </Typography>
-          <Grid container spacing={4}>
-            <Grid item xs={4}>
-              <Typography variant="h5" paragraph={true} style={{textAlign:"left"}}>
-              Source supports your projects from ideation to implementation.
-
-              Our community, partners and associates deliver actionable insight, feedback and code
-              based on your ideas and projects.
-              designed to help build your <div id="CustProjects"/>
-              </Typography>
-            </Grid>
-            <Grid item xs={8}>
-              <Fade in={true}>
-                <img className="DevImage" src={developerImage} alt="developers"/>
-              </Fade>
-            </Grid>
-            <Grid item xs={6}>
-            <Typography variant="h5" paragraph={true} style={{textAlign:"left"}}>
-            Find developers for your project at any price point.
-            </Typography>
-            Free: Crowdfunding + Open Source
-            Minimal:
-            Bespoke: Tailored technical solutions
-            </Grid>
-          </Grid>
+        </div>
+        <div className="Section Section2">
+          <Typography className="SectionTitle" variant="h3" style={{color:"white"}}>Can building technology be as simple as writing a blog post?</Typography>
           <br/>
+          <Typography variant="h4" style={{color:"white"}}>We think so.</Typography>
+          <br/>
+          <Typography variant="h4" style={{color:"white"}}>Because the best developers are already online, <br/><br/> you just need their <b>attention.</b></Typography>
+
         </div>
         <div className="Section Section3">
-        <Typography className="SectionTitle" variant="h3">How it works</Typography>
-        <Typography variant="h5" paragraph={true} style={{color:"white", textAlign:"left"}}>
+        <Typography className="SectionTitle" variant="h2">How it works</Typography>
+
+                  <Typography variant="h5" paragraph={true} style={{color:"white"}}>
+                  Find developers for your projects
+                  </Typography>
+                  <Grid container spacing={5}>
+                    <Grid item xs={4}>
+                      <Typography variant="body" paragraph={true} style={{textAlign:"left"}}>
+                      Source supports your projects from ideation to implementation.
+                      <br/>
+                      Our community, partners and associates deliver actionable insight, feedback and code
+                      based on your ideas and projects.
+                      designed to help build your <div id="CustProjects"/>
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={4}>
+                      <Fade in={true}>
+                        <img className="DevImage" src={developerImage} alt="developers"/>
+                      </Fade>
+                    </Grid>
+                    <Grid item xs={4}>
+                    <Typography variant="h5" paragraph={true} style={{textAlign:"left"}}>
+                    For projects at any price point.
+                    </Typography>
+                    Free: Crowdfunding + Open Source
+                    Minimal:
+                    Bespoke: Tailored technical solutions
+                    </Grid>
+                  </Grid>
+                  <br/>
+        <Typography variant="h5" paragraph={true} >
                 <br/>
                 <br/>
                 1. Describe your idea or scope your project.
@@ -335,10 +335,10 @@ class WelcomePage extends Component {
           </Typography>
         <br/>
         <Typography className="SectionTitle" variant="h3">Are you a developer?</Typography>
-        <Typography variant="h6" paragraph={true} style={{color:"white"}}>
+        <Typography variant="h6" paragraph={true} >
             Meet Talent, Monetize your skills/community engagement?
         </Typography>
-          <Typography variant="h5" paragraph={true} style={{color:"white"}}>
+          <Typography variant="h5" paragraph={true} >
         <br />
         1. Find tasks relevant to your skillset.
         <br/>
@@ -360,6 +360,9 @@ class WelcomePage extends Component {
             </Grid>
             <Grid item xs={6}>
               <div className="MajorActionButtonsHorizontal">
+              <div className="MajorActionButtonDiv">
+                <SupportButton {...this.props} goToRoom={this.props.goToRoom}/>
+              </div>
                 <div className="MajorActionButtonDiv">
                   <MessageButton {...this.props} goToRoom={this.props.goToRoom}/>
                 </div>

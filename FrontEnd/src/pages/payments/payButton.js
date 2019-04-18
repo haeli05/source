@@ -122,7 +122,7 @@ export default class PayButton extends Component {
                       />
                       <div className="PayPalButton">
                       <PayPalButton
-                       clientID="AdDXxtq0tmyVlS0r8YbRbLXrKXcq2676G_s1ExuJviAus0eQy1htqamaG4ZTnJkn2in60R2s-lj9K2Rp"
+
                        amount={this.state.AMOUNT}
                        style={{
                           layout:  'horizontal',
@@ -142,6 +142,9 @@ export default class PayButton extends Component {
                            })
                          });
                        }}
+                       options={{
+                          clientId: "AYR9R7PL7bninpLEZ1lFcgykyZcYRvJlW003jGvl_f3iggY11sHQ3j8ttg5Lwt9tRZmjkRLLWKSOJaie"
+                        }}
                      />
                      </div>
 

@@ -5,20 +5,18 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
+import { Link as RouterLink } from 'react-router-dom'
+import Link from '@material-ui/core/Link';
+
 // Components
 import JoinQueue from './components/joinQueue';
 import PayButton from '../payments/payButton';
 import ReactSVG from 'react-svg';
 // MISC
 import logo from './img/logo.png';
-import WalletCoin from '../../assets/svg/walletcoin.svg';
-import {Link} from 'react-router-dom';
-import Board from './../workflow/Board';
+import MessageBlob from '../../assets/svg/messageblob.svg';
+import Letter from '../../assets/svg/letter.svg';
 
-import { PayPalButton } from "react-paypal-button-v2";
-
-const malarkey = require('malarkey');
-const ScrollMagic = require("scrollmagic");
 
 class GetStarted extends Component {
   constructor(props){
@@ -75,39 +73,88 @@ class GetStarted extends Component {
   render() {
     return (
       <div className="GetStarted">
-        <div className="Hero">
-          <div className="WelcomeSignUp">
+        <div className="Section">
+
           <Grid container spacing={24}>
-            <Grid item xs={6}>
-            <Typography className="Mission" color="textPrimary" variant="h1">
-            Get <br/>Started
-            </Typography>
+            <Grid item xs={5}>
+              <div className="GetStartedLabel">
+                <Typography className="GetStartedTitle" color="textPrimary" variant="h1">
+                Get <br/>Started
+                </Typography>
+                  <Typography variant="h4">The platform is currently under construction.<br/><br/>
+                  Follow our progress&nbsp;
+                  <Link component={RouterLink} to="/#todo">
+                  here.
+                  </Link>
+                  <br/>
+                  <br/>
+                  Please reach out if you need immediate technical assistance, or want to list a project.</Typography>
+                  <Fab
+                  variant="extended"
+                  size="large"
+                  color="primary"
+                  aria-label="Spectrum Chat"
+                  className="Button"
+                  >
+                  <ReactSVG src={MessageBlob} className="ReactSVGIcon Icon25 LeftIcon"/>
+                  Chat
+                  </Fab>
 
-              <Typography variant="h4">The platform is currently under construction. Follow our progress <a>here.</a>
-              <br/>
-              Contact us if you need immediate technical assistance, or want to list a project.</Typography>
-              <Fab
-              variant="extended"
-              size="small"
-              color="primary"
-              aria-label="Spectrum Chat"
-              >
-              <ReactSVG src={WalletCoin} className="ReactSVGIcon WalletCoin"/>
-              Chat
-              </Fab>
-              <Fab>Email</Fab>
-
+                  <Fab
+                  variant="extended"
+                  size="large"
+                  color="secondary"
+                  className="Button"
+                  >
+                    <ReactSVG src={Letter} className="ReactSVGIcon Icon25 LeftIcon Letter"/>
+                  Email
+                  </Fab>
+              </div>
             </Grid>
-            <Grid item xs={6}>
-            <Typography className="Mission" variant="h4" color="textPrimary">
-            Fill up this form, we will be with you shortly.
+            <Grid item xs={7}>
+            <div className="Form">
+            <Typography className="Mission" variant="h6" color="textPrimary">
+            Fill up this form for general enquiries, we will be with you shortly.
             </Typography>
-            <Button variant="outlined">
+
+
+            <TextField
+            fullWidth
+              label="Name"
+              type="email"
+              onChange={this.handleChangeSignUp}
+              margin="wide"
+              variant="outlined"
+              className="ContactInputName"
+            />
+
+
+            <TextField
+            fullWidth
+              multiline
+              rows="9"
+              rowsMax="9"
+              label="Message"
+              multiline
+              type="email"
+              onChange={this.handleChangeSignUp}
+              margin="normal"
+              variant="outlined"
+              className="ContactInputMessage"
+            />
+
+            <Fab
+            variant="extended"
+            size="large"
+            aria-label="Submit"
+            className="Button"
+            >
             Submit
-            </Button>
+            </Fab>
+            </div>
             </Grid>
           </Grid>
-          </div>
+
         </div>
 
       </div>

@@ -77,12 +77,13 @@ let Routes =()=>(
           <Route exact path="/createaccount" render={props=><CreateAccountPage {...props}/>}/>
           <Route exact path="/login" render={props=><LoginPage {...props}/>}/>
           <Route exact path="/resetpassword/:token" render={props=><ResetPassword {...props}/>}/>
-          <Route exact path="/requestpassword" render={()=><RequestNewPass/>}/>
+          dds<Route exact path="/requestpassword" render={()=><RequestNewPass/>}/>
+          <Route exact path="/getstarted" render={props=><GetStarted {...props}/>}/>
 
           {/* I don't know */}
 //          <Route exact path="/app/quantstamp" render={props=><QuantStamp {...props}/>}/>
           <Route render={props=><Four0FourPage {...props}/>}/>
-          <Route exact path="/getstarted" render={props=><GetStarted {...props}/>}/>
+
         </Switch>
       </div>
       <Route path ="/" render={props=><Footer {...props}/>}/>
