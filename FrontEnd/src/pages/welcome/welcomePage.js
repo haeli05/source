@@ -10,7 +10,6 @@ import Fade from '@material-ui/core/Fade';
 // Components
 import JoinQueue from './components/joinQueue';
 import PayButton from '../payments/payButton';
-import PopUp from '../global/components/PopUp';
 import ReactSVG from 'react-svg';
 
 import { ShareButton, MessageButton, SupportButton } from './../global/components/majorActionButtons';
@@ -240,7 +239,7 @@ class WelcomePage extends Component {
       <div className="WelcomePage">
         <div className="Hero">
           <div className="WelcomeSignUp">
-          <PopUp/>
+
           <Grid container spacing={18}>
             <Grid item xs={6}>
             <Typography className="Mission" color="textPrimary" variant="h1">
