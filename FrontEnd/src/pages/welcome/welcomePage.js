@@ -10,6 +10,7 @@ import Fade from '@material-ui/core/Fade';
 // Components
 import JoinQueue from './components/joinQueue';
 import PayButton from '../payments/payButton';
+import PopUp from '../global/components/PopUp';
 import ReactSVG from 'react-svg';
 
 import { ShareButton, MessageButton, SupportButton } from './../global/components/majorActionButtons';
@@ -17,6 +18,7 @@ import { ShareButton, MessageButton, SupportButton } from './../global/component
 // MISC
 import logo from './img/logo.png';
 import developerImage from './img/devs.jpg';
+import developerImage2 from './img/dev2.jpg';
 import HammerScrew from '../../assets/svg/hammer_screwdriver_2.svg';
 import Board from './../workflow/Board';
 import RightBracket from './../../assets/svg/rightbracket.svg';
@@ -238,7 +240,7 @@ class WelcomePage extends Component {
       <div className="WelcomePage">
         <div className="Hero">
           <div className="WelcomeSignUp">
-
+          <PopUp/>
           <Grid container spacing={18}>
             <Grid item xs={6}>
             <Typography className="Mission" color="textPrimary" variant="h1">
@@ -250,7 +252,7 @@ class WelcomePage extends Component {
                     Source finds <div style={{display:"inline"}} id="whatissource"/>
                     <br/>for your digital projects, while helping them monetize their skills.
                     </Typography>
-                  <Button variant="contained" color="primary" style={{align:"left"}} className="GetStarted" component={Link} to="/getstarted">
+                  <Button variant="outlined" style={{align:"left"}} className="GetStarted" component={Link} to="/getstarted">
                   Get started
                   </Button>
             </Grid>
@@ -300,47 +302,62 @@ class WelcomePage extends Component {
         </div>
         <div className="Section Section3">
         <Typography className="SectionTitle" variant="h1">How it works</Typography>
-        <Typography className="SectionSubTitle" variant="h4">Source is building a sharing economy to simplify tech development.</Typography>
+        <Typography className="SectionSubTitle" variant="h4">Source is building a sharing economy to simplify tech development</Typography>
 
-                  <Typography variant="h5" paragraph={true} style={{color:"white"}}>
-                  Find developers for your projects
-                  </Typography>
-                  <Grid container spacing={5}>
-                    <Grid item xs={4}>
+                  <Grid container spacing={16}>
+                    <Grid item xs={5}>
+                    <div className="Description">
+                    <Typography variant="h5" paragraph={true} >
+                    Source supports your projects from ideation to implementation.
+                    </Typography>
                       <Typography variant="body" paragraph={true} style={{textAlign:"left"}}>
-                      Source supports your projects from ideation to implementation.
+
                       <br/>
-                      Our community, partners and associates deliver actionable insight, feedback and code
-                      based on your ideas and projects.
+                      Our community members, and partners deliver actionable insight, feedback and contribute code
+                      to your ideas and projects.
+                      <br/>
+
                       designed to help build your <div id="CustProjects"/>
                       </Typography>
+                    </div>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={3}>
                       <Fade in={true}>
                         <img className="DevImage" src={developerImage} alt="developers"/>
                       </Fade>
                     </Grid>
                     <Grid item xs={4}>
-                    <Typography variant="h5" paragraph={true} style={{textAlign:"left"}}>
-                    For projects at any price point.
+                    <Fade in={true}>
+                      <img className="DevImage2" src={developerImage2} alt="developers"/>
+                    </Fade>
+                    </Grid>
+                    <Grid item xs={12}>
+                    <Typography variant="h3" paragraph={true} >
+                    While enabling community driven implementation and funding
                     </Typography>
+                    </Grid>
+                    <Grid item xs={3}>
+
+                    <Typography variant="h5" paragraph={true} >
+
                     Free: Crowdfunding + Open Source
                     Minimal:
                     Bespoke: Tailored technical solutions
+                    <br/>
+                    <br/>
+                    1. Describe your idea or scope your project.
+                    <br/>
+                    2. Determine your price points for individual features
+                    <br/>
+                    3. Our community of talent delivers
+                    <br/>
+            <br />
+              </Typography>
                     </Grid>
-                  </Grid>
+                </Grid>
                   <br/>
-        <Typography variant="h5" paragraph={true} >
-                <br/>
-                <br/>
-                1. Describe your idea or scope your project.
-                <br/>
-                2. Determine your price points for individual features
-                <br/>
-                3. Our community of talent delivers
-                <br/>
-        <br />
-          </Typography>
+
+
         <br/>
         <Typography className="SectionTitle" variant="h3">Are you a developer?</Typography>
         <Typography variant="h6" paragraph={true} >
@@ -356,9 +373,10 @@ class WelcomePage extends Component {
         <br/>
         4. Profit.
         </Typography>
+
         </div>
         <div className="Section Section5" id="todo">
-          Help us build the beta!
+          To put these ideas to test, we've decided to crowdsource the beta!
           <Typography variant="h2" className="SectionTitle">source</Typography>
           <Typography variant="h4" className="SectionTitle">The Internet's Tech Incubator. </Typography>
           <Grid container spacing={4}>

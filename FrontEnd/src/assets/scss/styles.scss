@@ -3290,10 +3290,18 @@ body {
     }
     .SectionSubTitle {
       margin-top: 2vh;
-      margin-bottom: 2vh;
+      margin-bottom: 4vh;
     }
     .DevImage {
-      width: 250px;
+      // max-width: 220px;
+      max-height: 35vh;
+    }
+    .DevImage2 {
+      // max-width: 490px;
+      max-height: 35vh;
+    }
+    .Description {
+      text-align: left;
     }
   }
   .Section4 {
@@ -3571,4 +3579,24 @@ body {
   }
 }
 }
+/* ================================== PopUp ================================== */
+.PopUp {
+  z-index: 1000;
+  position: absolute;
+  left: 10vw;
+  top:10vh;
+  width: 80vw;
+  padding-top: 2vh;
+  padding-bottom: 6vh;
+  .Head{
+    display: flex;
+    align-items: right;
+  .CloseButton {
+    float: right;
+    align-self: right;
+    margin: 2vh 2vh 2vh 2vh;
+  }
+}
+}
+
 /* ================================== END ================================== */
