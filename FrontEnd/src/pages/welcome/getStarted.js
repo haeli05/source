@@ -114,7 +114,7 @@ class GetStarted extends Component {
             <Grid item xs={7}>
             <div className="Form">
             <Typography className="Mission" variant="h6" color="textPrimary">
-            Fill up this form for general enquiries, we will be with you shortly.
+            Fill up this form for general enquiries, we will reply as soon as possible.
             </Typography>
 
 
@@ -132,8 +132,8 @@ class GetStarted extends Component {
             <TextField
             fullWidth
               multiline
-              rows="9"
-              rowsMax="9"
+              rows="13"
+              rowsMax="13"
               label="Message"
               multiline
               type="email"
@@ -143,14 +143,14 @@ class GetStarted extends Component {
               className="ContactInputMessage"
             />
 
-            <Fab
-            variant="extended"
+            <Button
+            variant="outlined"
             size="large"
             aria-label="Submit"
             className="Button"
             >
             Submit
-            </Fab>
+            </Button>
             </div>
             </Grid>
           </Grid>

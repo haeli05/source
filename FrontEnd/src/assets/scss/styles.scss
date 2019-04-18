@@ -943,7 +943,7 @@ time {
   color: $Light;
   height: 36px;
 
-  min-width: 450px;
+  min-width: 550px;
   .PayCurrency {
     color: #FFFFFF;
     margin-right: auto;
@@ -956,7 +956,8 @@ time {
     }
     .PayPalButton{
       margin-top: 5px;
-      margin-left: 20px;
+      float:right;
+      margin-left: 117px;
     }
   }
   .PayCurrency:hover {
@@ -3287,6 +3288,10 @@ body {
     .SectionTitle {
 
     }
+    .SectionSubTitle {
+      margin-top: 2vh;
+      margin-bottom: 2vh;
+    }
     .DevImage {
       width: 250px;
     }
@@ -3556,7 +3561,7 @@ body {
   padding-left: 7vw;
   margin-bottom: 7vh;
   .ContactInputName {
-    margin-top: 2vh;
+    margin-top: 3vh;
   }
   .ContactInputMessage{
     margin-top: 2vh;

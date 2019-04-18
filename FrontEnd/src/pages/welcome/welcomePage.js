@@ -17,7 +17,7 @@ import { ShareButton, MessageButton, SupportButton } from './../global/component
 // MISC
 import logo from './img/logo.png';
 import developerImage from './img/devs.jpg';
-import WalletCoin from '../../assets/svg/walletcoin.svg';
+import HammerScrew from '../../assets/svg/hammer_screwdriver_2.svg';
 import Board from './../workflow/Board';
 import RightBracket from './../../assets/svg/rightbracket.svg';
 
@@ -250,7 +250,7 @@ class WelcomePage extends Component {
                     Source finds <div style={{display:"inline"}} id="whatissource"/>
                     <br/>for your digital projects, while helping them monetize their skills.
                     </Typography>
-                  <Button variant="outlined" style={{align:"left"}} className="GetStarted" component={Link} to="/getstarted">
+                  <Button variant="contained" color="primary" style={{align:"left"}} className="GetStarted" component={Link} to="/getstarted">
                   Get started
                   </Button>
             </Grid>
@@ -263,9 +263,16 @@ class WelcomePage extends Component {
           </Grid>
           <div className="GetPaid">
           <Typography variant="body">Want to get paid today?</Typography>
-          <Button className="TodoButton" variant="outlined" href="#todo">
+          <Fab
+          variant="extended"
+          size="large"
+
+          className="TodoButton"
+          href="#todo"
+          >
+            <ReactSVG src={HammerScrew} className="ReactSVGIcon Icon25 LeftIcon"/>
           Help us build the beta!
-          </Button>
+          </Fab>
           </div>
           </div>
         </div>
@@ -292,7 +299,8 @@ class WelcomePage extends Component {
 
         </div>
         <div className="Section Section3">
-        <Typography className="SectionTitle" variant="h2">How it works</Typography>
+        <Typography className="SectionTitle" variant="h1">How it works</Typography>
+        <Typography className="SectionSubTitle" variant="h4">Source is building a sharing economy to simplify tech development.</Typography>
 
                   <Typography variant="h5" paragraph={true} style={{color:"white"}}>
                   Find developers for your projects
@@ -374,7 +382,6 @@ class WelcomePage extends Component {
           </Grid>
           <Typography className="Scope" variant="body" paragraph={true}>
           <b>Scope:</b>
-          Source is building a sharing economy around development skills.
 
            designed to facilitate discussion, collaboration and crowdsourcing to build the internet's most exciting projects.
 
