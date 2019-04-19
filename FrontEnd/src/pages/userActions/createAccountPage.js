@@ -15,6 +15,7 @@ import {ic_done} from 'react-icons-kit/md/ic_done';
 import {ic_not_interested} from 'react-icons-kit/md/ic_not_interested'
 // Components
 import {Link} from 'react-router-dom';
+import PopUp from '../global/components/PopUp';
 // Redux
 import {connect} from 'react-redux';
 import {newUser, checkUsernameAvailability} from './../../actions/user.actions';
@@ -220,6 +221,7 @@ class CreateAccountPage extends Component {
     }
     return (
       <div className="CreateAccountPage">
+      <PopUp />
         <Typography variant="display3">Create Account</Typography>
         {this.props.newUserStatus==="PENDING" && (
           <div className="Form">

@@ -77,7 +77,7 @@ let Routes =()=>(
           <Route exact path="/createaccount" render={props=><CreateAccountPage {...props}/>}/>
           <Route exact path="/login" render={props=><LoginPage {...props}/>}/>
           <Route exact path="/resetpassword/:token" render={props=><ResetPassword {...props}/>}/>
-          dds<Route exact path="/requestpassword" render={()=><RequestNewPass/>}/>
+          <Route exact path="/requestpassword" render={()=><RequestNewPass/>}/>
           <Route exact path="/getstarted" render={props=><GetStarted {...props}/>}/>
 
           {/* I don't know */}

@@ -7,6 +7,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import Switch from '@material-ui/core/Switch';
 // Components
 import {Link} from 'react-router-dom';
+import PopUp from '../global/components/PopUp';
 // Redux
 import {connect} from 'react-redux';
 import {getUser,getSignInStatus} from './../../reducers/user.reducer';
@@ -72,6 +73,7 @@ class LoginPage extends Component {
     if(this.props.signInStatus==="SUCCESS" || (this.props.user.token!==false && this.props.user.token!==undefined)){this.redirect()}
     return (
       <div className="LoginPage">
+        <PopUp/>
         <Typography variant="display3">Login</Typography>
         {this.props.signInStatus==="PENDING" && (
           <div className="Form">

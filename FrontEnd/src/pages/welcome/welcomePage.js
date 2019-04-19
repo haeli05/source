@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import Fade from '@material-ui/core/Fade';
+import List from '@material-ui/core/List';
 // Components
 import JoinQueue from './components/joinQueue';
 import PayButton from '../payments/payButton';
@@ -300,94 +301,60 @@ class WelcomePage extends Component {
 
         </div>
         <div className="Section Section3">
-        <Typography className="SectionTitle" variant="h1">How it works</Typography>
+        <Typography className="SectionTitle" variant="h2">How it works</Typography>
         <Typography className="SectionSubTitle" variant="h4">Source is building a sharing economy to simplify tech development</Typography>
 
-                  <Grid container spacing={16}>
-                    <Grid item xs={5}>
+                  <Grid container spacing={6}>
+                    <Grid item xs={7}>
                     <div className="Description">
                     <Typography variant="h5" paragraph={true} >
-                    Source supports your projects from ideation to implementation.
+                    Our community of developers, technology professionals, and consultants support your projects from ideation to implementation.
                     </Typography>
                       <Typography variant="body" paragraph={true} style={{textAlign:"left"}}>
 
                       <br/>
-                      Our community members, and partners deliver actionable insight, feedback and contribute code
-                      to your ideas and projects.
+                      Your <div id="CustProjects"/> receive actionable insight, feedback and code contributions.
                       <br/>
-
-                      designed to help build your <div id="CustProjects"/>
+                      <br/>
                       </Typography>
+
                     </div>
                     </Grid>
-                    <Grid item xs={3}>
-                      <Fade in={true}>
-                        <img className="DevImage" src={developerImage} alt="developers"/>
-                      </Fade>
-                    </Grid>
-                    <Grid item xs={4}>
+
+                    <Grid item xs={5}>
                     <Fade in={true}>
                       <img className="DevImage2" src={developerImage2} alt="developers"/>
                     </Fade>
                     </Grid>
-                    <Grid item xs={12}>
-                    <Typography variant="h3" paragraph={true} >
+                    </Grid>
+
+                    <Grid>
+                    <Typography variant="h4" paragraph={true} className="SectionSubTitle">
                     While enabling community driven implementation and funding
                     </Typography>
+
+                    <Grid item xs={2}>
+                      <Fade in={true}>
+                        <img className="DevImage" src={developerImage} alt="developers"/>
+                      </Fade>
                     </Grid>
-                    <Grid item xs={3}>
-
-                    <Typography variant="h5" paragraph={true} >
-
-                    Free: Crowdfunding + Open Source
-                    Minimal:
-                    Bespoke: Tailored technical solutions
-                    <br/>
-                    <br/>
-                    1. Describe your idea or scope your project.
-                    <br/>
-                    2. Determine your price points for individual features
-                    <br/>
-                    3. Our community of talent delivers
-                    <br/>
-            <br />
-              </Typography>
+                    <Grid item xs={10}>
+                      <Typography variant="h5" paragraph={true} >
+                      Open Source style collaboration + Monetized Tasks + Crowdfunding
+                      </Typography>
                     </Grid>
                 </Grid>
-                  <br/>
-
-
-        <br/>
-        <Typography className="SectionTitle" variant="h3">Are you a developer?</Typography>
-        <Typography variant="h6" paragraph={true} >
-            Meet Talent, Monetize your skills/community engagement?
-        </Typography>
-          <Typography variant="h5" paragraph={true} >
-        <br />
-        1. Find tasks relevant to your skillset.
-        <br/>
-        2. Work with the team, deliver the goods.
-        <br/>
-        3. ???
-        <br/>
-        4. Profit.
-        </Typography>
-
         </div>
         <div className="Section Section5" id="todo">
-          To put these ideas to test, we've decided to crowdsource the beta!
+          Help us build the beta!
           <Typography variant="h2" className="SectionTitle">source</Typography>
           <Typography variant="h4" className="SectionTitle">The Internet's Tech Incubator. </Typography>
           <Grid container spacing={4}>
-            <Grid item xs={6}>
+            <Grid item xs={8}>
             <Typography variant="overline2" className="SectionTitle">Support this project</Typography>
+            <div className="Subheading">
             <PayButton />
-            </Grid>
-            <Grid item xs={6}>
               <div className="MajorActionButtonsHorizontal">
-              <div className="MajorActionButtonDiv">
-                <SupportButton {...this.props} goToRoom={this.props.goToRoom}/>
-              </div>
                 <div className="MajorActionButtonDiv">
                   <MessageButton {...this.props} goToRoom={this.props.goToRoom}/>
                 </div>
@@ -395,19 +362,20 @@ class WelcomePage extends Component {
                   <ShareButton {...this.props} title={this.props.title} url={this.props.url}/>
                 </div>
               </div>
+            </div>
             </Grid>
           </Grid>
           <Typography className="Scope" variant="body" paragraph={true}>
           <b>Scope:</b>
-
-           designed to facilitate discussion, collaboration and crowdsourcing to build the internet's most exciting projects.
-
+          <br/>
+           Designed to facilitate discussion, collaboration and crowdsourcing to build the internet's most exciting projects.
+          <br/>
           Our stack combines a react front end with modular backend components.
 
 
 
           Components:
-
+          <br/><br/>
           Ideas includes a social-blog like text area to discuss, well, ideas and potential projects
           Functionality: Comments (Done)
 
@@ -417,11 +385,12 @@ class WelcomePage extends Component {
 
           People: Social integration, allows users to filter their site experience based on relevant skills, while also allowing project managers to track and find contributors.
 
-          <b>Interested in Contributing:</b>
-          To donate: Use the Pay button above
-
-          Suggestions: Use the email feedback or use spectrum
-
+          <b>Interested in Contributing?</b>
+          To donate: Use the Pay button above<br/>
+          Suggestions: Use the email feedback or use spectrum<br/>
+          <br/><br/>
+          Submit pull requests to: https://github.com/haeli05/source
+          <br/><br/>
           Important!!
           Please reach out to discuss your implementation first before starting work.
           We will not pay for code that do not fit our criteria.

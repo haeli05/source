@@ -28,15 +28,17 @@ class PopUp extends React.Component {
       </Button>
       </div>
         <Typography variant="h4">
-        We are currently in development.
-        <br/>
-        More features will become available over time.
-        <br/>
-        <br/>
-        Contribute to the development <a href="/#todo">here.</a>
-        <br/>
-        <br/>
-        Please report bugs with the Feedback button on the bottom left.
+          We are currently in development.
+          <br/>
+          More features will become available over time.
+          <br/>
+          <br/>
+          Login and Registration is disabled until database migration completes.
+          <br/>
+          Contribute to our development <a href="/#todo">here.</a>
+          <br/>
+          <br/>
+          Please report bugs with the Feedback button on the bottom left.
         </Typography>
       </Paper>
     )}
