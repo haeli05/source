@@ -311,7 +311,8 @@ class WelcomePage extends Component {
                     Our community of developers, technology professionals, and consultants support your projects from ideation to implementation.
                     </Typography>
                       <Typography variant="body" paragraph={true} style={{textAlign:"left"}}>
-
+                      -Share your ideas and Projects
+                      -Get Feedback
                       <br/>
                       Your <div id="CustProjects"/> receive actionable insight, feedback and code contributions.
                       <br/>
@@ -340,8 +341,16 @@ class WelcomePage extends Component {
                     </Grid>
                     <Grid item xs={10}>
                       <Typography variant="h5" paragraph={true} >
-                      Open Source style collaboration + Monetized Tasks + Crowdfunding
+                      Open Source style collaboration meets Crowdfunding and Monetized Tasks
                       </Typography>
+                      Public and private projects are broken down into subtasks, that can be matched to anyone.
+
+                      Monetize their skills instantly.
+
+                      1. Find a task relevant to your skillset
+                      2. Work with the project manager to deliver
+                      3. ???
+                      4. Profit.
                     </Grid>
                 </Grid>
         </div>
@@ -371,8 +380,7 @@ class WelcomePage extends Component {
            Designed to facilitate discussion, collaboration and crowdsourcing to build the internet's most exciting projects.
           <br/>
           Our stack combines a react front end with modular backend components.
-
-
+          <br/><br/>
 
           Components:
           <br/><br/>
@@ -398,7 +406,7 @@ class WelcomePage extends Component {
           Skills: Check the todo list and message us on telegram or spectrum if you want to take over the development for a component. We pay for good work.
           </Typography>
 
-          <Board />
+          <Board boardTitle="source todo board" description="crowdsourced hackathon" />
         </div>
 
       </div>

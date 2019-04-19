@@ -347,27 +347,9 @@ class Board extends Component {
           <div className="BoardSelector MarginRight10">
             <FormControl variant="outlined">
               <InputLabel ref={ref => {this.boardref = ReactDOM.findDOMNode(ref);}}>
-                Board
+                source todo list
               </InputLabel>
-              <Select
-                value={this.state.board}
-                onChange={this.handleChange}
-                inputProps={{
-                  name: 'board',
-                }}
-                input={
-                  <OutlinedInput
-                    labelWidth={this.boardref ? this.boardref.offsetWidth : 0}
-                  />
-                }
-              >
-              <MenuItem value="tutorial">tutorial</MenuItem>
-              <MenuItem value="new board">new board</MenuItem>
-              </Select>
             </FormControl>
-          </div>
-          <div className="NewBoardButton">
-            <Button variant="outlined"><Icon icon={arrows_plus} size={20}/>New Board</Button>
           </div>
         </div>
           <div className="Title MarginRight10">
