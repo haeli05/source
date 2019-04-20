@@ -27,6 +27,9 @@ import RightBracket from './../../assets/svg/rightbracket.svg';
 
 import { PayPalButton } from "react-paypal-button-v2";
 
+//Analytics
+import ReactGA from 'react-ga';
+
 const malarkey = require('malarkey');
 const ScrollMagic = require("scrollmagic");
 
@@ -146,6 +149,10 @@ class WelcomePage extends Component {
       axios.post('/mail',{email:this.state.SignUpEmail});
       axios.post('/mail2',{email:this.state.SignUpEmail,feedback:this.state.SignUpEmail});
       this.setState({sent:true});
+      ReactGA.event({
+            category: 'SignUp',
+            action: 'Signed Up for Mailing List',
+        });
     } else {
       this.setState({emailError:true});
       this.setState({emailErrorMessage:"Please provide a valid email"});
@@ -294,8 +301,7 @@ class WelcomePage extends Component {
         <div className="Section Section5" id="todo">
           Help us build the beta!
           <Typography variant="h2" className="SectionTitle">source</Typography>
-          <Typography variant="h4" className="SectionTitle">The Internet's Tech Incubator. </Typography>
-
+          <Typography variant="subtitle1" className="SectionTitle">The Internet's Tech Incubator. </Typography>
             <div className="Subheading">
             <Typography variant="overline2" className="SectionTitle">Support this project:  </Typography>
             <PayButton />
@@ -310,12 +316,15 @@ class WelcomePage extends Component {
             </div>
 
           <Typography className="Scope" variant="body" paragraph={true}>
+          <b>Temporary repository at:</b> <a href="https://github.com/haeli05/source">https://github.com/haeli05/source</a>
           <b>Scope:</b>
-          Our stack combines a react front end with modular backend components, designed to facilitate discussion, collaboration and crowdsourcing for projects.
           <br/>
-          <b>Components:</b>
+          Our stack combines a react front end with modular backend components, designed to facilitate discussion, collaboration and crowdsourcing for projects.
           <br/><br/>
+          <b>Components:</b>
+          <br/>
           Ideas includes a social-blog like text area to discuss, well, ideas and potential projects
+
           Functionality: Comments (Done)
 
           The Project component hosts a project's files, its contributors, task boards and displays links for crowdfunding.
@@ -326,15 +335,17 @@ class WelcomePage extends Component {
 
           <b>Interested in Contributing?</b>
           To donate: Use the Pay button above<br/>
-          Suggestions: Use the email feedback or use spectrum<br/>
+          Suggestions: Send us an email or use spectrum<br/>
           <br/><br/>
+          Check the todo list and message us on telegram or spectrum if you want to take over the development for a component.
+
+          <br/>We will pay for contributions.
+          <br/>
           Submit pull requests to: https://github.com/haeli05/source
           <br/><br/>
-          Important!!
+          <b>Important!!</b>
           Please reach out to discuss your implementation first before starting work.
           We will not pay for code that do not fit our criteria.
-
-          Skills: Check the todo list and message us on telegram or spectrum if you want to take over the development for a component. We pay for good work.
           </Typography>
 
           <Board boardTitle="To Do" description="Features in development. Payment as listed" />

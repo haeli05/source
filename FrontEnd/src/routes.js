@@ -40,13 +40,36 @@ import SnackBar from './pages/global/components/snackBar';
 //le Demo
 import QuantStamp from './pages/app/quantstamp';
 
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('UA-138662125-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
+
+// <div>
+// <!-- Global site tag (gtag.js) - Google Analytics -->
+// <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138662125-1"></script>
+// <script>
+//   window.dataLayer = window.dataLayer || [];
+//   function gtag(){dataLayer.push(arguments);}
+//   gtag('js', new Date());
+//
+//   gtag('config', 'UA-138662125-1');
+// </script>
+// </div>
+function fireTracking() {
+    ReactGA.pageview(window.location.hash);
+}
+
 
 let Routes =()=>(
-  <Router history={history}>
+  <Router onUpdate={fireTracking} history={history}>
+
     <div className="app">
       <Route path="/" render={props=><Navbar {...props}/>}/>
       <Route path="/" render={props=><SnackBar {...props}/>}/>
       <div className="TheEntirePageMinusFooter">
+      <div className="GoogleTracking">
+      </div>
         <Switch>
           {/* Landing */}
           <Route exact path="/" render={props=><App {...props}/>}/>

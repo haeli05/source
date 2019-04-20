@@ -57,6 +57,7 @@
     "react-dom": "^16.8.3",
     "react-dropzone": "^7.0.1",
     "react-event-listener": "^0.6.6",
+    "react-ga": "^2.5.7",
     "react-head": "^3.1.0",
     "react-icons": "^3.4.0",
     "react-icons-kit": "^1.2.1",
