@@ -24,6 +24,7 @@ import RepoCard from './components/repoCard';
 import {ShareButton} from '../global/components/majorActionButtons.js';
 import TopicBar from './components/topicBar.js';
 import LoginPrompt from '../global/components/loginPrompt.js';
+import PopUp from '../global/components/PopUp.js';
 
 class ExploreProjects extends Component {
   constructor(props) {
@@ -101,6 +102,7 @@ class ExploreProjects extends Component {
               <ShareButton {...this.props} url={window.location.href} />
             </div>
           </div>
+          <PopUp />
           <Typography variant="h2">Explore</Typography>
         </div>
         <LoginPrompt open={this.state.loginPromptPopUp} close={this.closeLoginPrompt}/>

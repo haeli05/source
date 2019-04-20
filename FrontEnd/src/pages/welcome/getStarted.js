@@ -95,16 +95,17 @@ class GetStarted extends Component {
                   color="primary"
                   aria-label="Spectrum Chat"
                   className="Button"
+                  href="https://spectrum.chat/sourcenetwork-io?tab=posts"
                   >
                   <ReactSVG src={MessageBlob} className="ReactSVGIcon Icon25 LeftIcon"/>
                   Chat
                   </Fab>
-
                   <Fab
                   variant="extended"
                   size="large"
                   color="secondary"
                   className="Button"
+                  href="mailto:source@sourcenetwork.io"
                   >
                     <ReactSVG src={Letter} className="ReactSVGIcon Icon25 LeftIcon Letter"/>
                   Email
@@ -120,7 +121,7 @@ class GetStarted extends Component {
 
             <TextField
             fullWidth
-              label="Name"
+              label="Email"
               type="email"
               onChange={this.handleChangeSignUp}
               margin="wide"

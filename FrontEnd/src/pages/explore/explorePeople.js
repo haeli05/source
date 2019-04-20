@@ -20,6 +20,7 @@ import PersonCard from './components/personCard';
 import {ShareButton} from '../global/components/majorActionButtons.js';
 import Friends from './../../assets/svg/friend.svg';
 import TopicBar from './components/topicBar.js';
+import PopUp from '../global/components/PopUp.js';
 // Redux
 import {connect} from 'react-redux'
 import {fetchPeople} from './../../actions/people.actions'
@@ -93,6 +94,7 @@ class ExplorePeople extends Component {
               <ShareButton {...this.props} url={window.location.href} />
             </div>
           </div>
+          <PopUp />
           <Typography variant="h2">Explore</Typography>
         </div>
         <div className="Body">

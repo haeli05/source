@@ -65,7 +65,7 @@ export default class SendFeedback extends React.Component {
             maxWidth="sm"
           >
             <div className="SentSuccessfullyPopUp TextCenter">
-              <DialogTitle>Thank you for helping us improve Source!</DialogTitle>
+              <DialogTitle>Thank you for your Message</DialogTitle>
               <div className="Action">
                 <Button className="CloseButton" onClick={this.toggleOpen} variant="contained" color="primary">Close</Button>
               </div>

@@ -903,6 +903,12 @@ time {
 
 
 /* ================================= GLOBAL ================================= */
+.Hidden {
+  display: hidden;
+}
+.None {
+  display: none;
+}
 .ChatWindow {
   position: fixed;
   bottom: 0%;
@@ -3208,6 +3214,7 @@ body {
     .WelcomeSignUp {
       animation: fadeinHero2 4s linear;
       .GetStarted{
+        background-color: $Surface;
         margin-top: 2vh;
         display: inline-block;
         float: left;
@@ -3284,13 +3291,13 @@ body {
   .Section3 {
 
     background-color: $Light;
-    padding-bottom: 2vh;
+    padding-bottom: 6vh;
     .SectionTitle {
 
     }
     .SectionSubTitle {
-      margin-top: 3vh;
-      margin-bottom: 5vh;
+      margin-top: 4vh;
+      margin-bottom: 6vh;
       text-align: center;
     }
     .DevImage {
@@ -3310,6 +3317,20 @@ body {
   }
   .Section5 {
     background-color: white;
+    .Scope {
+      text-align: left;
+      padding-left: 5vw;
+      padding-right: 5vw;
+    }
+    .Subheading {
+      display: inline-flex;
+      align-items: center;
+      vertical-align: center;
+
+      .SectionTitle {
+        margin-right: 14px;
+      }
+    }
   }
 }
 
@@ -3329,19 +3350,37 @@ body {
 .Board {
   width: 100%;
   max-width: 100%;
-  background-color: $Dark;
+  background-color: $Light;
+  border-radius: 36px;
+  border-style: solid;
+  border-color: $Dark;
+  border-width: 0.5px;
+  padding-bottom: 24px;
+  padding-left: 4px;
+  padding-right: 4px;
   .Header{
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    justify-content: center;
     width: calc(100% - 20px);
-    padding: 10px;
+    padding: 5px;
+    text-align: center;
+    .Title {
+      width: auto;
+    }
+    .BoardSelector {
+      width: 100px;
+    display:hidden;
+    }
     .Actions {
+      float: right;
+      display: hidden;
       margin-left: auto;
     }
   }
   .Body {
     display: inline-flex;
-    background-color: $Dark;
+    background-color: $Light;
     width: 100%;
     min-height: 80vh;
     max-height: 80vh;
@@ -3366,6 +3405,9 @@ body {
 
 .Column {
   padding: 8px;
+  border-radius: 32px;
+  border-color: $Darkest;
+  border-width: 2px;
   .ColumnHeader {
     padding: 4px 8px 0px 8px;
     //border-radius: 6px 6px 0px 0px;
@@ -3585,17 +3627,21 @@ body {
   z-index: 1000;
   position: absolute;
   left: 10vw;
-  top:10vh;
-  width: 80vw;
+  margin-right: 10vw;
+  top: 10vh;
+  width: 65vw;
   padding-top: 2vh;
-  padding-bottom: 6vh;
+  padding-bottom: 4vh;
+  padding-left: 7vw;
+  padding-right: 7vw;
   .Head{
     display: flex;
     align-items: right;
   .CloseButton {
+    position: relative;
     float: right;
     align-self: right;
-    margin: 2vh 2vh 2vh 2vh;
+//    margin: 2vh 2vh 2vh 2vh;
   }
 }
 }

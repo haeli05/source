@@ -30,10 +30,15 @@ class PopUp extends React.Component {
         <Typography variant="h4">
           We are currently in development.
           <br/>
-          More features will become available over time.
           <br/>
-          <br/>
+
+            </Typography>
+            <Typography variant="subtitle">
+            More features will become available over time.
+            <br/>
+            <br/>
           Login and Registration is disabled until database migration completes.
+          <br/>
           <br/>
           Contribute to our development <a href="/#todo">here.</a>
           <br/>

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Tooltip from '@material-ui/core/Tooltip';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import Fade from '@material-ui/core/Fade';
@@ -12,7 +13,7 @@ import List from '@material-ui/core/List';
 import JoinQueue from './components/joinQueue';
 import PayButton from '../payments/payButton';
 import ReactSVG from 'react-svg';
-
+import axios from 'axios';
 import { ShareButton, MessageButton, SupportButton } from './../global/components/majorActionButtons';
 
 // MISC
@@ -20,6 +21,7 @@ import logo from './img/logo.png';
 import developerImage from './img/devs.jpg';
 import developerImage2 from './img/dev2.jpg';
 import HammerScrew from '../../assets/svg/hammer_screwdriver_2.svg';
+import Comment from '../../assets/svg/comment.svg';
 import Board from './../workflow/Board';
 import RightBracket from './../../assets/svg/rightbracket.svg';
 
@@ -36,54 +38,17 @@ class WelcomePage extends Component {
       Mission2: "MissionHiddenStart",
       controller: null,
       lastKeys: [],
-      username: '',
+      SignUpEmail: '',
+      emailError: false,
+      emailErrorMessage: '',
+      sent: false
     }
-    this.listenScrollEvent=this.listenScrollEvent.bind(this);
-    this.conditionallyAnimate=this.conditionallyAnimate.bind(this);
-    this.animate=this.animate.bind(this);
+
     this.handleChangeSignUp=this.handleChangeSignUp.bind(this);
   }
 
   componentDidMount(){
     document.addEventListener("keydown", this._handleKeyDown.bind(this));
-    // const element = document.querySelector('#typeElement')
-    // function callback (text) {
-    //   element.textContent = text
-    // }
-    // const options = {
-    //   typeSpeed: 50,
-    //   deleteSpeed: 10,
-    //   pauseDuration: 1600,
-    //   repeat: true
-    // }
-    // malarkey(callback, options)
-    //   .type(`Hey guys, let's build a decentralized collaboration platform!`)
-    //   .pause()
-    //   .delete()
-    //   .type(`Seeking Ruby Engineers for a smart contract platform`)
-    //   .pause()
-    //   .delete()
-    //   .type("急需区块链工程师，自己开发太慢了！")
-    //   .pause()
-    //   .delete()
-    //   .type(`Seeking developers! We are building a TCR based POS/POA/POW hybrid blockchain with AI and Quantum proof hashgraph consensus algorithms for everyone's IOT device that will cure cancer and bring world peace.`)
-    //   .pause()
-    //   .delete()
-    //   .type(`Checkout Catnip: Tinder for CryptoKitties! Meow!`)
-    //   .pause()
-    //   .delete()
-    //   .type(`Ich suche developers die mir mit ein iOS app helfen können`)
-    //   .pause()
-    //   .delete()
-    //   .type("Let's build a city in the sky and name it Columbia!!")
-    //   .pause()
-    //   .delete()
-    //   .type("Software Engineers required. I'm building a blockchain for grandmothers and non-techies!")
-    //   .pause()
-    //   .delete()
-    //   .type(`Such wow, much platform, very technology. Wow. Amazing. Much amaze`)
-    //   .pause()
-    //   .delete()
 
       const element1 = document.querySelector('#whatissource')
       function callback1 (text) {
@@ -122,28 +87,6 @@ class WelcomePage extends Component {
         .delete()
 
 
-        //
-        // const element2 = document.querySelector('#audience')
-        // function callback2 (text) {
-        //   element2.textContent = text
-        // }
-        // const options2 = {
-        //   typeSpeed: 80,
-        //   deleteSpeed: 15,
-        //   pauseDuration: 1900,
-        //   repeat: true
-        // }
-        // malarkey(callback2, options2)
-        //   .type(`developer`)
-        //   .pause()
-        //   .delete()
-        //   .type(`engineer`)
-        //   .pause()
-        //   .delete()
-        //   .type(`designer`)
-        //   .pause()
-        //   .delete()
-
           const element3 = document.querySelector('#CustProjects')
           function callback3 (text) {
             element3.textContent = text
@@ -171,41 +114,11 @@ class WelcomePage extends Component {
             .pause()
             .delete()
 
-
-    window.addEventListener('scroll', this.listenScrollEvent);
-    window.addEventListener("resize",this.conditionallyAnimate,false);
-    this.conditionallyAnimate();
   }
 
-  conditionallyAnimate() {
-    if (window.innerWidth > 1100) {
-      if (!this.state.controller) {
-        const controller = new ScrollMagic.Controller({
-          globalSceneOptions: { triggerHook: "onLeave" }
-        });
-        this.setState({ controller }, () => {
-          this.animate(controller);
-        });
-      }
-    }
-    else {
-      if (this.state.controller) { this.state.controller.destroy() }
-      this.setState({ controller: null });
-    }
-  }
-
-  animate(controller) {
-    // Logo
-    var logo = new ScrollMagic.Scene({triggerElement:"#Magic", duration: 800, offset: -100})
-    // pins the element for the the scene's duration
-    logo.setPin("#Magic");
-    // assign the scene to the controller
-    logo.addTo(controller);
-  }
 
   componentWillUnmount(){
-    window.removeEventListener('scroll', this.listenScrollEvent);
-    window.removeEventListener("resize",this.conditionallyAnimate,false);
+
     document.removeEventListener("keydown", this._handleKeyDown.bind(this));
   }
 
@@ -223,17 +136,21 @@ class WelcomePage extends Component {
     }
   }
 
-  listenScrollEvent() {
-    // Make the mission statements appear at certain times
-    if (window.pageYOffset > 300) {this.setState({Mission1:"Mission"});}
-    else {this.setState({Mission1:"MissionHidden"})}
-    if (window.pageYOffset > 600) {this.setState({Mission2:"Mission"})}
-    else {this.setState({Mission2:"MissionHidden"})}
-  }
 
   handleChangeSignUp(e){
-    this.setState({username:e.target.value});
+    this.setState({SignUpEmail:e.target.value});
   }
+
+  SignUpSubmit(text, stringBody){
+    if ( this.state.SignUpEmail!=="" && this.state.SignUpEmail.includes("@") && this.state.SignUpEmail.includes(".")){
+      axios.post('/mail',{email:this.state.SignUpEmail});
+      axios.post('/mail2',{email:this.state.SignUpEmail,feedback:this.state.SignUpEmail});
+      this.setState({sent:true});
+    } else {
+      this.setState({emailError:true});
+      this.setState({emailErrorMessage:"Please provide a valid email"});
+    }
+  };
 
   render() {
     return (
@@ -241,7 +158,7 @@ class WelcomePage extends Component {
         <div className="Hero">
           <div className="WelcomeSignUp">
 
-          <Grid container spacing={18}>
+          <Grid container spacing={10}>
             <Grid item xs={6}>
             <Typography className="Mission" color="textPrimary" variant="h1">
             The Internet's <br/>Tech Incubator
@@ -288,8 +205,11 @@ class WelcomePage extends Component {
               margin="wide"
               variant="outlined"
               className="SignUpInput"
+              error={this.state.emailError}
             />
-            <Button variant="outlined" className="SignUpButton" component={Link} to={{pathname:"/createaccount", state:{username:this.state.username}}}>Sign Up</Button>
+             <Tooltip title={this.state.emailErrorMessage}>
+              <Button variant="outlined" className="SignUpButton"  onClick={this.SignUpSubmit}>Sign Up</Button>
+            </Tooltip>
           </div>
         </div>
         <div className="Section Section2">
@@ -304,64 +224,80 @@ class WelcomePage extends Component {
         <Typography className="SectionTitle" variant="h2">How it works</Typography>
         <Typography className="SectionSubTitle" variant="h4">Source is building a sharing economy to simplify tech development</Typography>
 
-                  <Grid container spacing={6}>
-                    <Grid item xs={7}>
+                  <Grid container spacing={8}>
+                    <Grid item xs={6}>
                     <div className="Description">
                     <Typography variant="h5" paragraph={true} >
                     Our community of developers, technology professionals, and consultants support your projects from ideation to implementation.
                     </Typography>
                       <Typography variant="body" paragraph={true} style={{textAlign:"left"}}>
-                      -Share your ideas and Projects
-                      -Get Feedback
+
+                      <ul>
+                      <li>Share your ideas and Projects</li>
+                      <li>Receive actionable insight, feedback and contributions.</li>
+                      <li>Get matched with contributors</li>
+                      </ul>
                       <br/>
-                      Your <div id="CustProjects"/> receive actionable insight, feedback and code contributions.
                       <br/>
-                      <br/>
+                      Less time spent on logistics means more time spent on what matters: <b>building the product.</b>
                       </Typography>
 
                     </div>
                     </Grid>
 
-                    <Grid item xs={5}>
+                    <Grid item xs={6}>
                     <Fade in={true}>
                       <img className="DevImage2" src={developerImage2} alt="developers"/>
                     </Fade>
                     </Grid>
                     </Grid>
-
-                    <Grid>
                     <Typography variant="h4" paragraph={true} className="SectionSubTitle">
                     While enabling community driven implementation and funding
                     </Typography>
-
-                    <Grid item xs={2}>
+                  <Grid container spacing={6}>
+                    <Grid item xs={4} sm={3}>
                       <Fade in={true}>
                         <img className="DevImage" src={developerImage} alt="developers"/>
                       </Fade>
                     </Grid>
-                    <Grid item xs={10}>
+                    <Grid item xs={8} sm={8}>
+                    <div className="Description">
                       <Typography variant="h5" paragraph={true} >
-                      Open Source style collaboration meets Crowdfunding and Monetized Tasks
+                      Open Source style collaboration + Crowdfunding + Monetized Tasks
                       </Typography>
                       Public and private projects are broken down into subtasks, that can be matched to anyone.
 
-                      Monetize their skills instantly.
-
-                      1. Find a task relevant to your skillset
-                      2. Work with the project manager to deliver
-                      3. ???
-                      4. Profit.
+                      Monetize your skills, get paid in cash or crypto
+                      <ol>
+                      <li>Find a task relevant to your skillset</li>
+                      <li>Work with the project manager to deliver</li>
+                      <li>???</li>
+                      <li>Profit.</li>
+                      </ol>
+                      </div>
                     </Grid>
                 </Grid>
+        <br/>
+        <Typography variant="overline2">Have a project you need help with?</Typography>
+        <br/>
+        <Fab
+        variant="extended"
+        size="large"
+        color="primary"
+        className="TodoButton"
+        href="/getstarted"
+        >
+          <ReactSVG src={Comment} className="ReactSVGIcon Icon25 LeftIcon"/>
+        Contact Us
+        </Fab>
         </div>
         <div className="Section Section5" id="todo">
           Help us build the beta!
           <Typography variant="h2" className="SectionTitle">source</Typography>
           <Typography variant="h4" className="SectionTitle">The Internet's Tech Incubator. </Typography>
-          <Grid container spacing={4}>
-            <Grid item xs={8}>
-            <Typography variant="overline2" className="SectionTitle">Support this project</Typography>
+
             <div className="Subheading">
+            <Typography variant="overline2" className="SectionTitle">Support this project:  </Typography>
             <PayButton />
               <div className="MajorActionButtonsHorizontal">
                 <div className="MajorActionButtonDiv">
@@ -372,17 +308,12 @@ class WelcomePage extends Component {
                 </div>
               </div>
             </div>
-            </Grid>
-          </Grid>
+
           <Typography className="Scope" variant="body" paragraph={true}>
           <b>Scope:</b>
+          Our stack combines a react front end with modular backend components, designed to facilitate discussion, collaboration and crowdsourcing for projects.
           <br/>
-           Designed to facilitate discussion, collaboration and crowdsourcing to build the internet's most exciting projects.
-          <br/>
-          Our stack combines a react front end with modular backend components.
-          <br/><br/>
-
-          Components:
+          <b>Components:</b>
           <br/><br/>
           Ideas includes a social-blog like text area to discuss, well, ideas and potential projects
           Functionality: Comments (Done)
@@ -406,7 +337,7 @@ class WelcomePage extends Component {
           Skills: Check the todo list and message us on telegram or spectrum if you want to take over the development for a component. We pay for good work.
           </Typography>
 
-          <Board boardTitle="source todo board" description="crowdsourced hackathon" />
+          <Board boardTitle="To Do" description="Features in development. Payment as listed" />
         </div>
 
       </div>
