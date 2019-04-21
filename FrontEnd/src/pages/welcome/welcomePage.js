@@ -46,82 +46,52 @@ class WelcomePage extends Component {
       emailErrorMessage: '',
       sent: false
     }
-
+    this.SignUpSubmit=this.SignUpSubmit.bind(this);
     this.handleChangeSignUp=this.handleChangeSignUp.bind(this);
   }
 
   componentDidMount(){
     document.addEventListener("keydown", this._handleKeyDown.bind(this));
 
-      const element1 = document.querySelector('#whatissource')
-      function callback1 (text) {
-        element1.textContent = text
-      }
-      const options1 = {
-        typeSpeed: 70,
-        deleteSpeed: 20,
-        pauseDuration: 1800,
-        repeat: true
-      }
-      malarkey(callback1, options1)
-        .type(`blockchain engineers`)
-        .pause()
-        .delete()
-        .type(`technology professionals`)
-        .pause()
-        .delete()
-        .type(`software developers`)
-        .pause()
-        .delete()
-        .type(`product managers`)
-        .pause()
-        .delete()
-        .type(`designers`)
-        .pause()
-        .delete()
-        .type(`backers`)
-        .pause()
-        .delete()
-        .type(`investors`)
-        .pause()
-        .delete()
-        .type(`fans`)
-        .pause()
-        .delete()
-
-
-          const element3 = document.querySelector('#CustProjects')
-          function callback3 (text) {
-            element3.textContent = text
-          }
-          const options3 = {
-            typeSpeed: 80,
-            deleteSpeed: 15,
-            pauseDuration: 1900,
-            repeat: true
-          }
-          malarkey(callback3, options3)
-            .type(`Blockchain project`)
-            .pause()
-            .delete()
-            .type(`Web app`)
-            .pause()
-            .delete()
-            .type(`iOS app`)
-            .pause()
-            .delete()
-            .type(`Android app`)
-            .pause()
-            .delete()
-            .type(`bespoke software`)
-            .pause()
-            .delete()
-
+    const element1 = document.querySelector('#whatissource')
+    function callback1 (text) {
+      element1.textContent = text
+    }
+    const options1 = {
+      typeSpeed: 70,
+      deleteSpeed: 20,
+      pauseDuration: 1800,
+      repeat: true
+    }
+    malarkey(callback1, options1)
+      .type(`blockchain engineers`)
+      .pause()
+      .delete()
+      .type(`technology professionals`)
+      .pause()
+      .delete()
+      .type(`software developers`)
+      .pause()
+      .delete()
+      .type(`product managers`)
+      .pause()
+      .delete()
+      .type(`designers`)
+      .pause()
+      .delete()
+      .type(`backers`)
+      .pause()
+      .delete()
+      .type(`investors`)
+      .pause()
+      .delete()
+      .type(`fans`)
+      .pause()
+      .delete()
   }
 
 
   componentWillUnmount(){
-
     document.removeEventListener("keydown", this._handleKeyDown.bind(this));
   }
 
@@ -133,9 +103,9 @@ class WelcomePage extends Component {
     }
     this.setState({lastKeys:keyArray})
     var a = keyArray.join()
-    var b = [38,38,40,40,37,39,37,39,65,66].join()
+    var b = [38,38,40,40,37,39,37,39,66,65].join()
     if(a===b){
-      alert("Carlos sucks major donkey balls")
+      alert(":D")
     }
   }
 
@@ -144,7 +114,7 @@ class WelcomePage extends Component {
     this.setState({SignUpEmail:e.target.value});
   }
 
-  SignUpSubmit(text, stringBody){
+  SignUpSubmit(){
     if ( this.state.SignUpEmail!=="" && this.state.SignUpEmail.includes("@") && this.state.SignUpEmail.includes(".")){
       axios.post('/mail',{email:this.state.SignUpEmail});
       axios.post('/mail2',{email:this.state.SignUpEmail,feedback:this.state.SignUpEmail});
