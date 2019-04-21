@@ -35,28 +35,62 @@ class Board extends Component {
         tasks: {
           'task-1': {
             id: 'task-1',
-            content: "",
+            title: "Database Migration",
+            content: "MongoDB to PostGreSQL",
+            dueDate: "",
+            compensation: 1500
           },
           'task-2': {
             id: 'task-2',
-            content: "Hire talent",
+            title: "Git Hosting",
+            content: "GitLab to Gitolite",
+            dueDate: "",
+            compensation: 1500
           },
+          'task-3':{
+            id: 'task-3',
+          title: "Social Logins (FB, Twitter, GitHub,Google)",
+          content: "Integrate logins with these methods",
+          dueDate: "",
+          compensation: 1000
+        },
+          'task-4':{
+            id: 'task-4',
+          title: "Real Time Notifications",
+          content: "Apollo",
+          dueDate: "",
+          compensation: 500
+          },
+          'task-5':{
+          id:'task-5',
+          title: "Riot Chat integration",
+          content: "Riot.im",
+          dueDate: "",
+          compensation: 500
+        },
+          'task-6':{
+          id:'task-6',
+          title: "Marketing funnel",
+          content: "Discuss",
+          dueDate: "",
+          compensation: 500
+        }
         },
         columns: {
           'column-1' : {
             id: "column-1",
             title: "Front End",
-            taskIds: ['task-1','task-2'],
+            taskIds: ['task-3','task-4'],
           },
           'column-2' : {
             id: "column-2",
             title: "Back End",
-            taskIds: [],
+            taskIds: ['task-1','task2','task-3'],
           },
           'column-3' : {
             id: "column-3",
             title: "Misc",
-            taskIds: [],
+            taskIds: ['task-5','task-6'],
           },
         },
         columnOrder: ['column-1', 'column-2', 'column-3'],

@@ -235,7 +235,7 @@ export default class KanbanCard extends React.Component {
                 </div>
               </div>
               <div className="KanbanBody">
-                <Typography variant="body1">{this.props.task.description}</Typography>
+                <Typography variant="body1">{this.props.task.content}</Typography>
               </div>
               <div className="KanbanLabels">
                 {this.props.task.dueDate && (
@@ -244,12 +244,10 @@ export default class KanbanCard extends React.Component {
                   </div>
                 )}
                 <div className="KanbanLabel Compensation">
-                  <Typography>$12 USD</Typography>
+                  <Typography>{this.props.task.compensation}</Typography>
                 </div>
                 <div className="KanbanLabel Assigned">
-                  <Avatar src="https://s3.amazonaws.com/source-images-xyz/5J2rt6mKx1Fw8cfb3TvbzDs31y9r56MRHHNJzgef7xbnBUMCCQo" className="Avatar"/>
-                  <Typography className="Name">name</Typography>
-                  <Typography className="Username">@username</Typography>
+
                 </div>
               </div>
               {provided.placeholder}
