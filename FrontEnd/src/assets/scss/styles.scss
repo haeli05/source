@@ -3259,8 +3259,9 @@ body {
     }
     .Subheading {
       display: inline-flex;
-      align-items: center;
+      align-items: right;
       vertical-align: center;
+      padding-top: 2vw;
       padding-bottom: 4vw;
 
       .SectionTitle {

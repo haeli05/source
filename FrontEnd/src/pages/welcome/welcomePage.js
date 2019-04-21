@@ -285,7 +285,10 @@ class WelcomePage extends Component {
                   <a href="https://spectrum.chat/sourcenetwork-io?tab=posts" target="_blank">
                     <MessageButton {...this.props} goToRoom={this.props.goToRoom}/>
                   </a>
+                <div className="MajorActionButtonDiv">
+                 
                 </div>
+              </div>
               </div>
             </div>
 
@@ -293,7 +296,7 @@ class WelcomePage extends Component {
           <b>Temporary repository at:</b> <a href="https://github.com/haeli05/source">https://github.com/haeli05/source</a>
           <br/>
           <b>Goals:</b> Source is designed to facilitate discussion, and collaboration to build digital projects.
-          <b>Scope:</b>
+          <br/><b>Scope:</b>
           <br/>
           Our stack combines a react front end with modular backend components. We rely heavily on Open Source components to achieve different feature sets.
           <br/><br/>
