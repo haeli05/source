@@ -286,6 +286,9 @@ class WelcomePage extends Component {
                     <MessageButton {...this.props} goToRoom={this.props.goToRoom}/>
                   </a>
                 </div>
+                <div className="MajorActionButtonDiv">
+                  <ShareButton {...this.props} title={this.props.title} url={this.props.url}/>
+                </div>
               </div>
             </div>
 
