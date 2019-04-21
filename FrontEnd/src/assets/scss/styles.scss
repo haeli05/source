@@ -3096,70 +3096,14 @@ body {
 /* ================================ WELCOME ================================ */
 /* --------------------------- welcomePage.js ------------------------------ */
 
-@keyframes fadein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeinHero {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeinHero2 {
-  0% {
-    opacity: 0;
-  }
-  75% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeout {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes herofade {
-  0% {
-    padding-top: 40vh;
-  }
-  75% {
-    padding-top: 40vh;
-  }
-  100% {
-    padding-top: 20vh;
-  }
-}
-
 .WelcomePage {
   .Hero {
-    animation: herofade 3s ease;
-    padding-top: 7vh;
-    padding-bottom: 7vh;
-    text-align: center;
+    padding-top: 150px;
+    padding-bottom: 200px;
+    text-align: left;
     padding-left: 7%;
     padding-right: 7%;
     .WelcomeLogo {
-      animation: fadeinHero 2s linear;
       margin-bottom: 75px;
       img {
         width: 175px;
@@ -3171,17 +3115,10 @@ body {
     h3 {
       opacity: 0.87;
     }
-    .MissionHiddenStart {
-      opacity: 0;
-    }
     .Mission {
+      padding-top: 50px;
       text-align:left;
       opacity: 1;
-      animation: fadein 1.75s linear;
-    }
-    .MissionHidden {
-      opacity: 0;
-      animation: fadeout 0.75s linear;
     }
     .JoinNow {
       display: flex;
@@ -3212,12 +3149,10 @@ body {
       text-align: left;
     }
     .WelcomeSignUp {
-      animation: fadeinHero2 4s linear;
       .GetStarted{
-        background-color: $Surface;
         margin-top: 2vh;
         display: inline-block;
-        float: left;
+        margin-bottom: 25px;
       }
     }
   }
@@ -3330,6 +3265,34 @@ body {
 
       .SectionTitle {
         margin-right: 14px;
+      }
+    }
+  }
+  .TODOLIST {
+    text-align: center;
+    .board {
+      display: flex;
+      justify-content: center;
+      .column {
+        text-align: left;
+        width: 25vw;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 20px;
+        .task {
+          width: 80%;
+          border: solid 1px lightgrey;
+          border-radius: 4px;
+          margin-top: 10px;
+          padding: 10px;
+          .compensation {
+            font-size: .8125em;
+            font-family: "gotham_htfmedium";
+            background-color: black;
+            max-height: 18px;
+            color: white;
+          }
+        }
       }
     }
   }

@@ -49,32 +49,32 @@ class Board extends Component {
           },
           'task-3':{
             id: 'task-3',
-          title: "Social Logins (FB, Twitter, GitHub,Google)",
-          content: "Integrate logins with these methods",
-          dueDate: "",
-          compensation: 1000
-        },
+            title: "Social Logins (FB, Twitter, GitHub,Google)",
+            content: "Integrate logins with these methods",
+            dueDate: "",
+            compensation: 1000
+          },
           'task-4':{
             id: 'task-4',
-          title: "Real Time Notifications",
-          content: "Apollo",
-          dueDate: "",
-          compensation: 500
-          },
+            title: "Real Time Notifications",
+            content: "Apollo",
+            dueDate: "",
+            compensation: 500
+            },
           'task-5':{
-          id:'task-5',
-          title: "Riot Chat integration",
-          content: "Riot.im",
-          dueDate: "",
-          compensation: 500
-        },
+            id:'task-5',
+            title: "Riot Chat integration",
+            content: "Riot.im",
+            dueDate: "",
+            compensation: 500
+          },
           'task-6':{
-          id:'task-6',
-          title: "Marketing funnel",
-          content: "Discuss",
-          dueDate: "",
-          compensation: 500
-        }
+            id:'task-6',
+            title: "Marketing funnel",
+            content: "Discuss",
+            dueDate: "",
+            compensation: 500
+          }
         },
         columns: {
           'column-1' : {
@@ -85,7 +85,7 @@ class Board extends Component {
           'column-2' : {
             id: "column-2",
             title: "Back End",
-            taskIds: ['task-1','task2','task-3'],
+            taskIds: ['task-1','task-2','task-3'],
           },
           'column-3' : {
             id: "column-3",

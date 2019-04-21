@@ -10,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import Fade from '@material-ui/core/Fade';
 import List from '@material-ui/core/List';
+import Chip from '@material-ui/core/Chip';
 // Components
 import JoinQueue from './components/joinQueue';
 import PayButton from '../payments/payButton';
@@ -142,42 +143,34 @@ class WelcomePage extends Component {
         </Helmet>
         <div className="Hero">
           <div className="WelcomeSignUp">
-
-          <Grid container spacing={10}>
-            <Grid item xs={6}>
-            <Typography className="Mission" color="textPrimary" variant="h1">
-            The Internet's <br/>Tech Incubator
-            </Typography>
-            </Grid>
-            <Grid item xs={6}>
-                    <Typography className="Mission WhatIsSource" style={{marginTop:"0em"}} variant="h4" color="textPrimary">
-                    Source finds <div style={{display:"inline"}} id="whatissource"/>
-                    <br/>for your digital projects, while helping them monetize their skills.
-                    </Typography>
-                  <Button variant="outlined" style={{align:"left"}} className="GetStarted" component={Link} to="/getstarted">
+            <Grid container spacing={10}>
+              <Grid item xs={6}>
+                <Typography className="Mission" color="textPrimary" variant="h1">
+                  The Internet's <br/>Tech Incubator
+                </Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography className="Mission WhatIsSource" style={{marginTop:"0em"}} variant="h4" color="textPrimary">
+                Source finds <div style={{display:"inline"}} id="whatissource"/>
+                <br/>for your digital projects.
+                </Typography>
+                <Button variant="outlined" className="GetStarted" component={Link} to="/getstarted">
                   Get started
-                  </Button>
-            </Grid>
-            <Grid item xs={6}>
+                </Button>
+                <br/>
+                <Typography className="Mission WhatIsSource" variant="h4" color="textPrimary">
+                  We are currently in development. Interested in monetizing your skills?
+                </Typography>
+                <Button variant="contained" color="primary" className="GetStarted" component={Link} to="#todo">
+                  Help us build the beta
+                </Button>
+              </Grid>
+              <Grid item xs={6}>
 
+              </Grid>
+              <Grid item xs={6}>
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-
-            </Grid>
-          </Grid>
-          <div className="GetPaid">
-          <Typography variant="body">Want to get paid today?</Typography>
-          <Fab
-          variant="extended"
-          size="large"
-
-          className="TodoButton"
-          href="#todo"
-          >
-            <ReactSVG src={HammerScrew} className="ReactSVGIcon Icon25 LeftIcon"/>
-          Help us build the beta!
-          </Fab>
-          </div>
           </div>
         </div>
         <div className="Quote">
@@ -265,7 +258,7 @@ class WelcomePage extends Component {
                     </Grid>
                 </Grid>
         <br/>
-        <Typography variant="overline2">Have a project you need help with?</Typography>
+        <Typography variant="overline2">Have a project you want to list or need help with?</Typography>
         <br/>
         <Typography variant="h4">Contact a Tech Specialist.</Typography>
         <br/>
@@ -289,10 +282,9 @@ class WelcomePage extends Component {
             <PayButton />
               <div className="MajorActionButtonsHorizontal">
                 <div className="MajorActionButtonDiv">
-                  <MessageButton {...this.props} goToRoom={this.props.goToRoom}/>
-                </div>
-                <div className="MajorActionButtonDiv">
-                  <ShareButton {...this.props} title={this.props.title} url={this.props.url}/>
+                  <a href="https://spectrum.chat/sourcenetwork-io?tab=posts" target="_blank">
+                    <MessageButton {...this.props} goToRoom={this.props.goToRoom}/>
+                  </a>
                 </div>
               </div>
             </div>
@@ -343,7 +335,56 @@ class WelcomePage extends Component {
           We will not pay for subpar work that do not fit our criteria.
           </Typography>
 
-          <Board boardTitle="To Do" description="Features in development. Payment as listed" />
+          <div className="TODOLIST">
+            <Typography variant="h3">To Do</Typography>
+            <Typography>Features in development. Payment as listed</Typography>
+            <div className="board">
+              <div className="column">
+                <Typography variant="h4">Front End</Typography>
+                <div className="task">
+                  <Typography variant="h6">Social Logins (FB, Twitter, GitHub,Google)</Typography>
+                  <Typography variant="p">Integrate logins with these methods</Typography>
+                  <Chip label="$100" className="compensation"/>
+                </div>
+                <div className="task">
+                  <Typography variant="h6">Real Time Notifications</Typography>
+                  <Typography variant="p">Apollo</Typography>
+                  <Chip label="$500" className="compensation"/>
+                </div>
+              </div>
+              <div className="column">
+                <Typography variant="h4">Back End</Typography>
+                <div className="task">
+                  <Typography variant="h6">Database Migration</Typography>
+                  <Typography variant="p">MongoDB to PostGreSQL</Typography>
+                  <Chip label="$1000" className="compensation"/>
+                </div>
+                <div className="task">
+                  <Typography variant="h6">Git Hosting</Typography>
+                  <Typography variant="p">Gitlab to Gitolite</Typography>
+                  <Chip label="$1000" className="compensation"/>
+                </div>
+                <div className="task">
+                  <Typography variant="h6">Social Logins (FB, Twitter, GitHub,Google)</Typography>
+                  <Typography variant="p">Integrate logins with these methods</Typography>
+                  <Chip label="$1000" className="compensation"/>
+                </div>
+              </div>
+              <div className="column">
+                <Typography variant="h4">Misc</Typography>
+                <div className="task">
+                  <Typography variant="h6">Riot Chat Integration</Typography>
+                  <Typography variant="p">Riot.im</Typography>
+                  <Chip label="$500" className="compensation"/>
+                </div>
+                <div className="task">
+                  <Typography variant="h6">Marketing Funnel</Typography>
+                  <Typography variant="p">Discuss</Typography>
+                  <Chip label="$500" className="compensation"/>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>

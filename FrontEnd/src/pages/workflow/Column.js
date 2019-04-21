@@ -70,7 +70,7 @@ export default class Column extends Component {
                 {this.renderActions()}
               </div>
             </div>
-            <Droppable isDropDisabled={true} roppableId={this.props.column.id} type="task">
+            <Droppable isDropDisabled={true} droppableId={this.props.column.id} type="task">
               {provided => (
                 <div>
                   <div className="Lane"

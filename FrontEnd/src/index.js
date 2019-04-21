@@ -226,7 +226,7 @@ const theme = createMuiTheme({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        padding: "0px 20px",
+        padding: "7px 20px",
         transition: "0.5s ease",
         boxShadow: "none",
         '&:active': {
