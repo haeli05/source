@@ -113,6 +113,8 @@ class WelcomePage extends Component {
 
   handleChangeSignUp(e){
     this.setState({SignUpEmail:e.target.value});
+    this.setState({emailError:false})
+    this.setState({emailErrorMessage:""})
   }
 
   SignUpSubmit(){
@@ -338,7 +340,7 @@ class WelcomePage extends Component {
           We will not pay for subpar work that do not fit our criteria.
           </Typography>
 
-          <div className="TODOLIST">
+          <div className="TODOLIST" id="todo">
             <Typography variant="h3">To Do</Typography>
             <Typography>Features in development. Payment as listed</Typography>
             <div className="board">
