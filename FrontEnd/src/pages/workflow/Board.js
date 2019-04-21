@@ -404,6 +404,7 @@ class Board extends Component {
             onDragEnd={this.handleDragEnd}
           >
             <Droppable
+              isDropDisabled={true}
               droppableId="all-columns"
               direction="horizontal"
               type="column"

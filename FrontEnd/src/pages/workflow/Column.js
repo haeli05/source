@@ -44,6 +44,7 @@ export default class Column extends Component {
   render(){
     return (
       <Draggable
+        isDragDisabled={true}
         key={this.props.column.id}
         draggableId={this.props.column.id}
         index={this.props.index}
@@ -69,7 +70,7 @@ export default class Column extends Component {
                 {this.renderActions()}
               </div>
             </div>
-            <Droppable droppableId={this.props.column.id} type="task">
+            <Droppable isDropDisabled={true} roppableId={this.props.column.id} type="task">
               {provided => (
                 <div>
                   <div className="Lane"

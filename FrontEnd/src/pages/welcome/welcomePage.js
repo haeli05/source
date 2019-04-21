@@ -267,6 +267,8 @@ class WelcomePage extends Component {
         <br/>
         <Typography variant="overline2">Have a project you need help with?</Typography>
         <br/>
+        <Typography variant="h4">Contact a Tech Specialist.</Typography>
+        <br/>
         <Fab
         variant="extended"
         size="large"

@@ -215,6 +215,7 @@ export default class KanbanCard extends React.Component {
           </div>
         </Dialog>
         <Draggable
+          isDragDisabled={true}
           key={this.props.task.id}
           draggableId={this.props.task.id}
           index={this.props.index}
