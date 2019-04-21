@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 // Material UI
-import Typography from '@material-ui/core/Typography'
+import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -28,6 +29,7 @@ import RightBracket from './../../assets/svg/rightbracket.svg';
 import { PayPalButton } from "react-paypal-button-v2";
 
 //Analytics
+
 import ReactGA from 'react-ga';
 
 const malarkey = require('malarkey');
@@ -37,25 +39,21 @@ class WelcomePage extends Component {
   constructor(props){
     super(props);
     this.state={
-      Mission1: "MissionHiddenStart",
-      Mission2: "MissionHiddenStart",
       controller: null,
       lastKeys: [],
-      SignUpEmail: '',
+      SignUpEmail: "",
       emailError: false,
-      emailErrorMessage: '',
-      sent: false
+      emailErrorMessage: "",
+      sent: false,
     }
-
     this.handleChangeSignUp=this.handleChangeSignUp.bind(this);
   }
 
   componentDidMount(){
     document.addEventListener("keydown", this._handleKeyDown.bind(this));
-
-      const element1 = document.querySelector('#whatissource')
+      const element1 = document.querySelector('#whatissource');
       function callback1 (text) {
-        element1.textContent = text
+        element1.textContent = text;
       }
       const options1 = {
         typeSpeed: 70,
@@ -89,39 +87,10 @@ class WelcomePage extends Component {
         .pause()
         .delete()
 
-
-          const element3 = document.querySelector('#CustProjects')
-          function callback3 (text) {
-            element3.textContent = text
-          }
-          const options3 = {
-            typeSpeed: 80,
-            deleteSpeed: 15,
-            pauseDuration: 1900,
-            repeat: true
-          }
-          malarkey(callback3, options3)
-            .type(`Blockchain project`)
-            .pause()
-            .delete()
-            .type(`Web app`)
-            .pause()
-            .delete()
-            .type(`iOS app`)
-            .pause()
-            .delete()
-            .type(`Android app`)
-            .pause()
-            .delete()
-            .type(`bespoke software`)
-            .pause()
-            .delete()
-
   }
 
 
   componentWillUnmount(){
-
     document.removeEventListener("keydown", this._handleKeyDown.bind(this));
   }
 
@@ -144,24 +113,32 @@ class WelcomePage extends Component {
     this.setState({SignUpEmail:e.target.value});
   }
 
-  SignUpSubmit(text, stringBody){
-    if ( this.state.SignUpEmail!=="" && this.state.SignUpEmail.includes("@") && this.state.SignUpEmail.includes(".")){
-      axios.post('/mail',{email:this.state.SignUpEmail});
-      axios.post('/mail2',{email:this.state.SignUpEmail,feedback:this.state.SignUpEmail});
-      this.setState({sent:true});
-      ReactGA.event({
-            category: 'SignUp',
-            action: 'Signed Up for Mailing List',
-        });
-    } else {
-      this.setState({emailError:true});
-      this.setState({emailErrorMessage:"Please provide a valid email"});
-    }
-  };
+    SignUpSubmit(text, stringBody){
+      if ( this.state.SignUpEmail!=="" && this.state.SignUpEmail.includes("@") && this.state.SignUpEmail.includes(".")){
+        axios.post('/mail',{email:this.state.SignUpEmail});
+        axios.post('/mail2',{email:this.state.SignUpEmail,feedback:this.state.SignUpEmail});
+        this.setState({sent:true});
+        ReactGA.event({
+              category: 'SignUp',
+              action: 'Signed Up for Mailing List',
+          });
+      } else {
+        this.setState({emailError:true});
+        this.setState({emailErrorMessage:"Please provide a valid email"});
+      }
+    };
 
   render() {
     return (
       <div className="WelcomePage">
+        <Helmet>
+          <title>source || The Internet's Tech Incubator</title>
+          <meta name="keywords" content="developers,programming,open source, blockchain, crowdfunding" />
+          <meta
+            name="description"
+            content="Find developers for your projects"
+          />
+        </Helmet>
         <div className="Hero">
           <div className="WelcomeSignUp">
 
@@ -244,9 +221,11 @@ class WelcomePage extends Component {
                       <li>Receive actionable insight, feedback and contributions.</li>
                       <li>Get matched with contributors</li>
                       </ul>
-                      <br/>
-                      <br/>
-                      Less time spent on logistics means more time spent on what matters: <b>building the product.</b>
+                      We partnered with devshops, technology providers and institutions of higher education to ensure a high quality of contributions.
+
+                      Less time spent on logistics means more time spent on what matters:
+                      <br/><br/>
+                      <b>Building the product.</b>
                       </Typography>
 
                     </div>
@@ -270,16 +249,16 @@ class WelcomePage extends Component {
                     <Grid item xs={8} sm={8}>
                     <div className="Description">
                       <Typography variant="h5" paragraph={true} >
-                      Open Source style collaboration + Crowdfunding + Monetized Tasks
+                      Open Source Collaboration + Crowdfunding + Monetized Tasks
                       </Typography>
-                      Public and private projects are broken down into subtasks, that can be matched to anyone.
-
-                      Monetize your skills, get paid in cash or crypto
+                      Projects are broken down into subtasks, which can be delegated to the community.
+                      <br/><br/>
+                      How to monetize your skills:
                       <ol>
                       <li>Find a task relevant to your skillset</li>
                       <li>Work with the project manager to deliver</li>
                       <li>???</li>
-                      <li>Profit.</li>
+                      <li>Profit. Get paid in cash or Crypto.</li>
                       </ol>
                       </div>
                     </Grid>
@@ -317,35 +296,48 @@ class WelcomePage extends Component {
 
           <Typography className="Scope" variant="body" paragraph={true}>
           <b>Temporary repository at:</b> <a href="https://github.com/haeli05/source">https://github.com/haeli05/source</a>
+          <br/>
+          <b>Goals:</b> Source is designed to facilitate discussion, and collaboration to build digital projects.
           <b>Scope:</b>
           <br/>
-          Our stack combines a react front end with modular backend components, designed to facilitate discussion, collaboration and crowdsourcing for projects.
+          Our stack combines a react front end with modular backend components. We rely heavily on Open Source components to achieve different feature sets.
           <br/><br/>
           <b>Components:</b>
           <br/>
-          Ideas includes a social-blog like text area to discuss, well, ideas and potential projects
+          Ideas includes a social-blog like text area to discuss ideas and potential projects (Done)
 
-          Functionality: Comments (Done)
-
-          The Project component hosts a project's files, its contributors, task boards and displays links for crowdfunding.
-
+          Project hosts a project's files using Git (Implementation WIP), its contributors, task boards, monetized tasks, and displays links for crowdfunding.
+          (Needs work)
           Git-hosting(Needs work), Payment()
 
-          People: Social integration, allows users to filter their site experience based on relevant skills, while also allowing project managers to track and find contributors.
+          People: A page that hosts reviews and a user's reputation. Contains social integration,
+          allows users to indicate relevant skills,
+          while also allowing project managers to track and find contributors.
 
-          <b>Interested in Contributing?</b>
-          To donate: Use the Pay button above<br/>
-          Suggestions: Send us an email or use spectrum<br/>
+          <b>Other features:</b>
+          <br/>Riot Chat: Work in progress
+          <br/>Messaging: Work in progress
+          <br/>Notifications (Apollo) : WIP
+          <br/>Tag based filtered content feed: Work in progress
+          <br/>App Store: WIP
+          <br/>Crypto?: WIP
+
           <br/><br/>
+          <b>How to Contribute?</b>
+          <br/>
+          To donate: Use the Pay button above<br/>
+          Suggestions: Send us an email or use spectrum
+          <br/>
+          <br/>
           Check the todo list and message us on telegram or spectrum if you want to take over the development for a component.
 
-          <br/>We will pay for contributions.
+          <br/>We will pay for good contributions.
           <br/>
-          Submit pull requests to: https://github.com/haeli05/source
+          Submit PRs: https://github.com/haeli05/source
           <br/><br/>
-          <b>Important!!</b>
-          Please reach out to discuss your implementation first before starting work.
-          We will not pay for code that do not fit our criteria.
+          <b>Important!!</b><br/>
+          Please reach out to discuss your implementation first before starting work.<br/>
+          We will not pay for subpar work that do not fit our criteria.
           </Typography>
 
           <Board boardTitle="To Do" description="Features in development. Payment as listed" />

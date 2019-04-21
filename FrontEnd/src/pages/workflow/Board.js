@@ -35,7 +35,7 @@ class Board extends Component {
         tasks: {
           'task-1': {
             id: 'task-1',
-            content: "Reorganize team",
+            content: "",
           },
           'task-2': {
             id: 'task-2',
@@ -45,36 +45,21 @@ class Board extends Component {
         columns: {
           'column-1' : {
             id: "column-1",
-            title: "Todo Column",
+            title: "Front End",
             taskIds: ['task-1','task-2'],
           },
           'column-2' : {
             id: "column-2",
-            title: "In progress",
+            title: "Back End",
             taskIds: [],
           },
           'column-3' : {
             id: "column-3",
-            title: "Done",
-            taskIds: [],
-          },
-          'column-4' : {
-            id: "column-4",
-            title: "4",
-            taskIds: [],
-          },
-          'column-5' : {
-            id: "column-5",
-            title: "5",
-            taskIds: [],
-          },
-          'column-6' : {
-            id: "column-6",
-            title: "6",
+            title: "Misc",
             taskIds: [],
           },
         },
-        columnOrder: ['column-1', 'column-2', 'column-3', 'column-4', 'column-5', 'column-6'],
+        columnOrder: ['column-1', 'column-2', 'column-3'],
       }
     };
     this.handleDragEnd=this.handleDragEnd.bind(this);

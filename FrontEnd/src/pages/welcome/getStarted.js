@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from "react-helmet";
 // Material UI
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button';
@@ -73,6 +74,14 @@ class GetStarted extends Component {
   render() {
     return (
       <div className="GetStarted">
+      <Helmet>
+        <title>Get Started || The Internet's Tech Incubator</title>
+        <meta name="keywords" content="developers,programming,open source, blockchain, crowdfunding" />
+        <meta
+          name="description"
+          content="Find developers for your projects"
+        />
+      </Helmet>
         <div className="Section">
 
           <Grid container spacing={24}>

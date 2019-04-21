@@ -3405,9 +3405,9 @@ body {
 
 .Column {
   padding: 8px;
-  border-radius: 32px;
-  border-color: $Darkest;
-  border-width: 2px;
+  margin: 3px;
+  border-radius: 12px;
+  border: solid 1px $Dark;
   .ColumnHeader {
     padding: 4px 8px 0px 8px;
     //border-radius: 6px 6px 0px 0px;
@@ -3451,7 +3451,7 @@ body {
 /* ---------------------------- KanbanCard.js ------------------------------- */
 
 .KanbanCard {
-  border: solid 1px transparent;
+  border: solid 1px $Dark;
   margin-bottom: 8px;
   background-color: white;
   //border-radius: 3px;
