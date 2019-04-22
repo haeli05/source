@@ -22,7 +22,7 @@ export default class PayButton extends Component {
   constructor(props) {
     super(props);
     this.state={
-      supported: {'BTC':['Bitcoin', ''], 'BCHAB':['Bitcoin Cash AB',''], 'ETH':['Ether',''], 'EOS':['EOS',''], 'DAI':['Dai',''], 'XTZ':['Tezos',''], 'PayPal':['PayPal',''], 'Klaytn':['Klaytn','']},
+      supported: {'BTC':['Bitcoin', '1E2fGPCKyaWkRgzhjE3AyRpXrhVNfxVWYg'], 'BCHAB':['Bitcoin Cash AB',''], 'ETH':['Ether',''], 'EOS':['EOS',''], 'DAI':['Dai',''], 'XTZ':['Tezos',''], 'PayPal':['PayPal',''], 'Klaytn':['Klaytn','']},
       currency: "BTC",
       copied: "copy",
       AMOUNT: 5.00,

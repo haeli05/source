@@ -114,14 +114,15 @@ class WelcomePage extends Component {
 
   handleChangeSignUp(e){
     this.setState({SignUpEmail:e.target.value});
+    this.setState({emailError:false})
+    this.setState({emailErrorMessage:""})
   }
 
   SignUpSubmit(){
     this.setState({emailError:false});
     this.setState({emailErrorMessage:""});
     if ( this.state.SignUpEmail!=="" && this.state.SignUpEmail.includes("@") && this.state.SignUpEmail.includes(".")){
-      axios.post('/mail',{email:this.state.SignUpEmail});
-      axios.post('/mail2',{email:this.state.SignUpEmail,feedback:this.state.SignUpEmail});
+      axios.post('/subscribe',{email:this.state.SignUpEmail});
       this.setState({sent:true});
 
       ReactGA.event({
@@ -292,19 +293,17 @@ class WelcomePage extends Component {
           <Typography variant="h2" className="SectionTitle">source</Typography>
           <Typography variant="subtitle1" className="SectionTitle">The Internet's Tech Incubator</Typography>
             <div className="Subheading">
-              <Typography variant="overline2">Support this project: </Typography>
-              <div className="Buttons">
-                <PayButton />
-                  <div className="MajorActionButtonsHorizontal">
-                    <div className="MajorActionButtonDiv">
-                      <a href="https://spectrum.chat/sourcenetwork-io?tab=posts" target="_blank">
-                        <MessageButton {...this.props} goToRoom={this.props.goToRoom}/>
-                      </a>
-                    <div className="MajorActionButtonDiv">
-
-                    </div>
-                  </div>
-                  </div>
+            <Typography variant="overline2" className="SectionTitle">Support this project:  </Typography>
+            <PayButton />
+              <div className="MajorActionButtonsHorizontal">
+                <div className="MajorActionButtonDiv">
+                  <a href="https://spectrum.chat/sourcenetwork-io?tab=posts" target="_blank">
+                    <MessageButton {...this.props} goToRoom={this.props.goToRoom}/>
+                  </a>
+                </div>
+                <div className="MajorActionButtonDiv">
+                  <ShareButton {...this.props} title={this.props.title} url={this.props.url}/>
+                </div>
               </div>
             </div>
 

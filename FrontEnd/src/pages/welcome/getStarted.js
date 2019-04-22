@@ -14,6 +14,9 @@ import Tooltip from '@material-ui/core/Tooltip';
 import JoinQueue from './components/joinQueue';
 import PayButton from '../payments/payButton';
 import ReactSVG from 'react-svg';
+import ReactGA from 'react-ga';
+import axios from 'axios';
+
 // MISC
 import ReactGA from 'react-ga';
 import axios from 'axios';
