@@ -8,47 +8,55 @@ import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import { Link as RouterLink } from 'react-router-dom'
 import Link from '@material-ui/core/Link';
+import Tooltip from '@material-ui/core/Tooltip';
 
 // Components
 import JoinQueue from './components/joinQueue';
 import PayButton from '../payments/payButton';
 import ReactSVG from 'react-svg';
 // MISC
+import ReactGA from 'react-ga';
+import axios from 'axios';
 import logo from './img/logo.png';
 import MessageBlob from '../../assets/svg/messageblob.svg';
 import Letter from '../../assets/svg/letter.svg';
-
+import CircleTick from './../../assets/svg/circletick.svg';
 
 class GetStarted extends Component {
   constructor(props){
     super(props);
     this.state={
-      Mission1: "MissionHiddenStart",
-      Mission2: "MissionHiddenStart",
       controller: null,
       lastKeys: [],
-      username: '',
+      email:'',
+      message:'',
+      emailError:false,
+      emailErrorMessage:'',
+      sent:false,
     }
-    this.listenScrollEvent=this.listenScrollEvent.bind(this);
-    this.conditionallyAnimate=this.conditionallyAnimate.bind(this);
-    this.animate=this.animate.bind(this);
-    this.handleChangeSignUp=this.handleChangeSignUp.bind(this);
+    this.MessageSubmit=this.MessageSubmit.bind(this);
+    this.handleChangeEmail=this.handleChangeEmail.bind(this);
+    this.handleChangeMessage=this.handleChangeMessage.bind(this);
   }
 
-  componentDidMount(){
-  }
+  MessageSubmit(){
+    this.setState({emailError:false});
+    this.setState({emailErrorMessage:""});
+    if ( this.state.email!=="" && this.state.email.includes("@") && this.state.email.includes(".")){
+      axios.post('/mail',{email:this.state.email});
+      axios.post('/mail2',{email:this.state.email,feedback:this.state.email});
+      this.setState({sent:true});
 
-  conditionallyAnimate() {
+      ReactGA.event({
+            category: 'Enquiry',
+            action: 'Sent an Enquiry',
+        });
 
-  }
-
-  animate(controller) {
-
-  }
-
-  componentWillUnmount(){
-
-  }
+    } else {
+      this.setState({emailError:true});
+      this.setState({emailErrorMessage:"Please provide a valid email"});
+    }
+  };
 
   _handleKeyDown(event){
     var keyArray = this.state.lastKeys
@@ -64,18 +72,19 @@ class GetStarted extends Component {
     }
   }
 
-  listenScrollEvent() {
-  }
 
-  handleChangeSignUp(e){
-    this.setState({username:e.target.value});
+  handleChangeMessage(e){
+    this.setState({message:e.target.value});
+  }
+  handleChangeEmail(e){
+    this.setState({email:e.target.value});
   }
 
   render() {
     return (
       <div className="GetStarted">
       <Helmet>
-        <title>Get Started || The Internet's Tech Incubator</title>
+        <title>Get Started | source</title>
         <meta name="keywords" content="developers,programming,open source, blockchain, crowdfunding" />
         <meta
           name="description"
@@ -126,18 +135,16 @@ class GetStarted extends Component {
             <Typography className="Mission" variant="h6" color="textPrimary">
             Fill up this form for general enquiries, we will reply as soon as possible.
             </Typography>
-
-
             <TextField
             fullWidth
               label="Email"
               type="email"
-              onChange={this.handleChangeSignUp}
+              onChange={this.handleChangeEmail}
               margin="wide"
               variant="outlined"
               className="ContactInputName"
+              error={this.state.emailError}
             />
-
 
             <TextField
             fullWidth
@@ -147,20 +154,32 @@ class GetStarted extends Component {
               label="Message"
               multiline
               type="email"
-              onChange={this.handleChangeSignUp}
+              onChange={this.handleChangeMessage}
               margin="normal"
               variant="outlined"
               className="ContactInputMessage"
             />
-
-            <Button
-            variant="outlined"
-            size="large"
-            aria-label="Submit"
-            className="Button"
-            >
-            Submit
-            </Button>
+            {(!this.state.sent) && (
+             <Tooltip title={this.state.emailErrorMessage}>
+               <Button
+               variant="outlined"
+               size="large"
+               aria-label="Submit"
+               className="Button"
+               onClick={this.MessageSubmit}
+               >
+               Submit
+               </Button>
+             </Tooltip>
+             )}
+            {(this.state.sent) && (
+              <div >
+                <Typography variant="h4" className="Success">
+                  <ReactSVG src={CircleTick} className="ReactSVGIcon Icon25 MarginRight10" />
+                  Thank you. We will be in touch shortly
+                </Typography>
+              </div>
+                        )}
             </div>
             </Grid>
           </Grid>

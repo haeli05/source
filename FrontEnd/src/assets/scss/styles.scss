@@ -3184,16 +3184,18 @@ body {
     background-color: white;
     background-blend-mode: difference;
     .JoinMailing {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       flex-flow: column wrap;
       vertical-align: middle;
-      margin-top: 3vh;
+      margin-top: 4vh;
       .SignUpInput {
+        margin-bottom: 2vh;
         width: 280px;
       }
-      .SignUpButton {
-        margin-top: 2vh;
+      .Success {
+        display: flex;
+        align-items: center;
       }
     }
   }
@@ -3560,6 +3562,12 @@ body {
   padding-bottom: 7vh;
   padding-left: 5%;
   padding-right: 5%;
+  .Form {
+    .Success {
+      display: flex;
+      align-items: center;
+    }
+  }
 }
 .GetStartedLabel {
   text-align: left;

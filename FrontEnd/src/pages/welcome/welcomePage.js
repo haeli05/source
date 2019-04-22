@@ -26,6 +26,7 @@ import HammerScrew from '../../assets/svg/hammer_screwdriver_2.svg';
 import Comment from '../../assets/svg/comment.svg';
 import Board from './../workflow/Board';
 import RightBracket from './../../assets/svg/rightbracket.svg';
+import CircleTick from './../../assets/svg/circletick.svg';
 
 import { PayPalButton } from "react-paypal-button-v2";
 
@@ -116,14 +117,18 @@ class WelcomePage extends Component {
   }
 
   SignUpSubmit(){
+    this.setState({emailError:false});
+    this.setState({emailErrorMessage:""});
     if ( this.state.SignUpEmail!=="" && this.state.SignUpEmail.includes("@") && this.state.SignUpEmail.includes(".")){
       axios.post('/mail',{email:this.state.SignUpEmail});
       axios.post('/mail2',{email:this.state.SignUpEmail,feedback:this.state.SignUpEmail});
       this.setState({sent:true});
+
       ReactGA.event({
             category: 'SignUp',
             action: 'Signed Up for Mailing List',
         });
+
     } else {
       this.setState({emailError:true});
       this.setState({emailErrorMessage:"Please provide a valid email"});
@@ -134,7 +139,7 @@ class WelcomePage extends Component {
     return (
       <div className="WelcomePage">
         <Helmet>
-          <title>source || The Internet's Tech Incubator</title>
+          <title>source | The Internet's Tech Incubator</title>
           <meta name="keywords" content="developers,programming,open source, blockchain, crowdfunding" />
           <meta
             name="description"
@@ -175,7 +180,8 @@ class WelcomePage extends Component {
         </div>
         <div className="Quote">
           <Typography variant="h5" paragraph={true}>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" <br/><br/> - Patrick Collison, CEO @ Stripe</Typography>
-          <div className="JoinMailing">
+
+            <div className="JoinMailing">
             <TextField
               label="Sign up for email updates"
               type="email"
@@ -185,10 +191,18 @@ class WelcomePage extends Component {
               className="SignUpInput"
               error={this.state.emailError}
             />
+            {(!this.state.sent) && (
              <Tooltip title={this.state.emailErrorMessage}>
-              <Button variant="outlined" className="SignUpButton"  onClick={this.SignUpSubmit}>Sign Up</Button>
-            </Tooltip>
-          </div>
+              <Button variant="outlined" onClick={this.SignUpSubmit}>Sign Up</Button>
+             </Tooltip>
+             )}
+            {(this.state.sent) && (
+                <Typography variant="h4" className="Success">
+                  <ReactSVG src={CircleTick} className="ReactSVGIcon Icon25 MarginRight10" />
+                  Thank you. We will keep in touch
+                </Typography>        
+                        )}
+            </div>
         </div>
         <div className="Section Section2">
           <Typography className="SectionTitle" variant="h3" style={{color:"white"}}>Can building technology be as simple as writing a blog post?</Typography>
@@ -286,7 +300,7 @@ class WelcomePage extends Component {
                     <MessageButton {...this.props} goToRoom={this.props.goToRoom}/>
                   </a>
                 <div className="MajorActionButtonDiv">
-                 
+
                 </div>
               </div>
               </div>
