@@ -122,13 +122,19 @@ class WelcomePage extends Component {
     this.setState({emailError:false});
     this.setState({emailErrorMessage:""});
     if ( this.state.SignUpEmail!=="" && this.state.SignUpEmail.includes("@") && this.state.SignUpEmail.includes(".")){
-      axios.post('/subscribe',{email:this.state.SignUpEmail});
-      this.setState({sent:true});
+      axios.post('/subscribe',{email:this.state.SignUpEmail}).
+      then(function(response){
+        this.setState({sent:true});
+              ReactGA.event({
+                    category: 'SignUp',
+                    action: 'Signed Up for Mailing List',
+                });
+      }).catch(function(error){
+        this.setState({emailError:true});
+        this.setState({emailErrorMessage:"Server is not responding. Pls provide let us know through feedback"});
+      })
+      ;
 
-      ReactGA.event({
-            category: 'SignUp',
-            action: 'Signed Up for Mailing List',
-        });
 
     } else {
       this.setState({emailError:true});
