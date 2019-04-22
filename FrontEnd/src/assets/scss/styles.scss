@@ -1214,7 +1214,7 @@ time {
 /* ------------------------- majorActionButtons.js ------------------------- */
 
 .MajorActionButtonsHorizontal {
-  display: flex;
+  display: inline-flex;
   .MajorActionButtonDiv {
     margin-left: 15px;
   }
@@ -3250,18 +3250,17 @@ body {
       padding-right: 5vw;
     }
     .Subheading {
-      flex-flow: column;
       text-align: center;
-      display: inline-flex;
-      align-items: baseline;
+      display: inline-block;
+      align-items: center;
       vertical-align: center;
-      padding-top: 2vw;
-      padding-bottom: 4vw;
+      padding-bottom: 2vh;
       .Buttons{
         display: flex;
       }
       .SectionTitle {
         margin-right: 14px;
+        margin-bottom: 14px;
       }
     }
   }

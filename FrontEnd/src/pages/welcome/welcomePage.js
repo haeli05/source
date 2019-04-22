@@ -179,7 +179,7 @@ class WelcomePage extends Component {
                 <Typography className="Mission WhatIsSource" variant="h4" color="textPrimary">
                   We are currently in development. Interested in monetizing your skills?
                 </Typography>
-                <Button variant="contained" color="primary" className="GetStarted" component={Link} to="#todo">
+                <Button variant="contained" color="primary" className="GetStarted" href="#todo">
                   Help us build the beta
                 </Button>
               </Grid>
@@ -301,10 +301,12 @@ class WelcomePage extends Component {
         </div>
         <div className="Section Section5" id="todo">
           Help us build the beta!
-          <Typography variant="h2" className="SectionTitle">source</Typography>
-          <Typography variant="subtitle1" className="SectionTitle">The Internet's Tech Incubator</Typography>
+          <div className="SectionTitle">
+          <Typography variant="h2">source</Typography>
+          <Typography variant="subtitle1">The Internet's Tech Incubator</Typography>
+        </div>
+            <Typography variant="overline2">Support this project:  </Typography>
             <div className="Subheading">
-            <Typography variant="overline2" className="SectionTitle">Support this project:  </Typography>
             <PayButton />
               <div className="MajorActionButtonsHorizontal">
                 <div className="MajorActionButtonDiv">
