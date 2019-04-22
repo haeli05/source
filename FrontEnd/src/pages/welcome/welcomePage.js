@@ -26,6 +26,7 @@ import HammerScrew from '../../assets/svg/hammer_screwdriver_2.svg';
 import Comment from '../../assets/svg/comment.svg';
 import Board from './../workflow/Board';
 import RightBracket from './../../assets/svg/rightbracket.svg';
+import CircleTick from './../../assets/svg/circletick.svg';
 
 import { PayPalButton } from "react-paypal-button-v2";
 
@@ -118,6 +119,8 @@ class WelcomePage extends Component {
   }
 
   SignUpSubmit(){
+    this.setState({emailError:false});
+    this.setState({emailErrorMessage:""});
     if ( this.state.SignUpEmail!=="" && this.state.SignUpEmail.includes("@") && this.state.SignUpEmail.includes(".")){
       axios.post('/subscribe',{email:this.state.SignUpEmail})
       .then(res=>{
@@ -128,10 +131,12 @@ class WelcomePage extends Component {
         this.setState({emailErrorMessage:"There was an internal error. Please try again."});
       });
       this.setState({sent:true});
+
       ReactGA.event({
             category: 'SignUp',
             action: 'Signed Up for Mailing List',
         });
+
     } else {
       this.setState({emailError:true});
       this.setState({emailErrorMessage:"Please provide a valid email"});
@@ -142,7 +147,7 @@ class WelcomePage extends Component {
     return (
       <div className="WelcomePage">
         <Helmet>
-          <title>source || The Internet's Tech Incubator</title>
+          <title>source | The Internet's Tech Incubator</title>
           <meta name="keywords" content="developers,programming,open source, blockchain, crowdfunding" />
           <meta
             name="description"
@@ -183,7 +188,8 @@ class WelcomePage extends Component {
         </div>
         <div className="Quote">
           <Typography variant="h5" paragraph={true}>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" <br/><br/> - Patrick Collison, CEO @ Stripe</Typography>
-          <div className="JoinMailing">
+
+            <div className="JoinMailing">
             <TextField
               label="Sign up for email updates"
               type="email"
@@ -193,10 +199,18 @@ class WelcomePage extends Component {
               className="SignUpInput"
               error={this.state.emailError}
             />
+            {(!this.state.sent) && (
              <Tooltip title={this.state.emailErrorMessage}>
-              <Button variant="outlined" className="SignUpButton"  onClick={this.SignUpSubmit}>Sign Up</Button>
-            </Tooltip>
-          </div>
+              <Button variant="outlined" onClick={this.SignUpSubmit}>Sign Up</Button>
+             </Tooltip>
+             )}
+            {(this.state.sent) && (
+                <Typography variant="h4" className="Success">
+                  <ReactSVG src={CircleTick} className="ReactSVGIcon Icon25 MarginRight10" />
+                  Thank you. We will keep in touch
+                </Typography>
+                        )}
+            </div>
         </div>
         <div className="Section Section2">
           <Typography className="SectionTitle" variant="h3" style={{color:"white"}}>Can building technology be as simple as writing a blog post?</Typography>
@@ -253,7 +267,7 @@ class WelcomePage extends Component {
                       <Typography variant="h5" paragraph={true} >
                       Open Source Collaboration + Crowdfunding + Monetized Tasks
                       </Typography>
-                      Projects are broken down into subtasks, which can be delegated to the community.
+                      Projects are broken down into subtasks, which can be delegated to the community or our specialist partners.
                       <br/><br/>
                       How to monetize your skills:
                       <ol>
@@ -284,7 +298,7 @@ class WelcomePage extends Component {
         <div className="Section Section5" id="todo">
           Help us build the beta!
           <Typography variant="h2" className="SectionTitle">source</Typography>
-          <Typography variant="subtitle1" className="SectionTitle">The Internet's Tech Incubator. </Typography>
+          <Typography variant="subtitle1" className="SectionTitle">The Internet's Tech Incubator</Typography>
             <div className="Subheading">
             <Typography variant="overline2" className="SectionTitle">Support this project:  </Typography>
             <PayButton />
@@ -302,24 +316,25 @@ class WelcomePage extends Component {
 
           <Typography className="Scope" variant="body" paragraph={true}>
           <b>Temporary repository at:</b> <a href="https://github.com/haeli05/source">https://github.com/haeli05/source</a>
+          <br/><br/>
+          <b>Goals:</b> Source is designed to facilitate discussion and collaboration to build digital projects.
+          <br/><b>Scope:</b>
           <br/>
-          <b>Goals:</b> Source is designed to facilitate discussion, and collaboration to build digital projects.
-          <b>Scope:</b>
-          <br/>
-          Our stack combines a react front end with modular backend components. We rely heavily on Open Source components to achieve different feature sets.
+          Our stack combines a React.JS front end with modular backend components. We rely heavily on Open Source components to achieve different feature sets.
           <br/><br/>
           <b>Components:</b>
           <br/>
           Ideas includes a social-blog like text area to discuss ideas and potential projects (Done)
-
+          <br/><br/>
           Project hosts a project's files using Git (Implementation WIP), its contributors, task boards, monetized tasks, and displays links for crowdfunding.
           (Needs work)
+          <br/><br/>
           Git-hosting(Needs work), Payment()
-
+          <br/>
           People: A page that hosts reviews and a user's reputation. Contains social integration,
           allows users to indicate relevant skills,
           while also allowing project managers to track and find contributors.
-
+          <br/><br/>
           <b>Other features:</b>
           <br/>Riot Chat: Work in progress
           <br/>Messaging: Work in progress
@@ -331,7 +346,8 @@ class WelcomePage extends Component {
           <br/><br/>
           <b>How to Contribute?</b>
           <br/>
-          To donate: Use the Pay button above<br/>
+          To donate: Use the Pay button above
+          <br/>
           Suggestions: Send us an email or use spectrum
           <br/>
           <br/>
