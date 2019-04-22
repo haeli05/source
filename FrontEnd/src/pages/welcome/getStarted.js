@@ -13,6 +13,9 @@ import Link from '@material-ui/core/Link';
 import JoinQueue from './components/joinQueue';
 import PayButton from '../payments/payButton';
 import ReactSVG from 'react-svg';
+import ReactGA from 'react-ga';
+import axios from 'axios';
+
 // MISC
 import logo from './img/logo.png';
 import MessageBlob from '../../assets/svg/messageblob.svg';
@@ -23,52 +26,34 @@ class GetStarted extends Component {
   constructor(props){
     super(props);
     this.state={
-      Mission1: "MissionHiddenStart",
-      Mission2: "MissionHiddenStart",
-      controller: null,
-      lastKeys: [],
-      username: '',
+      email: '',
+      feedback: '',
     }
-    this.listenScrollEvent=this.listenScrollEvent.bind(this);
-    this.conditionallyAnimate=this.conditionallyAnimate.bind(this);
-    this.animate=this.animate.bind(this);
-    this.handleChangeSignUp=this.handleChangeSignUp.bind(this);
+    this.handleChangeEmail=this.handleChangeEmail.bind(this);
+    this.handleChangeFeedback=this.handleChangeFeedback.bind(this);
+    this.submit=this.submit.bind(this);
   }
 
-  componentDidMount(){
+  handleChangeEmail(e){
+    this.setState({email:e.target.value});
   }
 
-  conditionallyAnimate() {
-
+  handleChangeFeedback(e){
+    this.setState({feedback:e.target.value});
   }
 
-  animate(controller) {
-
-  }
-
-  componentWillUnmount(){
-
-  }
-
-  _handleKeyDown(event){
-    var keyArray = this.state.lastKeys
-    keyArray.push(event.keyCode)
-    if (keyArray.length===11){
-      keyArray.shift()
+  submit() {
+    if ( this.state.email!=="" && this.state.email.includes("@") && this.state.email.includes(".") && this.state.feedback !== ""){
+      axios.post('/feedback',{email:this.state.email,feedback:this.state.feedback});
+      this.setState({sent:true});
+      ReactGA.event({
+            category: 'Feedback',
+            action: 'Gave feedback',
+        });
+    } else {
+      this.setState({emailError:true});
+      this.setState({emailErrorMessage:"Please provide a valid email"});
     }
-    this.setState({lastKeys:keyArray})
-    var a = keyArray.join()
-    var b = [38,38,40,40,37,39,37,39,65,66].join()
-    if(a===b){
-      alert("Carlos sucks major donkey balls")
-    }
-  }
-
-  listenScrollEvent() {
-  }
-
-  handleChangeSignUp(e){
-    this.setState({username:e.target.value});
   }
 
   render() {
@@ -132,7 +117,7 @@ class GetStarted extends Component {
             fullWidth
               label="Email"
               type="email"
-              onChange={this.handleChangeSignUp}
+              onChange={this.handleChangeEmail}
               margin="wide"
               variant="outlined"
               className="ContactInputName"
@@ -147,7 +132,7 @@ class GetStarted extends Component {
               label="Message"
               multiline
               type="email"
-              onChange={this.handleChangeSignUp}
+              onChange={this.handleChangeFeedback}
               margin="normal"
               variant="outlined"
               className="ContactInputMessage"
@@ -158,6 +143,7 @@ class GetStarted extends Component {
             size="large"
             aria-label="Submit"
             className="Button"
+            onClick={this.submit}
             >
             Submit
             </Button>

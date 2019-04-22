@@ -119,8 +119,7 @@ class WelcomePage extends Component {
 
   SignUpSubmit(){
     if ( this.state.SignUpEmail!=="" && this.state.SignUpEmail.includes("@") && this.state.SignUpEmail.includes(".")){
-      axios.post('/mail',{email:this.state.SignUpEmail});
-      axios.post('/mail2',{email:this.state.SignUpEmail,feedback:this.state.SignUpEmail});
+      axios.post('/subscribe',{email:this.state.SignUpEmail});
       this.setState({sent:true});
       ReactGA.event({
             category: 'SignUp',
@@ -340,7 +339,7 @@ class WelcomePage extends Component {
           We will not pay for subpar work that do not fit our criteria.
           </Typography>
 
-          <div className="TODOLIST" id="todo">
+          <div className="TODOLIST">
             <Typography variant="h3">To Do</Typography>
             <Typography>Features in development. Payment as listed</Typography>
             <div className="board">
