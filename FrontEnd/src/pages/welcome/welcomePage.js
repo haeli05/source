@@ -119,7 +119,14 @@ class WelcomePage extends Component {
 
   SignUpSubmit(){
     if ( this.state.SignUpEmail!=="" && this.state.SignUpEmail.includes("@") && this.state.SignUpEmail.includes(".")){
-      axios.post('/subscribe',{email:this.state.SignUpEmail});
+      axios.post('/subscribe',{email:this.state.SignUpEmail})
+      .then(res=>{
+        this.setState({sent:true});
+      })
+      .catch(err=>{
+        this.setState({emailError:true});
+        this.setState({emailErrorMessage:"There was an internal error. Please try again."});
+      });
       this.setState({sent:true});
       ReactGA.event({
             category: 'SignUp',

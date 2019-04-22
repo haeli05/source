@@ -44,8 +44,14 @@ class GetStarted extends Component {
 
   submit() {
     if ( this.state.email!=="" && this.state.email.includes("@") && this.state.email.includes(".") && this.state.feedback !== ""){
-      axios.post('/feedback',{email:this.state.email,feedback:this.state.feedback});
-      this.setState({sent:true});
+      axios.post('/feedback',{email:this.state.email,feedback:this.state.feedback})
+      .then(res=>{
+        this.setState({sent:true});
+      })
+      .catch(err=>{
+        this.setState({emailError:true});
+        this.setState({emailErrorMessage:"There was an internal error. Please try again."});
+      });
       ReactGA.event({
             category: 'Feedback',
             action: 'Gave feedback',

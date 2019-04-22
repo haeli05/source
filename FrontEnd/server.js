@@ -89,9 +89,11 @@ app.post("/subscribe", (req, res)=>{
   transporter.sendMail(subscriberOptions, (error, info) => {
       if (error) {
         return console.log(error);
+        res.status(400)
       }
       console.log('Subscribe message sent: %s', info.messageId);
   });
+  res.status(200)
 })
 
 
@@ -109,6 +111,7 @@ app.post("/feedback", (req, res)=>{
   transporter.sendMail(sourceOptions, (error, info) => {
       if (error) {
         return console.log(error);
+        res.status(400)
       }
       console.log('Feedback message sent to source: %s', info.messageId);
   });
@@ -124,9 +127,11 @@ app.post("/feedback", (req, res)=>{
   transporter.sendMail(userOptions, (error, info) => {
       if (error) {
           return console.log(error);
+          res.status(400)
       }
       console.log('Thank you message sent to user: %s', info.messageId);
   });
+  res.status(200)
 })
 
 // SSL redbird
