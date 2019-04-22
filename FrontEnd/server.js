@@ -56,9 +56,11 @@ app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname+'/build/index.html'), function(err) {
       if (err) {
         res.status(500).send(err);
+
       }
     })
   }
+  res.end();
 })
 
   /**
@@ -90,11 +92,11 @@ app.post("/subscribe", (req, res)=>{
   transporter.sendMail(subscriberOptions, (error, info) => {
       if (error) {
         return console.log(error);
-        res.status(400)
+        res.sendStatus(400)
       }
       console.log('Subscribe message sent: %s', info.messageId);
   });
-  res.status(200);
+  res.sendStatus(200);
   res.end();
 })
 
@@ -112,10 +114,9 @@ app.post("/feedback", (req, res)=>{
   transporter.sendMail(sourceOptions, (error, info) => {
       if (error) {
         return console.log(error);
-        res.status(400)
+        res.sendStatus(400)
       }
       console.log('Feedback message sent to source: %s', info.messageId);
-      res.status(200);
   });
 
   // Send thank you to user
@@ -129,11 +130,11 @@ app.post("/feedback", (req, res)=>{
   transporter.sendMail(userOptions, (error, info) => {
       if (error) {
           return console.log(error);
-          res.status(400)
+          res.sendStatus(400)
       }
       console.log('Thank you message sent to user: %s', info.messageId);
   });
-  res.status(200);
+  res.sendStatus(200);
   res.end();
 })
 
