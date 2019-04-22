@@ -18,8 +18,6 @@ import ReactGA from 'react-ga';
 import axios from 'axios';
 
 // MISC
-import ReactGA from 'react-ga';
-import axios from 'axios';
 import logo from './img/logo.png';
 import MessageBlob from '../../assets/svg/messageblob.svg';
 import Letter from '../../assets/svg/letter.svg';
