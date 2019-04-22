@@ -130,9 +130,6 @@ class WelcomePage extends Component {
         this.setState({emailError:true});
         this.setState({emailErrorMessage:"There was an internal error. Please try again."});
       });
-      this.setState({sent:true});
-
-
     } else {
       this.setState({emailError:true});
       this.setState({emailErrorMessage:"Please provide a valid email"});
