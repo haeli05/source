@@ -70,9 +70,7 @@ export default class PayButton extends Component {
             className="PayForm"
             style={{color:"#FFF", fill:"#FFF", stroke: "#FFF"}}
           >
-            {
-              forEach key in this.state.supported
-            }
+          
             <MenuItem value="BTC" className="PayCurrency"><Typography className="PayCurrency" variant="overline">Bitcoin</Typography></MenuItem>
             <MenuItem value="BCHAB" className="PayCurrency"><Typography className="PayCurrency" variant="overline">BCHAB</Typography></MenuItem>
             <MenuItem value="ETH" className="PayCurrency"><Typography className="PayCurrency" variant="overline">Ether</Typography></MenuItem>
