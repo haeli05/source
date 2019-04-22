@@ -124,9 +124,9 @@ class WelcomePage extends Component {
     if ( this.state.SignUpEmail!=="" && this.state.SignUpEmail.includes("@") && this.state.SignUpEmail.includes(".")){
       axios.post('/subscribe',{
         email:this.state.SignUpEmail
-      }).then(function(response){
-        console.log("response"+response);
-        if(response.status==200){
+      }).then(res=>{
+        console.log("response"+res);
+        if(res.status==200){
         this.setState({sent:true});
               ReactGA.event({
                     category: 'SignUp',
@@ -134,7 +134,7 @@ class WelcomePage extends Component {
                 });
         }else{
           this.setState({emailError:true});
-          this.setState({emailErrorMessage:"Server error. Status:" + response.status + response.statusText});
+          this.setState({emailErrorMessage:"Server error. Status:" + res.status + res.statusText});
         }
       }).catch(function(error){
         this.setState({emailError:true});

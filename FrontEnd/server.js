@@ -79,20 +79,19 @@ app.get('/*', function(req, res) {
 
 app.post("/subscribe", (req, res)=>{
   let email = req.body.email
-
   // Send notification to subscriber
   let subscriberOptions = {
       from: '"Source Team" <source@sourcenetwork.io>', // sender address
       to: email, // list of receivers
       cc: "source@sourcenetwork.io",
       subject: 'Thank you for subscribing to source!', // Subject line
-      text: 'You will be hearing from us as we continue to update source.', // plain text body
+      text: 'Thanks for subscribing. You will be hearing from us as we continue to update source.', // plain text body
       html: subscribeHtml
   };
   transporter.sendMail(subscriberOptions, (error, info) => {
       if (error) {
         return console.log(error);
-        res.sendStatus(400)
+        res.sendStatus(400);
       }
       console.log('Subscribe message sent: %s', info.messageId);
   });

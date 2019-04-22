@@ -46,22 +46,22 @@ class GetStarted extends Component {
         feedback:this.state.message
       }).then(res=>{
         console.log("res"+res);
-      if(res.status = 200){
-        this.setState({sent:true});
-      }else{
-        this.setState({emailError:true});
-        this.setState({emailErrorMessage:"Server error. Status:" + res.status + res.statusText});
-      }
-
+        if(res.status = 200){
+          this.setState({sent:true});
+          ReactGA.event({
+                category: 'Enquiry',
+                action: 'Sent an Enquiry',
+            });
+        }else{
+          this.setState({emailError:true});
+          this.setState({emailErrorMessage:"Server error. Status:" + res.status + res.statusText});
+        }
       })
       .catch(err=>{
         this.setState({emailError:true});
         this.setState({emailErrorMessage:"There was an internal error. Please try again."});
       });
-      ReactGA.event({
-            category: 'Enquiry',
-            action: 'Sent an Enquiry',
-        });
+
     } else {
       this.setState({emailError:true});
       this.setState({emailErrorMessage:"Please provide a valid email"});
