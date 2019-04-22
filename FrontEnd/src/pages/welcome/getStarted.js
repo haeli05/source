@@ -43,7 +43,14 @@ class GetStarted extends Component {
     if ( this.state.email!=="" && this.state.email.includes("@") && this.state.email.includes(".") && this.state.feedback !== ""){
       axios.post('/feedback',{email:this.state.email,feedback:this.state.feedback})
       .then(res=>{
+        console.log(res);
+      if(res.status = 200){
         this.setState({sent:true});
+      }else{
+        this.setState({emailError:true});
+        this.setState({emailErrorMessage:"Server error. Status:" + response.status + response.statusText});
+      }
+
       })
       .catch(err=>{
         this.setState({emailError:true});
