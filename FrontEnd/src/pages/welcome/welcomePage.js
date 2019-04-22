@@ -132,10 +132,6 @@ class WelcomePage extends Component {
       });
       this.setState({sent:true});
 
-      ReactGA.event({
-            category: 'SignUp',
-            action: 'Signed Up for Mailing List',
-        });
 
     } else {
       this.setState({emailError:true});

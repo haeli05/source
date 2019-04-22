@@ -13,11 +13,12 @@ import Tooltip from '@material-ui/core/Tooltip';
 // Components
 import JoinQueue from './components/joinQueue';
 import PayButton from '../payments/payButton';
+
+
+// MISC
 import ReactSVG from 'react-svg';
 import ReactGA from 'react-ga';
 import axios from 'axios';
-
-// MISC
 import logo from './img/logo.png';
 import MessageBlob from '../../assets/svg/messageblob.svg';
 import Letter from '../../assets/svg/letter.svg';
@@ -52,7 +53,6 @@ class GetStarted extends Component {
             category: 'Enquiry',
             action: 'Sent an Enquiry',
         });
-
     } else {
       this.setState({emailError:true});
       this.setState({emailErrorMessage:"Please provide a valid email"});
@@ -120,7 +120,7 @@ class GetStarted extends Component {
             </Grid>
             <Grid item xs={7}>
           <div className="Form">
-            <Typography className="Mission" variant="h6" color="textPrimary">
+            <Typography className="Mission" variant="h5" color="textPrimary">
             Fill up this form for general enquiries, we will reply as soon as possible.
             </Typography>
             <TextField
