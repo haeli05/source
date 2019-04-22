@@ -41,9 +41,11 @@ class GetStarted extends Component {
 
   MessageSubmit() {
     if ( this.state.email!=="" && this.state.email.includes("@") && this.state.email.includes(".") && this.state.feedback !== ""){
-      axios.post('/feedback',{email:this.state.email,feedback:this.state.feedback})
-      .then(res=>{
-        console.log(res);
+      axios.post('/feedback',{
+        email:this.state.email,
+        feedback:this.state.message
+      }).then(res=>{
+        console.log("res"+res);
       if(res.status = 200){
         this.setState({sent:true});
       }else{

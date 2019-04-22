@@ -8,6 +8,7 @@ const transporter = require('./mail').transporter;
 const feedbackHtml = require('./feedbackEmail').emailHtml;
 const subscribeHtml = require('./subscribeEmail').emailHtml;
 const cors = require('cors');
+
 var proxy = require('redbird')({
   port: 80,
   letsencrypt: {
@@ -54,7 +55,7 @@ app.get('/*', function(req, res) {
   } else {
     res.sendFile(path.join(__dirname+'/build/index.html'), function(err) {
       if (err) {
-        res.status(500).send(err)
+        res.status(500).send(err);
       }
     })
   }
@@ -93,14 +94,14 @@ app.post("/subscribe", (req, res)=>{
       }
       console.log('Subscribe message sent: %s', info.messageId);
   });
-  res.status(200)
+  res.status(200);
+  res.end();
 })
 
 
 app.post("/feedback", (req, res)=>{
   let email = req.body.email
   let feedback = req.body.feedback
-
   // Send feedback to source
   let sourceOptions = {
       from: '"Source Team" <source@sourcenetwork.io>',
@@ -114,6 +115,7 @@ app.post("/feedback", (req, res)=>{
         res.status(400)
       }
       console.log('Feedback message sent to source: %s', info.messageId);
+      res.status(200);
   });
 
   // Send thank you to user
@@ -121,7 +123,7 @@ app.post("/feedback", (req, res)=>{
       from: '"Source Team" <source@sourcenetwork.io>',
       to: email,
       subject: `Thank you for your feedback!`,
-      text: "Thank you for your feedback! We are constantly working hard to improve Source and we value your input.",
+      text: "Thank you for your Message! We will be in touch shortly.",
       html: feedbackHtml,
   };
   transporter.sendMail(userOptions, (error, info) => {
@@ -131,7 +133,8 @@ app.post("/feedback", (req, res)=>{
       }
       console.log('Thank you message sent to user: %s', info.messageId);
   });
-  res.status(200)
+  res.status(200);
+  res.end();
 })
 
 // SSL redbird

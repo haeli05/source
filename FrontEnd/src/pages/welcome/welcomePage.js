@@ -125,7 +125,7 @@ class WelcomePage extends Component {
       axios.post('/subscribe',{
         email:this.state.SignUpEmail
       }).then(function(response){
-        console.log(response);
+        console.log("response"+response);
         if(response.status==200){
         this.setState({sent:true});
               ReactGA.event({
@@ -199,7 +199,6 @@ class WelcomePage extends Component {
               label="Sign up for email updates"
               type="email"
               onChange={this.handleChangeSignUp}
-              margin="wide"
               variant="outlined"
               className="SignUpInput"
               error={this.state.emailError}
