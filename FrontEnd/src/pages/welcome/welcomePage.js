@@ -335,7 +335,7 @@ class WelcomePage extends Component {
           Project hosts a project's files using Git (Implementation WIP), its contributors, task boards, monetized tasks, and displays links for crowdfunding.
           (Needs work)
           <br/><br/>
-          Git-hosting(Needs work), Payment()
+          Git-hosting(current implementation Needs work)
           <br/>
           People: A page that hosts reviews and a user's reputation. Contains social integration,
           allows users to indicate relevant skills,

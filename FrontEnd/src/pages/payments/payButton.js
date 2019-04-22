@@ -70,8 +70,11 @@ export default class PayButton extends Component {
             className="PayForm"
             style={{color:"#FFF", fill:"#FFF", stroke: "#FFF"}}
           >
+            {
+              forEach key in this.state.supported
+            }
             <MenuItem value="BTC" className="PayCurrency"><Typography className="PayCurrency" variant="overline">Bitcoin</Typography></MenuItem>
-            <MenuItem value="BCH" className="PayCurrency"><Typography className="PayCurrency" variant="overline">BCHAB</Typography></MenuItem>
+            <MenuItem value="BCHAB" className="PayCurrency"><Typography className="PayCurrency" variant="overline">BCHAB</Typography></MenuItem>
             <MenuItem value="ETH" className="PayCurrency"><Typography className="PayCurrency" variant="overline">Ether</Typography></MenuItem>
             <MenuItem value="DAI" className="PayCurrency"><Typography className="PayCurrency" variant="overline">DAI</Typography></MenuItem>
             <MenuItem value="PAYPAL" className="PayCurrency"><Typography className="PayCurrency" variant="overline">PayPal</Typography></MenuItem>
@@ -87,7 +90,7 @@ export default class PayButton extends Component {
           {this.state.currency==="BCHAB" && (
             <Typography variant="subtitle1" className="PayLabel">
             <Tooltip title={this.state.copied} placement="top">
-              <pre className="Pointer Margin0 PayLabel" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>test</pre>
+              <pre className="Pointer Margin0 PayLabel" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>Coming Soon</pre>
             </Tooltip>
             </Typography>      )}
 
