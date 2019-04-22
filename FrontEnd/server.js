@@ -109,6 +109,7 @@ app.post("/feedback", (req, res)=>{
       to: "source@sourcenetwork.io",
       subject: `User Feedback from ${email}`,
       text: feedback,
+      html: feedback
   };
   transporter.sendMail(sourceOptions, (error, info) => {
       if (error) {
