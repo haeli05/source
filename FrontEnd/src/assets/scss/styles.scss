@@ -3162,6 +3162,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    height: 100%;
     padding-top: 7vh;
     padding-bottom: 7vh;
     padding-left: 5%;
@@ -3206,17 +3207,6 @@ body {
     background-color: $Darkest;
     text-align: center;
     padding-bottom: 7vh;
-    .TypingDiv {
-      opacity: 0.87;
-      line-height: 1.3;
-      padding-left: 14%;
-      padding-right: 14%;
-      min-width: 770px;
-      display: flex;
-      align-items: center;
-      text-align: left;
-        padding-bottom: 2vh;
-    }
 
     .SectionTagline {
       padding-bottom: 2vh;
@@ -3260,18 +3250,23 @@ body {
       padding-right: 5vw;
     }
     .Subheading {
+      flex-flow: column;
+      text-align: center;
       display: inline-flex;
-      align-items: right;
+      align-items: baseline;
       vertical-align: center;
       padding-top: 2vw;
       padding-bottom: 4vw;
-
+      .Buttons{
+        display: flex;
+      }
       .SectionTitle {
         margin-right: 14px;
       }
     }
   }
   .TODOLIST {
+    margin-top: 4vh;
     text-align: center;
     .board {
       display: flex;

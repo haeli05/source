@@ -22,6 +22,7 @@ export default class PayButton extends Component {
   constructor(props) {
     super(props);
     this.state={
+      supported: {'BTC':['Bitcoin', ''], 'BCHAB':['Bitcoin Cash AB',''], 'ETH':['Ether',''], 'EOS':['EOS',''], 'DAI':['Dai',''], 'XTZ':['Tezos',''], 'PayPal':['PayPal',''], 'Klaytn':['Klaytn','']},
       currency: "BTC",
       copied: "copy",
       AMOUNT: 5.00,
@@ -93,7 +94,7 @@ export default class PayButton extends Component {
           {this.state.currency==="ETH" && (
             <Typography variant="subtitle1" className="PayLabel">
             <Tooltip title={this.state.copied} placement="top">
-              <pre className="Pointer Margin0" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>test</pre>
+              <pre className="Pointer Margin0" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>Coming Soon</pre>
             </Tooltip>
             </Typography>
             )}
@@ -101,7 +102,7 @@ export default class PayButton extends Component {
           {this.state.currency==="DAI" && (
             <Typography variant="subtitle1" className="PayLabel">
             <Tooltip title={this.state.copied} placement="top">
-              <pre className="Pointer Margin0" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>test</pre>
+              <pre className="Pointer Margin0" onClick={()=>this.copy()} onMouseLeave={this.resetCopy}>Coming Soon</pre>
             </Tooltip>
             </Typography>
             )}

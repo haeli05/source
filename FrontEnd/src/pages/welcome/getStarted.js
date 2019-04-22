@@ -131,7 +131,7 @@ class GetStarted extends Component {
               </div>
             </Grid>
             <Grid item xs={7}>
-            <div className="Form">
+          <div className="Form">
             <Typography className="Mission" variant="h6" color="textPrimary">
             Fill up this form for general enquiries, we will reply as soon as possible.
             </Typography>
@@ -173,12 +173,11 @@ class GetStarted extends Component {
              </Tooltip>
              )}
             {(this.state.sent) && (
-              <div >
                 <Typography variant="h4" className="Success">
                   <ReactSVG src={CircleTick} className="ReactSVGIcon Icon25 MarginRight10" />
                   Thank you. We will be in touch shortly
                 </Typography>
-              </div>
+
                         )}
             </div>
             </Grid>

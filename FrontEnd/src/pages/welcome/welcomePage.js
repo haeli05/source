@@ -200,7 +200,7 @@ class WelcomePage extends Component {
                 <Typography variant="h4" className="Success">
                   <ReactSVG src={CircleTick} className="ReactSVGIcon Icon25 MarginRight10" />
                   Thank you. We will keep in touch
-                </Typography>        
+                </Typography>
                         )}
             </div>
         </div>
@@ -259,7 +259,7 @@ class WelcomePage extends Component {
                       <Typography variant="h5" paragraph={true} >
                       Open Source Collaboration + Crowdfunding + Monetized Tasks
                       </Typography>
-                      Projects are broken down into subtasks, which can be delegated to the community.
+                      Projects are broken down into subtasks, which can be delegated to the community or our specialist partners.
                       <br/><br/>
                       How to monetize your skills:
                       <ol>
@@ -290,42 +290,45 @@ class WelcomePage extends Component {
         <div className="Section Section5" id="todo">
           Help us build the beta!
           <Typography variant="h2" className="SectionTitle">source</Typography>
-          <Typography variant="subtitle1" className="SectionTitle">The Internet's Tech Incubator. </Typography>
+          <Typography variant="subtitle1" className="SectionTitle">The Internet's Tech Incubator</Typography>
             <div className="Subheading">
-            <Typography variant="overline2" className="SectionTitle">Support this project:  </Typography>
-            <PayButton />
-              <div className="MajorActionButtonsHorizontal">
-                <div className="MajorActionButtonDiv">
-                  <a href="https://spectrum.chat/sourcenetwork-io?tab=posts" target="_blank">
-                    <MessageButton {...this.props} goToRoom={this.props.goToRoom}/>
-                  </a>
-                <div className="MajorActionButtonDiv">
+              <Typography variant="overline2">Support this project: </Typography>
+              <div className="Buttons">
+                <PayButton />
+                  <div className="MajorActionButtonsHorizontal">
+                    <div className="MajorActionButtonDiv">
+                      <a href="https://spectrum.chat/sourcenetwork-io?tab=posts" target="_blank">
+                        <MessageButton {...this.props} goToRoom={this.props.goToRoom}/>
+                      </a>
+                    <div className="MajorActionButtonDiv">
 
-                </div>
-              </div>
+                    </div>
+                  </div>
+                  </div>
               </div>
             </div>
 
           <Typography className="Scope" variant="body" paragraph={true}>
           <b>Temporary repository at:</b> <a href="https://github.com/haeli05/source">https://github.com/haeli05/source</a>
-          <br/>
-          <b>Goals:</b> Source is designed to facilitate discussion, and collaboration to build digital projects.
+          <br/><br/>
+          <b>Goals:</b> Source is designed to facilitate discussion and collaboration to build digital projects.
           <br/><b>Scope:</b>
           <br/>
-          Our stack combines a react front end with modular backend components. We rely heavily on Open Source components to achieve different feature sets.
+          Our stack combines a React.JS front end with modular backend components. We rely heavily on Open Source components to achieve different feature sets.
           <br/><br/>
           <b>Components:</b>
           <br/>
           Ideas includes a social-blog like text area to discuss ideas and potential projects (Done)
-
+          <br/><br/>
           Project hosts a project's files using Git (Implementation WIP), its contributors, task boards, monetized tasks, and displays links for crowdfunding.
           (Needs work)
+          <br/><br/>
           Git-hosting(Needs work), Payment()
-
+          <br/>
           People: A page that hosts reviews and a user's reputation. Contains social integration,
           allows users to indicate relevant skills,
           while also allowing project managers to track and find contributors.
-
+          <br/><br/>
           <b>Other features:</b>
           <br/>Riot Chat: Work in progress
           <br/>Messaging: Work in progress
@@ -337,7 +340,8 @@ class WelcomePage extends Component {
           <br/><br/>
           <b>How to Contribute?</b>
           <br/>
-          To donate: Use the Pay button above<br/>
+          To donate: Use the Pay button above
+          <br/>
           Suggestions: Send us an email or use spectrum
           <br/>
           <br/>
