@@ -48,7 +48,7 @@ class GetStarted extends Component {
         this.setState({sent:true});
       }else{
         this.setState({emailError:true});
-        this.setState({emailErrorMessage:"Server error. Status:" + response.status + response.statusText});
+        this.setState({emailErrorMessage:"Server error. Status:" + res.status + res.statusText});
       }
 
       })
