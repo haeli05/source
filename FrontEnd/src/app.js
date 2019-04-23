@@ -7,9 +7,7 @@ class App extends Component {
 
   render() {
     const user = {
-    user_id: 1,
-    email: '',
-    name: 'Guest'
+
     };
     return (
       <div className="App">

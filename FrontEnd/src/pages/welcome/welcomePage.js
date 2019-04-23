@@ -187,8 +187,7 @@ class WelcomePage extends Component {
                 </Button>
                 <br/>
                 <Typography className="Mission WhatIsSource" variant="h4" color="textPrimary">
-                  We also help hackers
-                  <br/>monetize their skills. Interested?
+                  We also help hackers monetize their skills. Interested?
                 </Typography>
                 <Button variant="contained" color="primary" className="GetStarted" href="#todo">
                   Help us build the beta
@@ -414,7 +413,7 @@ class WelcomePage extends Component {
                 <Typography variant="h4">Back End</Typography>
                 <div className="task">
                   <Typography variant="h6">Database Migration</Typography>
-                  <Typography variant="p">MongoDB to PostGreSQL</Typography>
+                  <Typography variant="p">MongoDB to PostGreSQL, including support for new components</Typography>
                   <Chip label="$1000" className="compensation"/>
                 </div>
                 <div className="task">
@@ -425,7 +424,7 @@ class WelcomePage extends Component {
                 <div className="task">
                   <Typography variant="h6">Social Logins (FB, Twitter, GitHub,Google)</Typography>
                   <Typography variant="p">Integrate logins with these methods</Typography>
-                  <Chip label="$1000" className="compensation"/>
+                  <Chip label="$500" className="compensation"/>
                 </div>
               </div>
               <div className="column">
