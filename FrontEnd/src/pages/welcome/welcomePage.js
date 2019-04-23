@@ -174,10 +174,10 @@ class WelcomePage extends Component {
             <Grid container spacing={10}>
               <Grid item xs={6}>
                 <Typography className="Mission" color="textPrimary" variant="h1">
-                  The Internet's <br/>Blockchain Tech Incubator
+                  The Internet's <br/>Blockchain focused Tech Incubator
                 </Typography>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs>
                 <Typography className="Mission WhatIsSource" style={{marginTop:"0em"}} variant="h4" color="textPrimary">
                 Source finds <div style={{display:"inline"}} id="whatissource"/>
                 <br/>for your digital projects.
@@ -192,11 +192,6 @@ class WelcomePage extends Component {
                 <Button variant="contained" color="primary" className="GetStarted" href="#todo">
                   Help us build the beta
                 </Button>
-              </Grid>
-              <Grid item xs={6}>
-
-              </Grid>
-              <Grid item xs={6}>
               </Grid>
             </Grid>
           </div>
@@ -239,7 +234,7 @@ class WelcomePage extends Component {
         <Typography className="SectionSubTitle" variant="h4">Source is building a sharing economy to simplify tech development</Typography>
 
                   <Grid container spacing={8}>
-                    <Grid item xs={6}>
+                    <Grid item xs={6} sm={3}>
                     <div className="Description">
                     <Typography variant="h5" paragraph={true} >
                     Our community of developers, technology professionals, and consultants support your projects from ideation to implementation.
@@ -261,7 +256,7 @@ class WelcomePage extends Component {
                     </div>
                     </Grid>
 
-                    <Grid item xs={6}>
+                    <Grid item >
                     <Fade in={true}>
                       <img className="DevImage2" src={developerImage2} alt="developers"/>
                     </Fade>
@@ -276,7 +271,7 @@ class WelcomePage extends Component {
                         <img className="DevImage" src={developerImage} alt="developers"/>
                       </Fade>
                     </Grid>
-                    <Grid item xs={8} sm={8}>
+                    <Grid item xs={8} sm={5}>
                     <div className="Description">
                       <Typography variant="h5" paragraph={true} >
                       Open Source Collaboration + Crowdfunding + Monetized Tasks
