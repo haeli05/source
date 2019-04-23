@@ -41,8 +41,14 @@ import SnackBar from './pages/global/components/snackBar';
 import QuantStamp from './pages/app/quantstamp';
 
 import ReactGA from 'react-ga';
+import Intercom from 'react-intercom';
+
 
 ReactGA.initialize('UA-138662125-1');
+ReactGA.initialize({
+  trackingId: 'UA-138662125-1',
+  gaAddress: 'https://api.sourcenetwork.io/analytics'
+});
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 // <div>
@@ -60,6 +66,9 @@ function fireTracking() {
     ReactGA.pageview(window.location.hash);
 }
 
+const user = {
+
+};
 
 let Routes =()=>(
   <Router onUpdate={fireTracking} history={history}>
@@ -67,6 +76,7 @@ let Routes =()=>(
     <div className="app">
       <Route path="/" render={props=><Navbar {...props}/>}/>
       <Route path="/" render={props=><SnackBar {...props}/>}/>
+      <Route path="/" render={props=><Intercom appID="f5is3sx5" {...user}/>}/>
       <div className="TheEntirePageMinusFooter">
       <div className="GoogleTracking">
       </div>
