@@ -28,6 +28,8 @@ var proxy = require('redbird')({
   }
 });
 
+var analyticsproxy = require("express-http-proxy")
+
 const app = new Express();
 
 mongoose.Promise = global.Promise;
@@ -63,6 +65,21 @@ app.use('/api',user);
 app.use('/api',ideas);
 app.use('/api',storage);
 app.use('/api',search);
+
+
+// Analytics proxy
+function getIpFromReq (req) { // get the client's IP address
+  var bareIP = ":" + ((req.connection.socket && req.connection.socket.remoteAddress)
+    || req.headers["x-forwarded-for"] || req.connection.remoteAddress || "");
+  return (bareIP.match(/:([^:]+)$/) || [])[1] || "127.0.0.1";
+}
+app.use("/analytics", analyticsproxy("www.google-analytics.com", {
+  proxyReqPathResolver: function (req) {
+    return req.url + (req.url.indexOf("?") === -1 ? "?" : "&")
+      + "uip=" + encodeURIComponent(getIpFromReq(req));
+  }
+}));
+
 
 job.start();
 
