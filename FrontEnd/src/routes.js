@@ -74,6 +74,8 @@ let Routes =()=>(
   <Router onUpdate={fireTracking} history={history}>
 
     <div className="app">
+    <Route path="/" render={props=><Intercom appID="f5is3sx5" {...user}/>}/>
+
       <Route path="/" render={props=><Navbar {...props}/>}/>
       <Route path="/" render={props=><SnackBar {...props}/>}/>
       <Route path="/" render={props=><Intercom appID="f5is3sx5" {...user}/>}/>
