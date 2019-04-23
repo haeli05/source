@@ -56,11 +56,9 @@ app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname+'/build/index.html'), function(err) {
       if (err) {
         res.status(500).send(err);
-
       }
     })
   }
-  res.end();
 })
 
   /**
@@ -91,12 +89,11 @@ app.post("/subscribe", (req, res)=>{
   transporter.sendMail(subscriberOptions, (error, info) => {
       if (error) {
         return console.log(error);
-        res.sendStatus(400);
+        res.status(400).send();
       }
       console.log('Subscribe message sent: %s', info.messageId);
   });
-  res.sendStatus(200);
-  res.end();
+  res.status(200).send();
 })
 
 
@@ -108,13 +105,12 @@ app.post("/feedback", (req, res)=>{
       from: '"Source Team" <source@sourcenetwork.io>',
       to: "source@sourcenetwork.io",
       subject: `User Feedback from ${email}`,
-      text: feedback,
-      html: feedback
+      text: feedback
   };
   transporter.sendMail(sourceOptions, (error, info) => {
       if (error) {
         return console.log(error);
-        res.sendStatus(400)
+        res.status(400).send();
       }
       console.log('Feedback message sent to source: %s', info.messageId);
   });
@@ -130,12 +126,11 @@ app.post("/feedback", (req, res)=>{
   transporter.sendMail(userOptions, (error, info) => {
       if (error) {
           return console.log(error);
-          res.sendStatus(400)
+          res.status(400).send();
       }
       console.log('Thank you message sent to user: %s', info.messageId);
   });
-  res.sendStatus(200);
-  res.end();
+  res.status(200).send();
 })
 
 // SSL redbird

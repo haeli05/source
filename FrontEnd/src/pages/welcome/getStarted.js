@@ -45,23 +45,16 @@ class GetStarted extends Component {
         email:this.state.email,
         feedback:this.state.message
       }).then(res=>{
-        console.log("res"+res);
-        if(res.status = 200){
-          this.setState({sent:true});
-          ReactGA.event({
-                category: 'Enquiry',
-                action: 'Sent an Enquiry',
-            });
-        }else{
-          this.setState({emailError:true});
-          this.setState({emailErrorMessage:"Server error. Status:" + res.status + res.statusText});
-        }
+        this.setState({sent:true});
+        ReactGA.event({
+          category: 'Enquiry',
+          action: 'Sent an Enquiry',
+        });
       })
       .catch(err=>{
         this.setState({emailError:true});
         this.setState({emailErrorMessage:"There was an internal error. Please try again."});
       });
-
     } else {
       this.setState({emailError:true});
       this.setState({emailErrorMessage:"Please provide a valid email"});
@@ -89,7 +82,6 @@ class GetStarted extends Component {
         />
       </Helmet>
         <div className="Section">
-
           <Grid container spacing={24}>
             <Grid item xs={5}>
               <div className="GetStartedLabel">
