@@ -48,12 +48,16 @@ class WelcomePage extends Component {
       emailErrorMessage: "",
       sent: false,
     }
+    window.Intercom("boot", {
+      app_id: "f5is3sx5"
+    });
     this.SignUpSubmit=this.SignUpSubmit.bind(this);
     this.handleChangeSignUp=this.handleChangeSignUp.bind(this);
   }
 
   componentDidMount(){
     document.addEventListener("keydown", this._handleKeyDown.bind(this));
+
 
     const element1 = document.querySelector('#whatissource')
     function callback1 (text) {
@@ -78,6 +82,9 @@ class WelcomePage extends Component {
       .type(`product managers`)
       .pause()
       .delete()
+      .type(`smart contract programmers`)
+      .pause()
+      .delete()
       .type(`designers`)
       .pause()
       .delete()
@@ -90,7 +97,17 @@ class WelcomePage extends Component {
       .type(`fans`)
       .pause()
       .delete()
+
+
+
   }
+
+  // intercom(){
+  //   window.intercomSettings = {
+  //     app_id: "f5is3sx5"
+  //   };
+  //   (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/f5is3sx5';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+  // }
 
 
   componentWillUnmount(){
@@ -141,6 +158,7 @@ class WelcomePage extends Component {
   };
 
   render() {
+
     return (
       <div className="WelcomePage">
         <Helmet>
@@ -156,7 +174,7 @@ class WelcomePage extends Component {
             <Grid container spacing={10}>
               <Grid item xs={6}>
                 <Typography className="Mission" color="textPrimary" variant="h1">
-                  The Internet's <br/>Blockchain Incubator
+                  The Internet's <br/>Blockchain Tech Incubator
                 </Typography>
               </Grid>
               <Grid item xs={6}>
@@ -169,7 +187,8 @@ class WelcomePage extends Component {
                 </Button>
                 <br/>
                 <Typography className="Mission WhatIsSource" variant="h4" color="textPrimary">
-                  We are currently in development. Interested in monetizing your skills?
+                  We also help hackers
+                  <br/>monetize their skills. Interested?
                 </Typography>
                 <Button variant="contained" color="primary" className="GetStarted" href="#todo">
                   Help us build the beta
@@ -234,7 +253,7 @@ class WelcomePage extends Component {
                       <li>Get matched with contributors</li>
                       </ul>
                       We partnered with devshops, technology providers and institutions of higher education to ensure a high quality of contributions.
-
+                    <br/>
                       Less time spent on logistics means more time spent on what matters:
                       <br/><br/>
                       <b>Building the product.</b>
@@ -290,6 +309,20 @@ class WelcomePage extends Component {
           <ReactSVG src={Comment} className="ReactSVGIcon Icon25 LeftIcon"/>
         Contact Us
         </Fab>
+
+            <Typography variant="h4">FAQ</Typography>
+          <div className="Faq">
+            <ul>
+              <li>I don't want my source code to be public</li>
+                  <Typography variant="subtitle1">That's OK. You can choose to keep your project private,
+                  <br/>but still list tasks and provide selective access to your chosen developers.</Typography>
+                  <br/><br/>
+              <li>Will you integrate a crypto token?</li>
+                  <Typography variant="subtitle1">We have no plans for a native token so far.
+                  <br/>Reach out if you want our payment methods to support yours.</Typography>
+
+            </ul>
+          </div>
         </div>
         <div className="Section Section5" id="todo">
           Help us build the beta!

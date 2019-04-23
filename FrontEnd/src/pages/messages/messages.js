@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import {ShareButton} from '../global/components/majorActionButtons.js';
 import MessageCard from './components/messageCard.js';
-import {refreshChat} from './../../actions/chat.actions.js';
+//import {refreshChat} from './../../actions/chat.actions.js';
 import {connect} from 'react-redux';
 
 function TabContainer(props) {
@@ -22,24 +22,24 @@ TabContainer.propTypes = {
 };
 
 function sendMessage(username,accessToken,deviceId){
-  let obj ={
-    mx_user_id: "@"+username+":source.lol",
-    mx_is_url:"https://matrix.org",
-    mx_hs_url:"https://matrix.source.lol",
-    mx_access_token:accessToken,
-    carlos: true,
-    mx_device_id:deviceId,
-    notifications_hidden:true,
-    mx_is_guest:false
-  };
-
-  let data = obj;
-  window.onload = function() {
-    if(document.getElementsByTagName('iframe')!==null){
-      var win = document.getElementsByTagName('iframe')[0].contentWindow;
-      win.postMessage(data, "*");
-    }
-  };
+  // let obj ={
+  //   mx_user_id: "@"+username+":source.lol",
+  //   mx_is_url:"https://matrix.org",
+  //   mx_hs_url:"https://matrix.source.lol",
+  //   mx_access_token:accessToken,
+  //   carlos: true,
+  //   mx_device_id:deviceId,
+  //   notifications_hidden:true,
+  //   mx_is_guest:false
+  // };
+  //
+  // let data = obj;
+  // window.onload = function() {
+  //   if(document.getElementsByTagName('iframe')!==null){
+  //     var win = document.getElementsByTagName('iframe')[0].contentWindow;
+  //     win.postMessage(data, "*");
+  //   }
+  // };
 }
 
 
@@ -101,7 +101,7 @@ componentDidMount(){
     return (
     <div>
       <div className="messages" style={{width:"100%", height:"100vh"}}>
-      
+
 
       </div>
     </div>

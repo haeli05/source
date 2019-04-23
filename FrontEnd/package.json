@@ -65,6 +65,7 @@
     "react-image-magnify": "^2.7.4",
     "react-inlinesvg": "^0.8.4",
     "react-input-autosize": "^1.1.0",
+    "react-intercom": "^1.0.15",
     "react-markdown": "^3.6.0",
     "react-microlink": "^2.3.0",
     "react-onclickoutside": "^6.8.0",
