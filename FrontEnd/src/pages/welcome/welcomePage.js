@@ -171,7 +171,7 @@ class WelcomePage extends Component {
         </Helmet>
         <div className="Hero">
           <div className="WelcomeSignUp">
-            <Grid container spacing={10}>
+            <Grid container spacing={12}>
               <Grid item xs={6}>
                 <Typography className="Mission" color="textPrimary" variant="h1">
                   The Internet's <br/>Tech Incubator
@@ -234,7 +234,7 @@ class WelcomePage extends Component {
         <Typography className="SectionSubTitle" variant="h4">Source is building a sharing economy to simplify tech development</Typography>
 
                   <Grid container spacing={8}>
-                    <Grid item xs={6} sm={3}>
+                    <Grid item xs={6}>
                     <div className="Description">
                     <Typography variant="h5" paragraph={true} >
                     Our community of developers, technology professionals, and consultants support your projects from ideation to implementation.
@@ -255,8 +255,7 @@ class WelcomePage extends Component {
 
                     </div>
                     </Grid>
-
-                    <Grid item >
+                    <Grid item xs={6}>
                     <Fade in={true}>
                       <img className="DevImage2" src={developerImage2} alt="developers"/>
                     </Fade>
