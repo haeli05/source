@@ -162,7 +162,7 @@ class WelcomePage extends Component {
     return (
       <div className="WelcomePage">
         <Helmet>
-          <title>source | The Decentralized Tech Incubator</title>
+          <title>source | Decentralized Tech Incubator</title>
           <meta name="keywords" content="decentralized, tech incubator, developers,programming,open source, blockchain, crowdfunding" />
           <meta
             name="description"
@@ -290,7 +290,7 @@ class WelcomePage extends Component {
         <br/>
         <Typography variant="overline2">Have a project you want to list or need help with?</Typography>
         <br/>
-        <Typography variant="h4">Contact a Tech Specialist.</Typography>
+        <Typography variant="h4">Let us know!</Typography>
         <br/>
         <Fab
         variant="extended"

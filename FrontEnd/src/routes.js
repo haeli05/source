@@ -112,8 +112,6 @@ let Routes =()=>(
           <Route exact path="/requestpassword" render={()=><RequestNewPass/>}/>
           <Route exact path="/getstarted" render={props=><GetStarted {...props}/>}/>
 
-          {/* I don't know */}
-//          <Route exact path="/app/quantstamp" render={props=><QuantStamp {...props}/>}/>
           <Route render={props=><Four0FourPage {...props}/>}/>
 
         </Switch>
