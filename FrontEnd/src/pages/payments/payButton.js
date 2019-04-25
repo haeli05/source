@@ -6,15 +6,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import InputBase from '@material-ui/core/InputBase';
 // Icons
 import Icon from 'react-icons-kit';
 import {clipboard} from 'react-icons-kit/ionicons/clipboard'
-// SVG
-import ReactSVG from 'react-svg';
-import WalletCoin from './../../assets/svg/walletcoin.svg';
 //PayPal
 import { PayPalButton } from "react-paypal-button-v2";
 
@@ -70,7 +66,7 @@ export default class PayButton extends Component {
             className="PayForm"
             style={{color:"#FFF", fill:"#FFF", stroke: "#FFF"}}
           >
-          
+
             <MenuItem value="BTC" className="PayCurrency"><Typography className="PayCurrency" variant="overline">Bitcoin</Typography></MenuItem>
             <MenuItem value="BCHAB" className="PayCurrency"><Typography className="PayCurrency" variant="overline">BCHAB</Typography></MenuItem>
             <MenuItem value="ETH" className="PayCurrency"><Typography className="PayCurrency" variant="overline">Ether</Typography></MenuItem>
@@ -152,12 +148,9 @@ export default class PayButton extends Component {
 
                    </div>
                   )}
-          {this.state.currency!="PAYPAL" && (
+          {this.state.currency!=="PAYPAL" && (
               <Button variant="contained" className="Pay"><Icon icon={clipboard} className="CopyIcon"/>Copy</Button>
             )}
-
-
-
       </div>
     )
   }

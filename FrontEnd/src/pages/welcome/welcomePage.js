@@ -162,8 +162,8 @@ class WelcomePage extends Component {
     return (
       <div className="WelcomePage">
         <Helmet>
-          <title>source | The Internet's Tech Incubator</title>
-          <meta name="keywords" content="developers,programming,open source, blockchain, crowdfunding" />
+          <title>source | The Decentralized Tech Incubator</title>
+          <meta name="keywords" content="decentralized, tech incubator, developers,programming,open source, blockchain, crowdfunding" />
           <meta
             name="description"
             content="Find developers for your projects"
@@ -174,12 +174,12 @@ class WelcomePage extends Component {
             <Grid container spacing={12}>
               <Grid item xs={6}>
                 <Typography className="Mission" color="textPrimary" variant="h1">
-                  The Internet's <br/>Tech Incubator
+                  The Decentralized <br/>Tech Incubator
                 </Typography>
               </Grid>
               <Grid item xs>
                 <Typography className="Mission WhatIsSource" style={{marginTop:"0em"}} variant="h4" color="textPrimary">
-                Source finds <div style={{display:"inline"}} id="whatissource"/>
+                Find <div style={{display:"inline"}} id="whatissource"/>
                 <br/>for your digital projects.
                 </Typography>
                 <Button variant="outlined" className="GetStarted" component={Link} to="/getstarted">
@@ -187,7 +187,7 @@ class WelcomePage extends Component {
                 </Button>
                 <br/>
                 <Typography className="Mission WhatIsSource" variant="h4" color="textPrimary">
-                  We also help hackers monetize their skills. Interested?
+                  We also help developers monetize their skills. Interested?
                 </Typography>
                 <Button variant="contained" color="primary" className="GetStarted" href="#todo">
                   Help us build the beta

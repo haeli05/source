@@ -4,21 +4,20 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Paper from '@material-ui/core/Paper';
+
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import Icon from '@material-ui/core/Icon';
+
 // SVG
 import ReactSVG from 'react-svg';
-import Projects from './../../assets/svg/projects.svg';
+
 import RightBracket from './../../assets/svg/rightbracket.svg';
 import LeftBracket from './../../assets/svg/leftbracket.svg';
-import {group} from '../../assets/svg/people.svg';
+
 // Components
 import PersonCard from './components/personCard';
 import {ShareButton} from '../global/components/majorActionButtons.js';
-import Friends from './../../assets/svg/friend.svg';
+
 import TopicBar from './components/topicBar.js';
 import PopUp from '../global/components/PopUp.js';
 // Redux

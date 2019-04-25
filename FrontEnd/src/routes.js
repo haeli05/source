@@ -36,9 +36,6 @@ import Four0FourPage from './pages/global/four0FourPage';
 import Navbar from './pages/global/components/navbar';
 import Footer from './pages/global/components/footer';
 import SnackBar from './pages/global/components/snackBar';
-//import Exchange from './pages/exchange';
-//le Demo
-import QuantStamp from './pages/app/quantstamp';
 
 import ReactGA from 'react-ga';
 import Intercom from 'react-intercom';
