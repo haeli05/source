@@ -91,6 +91,9 @@ class WelcomePage extends Component {
       .type(`backers`)
       .pause()
       .delete()
+      .type(`consultants`)
+      .pause()
+      .delete()
       .type(`investors`)
       .pause()
       .delete()
@@ -172,7 +175,7 @@ class WelcomePage extends Component {
         <div className="Hero">
           <div className="WelcomeSignUp">
             <Grid container spacing={12}>
-              <Grid item xs={6}>
+              <Grid item xs={7}>
                 <Typography className="Mission" color="textPrimary" variant="h1">
                   The Decentralized <br/>Tech Incubator
                 </Typography>

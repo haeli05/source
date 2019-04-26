@@ -67,6 +67,31 @@ const user = {
 
 };
 
+{/* Explore Pages */}
+// <Route exact path="/explore/ideas" render={props=><Ideas {...props}/>}/>
+// <Route exact path="/explore/projects" render={props=><Projects {...props}/>}/>
+// <Route exact path="/explore/people" render={props=><People {...props}/>}/>
+// <Route exact path="/explore/apps" render={props=><Apps {...props}/>}/>
+// <Route exact path="/home" render={props=><Home {...props}/>}/>
+// {/* Ideas */}
+// <Route exact path="/newidea" render={props=><NewIdeaPage {...props}/>}/>
+// <Route exact path="/:user/idea/:idea" render={props=><IdeaPage {...props}/>}/>
+// <Route exact path="/:user/idea/:idea/edit" render={props=><EditIdeaPage {...props}/>}/>
+// {/* Projects */}
+// <Route exact path="/newproject" render={props=><NewRepoPage {...props}/>}/>
+// <Route exact path="/:user/project/:projectID" render={props=><RepoPage {...props}/>}/>
+// <Route exact path="/:user/project/:projectID/file/:id/:file" render={props=><FilePage {...props}/>}/>
+// <Route exact path="/:user/project/:projectID/file/*/:id/:file" render={props=><FilePage {...props}/>}/>
+// <Route exact path="/:user/project/:projectID/tree/:id/:tree" render={props=><TreePage {...props}/>}/>
+// <Route exact path="/:user/project/:projectID/tree/*/:id/:tree" render={props=><TreePage {...props}/>}/>
+// <Route exact path="/:user/project/:projectID/issue/:id" render={props=><IssuePage {...props}/>}/>
+// <Route exact path="/:user/project/:projectID/mergerequest/:id" render={props=><MergeRequestPage {...props}/>}/>
+// {/* People */}
+// <Route exact path="/:user/messages/" render={props=><Messages {...props}/>}/>
+// <Route exact path="/:user/profile" render={props=><UserPage {...props}/>}/>
+// <Route exact path="/:user/wallet" render={props=><WalletPage {...props}/>}/>
+
+
 let Routes =()=>(
   <Router onUpdate={fireTracking} history={history}>
 
@@ -82,30 +107,7 @@ let Routes =()=>(
         <Switch>
           {/* Landing */}
           <Route exact path="/" render={props=><App {...props}/>}/>
-          {/* Explore Pages */}
-          <Route exact path="/explore/ideas" render={props=><Ideas {...props}/>}/>
-          <Route exact path="/explore/projects" render={props=><Projects {...props}/>}/>
-          <Route exact path="/explore/people" render={props=><People {...props}/>}/>
-          <Route exact path="/explore/apps" render={props=><Apps {...props}/>}/>
-          <Route exact path="/home" render={props=><Home {...props}/>}/>
-          {/* Ideas */}
-          <Route exact path="/newidea" render={props=><NewIdeaPage {...props}/>}/>
-          <Route exact path="/:user/idea/:idea" render={props=><IdeaPage {...props}/>}/>
-          <Route exact path="/:user/idea/:idea/edit" render={props=><EditIdeaPage {...props}/>}/>
-          {/* Projects */}
-          <Route exact path="/newproject" render={props=><NewRepoPage {...props}/>}/>
-          <Route exact path="/:user/project/:projectID" render={props=><RepoPage {...props}/>}/>
-          <Route exact path="/:user/project/:projectID/file/:id/:file" render={props=><FilePage {...props}/>}/>
-          <Route exact path="/:user/project/:projectID/file/*/:id/:file" render={props=><FilePage {...props}/>}/>
-          <Route exact path="/:user/project/:projectID/tree/:id/:tree" render={props=><TreePage {...props}/>}/>
-          <Route exact path="/:user/project/:projectID/tree/*/:id/:tree" render={props=><TreePage {...props}/>}/>
-          <Route exact path="/:user/project/:projectID/issue/:id" render={props=><IssuePage {...props}/>}/>
-          <Route exact path="/:user/project/:projectID/mergerequest/:id" render={props=><MergeRequestPage {...props}/>}/>
-          {/* People */}
-          <Route exact path="/:user/messages/" render={props=><Messages {...props}/>}/>
-          <Route exact path="/:user/profile" render={props=><UserPage {...props}/>}/>
-          <Route exact path="/:user/wallet" render={props=><WalletPage {...props}/>}/>
-          {/* User Actions */}
+    // {/* User Actions */}
           <Route exact path="/createaccount" render={props=><CreateAccountPage {...props}/>}/>
           <Route exact path="/login" render={props=><LoginPage {...props}/>}/>
           <Route exact path="/resetpassword/:token" render={props=><ResetPassword {...props}/>}/>
