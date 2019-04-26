@@ -227,7 +227,7 @@ class WelcomePage extends Component {
         <div className="Section Section2">
           <Typography className="SectionTitle" variant="h3" style={{color:"white"}}>Can building technology be as simple as writing a blog post?</Typography>
           <br/>
-          <Typography variant="h4" style={{color:"white"}}>We think so.</Typography>
+          <Typography variant="h4" style={{color:"white"}}>Why not?</Typography>
           <br/>
           <Typography variant="h4" style={{color:"white"}}>Because the best developers are already online, <br/><br/> you just need their <b>attention.</b></Typography>
 
