@@ -39,7 +39,7 @@ import NotificationBanner from './NotificationBanner';
 import MessageBanner from './../../messages/components/messageBanner.js'
 import ChatPopUp from './../../messages/components/chatPopUp';
 // MISC
-import logo from './../img/logo.png';
+import logo from './../img/logo.gif';
 import ReactPullToRefresh from 'react-pull-to-refresh';
 import {Redirect} from 'react-router';
 import {Link} from 'react-router-dom';
