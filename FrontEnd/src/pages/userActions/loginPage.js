@@ -13,8 +13,6 @@ import {connect} from 'react-redux';
 import {getUser,getSignInStatus} from './../../reducers/user.reducer';
 import {signIn} from './../../actions/user.actions';
 import {chatLogin} from './../../actions/chat.actions.js';
-import SocialButton from './components/socialLogin';
-import { FacebookLoginButton, GoogleLoginButton, TwitterLoginButton, GithubLoginButton } from "react-social-login-buttons";
 
 class LoginPage extends Component {
   constructor(props){
@@ -121,21 +119,6 @@ class LoginPage extends Component {
             <Typography variant="caption" className="Recovery LinkUnderline" component={Link} to="/requestpassword">Forgot password?</Typography>
             <Typography variant="caption" component={Link} to="/signUp" className="TextCenter LinkUnderline" >No account? Sign Up</Typography>
 
-
-            <SocialButton
-                provider='facebook'
-                appId='YOUR_APP_ID'
-                onLoginSuccess={this.handleSocialLogin}
-                onLoginFailure={this.handleSocialLoginFailure}
-              >
-              <FacebookLoginButton
-
-              onClick={() => alert("Hello")}
-              />
-            </SocialButton>
-            <GoogleLoginButton onClick={() => alert("Hello")} />
-            <GithubLoginButton onClick={() => alert("Hello")} />
-            <TwitterLoginButton onClick={() => alert("Hello")} />
           </div>
 
         )}
