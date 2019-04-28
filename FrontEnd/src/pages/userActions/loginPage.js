@@ -13,7 +13,12 @@ import {connect} from 'react-redux';
 import {getUser,getSignInStatus} from './../../reducers/user.reducer';
 import {signIn} from './../../actions/user.actions';
 import {chatLogin} from './../../actions/chat.actions.js';
+import SocialButton from './components/SocialLogin';
+import { FacebookLoginButton } from "react-social-login-buttons";
 
+export class SocialButton extends Component {
+
+}
 
 class LoginPage extends Component {
   constructor(props){
@@ -24,13 +29,20 @@ class LoginPage extends Component {
       persistence: true,
     }
     this.handleChangeUser=this.handleChangeUser.bind(this);
+    this.handleSocialLogin=this.handleSocialLogin.bind(this);
+    this.handleSocialLoginFailure=this.handleSocialLoginFailure.bind(this);
     this.handleChangePassword=this.handleChangePassword.bind(this);
     this.handlePersistence=this.handlePersistence.bind(this);
     this.submit=this.submit.bind(this);
     this.redirect=this.redirect.bind(this);
     this.handleKeyPress=this.handleKeyPress.bind(this);
   }
+  handleSocialLogin(){
 
+  }
+  handleSocialLoginFailure(){
+
+  }
   handleChangeUser(e){
     this.setState({username:e.target.value});
   }
@@ -78,6 +90,7 @@ class LoginPage extends Component {
         {this.props.signInStatus==="PENDING" && (
           <div className="Form">
             <LinearProgress size={50} color="secondary"/>
+            <Typography variant="subtitle1">Loading...</Typography>
           </div>
         )}
         {(this.props.signInStatus===false || this.props.signInStatus==="ERROR") && (
@@ -111,6 +124,23 @@ class LoginPage extends Component {
             <Button variant="contained" color="primary" onKeyPress={(e)=>{this.handleKeyPress(e)}} onClick={this.submit} className="SubmitButton" >Log In</Button>
             <Typography variant="caption" className="Recovery LinkUnderline" component={Link} to="/requestpassword">Forgot password?</Typography>
             <Typography variant="caption" component={Link} to="/signUp" className="TextCenter LinkUnderline" >No account? Sign Up</Typography>
+          </div>
+          <div className="JustifyCenter AlignCenter">
+
+            <SocialButton
+                provider='facebook'
+                appId='YOUR_APP_ID'
+                onLoginSuccess={this.handleSocialLogin}
+                onLoginFailure={this.handleSocialLoginFailure}
+              >
+              <FacebookLoginButton
+              style={}
+              onClick={() => alert("Hello")}
+              />
+            </SocialButton>
+            <GoogleLoginButton onClick={() => alert("Hello")} />
+            <GithubLoginButton onClick={() => alert("Hello")} />
+            <TwitterLoginButton onClick={() => alert("Hello")} />
           </div>
         )}
       </div>
