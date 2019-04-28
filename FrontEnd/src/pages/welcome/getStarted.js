@@ -23,6 +23,8 @@ import logo from './img/logo.png';
 import MessageBlob from '../../assets/svg/messageblob.svg';
 import Letter from '../../assets/svg/letter.svg';
 import CircleTick from './../../assets/svg/circletick.svg';
+import config from '../../utils/config.js';
+
 
 class GetStarted extends Component {
   constructor(props){
@@ -41,7 +43,7 @@ class GetStarted extends Component {
 
   MessageSubmit() {
     if ( this.state.email!=="" && this.state.email.includes("@") && this.state.email.includes(".") && this.state.feedback !== ""){
-      axios.post('/feedback',{
+      axios.post(`${config.production_url}/feedback`,{
         email:this.state.email,
         feedback:this.state.message
       }).then(res=>{

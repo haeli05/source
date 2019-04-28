@@ -28,6 +28,7 @@ import Board from './../workflow/Board';
 import RightBracket from './../../assets/svg/rightbracket.svg';
 import CircleTick from './../../assets/svg/circletick.svg';
 
+import config from '../../utils/config.js';
 import { PayPalButton } from "react-paypal-button-v2";
 
 //Analytics
@@ -142,7 +143,7 @@ class WelcomePage extends Component {
     this.setState({emailError:false});
     this.setState({emailErrorMessage:""});
     if ( this.state.SignUpEmail!=="" && this.state.SignUpEmail.includes("@") && this.state.SignUpEmail.includes(".")){
-      axios.post('/subscribe',{
+      axios.post(`${config.production_url}/subscribe`,{
         email:this.state.SignUpEmail
       }).then(res=>{
         this.setState({sent:true});
