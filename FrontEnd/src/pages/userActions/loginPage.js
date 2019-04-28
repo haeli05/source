@@ -14,11 +14,7 @@ import {getUser,getSignInStatus} from './../../reducers/user.reducer';
 import {signIn} from './../../actions/user.actions';
 import {chatLogin} from './../../actions/chat.actions.js';
 import SocialButton from './components/SocialLogin';
-import { FacebookLoginButton } from "react-social-login-buttons";
-
-export class SocialButton extends Component {
-
-}
+import { FacebookLoginButton, GoogleLoginButton, TwitterLoginButton, GithubLoginButton } from "react-social-login-buttons";
 
 class LoginPage extends Component {
   constructor(props){
@@ -124,8 +120,7 @@ class LoginPage extends Component {
             <Button variant="contained" color="primary" onKeyPress={(e)=>{this.handleKeyPress(e)}} onClick={this.submit} className="SubmitButton" >Log In</Button>
             <Typography variant="caption" className="Recovery LinkUnderline" component={Link} to="/requestpassword">Forgot password?</Typography>
             <Typography variant="caption" component={Link} to="/signUp" className="TextCenter LinkUnderline" >No account? Sign Up</Typography>
-          </div>
-          <div className="JustifyCenter AlignCenter">
+
 
             <SocialButton
                 provider='facebook'
@@ -134,7 +129,7 @@ class LoginPage extends Component {
                 onLoginFailure={this.handleSocialLoginFailure}
               >
               <FacebookLoginButton
-              style={}
+
               onClick={() => alert("Hello")}
               />
             </SocialButton>
@@ -142,6 +137,7 @@ class LoginPage extends Component {
             <GithubLoginButton onClick={() => alert("Hello")} />
             <TwitterLoginButton onClick={() => alert("Hello")} />
           </div>
+
         )}
       </div>
     );
