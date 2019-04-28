@@ -12,8 +12,7 @@ import JavascriptTimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en'
 import 'react-time-ago/Tooltip.css'
 import run_check from './utils/expiry.js';
-// chat
-import { ThemeProvider } from '@livechat/ui-kit'
+
 //import 'normalize.css'; // Note this
 
 
@@ -378,11 +377,11 @@ const chattheme = {
 const store = configureStore(window.__INITIAL_STATE__)
 ReactDOM.render(
   <Provider store={store}>
-  <ThemeProvider theme={chattheme}>
+
     <MuiThemeProvider theme={theme}>
       <Routes />
     </MuiThemeProvider>
-  </ThemeProvider>
+
   </Provider>
 ,document.getElementById('root'));
 registerServiceWorker();
