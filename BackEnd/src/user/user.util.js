@@ -241,10 +241,6 @@ export function getUsers(){
 * @returns {JSON} - user {JSON}, token {String}, eos_tx {JSON}
 **/
 export async function newUser(info){
-
-    if(info.invitecode!=="byebyegithub") {
-      return Promise.reject('Incorrect invite code')
-    }
     info.username = info.username.toLowerCase();
     const datum = ['email', 'username', 'name', 'password'];
     for(let i = 0; i <datum.length; i++) {

@@ -16,6 +16,7 @@ import issues from './issues/issues.routes';
 import ideas from './ideas/ideas.routes';
 import storage from './storage/storage.routes';
 import job from './util/cron.util'
+const transporter = require('./config').transporter;
 var proxy = require('redbird')({
   port: 80,
   letsencrypt: {
@@ -65,6 +66,67 @@ app.use('/api',user);
 app.use('/api',ideas);
 app.use('/api',storage);
 app.use('/api',search);
+
+// Email
+app.post("/subscribe", (req, res)=>{
+  let email = req.body.email
+  // Send notification to subscriber
+  let subscriberOptions = {
+      from: '"Source Team" <source@sourcenetwork.io>', // sender address
+      to: email, // list of receivers
+      cc: "source@sourcenetwork.io",
+      subject: 'Thank you for subscribing to source!', // Subject line
+      text: 'Thanks for subscribing. You will be hearing from us as we continue to update source.', // plain text body
+      html: subscribeHtml
+  };
+  transporter.sendMail(subscriberOptions, (error, info) => {
+      if (error) {
+        return console.log(error);
+        res.sendStatus(400);
+          return res.end();
+      }
+      console.log('Subscribe message sent: %s', info.messageId);
+      res.sendStatus(200);
+      return res.end();
+  });
+})
+app.post("/feedback", (req, res)=>{
+  let email = req.body.email
+  let feedback = req.body.feedback
+  // Send feedback to source
+  let sourceOptions = {
+      from: '"Source Team" <source@sourcenetwork.io>',
+      to: "source@sourcenetwork.io",
+      subject: `User Feedback from ${email}`,
+      text: feedback,
+      html: feedback
+  };
+  transporter.sendMail(sourceOptions, (error, info) => {
+      if (error) {
+        return console.log(error);
+        res.sendStatus(400)
+          return res.end();
+      }
+      console.log('Feedback message sent to source: %s', info.messageId);
+  });
+  // Send thank you to user
+  let userOptions = {
+      from: '"Source Team" <source@sourcenetwork.io>',
+      to: email,
+      subject: `Thank you for your feedback!`,
+      text: "Thank you for your Message! We will be in touch shortly.",
+      html: feedbackHtml,
+  };
+  transporter.sendMail(userOptions, (error, info) => {
+      if (error) {
+          return console.log(error);
+          res.sendStatus(400)
+      }
+      console.log('Thank you message sent to user: %s', info.messageId);
+      res.sendStatus(200);
+      return res.end();
+  });
+})
 
 
 // Analytics proxy
