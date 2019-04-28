@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 
 
-var LineChart = require("react-chartjs").Line;
+//var LineChart = require("react-chartjs").Line;
 let options={
 	///Boolean - Whether grid lines are shown across the chart
 	 scaleShowGridLines : false,
@@ -40,7 +40,7 @@ class Wallet extends Component{
     }
     else return(
       <div>
-        <LineChart data={this.props.data} options={options} width="600" height="250"/>
+        
       </div>
     )
   }
