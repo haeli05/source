@@ -13,7 +13,7 @@ import {connect} from 'react-redux';
 import {getUser,getSignInStatus} from './../../reducers/user.reducer';
 import {signIn} from './../../actions/user.actions';
 import {chatLogin} from './../../actions/chat.actions.js';
-import SocialButton from './components/SocialLogin';
+import SocialButton from './components/socialLogin';
 import { FacebookLoginButton, GoogleLoginButton, TwitterLoginButton, GithubLoginButton } from "react-social-login-buttons";
 
 class LoginPage extends Component {
