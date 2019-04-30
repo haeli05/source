@@ -3,7 +3,7 @@
 
 source is building a sharing economy to simplify tech development.
 
-Interested in contributing? Look up our TODOs on https://sourcenetwork.io
+Interested in contributing? Look up our TODOs on https://www.sourcenetwork.io
 
 
 ## Contact
