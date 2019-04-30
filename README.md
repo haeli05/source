@@ -1,5 +1,8 @@
 # source
-## The Internet's Tech Incubator
+## The Decentralized Tech Incubator
+
+source is building a sharing economy to simplify tech development.
+
 Interested in contributing? Look up our TODOs on https://sourcenetwork.io
 
 
