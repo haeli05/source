@@ -4,7 +4,7 @@ Interested in contributing? Look up our TODOs on https://sourcenetwork.io
 
 
 ## Contact
-Twitter: @sourceplatform
+Twitter: @source_platform
 
 Email: source@sourcenetwork.io
 
