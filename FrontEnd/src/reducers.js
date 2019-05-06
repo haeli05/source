@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
 // Import Reducers
 import user from './reducers/user.reducer'
@@ -8,7 +8,7 @@ import people from './reducers/people.reducer'
 import search from './reducers/search.reducer'
 import sourcello from './reducers/sourcello.reducer'
 import error from './reducers/error.reducer'
-import chat   from './reducers/chat.reducer';
+import chat from './reducers/chat.reducer'
 // Combine all reducers into one root reducer
 export default combineReducers({
   user,
@@ -19,4 +19,4 @@ export default combineReducers({
   sourcello,
   error,
   chat
-});
+})

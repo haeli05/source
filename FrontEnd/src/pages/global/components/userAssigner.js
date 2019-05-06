@@ -1,55 +1,54 @@
-//User Assigner
-import React, { Component } from 'react';
+// User Assigner
+import React, { Component } from 'react'
 // Material UI
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
 // MISC
-import PersonChip from './personChip';
-import ReactSVG from 'react-svg';
-import AddPerson from './../../../assets/svg/addperson.svg';
+import PersonChip from './personChip'
+import ReactSVG from 'react-svg'
+import AddPerson from './../../../assets/svg/addperson.svg'
 
 // Redux
-import { connect } from 'react-redux';
-import {fetchPersonChip} from './../../../actions/people.actions';
-import {getPersonChip} from './../../../reducers/people.reducer';
+import { connect } from 'react-redux'
+import { fetchPersonChip } from './../../../actions/people.actions'
+import { getPersonChip } from './../../../reducers/people.reducer'
 
 class UserAssigner extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
-      users:[],
+      users: []
     }
-    this.updateState=this.updateState.bind(this);
+    this.updateState = this.updateState.bind(this)
   }
 
-  componentDidMount(){
+  componentDidMount () {
 
   }
 
-  componentDidUpdate(){
-
-
-  }
-  handleClick(){
+  componentDidUpdate () {
 
   }
-  updateState(){
+  handleClick () {
+
+  }
+  updateState () {
   }
 
-  render() {
-      return (
-        <div className="UserAssigner">
-          <div>
-            {/*Array of UserChips that hv been added to this particular mofo*/}
-            <PersonChip />
-          </div>
-          <div>
-              <IconButton onClick={() => this.handleClick()} >
-                <ReactSVG src={AddPerson} className="ReactSVGIcon"/>
-              </IconButton>
-          </div>
+  render () {
+    return (
+      <div className='UserAssigner'>
+        <div>
+          {/* Array of UserChips that hv been added to this particular mofo */}
+          <PersonChip />
         </div>
-      )
+        <div>
+          <IconButton onClick={() => this.handleClick()} >
+            <ReactSVG src={AddPerson} className='ReactSVGIcon' />
+          </IconButton>
+        </div>
+      </div>
+    )
   }
 }
 
@@ -59,5 +58,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-
-export default connect(mapStateToProps)(UserAssigner);
+export default connect(mapStateToProps)(UserAssigner)

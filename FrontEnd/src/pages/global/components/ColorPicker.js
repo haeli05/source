@@ -1,42 +1,42 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Grow from '@material-ui/core/Grow';
-import ReactSVG from 'react-svg';
-import Share from './../../../assets/svg/share.svg';
-import {arrows_remove} from 'react-icons-kit/linea/arrows_remove'
-import { SketchPicker } from 'react-color';
+import React from 'react'
+import Button from '@material-ui/core/Button'
+import Icon from '@material-ui/core/Icon'
+import ClickAwayListener from '@material-ui/core/ClickAwayListener'
+import Grow from '@material-ui/core/Grow'
+import ReactSVG from 'react-svg'
+import Share from './../../../assets/svg/share.svg'
+import { arrows_remove } from 'react-icons-kit/linea/arrows_remove'
+import { SketchPicker } from 'react-color'
 
- class ColorPicker extends React.Component {
-  constructor(props){
-    super(props);
+class ColorPicker extends React.Component {
+  constructor (props) {
+    super(props)
     this.state = {
       open: false,
-      color: (this.props.color!==undefined) ? this.props.color : "FFFFFF",
-    };
-    this.handleClick=this.handleClick.bind(this);
-    this.handleChangeColor=this.handleChangeColor.bind(this);
+      color: (this.props.color !== undefined) ? this.props.color : 'FFFFFF'
+    }
+    this.handleClick = this.handleClick.bind(this)
+    this.handleChangeColor = this.handleChangeColor.bind(this)
   }
 
-  handleClick() {
-    this.setState({open:!this.state.open})
+  handleClick () {
+    this.setState({ open: !this.state.open })
   }
 
-  handleChangeColor() {
-   this.props.handleChangeColor;
+  handleChangeColor () {
+    this.props.handleChangeColor
   }
 
-  render() {
+  render () {
     return (
-      <div className="ShareButton">
+      <div className='ShareButton'>
         {!this.state.open && (
-          <Button variant="fab" className="MainButton" mini onClick={this.handleClick}>
-            <ReactSVG src={Share} className="ShareIcon"/>
+          <Button variant='fab' className='MainButton' mini onClick={this.handleClick}>
+            <ReactSVG src={Share} className='ShareIcon' />
           </Button>
         )}
         {this.state.open && (
-          <Button variant="fab" className="MainButton" mini onClick={this.handleClick}>
+          <Button variant='fab' className='MainButton' mini onClick={this.handleClick}>
             <Icon icon={arrows_remove} size={20} />
           </Button>
         )}
@@ -45,16 +45,16 @@ import { SketchPicker } from 'react-color';
             <Grow in={this.state.open}>
               <SketchPicker
                 color={this.state.color}
-                onChangeComplete={ this.handleChangeColor }
-                presetColors={["#EFF0F0"]}
+                onChangeComplete={this.handleChangeColor}
+                presetColors={['#EFF0F0']}
                 onSwatchHover={this.handleChangeColorTemporarily}
-                />
+              />
             </Grow>
-        </ClickAwayListener>
+          </ClickAwayListener>
         )}
       </div>
-    );
+    )
   }
 }
 
-export default {ColorPicker};
+export default { ColorPicker }

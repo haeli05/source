@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
-import Welcome from './pages/welcome/welcomePage';
-import styles from './assets/css/styles.min .css';
+import React, { Component } from 'react'
+import Welcome from './pages/welcome/welcomePage'
+import styles from './assets/css/styles.min .css'
 
 class App extends Component {
-
-  render() {
+  render () {
     return (
-      <div className="App">
-        <Welcome {...this.props}/>
+      <div className='App'>
+        <Welcome {...this.props} />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

@@ -1,75 +1,75 @@
-'use strict';
+'use strict'
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
-});
+})
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = (function () { function defineProperties (target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor) } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor } }())
 
-var _react = require('react');
+var _react = require('react')
 
-var _react2 = _interopRequireDefault(_react);
+var _react2 = _interopRequireDefault(_react)
 
-var _styles = require('@material-ui/core/styles');
+var _styles = require('@material-ui/core/styles')
 
-var _Paper = require('@material-ui/core/Paper');
+var _Paper = require('@material-ui/core/Paper')
 
-var _Paper2 = _interopRequireDefault(_Paper);
+var _Paper2 = _interopRequireDefault(_Paper)
 
-var _Chip = require('@material-ui/core/Chip');
+var _Chip = require('@material-ui/core/Chip')
 
-var _Chip2 = _interopRequireDefault(_Chip);
+var _Chip2 = _interopRequireDefault(_Chip)
 
-var _Typography = require('@material-ui/core/Typography');
+var _Typography = require('@material-ui/core/Typography')
 
-var _Typography2 = _interopRequireDefault(_Typography);
+var _Typography2 = _interopRequireDefault(_Typography)
 
-var _Card = require('@material-ui/core/Card');
+var _Card = require('@material-ui/core/Card')
 
-var _Card2 = _interopRequireDefault(_Card);
+var _Card2 = _interopRequireDefault(_Card)
 
-var _Button = require('@material-ui/core/Button');
+var _Button = require('@material-ui/core/Button')
 
-var _Button2 = _interopRequireDefault(_Button);
+var _Button2 = _interopRequireDefault(_Button)
 
-var _Avatar = require('@material-ui/core/Avatar');
+var _Avatar = require('@material-ui/core/Avatar')
 
-var _Avatar2 = _interopRequireDefault(_Avatar);
+var _Avatar2 = _interopRequireDefault(_Avatar)
 
-var _userTabs = require('./components/userTabs');
+var _userTabs = require('./components/userTabs')
 
-var _userTabs2 = _interopRequireDefault(_userTabs);
+var _userTabs2 = _interopRequireDefault(_userTabs)
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault (obj) { return obj && obj.__esModule ? obj : { default: obj } }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function') } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _possibleConstructorReturn (self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called") } return call && (typeof call === 'object' || typeof call === 'function') ? call : self }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass) } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass }
 
-var UserPage = function (_Component) {
-  _inherits(UserPage, _Component);
+var UserPage = (function (_Component) {
+  _inherits(UserPage, _Component)
 
-  function UserPage(props) {
-    _classCallCheck(this, UserPage);
+  function UserPage (props) {
+    _classCallCheck(this, UserPage)
 
-    var _this = _possibleConstructorReturn(this, (UserPage.__proto__ || Object.getPrototypeOf(UserPage)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (UserPage.__proto__ || Object.getPrototypeOf(UserPage)).call(this, props))
 
     _this.state = {
       currentTab: 0
-    };
-    return _this;
+    }
+    return _this
   }
 
   _createClass(UserPage, [{
     key: 'handleChange',
-    value: function handleChange(event) {
-      this.setState({ currentTab: event });
+    value: function handleChange (event) {
+      this.setState({ currentTab: event })
     }
   }, {
     key: 'render',
-    value: function render() {
+    value: function render () {
       return _react2.default.createElement(
         'div',
         { className: 'UserPage' },
@@ -172,11 +172,11 @@ var UserPage = function (_Component) {
             )
           )
         )
-      );
+      )
     }
-  }]);
+  }])
 
-  return UserPage;
-}(_react.Component);
+  return UserPage
+}(_react.Component))
 
-exports.default = UserPage;
+exports.default = UserPage

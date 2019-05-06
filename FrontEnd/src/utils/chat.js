@@ -1,25 +1,23 @@
-let matrix = require('matrix-js-sdk');
+let matrix = require('matrix-js-sdk')
 
-export default class Chat{
-
-  constructor(accessToken=false,username=false,deviceId=false,sync=false){
-    //console.log("params",accessToken,username,deviceId,sync);
-  if(!sync){
-    this.url = `http://matrix.source.lol:8008`;
-    this.empty_client = matrix.createClient({baseUrl:this.url});
-    this.matrix={};
-    this.access_token=accessToken;
-    this.username=username;
-    this.deviceId=deviceId;
-    return;
-  }else{
-    this.url = `http://matrix.source.lol:8008`;
-    this.empty_client = matrix.createClient({baseUrl:this.url});
-    this.matrix={};
-    this.access_token=accessToken;
-    this.username=username;
-    this.deviceId=deviceId;
-    this.resync();
+export default class Chat {
+  constructor (accessToken = false, username = false, deviceId = false, sync = false) {
+    // console.log("params",accessToken,username,deviceId,sync);
+    if (!sync) {
+      this.url = `http://matrix.source.lol:8008`
+      this.empty_client = matrix.createClient({ baseUrl: this.url })
+      this.matrix = {}
+      this.access_token = accessToken
+      this.username = username
+      this.deviceId = deviceId
+    } else {
+      this.url = `http://matrix.source.lol:8008`
+      this.empty_client = matrix.createClient({ baseUrl: this.url })
+      this.matrix = {}
+      this.access_token = accessToken
+      this.username = username
+      this.deviceId = deviceId
+      this.resync()
     }
   }
 
@@ -28,49 +26,47 @@ export default class Chat{
   * @param {String} username - username of user
   * @param {String} password - password associated with user
   **/
-  async login(username,password){
+  async login (username, password) {
+    let login_obj = await this.empty_client.loginWithPassword(username, password)
+      .catch(err => {
+        // console.log("ERROR_LOGING_IN" , JSON.stringify(err) );
+        return { msg: 'ERROR_LOGING_IN' }
+      })
 
-    let login_obj =  await this.empty_client.loginWithPassword(username,password)
-      .catch( err => {
-        //console.log("ERROR_LOGING_IN" , JSON.stringify(err) );
-        return { msg:"ERROR_LOGING_IN" };
-      } );
-
-    this.access_token=login_obj.access_token;
-    this.username = username;
-    this.deviceId = login_obj.device_id;
-    //console.log("\n\nthis\n\n",this);
-    this.matrix = matrix.createClient( {
-      baseUrl:this.url,
+    this.access_token = login_obj.access_token
+    this.username = username
+    this.deviceId = login_obj.device_id
+    // console.log("\n\nthis\n\n",this);
+    this.matrix = matrix.createClient({
+      baseUrl: this.url,
       userId: this.riot_name(this.username),
-      accessToken:this.access_token,
+      accessToken: this.access_token,
       deviceId: this.device_id
-    } );
-    return this.matrix.startClient();
+    })
+    return this.matrix.startClient()
   }
 
-  hydrate(username,accessToken,deviceId){
-    this.username=username;
-    this.access_token=accessToken;
-    this.deviceId=deviceId;
-    this.resync();
+  hydrate (username, accessToken, deviceId) {
+    this.username = username
+    this.access_token = accessToken
+    this.deviceId = deviceId
+    this.resync()
   }
 
-  state(){
-    return this.matrix.clientRunning;
+  state () {
+    return this.matrix.clientRunning
   }
 
   /**
   * Function signs user out
   **/
-  logout(){
-    this.matrix.logout().catch( err => {
-      //console.log("ERROR SIGNING OUT",JSON.stringify(err));
-      return { msg:"ERROR_SIGNING_OUT" };
-    } );
+  logout () {
+    this.matrix.logout().catch(err => {
+      // console.log("ERROR SIGNING OUT",JSON.stringify(err));
+      return { msg: 'ERROR_SIGNING_OUT' }
+    })
 
-    this.matrix.stopClient();
-    return;
+    this.matrix.stopClient()
   }
 
   /**
@@ -79,39 +75,36 @@ export default class Chat{
   *
   * @param {Array[{Room_name,Direct}]} - Array of rooms user is a part of, direct is true if room is only 2 people
   **/
-  getRooms(){
-    return this.matrix.getRooms().map(room => room.name);
+  getRooms () {
+    return this.matrix.getRooms().map(room => room.name)
   }
 
   /** Utility function to format a username for riot **/
-  riot_name(username){
-    return '@'+username+':source.lol';
+  riot_name (username) {
+    return '@' + username + ':source.lol'
   }
 
   /**
   * Funciton updates the state of the client
   * @param {String} state - State of client
   **/
-  updateState(state){
-    if(typeof(state)==="string") this.state = state;
-    return;
+  updateState (state) {
+    if (typeof (state) === 'string') this.state = state
   }
   /** Function resyncs the client when it falls out of state tree **/
-  resync(){
-    //console.log("resyncing chat",this.url,this.riot_name(this.username),this.access_token,this.deviceId);
-    this.matrix = matrix.createClient( {
-      baseUrl:this.url,
+  resync () {
+    // console.log("resyncing chat",this.url,this.riot_name(this.username),this.access_token,this.deviceId);
+    this.matrix = matrix.createClient({
+      baseUrl: this.url,
       userId: this.riot_name(this.username),
-      accessToken:this.access_token,
-      deviceId:this.deviceId
-    } );
+      accessToken: this.access_token,
+      deviceId: this.deviceId
+    })
 
-    //console.log("THIS CLINET",this);
+    // console.log("THIS CLINET",this);
 
-    this.matrix.startClient().then(console.log);
-    return;
-}
-
+    this.matrix.startClient().then(console.log)
+  }
 }
 // /**
 // * Function sends a message for a user
@@ -138,7 +131,7 @@ export default class Chat{
 // //front end
 // }
 
-//Script for index.html on riot-web
+// Script for index.html on riot-web
 /**
 <script>
 
