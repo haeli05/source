@@ -223,7 +223,7 @@ class WelcomePage extends Component {
           <br />
           <Typography variant='h4' style={{ color: 'white' }}>Why not?</Typography>
           <br />
-          <Typography variant='h4' style={{ color: 'white' }}>Because the best developers are already online, <br /><br /> you just need their <b>attention.</b></Typography>
+          <Typography variant='h4' style={{ color: 'white' }}>The best developers are already online, <br /><br /> you just need their <b>attention.</b></Typography>
 
         </div>
         <div className='Section Section3'>
