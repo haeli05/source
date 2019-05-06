@@ -1,5 +1,4 @@
-//HTML for serversiderendering
-
+// HTML for serversiderendering
 
 // export default const Html = (body) => {return `
 //   <!DOCTYPE html>

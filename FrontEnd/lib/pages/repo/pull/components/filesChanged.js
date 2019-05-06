@@ -1,48 +1,48 @@
-'use strict';
+'use strict'
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
-});
+})
 
-var _react = require('react');
+var _react = require('react')
 
-var _react2 = _interopRequireDefault(_react);
+var _react2 = _interopRequireDefault(_react)
 
-var _propTypes = require('prop-types');
+var _propTypes = require('prop-types')
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _propTypes2 = _interopRequireDefault(_propTypes)
 
-var _styles = require('@material-ui/core/styles');
+var _styles = require('@material-ui/core/styles')
 
-var _List = require('@material-ui/core/List');
+var _List = require('@material-ui/core/List')
 
-var _List2 = _interopRequireDefault(_List);
+var _List2 = _interopRequireDefault(_List)
 
-var _ListItem = require('@material-ui/core/ListItem');
+var _ListItem = require('@material-ui/core/ListItem')
 
-var _ListItem2 = _interopRequireDefault(_ListItem);
+var _ListItem2 = _interopRequireDefault(_ListItem)
 
-var _ListItemText = require('@material-ui/core/ListItemText');
+var _ListItemText = require('@material-ui/core/ListItemText')
 
-var _ListItemText2 = _interopRequireDefault(_ListItemText);
+var _ListItemText2 = _interopRequireDefault(_ListItemText)
 
-var _Paper = require('@material-ui/core/Paper');
+var _Paper = require('@material-ui/core/Paper')
 
-var _Paper2 = _interopRequireDefault(_Paper);
+var _Paper2 = _interopRequireDefault(_Paper)
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault (obj) { return obj && obj.__esModule ? obj : { default: obj } }
 
-var styles = function styles(theme) {
+var styles = function styles (theme) {
   return {
     root: {
       width: '100%',
       maxWidth: 360,
       backgroundColor: theme.palette.background.paper
     }
-  };
-};
+  }
+}
 
-function InsetList(props) {
+function InsetList (props) {
   return _react2.default.createElement(
     'div',
     null,
@@ -54,7 +54,7 @@ function InsetList(props) {
         { component: 'nav' },
         _react2.default.createElement(
           'a',
-          { href: '/file', style: { textDecoration: "none" } },
+          { href: '/file', style: { textDecoration: 'none' } },
           _react2.default.createElement(
             _ListItem2.default,
             { button: true },
@@ -63,7 +63,7 @@ function InsetList(props) {
         ),
         _react2.default.createElement(
           'a',
-          { href: '/file', style: { textDecoration: "none" } },
+          { href: '/file', style: { textDecoration: 'none' } },
           _react2.default.createElement(
             _ListItem2.default,
             { button: true },
@@ -72,11 +72,11 @@ function InsetList(props) {
         )
       )
     )
-  );
+  )
 }
 
 InsetList.propTypes = {
   classes: _propTypes2.default.object.isRequired
-};
+}
 
-exports.default = (0, _styles.withStyles)(styles)(InsetList);
+exports.default = (0, _styles.withStyles)(styles)(InsetList)

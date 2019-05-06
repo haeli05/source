@@ -1,7 +1,7 @@
 let eosConfig = {
-  httpEndpoint: 'http://ec2-34-227-77-165.compute-1.amazonaws.com:8888',
+  httpEndpoint: 'http://ec2-34-227-77-165.compute-1.amazonaws.com:8888'
 }
 
-module.exports={
+module.exports = {
   config: eosConfig
 }

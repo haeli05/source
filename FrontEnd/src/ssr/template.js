@@ -1,6 +1,6 @@
-function template(title, initialState = {}, content = ""){
-  let scripts = '';
-  if(content){
+function template (title, initialState = {}, content = '') {
+  let scripts = ''
+  if (content) {
     scripts = ` <script>
                    window.__STATE__ = ${JSON.stringify(initialState)}
                 </script>
@@ -25,9 +25,9 @@ function template(title, initialState = {}, content = ""){
                   ${scripts}
               </body>
               </html>
-              `;
+              `
 
-  return page;
+  return page
 }
 
-module.exports = template;
+module.exports = template

@@ -17,19 +17,19 @@ const initialState = {
   assignCardStatus: false,
   deleteCardStatus: false,
   card: false,
-  cardStatus: false,
-};
+  cardStatus: false
+}
 
-const sourcello = (state=initialState,action) => {
+const sourcello = (state = initialState, action) => {
   switch (action.type) {
-/* ============================= Trello actions ============================= */
+    /* ============================= Trello actions ============================= */
     case 'NEW_TRELLO':
       return Object.assign({}, state, {
         // TODO: this
       })
     case 'NEW_TRELLO_STATUS':
       return Object.assign({}, state, {
-        newTrelloStatus: action.status,
+        newTrelloStatus: action.status
       })
     case 'FETCH_TRELLO':
       return Object.assign({}, state, {
@@ -38,7 +38,7 @@ const sourcello = (state=initialState,action) => {
       })
     case 'FETCH_TRELLO_STATUS':
       return Object.assign({}, state, {
-        trelloStatus: action.status,
+        trelloStatus: action.status
       })
     case 'FETCH_TRELLOS':
       return Object.assign({}, state, {
@@ -47,16 +47,16 @@ const sourcello = (state=initialState,action) => {
       })
     case 'FETCH_TRELLOS_STATUS':
       return Object.assign({}, state, {
-        trellosStatus: action.status,
+        trellosStatus: action.status
       })
-/* ============================= Board actions ============================= */
+      /* ============================= Board actions ============================= */
     case 'NEW_BOARD':
       return Object.assign({}, state, {
         // TODO: this
       })
     case 'NEW_BOARD_STATUS':
       return Object.assign({}, state, {
-        newBoardStatus: action.status,
+        newBoardStatus: action.status
       })
     case 'EDIT_BOARD':
       return Object.assign({}, state, {
@@ -64,7 +64,7 @@ const sourcello = (state=initialState,action) => {
       })
     case 'EDIT_BOARD_STATUS':
       return Object.assign({}, state, {
-        editBoardStatus: action.status,
+        editBoardStatus: action.status
       })
     case 'DELETE_BOARD':
       return Object.assign({}, state, {
@@ -72,7 +72,7 @@ const sourcello = (state=initialState,action) => {
       })
     case 'DELETE_BOARD_STATUS':
       return Object.assign({}, state, {
-        deleteBoardStatus: action.status,
+        deleteBoardStatus: action.status
       })
     case 'FETCH_BOARD':
       return Object.assign({}, state, {
@@ -81,16 +81,16 @@ const sourcello = (state=initialState,action) => {
       })
     case 'FETCH_BOARD_STATUS':
       return Object.assign({}, state, {
-        boardStatus: action.status,
+        boardStatus: action.status
       })
-/* ============================== Card actions ============================== */
+      /* ============================== Card actions ============================== */
     case 'NEW_CARD':
       return Object.assign({}, state, {
         // TODO: this
       })
     case 'NEW_CARD_STATUS':
       return Object.assign({}, state, {
-        newCardStatus: action.status,
+        newCardStatus: action.status
       })
     case 'EDIT_CARD':
       return Object.assign({}, state, {
@@ -98,7 +98,7 @@ const sourcello = (state=initialState,action) => {
       })
     case 'EDIT_CARD_STATUS':
       return Object.assign({}, state, {
-        editCardStatus: action.status,
+        editCardStatus: action.status
       })
     case 'ASSIGN_CARD':
       return Object.assign({}, state, {
@@ -106,7 +106,7 @@ const sourcello = (state=initialState,action) => {
       })
     case 'ASSIGN_CARD_STATUS':
       return Object.assign({}, state, {
-        assignCardStatus: action.status,
+        assignCardStatus: action.status
       })
     case 'DELETE_CARD':
       return Object.assign({}, state, {
@@ -114,7 +114,7 @@ const sourcello = (state=initialState,action) => {
       })
     case 'DELETE_CARD_STATUS':
       return Object.assign({}, state, {
-        deleteCardStatus: action.status,
+        deleteCardStatus: action.status
       })
     case 'FETCH_CARD':
       return Object.assign({}, state, {
@@ -123,13 +123,11 @@ const sourcello = (state=initialState,action) => {
       })
     case 'FETCH_CARD_STATUS':
       return Object.assign({}, state, {
-        cardStatus: action.status,
+        cardStatus: action.status
       })
-    default: return state;
+    default: return state
   }
 }
-
-
 
 // Trello actions
 export const getNewTrelloStatus = state => state.sourcello.newTrelloStatus
@@ -150,4 +148,4 @@ export const getAssignCardStatus = state => state.sourcello.assignCardStatus
 export const getDeleteCardStatus = state => state.sourcello.deleteCardStatus
 export const getCard = state => state.sourcello.card
 export const getCardStatus = state => state.sourcello.cardStatus
-export default sourcello;
+export default sourcello

@@ -1,62 +1,62 @@
-'use strict';
+'use strict'
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
-});
+})
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = (function () { function defineProperties (target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor) } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor } }())
 
-var _react = require('react');
+var _react = require('react')
 
-var _react2 = _interopRequireDefault(_react);
+var _react2 = _interopRequireDefault(_react)
 
-var _propTypes = require('prop-types');
+var _propTypes = require('prop-types')
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _propTypes2 = _interopRequireDefault(_propTypes)
 
-var _styles = require('@material-ui/core/styles');
+var _styles = require('@material-ui/core/styles')
 
-var _Card = require('@material-ui/core/Card');
+var _Card = require('@material-ui/core/Card')
 
-var _Card2 = _interopRequireDefault(_Card);
+var _Card2 = _interopRequireDefault(_Card)
 
-var _CardContent = require('@material-ui/core/CardContent');
+var _CardContent = require('@material-ui/core/CardContent')
 
-var _CardContent2 = _interopRequireDefault(_CardContent);
+var _CardContent2 = _interopRequireDefault(_CardContent)
 
-var _reactIconsKit = require('react-icons-kit');
+var _reactIconsKit = require('react-icons-kit')
 
-var _reactIconsKit2 = _interopRequireDefault(_reactIconsKit);
+var _reactIconsKit2 = _interopRequireDefault(_reactIconsKit)
 
-var _star = require('react-icons-kit/fa/star');
+var _star = require('react-icons-kit/fa/star')
 
-var _starO = require('react-icons-kit/fa/starO');
+var _starO = require('react-icons-kit/fa/starO')
 
-var _codeFork = require('react-icons-kit/fa/codeFork');
+var _codeFork = require('react-icons-kit/fa/codeFork')
 
-var _exclamationCircle = require('react-icons-kit/fa/exclamationCircle');
+var _exclamationCircle = require('react-icons-kit/fa/exclamationCircle')
 
-var _code = require('react-icons-kit/fa/code');
+var _code = require('react-icons-kit/fa/code')
 
-var _coin = require('./../img/coin.png');
+var _coin = require('./../img/coin.png')
 
-var _coin2 = _interopRequireDefault(_coin);
+var _coin2 = _interopRequireDefault(_coin)
 
-var _Typography = require('@material-ui/core/Typography');
+var _Typography = require('@material-ui/core/Typography')
 
-var _Typography2 = _interopRequireDefault(_Typography);
+var _Typography2 = _interopRequireDefault(_Typography)
 
-var _Grid = require('@material-ui/core/Grid');
+var _Grid = require('@material-ui/core/Grid')
 
-var _Grid2 = _interopRequireDefault(_Grid);
+var _Grid2 = _interopRequireDefault(_Grid)
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault (obj) { return obj && obj.__esModule ? obj : { default: obj } }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function') } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _possibleConstructorReturn (self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called") } return call && (typeof call === 'object' || typeof call === 'function') ? call : self }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass) } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass }
 
 var styles = {
   card: {
@@ -74,15 +74,15 @@ var styles = {
   pos: {
     marginBottom: 12
   }
-};
+}
 
-var SimpleCard = function (_React$Component) {
-  _inherits(SimpleCard, _React$Component);
+var SimpleCard = (function (_React$Component) {
+  _inherits(SimpleCard, _React$Component)
 
-  function SimpleCard(props) {
-    _classCallCheck(this, SimpleCard);
+  function SimpleCard (props) {
+    _classCallCheck(this, SimpleCard)
 
-    var _this = _possibleConstructorReturn(this, (SimpleCard.__proto__ || Object.getPrototypeOf(SimpleCard)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (SimpleCard.__proto__ || Object.getPrototypeOf(SimpleCard)).call(this, props))
 
     _this.state = {
       RepoName: _this.props.RepoName,
@@ -92,19 +92,19 @@ var SimpleCard = function (_React$Component) {
       Forks: _this.props.Forks,
       Issues: _this.props.Issues,
       SRCRaised: _this.props.SRCRaised
-    };
-    return _this;
+    }
+    return _this
   }
 
   _createClass(SimpleCard, [{
     key: 'handleClickFavourite',
-    value: function handleClickFavourite() {
-      this.props.handleStar(this.props.id, this.props.cid);
+    value: function handleClickFavourite () {
+      this.props.handleStar(this.props.id, this.props.cid)
     }
   }, {
     key: 'render',
-    value: function render() {
-      var _this2 = this;
+    value: function render () {
+      var _this2 = this
 
       return _react2.default.createElement(
         'div',
@@ -131,9 +131,9 @@ var SimpleCard = function (_React$Component) {
                   { className: 'RepoDetails' },
                   _react2.default.createElement(
                     'div',
-                    { onClick: function onClick() {
-                        return _this2.props.props.history.push('/source/' + _this2.props.RepoAuthor + '/' + _this2.props.RepoName);
-                      } },
+                    { onClick: function onClick () {
+                      return _this2.props.props.history.push('/source/' + _this2.props.RepoAuthor + '/' + _this2.props.RepoName)
+                    } },
                     _react2.default.createElement(
                       _Typography2.default,
                       { className: 'RepoName', variant: 'headline' },
@@ -142,9 +142,9 @@ var SimpleCard = function (_React$Component) {
                   ),
                   _react2.default.createElement(
                     'div',
-                    { onClick: function onClick() {
-                        return _this2.props.props.history.push('/source/' + _this2.props.RepoAuthor);
-                      } },
+                    { onClick: function onClick () {
+                      return _this2.props.props.history.push('/source/' + _this2.props.RepoAuthor)
+                    } },
                     _react2.default.createElement(
                       _Typography2.default,
                       { className: 'RepoAuthor', variant: 'subheading' },
@@ -186,9 +186,9 @@ var SimpleCard = function (_React$Component) {
                   ),
                   _react2.default.createElement(
                     'div',
-                    { onClick: function onClick() {
-                        return _this2.props.props.history.push('/source/' + _this2.props.RepoAuthor);
-                      } },
+                    { onClick: function onClick () {
+                      return _this2.props.props.history.push('/source/' + _this2.props.RepoAuthor)
+                    } },
                     _react2.default.createElement(
                       _Typography2.default,
                       { variant: 'subheading', className: 'RepoAuthor' },
@@ -249,15 +249,15 @@ var SimpleCard = function (_React$Component) {
             )
           )
         )
-      );
+      )
     }
-  }]);
+  }])
 
-  return SimpleCard;
-}(_react2.default.Component);
+  return SimpleCard
+}(_react2.default.Component))
 
 SimpleCard.propTypes = {
   classes: _propTypes2.default.object.isRequired
-};
+}
 
-exports.default = (0, _styles.withStyles)(styles)(SimpleCard);
+exports.default = (0, _styles.withStyles)(styles)(SimpleCard)
