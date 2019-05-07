@@ -171,7 +171,7 @@ class WelcomePage extends Component {
             <Grid container spacing={12}>
               <Grid item sm={12} md={7}>
                 <Typography className='Mission' color='textPrimary' variant='h1'>
-                  The Decentralized <br />Tech Incubator
+                  The Decentralized Tech Incubator
                 </Typography>
               </Grid>
               <Grid item sm={12} md={5}>
