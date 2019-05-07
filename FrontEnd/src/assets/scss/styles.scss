@@ -180,6 +180,11 @@ $PrimaryDark: #1E242F;
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* ================================ BREAKPOINTS ================================ */
+
+$sm: 600px;
+//$break-large: 1200px;
+
 // Main font
 body {
   font-kerning: none;
@@ -218,6 +223,10 @@ p {
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  @media screen and (max-width: $sm) {
+    text-align: center !important;
+  }
 }
 
 // Header fonts and weights
@@ -251,7 +260,7 @@ h3 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-h4, {
+h4 {
   line-height: 1;
   font-size: 1.999em;
   font-family: "gotham_htfbook";
@@ -3103,6 +3112,13 @@ body {
     text-align: left;
     padding-left: 7%;
     padding-right: 7%;
+    @media screen and (max-width: $sm) {
+      padding-top: 1em;
+      text-align: center;
+      padding-bottom: 3em;
+      padding-left: 10%;
+      padding-right: 10%;
+    }
     .WelcomeLogo {
       margin-bottom: 75px;
       img {
@@ -3117,8 +3133,10 @@ body {
     }
     .Mission {
       padding-top: 50px;
-      text-align:left;
       opacity: 1;
+      @media screen and (max-width: $sm) {
+        font-size: 3em;
+      }
     }
     .JoinNow {
       display: flex;
@@ -3146,7 +3164,9 @@ body {
     }
     .WhatIsSource {
       padding-top: 13px;
-      text-align: left;
+      @media screen and (max-width: $sm) {
+        font-size: 1.5em;
+      }
     }
     .WelcomeSignUp {
       .GetStarted{
@@ -3156,6 +3176,7 @@ body {
       }
     }
   }
+  
   .Section {
     display: flex;
     flex-direction: column;
@@ -3167,8 +3188,15 @@ body {
     padding-bottom: 7vh;
     padding-left: 5%;
     padding-right: 5%;
+    @media screen and (max-width: $sm) {
+      padding-left: 10%;
+      padding-right: 10%;
+      font-size: 1em;
+    }
     .SectionTitle {
-    //  margin-bottom: 50px;
+    @media screen and (max-width: $sm) {
+      font-size: 1.5em;
+    }
     }
     .WelcomeButton {
       margin-top: 50px;
@@ -3199,6 +3227,9 @@ body {
         align-items: center;
       }
     }
+    @media screen and (max-width: $sm) {
+      padding-top: 5em;
+    }
   }
   .Section2 {
     // background-image: url("../images/SquareTexture.png");
@@ -3216,7 +3247,6 @@ body {
 
   }
   .Section3 {
-
     background-color: $Light;
     padding-bottom: 6vh;
     .SectionTitle {
@@ -3230,10 +3260,16 @@ body {
     .DevImage {
       // max-width: 220px;
       max-height: 35vh;
+      @media screen and (max-width: $sm) {
+        display: none;
+      }
     }
     .DevImage2 {
       // max-width: 490px;
       max-height: 35vh;
+      @media screen and (max-width: $sm) {
+        max-width: 100%;
+      }
     }
     .Description {
       text-align: left;
