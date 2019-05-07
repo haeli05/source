@@ -185,7 +185,7 @@ export default class KanbanCard extends React.Component {
                     id='date'
                     label='Due Date'
                     type='date'
-                    onChange={this.changeDueDate}
+                    onChange={e => this.changeDueDate(e)}
                     defaultValue={this.props.task.dueDate ? this.props.task.dueDate : '2019-02-01'}
                     InputLabelProps={{
                       shrink: true

@@ -1,6 +1,6 @@
-export default function run_check () {
+export default function runCheck () {
   let jwtDecode = require('jwt-decode')
-  let presentUser = JSON.parse(localStorage.getItem('user'))
+  let presentUser = JSON.parse(window.localStorage.getItem('user'))
   if (presentUser && presentUser.token !== false) {
     let token = presentUser.token
     if (token === null || token === undefined) return
@@ -11,6 +11,6 @@ export default function run_check () {
 }
 
 function logout () {
-  localStorage.removeItem('user')
-  localStorage.removeItem('chat')
+  window.localStorage.removeItem('user')
+  window.localStorage.removeItem('chat')
 }

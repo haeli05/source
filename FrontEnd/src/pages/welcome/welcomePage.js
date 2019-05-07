@@ -25,7 +25,6 @@ import CircleTick from './../../assets/svg/circletick.svg'
 import config from '../../utils/config.js'
 
 // Analytics
-
 import ReactGA from 'react-ga'
 
 const malarkey = require('malarkey')
@@ -192,14 +191,14 @@ class WelcomePage extends Component {
             <TextField
               label='Sign up for email updates'
               type='email'
-              onChange={this.handleChangeSignUp}
+              onChange={e => this.handleChangeSignUp(e)}
               variant='outlined'
               className='SignUpInput'
               error={this.state.emailError}
             />
             {(!this.state.sent) && (
               <Tooltip title={this.state.emailErrorMessage}>
-                <Button variant='outlined' onClick={this.SignUpSubmit}>Sign Up</Button>
+                <Button variant='outlined' onClick={() => this.SignUpSubmit()}>Sign Up</Button>
               </Tooltip>
             )}
             {(this.state.sent) && (

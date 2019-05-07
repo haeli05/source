@@ -74,6 +74,7 @@
     "redbird": "^0.9.0",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
+    "redux-saga": "^1.0.2",
     "redux-thunk": "^2.3.0",
     "scrollmagic": "^2.0.6",
     "shortid": "^2.2.14",
