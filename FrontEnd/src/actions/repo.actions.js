@@ -1,5 +1,4 @@
 import axios from 'axios'
-import history from '../history'
 import config from '../utils/config.js'
 import { addError } from './error.actions.js'
 import { addVoteToUserObject } from './user.actions'
@@ -161,10 +160,11 @@ export function repoVote (up, id, type) {
   let token = JSON.parse(user).token
   return dispatch => {
     dispatch(addVoteStatus('PENDING'))
+    let url = ''
     if (type === 'repo') {
-      var url = `${config.production_url}/api/repos/vote/${up}/${id}`
+      url = `${config.production_url}/api/repos/vote/${up}/${id}`
     } else if (type === 'issue' || type === 'blob') {
-      var url = `${config.production_url}/api/issues/vote/${type}/${up}/${id}`
+      url = `${config.production_url}/api/issues/vote/${type}/${up}/${id}`
     }
     axios.post(url, { token })
       .then(res => {

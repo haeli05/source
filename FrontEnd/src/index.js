@@ -3,21 +3,16 @@ import ReactDOM from 'react-dom'
 import Routes from './routes'
 import registerServiceWorker from './registerServiceWorker'
 import { Provider } from 'react-redux'
-// import { applyMiddleware } from 'redux'
-// import rootReducer from './reducers'
 import { configureStore } from './store'
-// import thunk from 'redux-thunk';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import JavascriptTimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 import 'react-time-ago/Tooltip.css'
 import run_check from './utils/expiry.js'
 
-// import 'normalize.css'; // Note this
-
-const new_json = require('./utils/cycle.js')
 JavascriptTimeAgo.locale(en)
 run_check()
+
 // Main theme for the entire app
 const theme = createMuiTheme({
   // Removes all theme shadows
@@ -348,29 +343,6 @@ const theme = createMuiTheme({
     }
   }
 })
-
-const chattheme = {
-  vars: {
-    'primary-color': '#427fe1',
-    'secondary-color': '#fbfbfb',
-    'tertiary-color': '#fff',
-    'avatar-border-color': 'black'
-  },
-  AgentBar: {
-    Avatar: {
-      size: '32px'
-    },
-    css: {
-      backgroundColor: 'var(--secondary-color)',
-      borderColor: 'var(--avatar-border-color)'
-    }
-  },
-  Message: {
-    css: {
-      fontWeight: 'bold'
-    }
-  }
-}
 
 const store = configureStore(window.__INITIAL_STATE__)
 ReactDOM.render(

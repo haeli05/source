@@ -1,7 +1,6 @@
 import React from 'react'
 // Material UI
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
 // SVG
 import ReactSVG from 'react-svg'
 import Comment from './../../../assets/svg/comment.svg'
@@ -10,7 +9,6 @@ import Simpleclock from './../../../assets/svg/simple_clock.svg'
 // Components
 import { ShareButton } from './../../global/components/majorActionButtons'
 import VoteButtons from './../../global/components/voteButtons'
-import PersonChip from './../../global/components/personChip'
 // MISC
 import ReactTimeAgo from 'react-time-ago'
 import { Link } from 'react-router-dom'

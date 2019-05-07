@@ -2,8 +2,6 @@ import React from 'react'
 // Material UI
 import Button from '@material-ui/core/Button'
 import DoneIcon from '@material-ui/icons/Done'
-import InfoIcon from '@material-ui/icons/Info'
-import LabelIcon from '@material-ui/icons/Label'
 import AddIcon from '@material-ui/icons/Add'
 import Paper from '@material-ui/core/Paper'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
@@ -13,12 +11,9 @@ import Typography from '@material-ui/core/Typography'
 import Popper from '@material-ui/core/Popper'
 import MenuList from '@material-ui/core/MenuList'
 import MenuItem from '@material-ui/core/MenuItem'
-import { ShareOutlined } from '@material-ui/icons/'
 // SVG
 import ReactSVG from 'react-svg'
-import Cross from './../../../assets/svg/cross.svg'
 import Minus from './../../../assets/svg/minus.svg'
-import CirclePlus from './../../../assets/svg/circleplus.svg'
 import Share from './../../../assets/svg/share.svg'
 import Messages from './../../../assets/svg/messages.svg'
 import WalletCoin from './../../../assets/svg/walletcoin.svg'
@@ -179,10 +174,6 @@ export { SupportButton }
 /* ============================= Message Button ============================= */
 
 class MessageButton extends React.Component {
-  constructor (props) {
-    super(props)
-  }
-
   render () {
     return (
       <div className='MessageButton' onClick={this.props.goToRoom}>

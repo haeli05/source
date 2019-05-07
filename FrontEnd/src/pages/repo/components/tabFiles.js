@@ -20,14 +20,11 @@ import Typography from '@material-ui/core/Typography'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Dialog from '@material-ui/core/Dialog'
 import DialogContent from '@material-ui/core/DialogContent'
-import FormHelperText from '@material-ui/core/FormHelperText'
 import TextField from '@material-ui/core/TextField'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 // Icons
 import Icon from 'react-icons-kit'
 import { arrows_plus } from 'react-icons-kit/linea/arrows_plus'
-import { basic_folder } from 'react-icons-kit/linea/basic_folder'
-import { basic_sheet } from 'react-icons-kit/linea/basic_sheet'
 import { basic_elaboration_cloud_download } from 'react-icons-kit/linea/basic_elaboration_cloud_download'
 // SVG
 import ReactSVG from 'react-svg'
@@ -390,9 +387,9 @@ class TabFiles extends React.Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {this.props.repo.tree.sort((a, b) => (a.blob_type < b.blob_type)).map(n => {
-                  let date = n.time * 1000
-                  if (n.blob_type === 'blob' || n.blob_type === 'tree') {
+                {this.props.repo.tree.sort((a, b) => (a.blob_type < b.blob_type))
+                  .filter(n => n.blob_type === 'blob' || n.blob_type === 'tree')
+                  .map(n => {
                     return (
                       <TableRow key={n.oid} className='TableRow'>
                         {n.blob_type === 'blob' && (
@@ -432,13 +429,13 @@ class TabFiles extends React.Component {
                         </TableCell>
                         <TableCell className='FileDateCell'>
                           <ReactTimeAgo locale='en'>
-                            {date}
+                            {n.time * 1000}
                           </ReactTimeAgo>
                         </TableCell>
                       </TableRow>
                     )
                   }
-                })}
+                )}
               </TableBody>
             </Table>
           </div>

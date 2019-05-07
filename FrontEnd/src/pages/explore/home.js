@@ -1,24 +1,13 @@
 import React, { Component } from 'react'
 // Material UI
 import Typography from '@material-ui/core/Typography'
-import LinearProgress from '@material-ui/core/LinearProgress'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
 import Button from '@material-ui/core/Button'
-// Icons
-import Icon from 'react-icons-kit'
 
 // Components
-import Idea from './components/ideaCard'
-import { ShareButton } from '../global/components/majorActionButtons.js'
 import TopicBar from './components/topicBar.js'
 import LoginPrompt from '../global/components/loginPrompt.js'
 // Redux
 import { connect } from 'react-redux'
-
-// MISC
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
 
 class Home extends Component {
   constructor (props) {

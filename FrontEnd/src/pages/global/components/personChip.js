@@ -4,7 +4,6 @@ import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
 // MISC
 import { Link } from 'react-router-dom'
-import ReactTimeAgo from 'react-time-ago'
 // Redux
 import { connect } from 'react-redux'
 import { fetchPersonChip } from './../../../actions/people.actions'

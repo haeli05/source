@@ -62,15 +62,16 @@ export function stateLoaderClient (chat) {
 }
 
 export function saveStateUser (user) {
+  let user2 = {}
   if (user.signedInUser.username === undefined) {
-    var user2 = {
+    user2 = {
       username: false,
       token: false,
       id: false,
       user: false
     }
   } else {
-    var user2 = user.signedInUser
+    user2 = user.signedInUser
   }
   try {
     const serializedState = JSON.stringify(user2)

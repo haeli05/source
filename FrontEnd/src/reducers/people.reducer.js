@@ -37,13 +37,9 @@ const people = (state = initialState, action) => {
         person: action.data
       }
     case 'FETCH_PERSON_CHIP':
-      if (state.personChip === false) {
-        var newArray = []
-      } else {
-        var newArray = state.personChip
-      }
-      if (newArray === undefined) {
-        var newArray = []
+      let newArray = []
+      if (state.personChip || newArray !== undefined) {
+        newArray = state.personChip
       }
       newArray.push(action.data)
       return Object.assign({}, state, {

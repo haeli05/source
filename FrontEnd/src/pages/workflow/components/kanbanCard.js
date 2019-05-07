@@ -2,18 +2,13 @@ import React from 'react'
 // Material UI
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
-import Avatar from '@material-ui/core/Avatar'
 import Dialog from '@material-ui/core/Dialog'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import TextField from '@material-ui/core/TextField'
 // MISC
 import { Draggable } from 'react-beautiful-dnd'
 // Components
-import UserAssigner from './../../global/components/userAssigner'
 import { DeleteButton } from './../../global/components/majorActionButtons'
-// Icons
-import Icon from 'react-icons-kit'
-import { ic_more_horiz } from 'react-icons-kit/md/ic_more_horiz'
 // MISC
 import Markdown from 'react-markdown'
 

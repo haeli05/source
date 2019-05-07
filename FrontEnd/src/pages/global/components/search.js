@@ -156,10 +156,11 @@ class SearchResults extends Component {
                     <div className='NoResults'><Typography variant='title'>No results matched your query</Typography></div>
                   )}
                   <Typography variant='subtitle1'>Ideas</Typography>
-                  {this.props.searchResults.ideas.map(idea => {
-                    if (idea.creator !== null) {
+                  {this.props.searchResults.ideas
+                    .filter(idea => idea.creator !== null)
+                    .map(idea => {
                       return (<IdeaCard {...this.props} idea={idea} key={idea._id} />)
-                    }
+                    })
                   })}
                   <Typography variant='subtitle1'>Projects</Typography>
                   {this.props.searchResults.projects.map(project => {
@@ -176,10 +177,11 @@ class SearchResults extends Component {
                   {this.props.searchResults.ideas.length === 0 && (
                     <div className='NoResults'><Typography variant='title'>No ideas matched your query</Typography></div>
                   )}
-                  {this.props.searchResults.ideas.map(idea => {
-                    if (idea.creator !== null) {
+                  {this.props.searchResults.ideas
+                    .filter(idea => idea.creator !== null)
+                    .map(idea => {
                       return (<IdeaCard {...this.props} idea={idea} key={idea._id} />)
-                    }
+                    })
                   })}
                 </div>
               )}

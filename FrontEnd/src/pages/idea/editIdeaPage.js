@@ -100,7 +100,6 @@ class NewIdeaPage extends React.Component {
   }
 
   render () {
-    console.log(this.props)
     if (this.props.ideaStatus !== 'SUCCESS' && this.props.ideaSubmitStatus !== 'SUCCESS') {
       return (
         <div className='GenericLoading'>
@@ -113,7 +112,7 @@ class NewIdeaPage extends React.Component {
         <div className='EditIdeaPage'>
           <div className='Body'>
             <div className='PageTitle'>
-              <Typography variant='overline' variant='overline'>EDIT IDEA</Typography>
+              <Typography variant='overline'>EDIT IDEA</Typography>
               <Typography variant='h4'>This idea is part of a project:</Typography>
               <TextField
                 label='Relevant Project'

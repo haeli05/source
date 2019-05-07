@@ -1,24 +1,12 @@
 import React from 'react'
 // Material UI
 import Typography from '@material-ui/core/Typography'
-import Paper from '@material-ui/core/Paper'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import ListSubheader from '@material-ui/core/ListSubheader'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
-// Icons
-import Icon from 'react-icons-kit'
-import { arrows_remove } from 'react-icons-kit/linea/arrows_remove'
 // SVG
 import ReactSVG from 'react-svg'
 import Edit from './../../assets/svg/edit.svg'
-import Bin from './../../assets/svg/bin.svg'
-import Cross from './../../assets/svg/cross.svg'
 // Redux
 import { connect } from 'react-redux'
 import { fetchIdea, deleteIdea, commentIdea } from './../../actions/ideas.actions'

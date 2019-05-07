@@ -19,9 +19,7 @@ import Avatar from '@material-ui/core/Avatar'
 import Icon from 'react-icons-kit'
 import { arrows_hamburger1 } from 'react-icons-kit/linea/arrows_hamburger1'
 import { ecommerce_wallet } from 'react-icons-kit/linea/ecommerce_wallet'
-import { basic_lightbulb } from 'react-icons-kit/linea/basic_lightbulb'
 import { basic_gear } from 'react-icons-kit/linea/basic_gear'
-import { arrows_plus } from 'react-icons-kit/linea/arrows_plus'
 import { basic_notebook } from 'react-icons-kit/linea/basic_notebook'
 import { arrows_remove } from 'react-icons-kit/linea/arrows_remove'
 import { arrows_exclamation } from 'react-icons-kit/linea/arrows_exclamation'
@@ -33,26 +31,13 @@ import { getUser } from './../../../reducers/user.reducer'
 import { signOut } from './../../../actions/user.actions'
 import { chatSignOut } from './../../../actions/chat.actions.js'
 // Components
-import JoinQueueButton from './joinQueue'
 import Search from './search.js'
 import NotificationBanner from './NotificationBanner'
-import MessageBanner from './../../messages/components/messageBanner.js'
-import ChatPopUp from './../../messages/components/chatPopUp'
 // MISC
 import logo from './../img/logo.png'
 import ReactPullToRefresh from 'react-pull-to-refresh'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
-
-{ /*
-//livechat
-import {ChatList} from '@livechat/ui-kit';
-import {ChatListItem} from '@livechat/ui-kit';
-import {Column} from '@livechat/ui-kit';
-import {Row} from '@livechat/ui-kit';
-import {Title} from '@livechat/ui-kit';
-import {Subtitle} from '@livechat/ui-kit';
-*/ }
 
 class MenuAppBar extends React.Component {
   constructor (props) {
@@ -176,7 +161,6 @@ class MenuAppBar extends React.Component {
   }
 
   render () {
-    const { classes } = this.props
     if (this.props.history.location.pathname === '/' && this.state.hideNav === false) {
       this.hideNav()
     } else if (this.props.history.location.pathname === '/' && this.state.hideNav === true) {

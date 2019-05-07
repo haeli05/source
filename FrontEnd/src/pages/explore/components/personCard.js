@@ -2,7 +2,6 @@ import React from 'react'
 // Material UI
 import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
-import Button from '@material-ui/core/Button'
 // Components
 import MajorActionButtons from './../../global/components/majorActionButtons'
 import Chip from './../../global/components/chip'
@@ -50,15 +49,16 @@ class PersonCardLanding extends React.Component {
           </div>
           <div className='Bottom'>
             <div className='ExploreCardTags'>
-              {this.props.content.skills.slice(0, 4).map(skill => {
-                if (skill !== '') {
+              {this.props.content.skills.slice(0, 4)
+                .filter(skill => skill !== '')
+                .map(skill => {
                   return (
                     <div key={skill} className='IndividualChip'>
                       <Chip {...this.props} label={skill} />
                     </div>
                   )
                 }
-              })}
+              )}
             </div>
             <div className='CardUtilityButtons'>
               <MajorActionButtons {...this.props} title={this.props.content.username} url={`www.source.lol/${this.props.content._id}/profile`} type='person' id={this.props.content._id} orientation='horizontal' />

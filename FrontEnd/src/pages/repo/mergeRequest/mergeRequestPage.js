@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 // Material UI
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
@@ -7,17 +6,12 @@ import Typography from '@material-ui/core/Typography'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import TextField from '@material-ui/core/TextField'
-import FormControl from '@material-ui/core/FormControl'
-import FormHelperText from '@material-ui/core/FormHelperText'
-import OutlinedInput from '@material-ui/core/OutlinedInput'
-import InputLabel from '@material-ui/core/InputLabel'
 // SVG
 import ReactSVG from 'react-svg'
 import Simpleclock from './../../../assets/svg/simpleclock.svg'
 // Components
 import MajorActionButtons from './../../global/components/majorActionButtons'
 import ErrorPage from './../../global/errorPage'
-import Chip from './../../global/components/chip'
 import SettingsButton from './../../global/components/settingsButton'
 // Redux
 import { connect } from 'react-redux'

@@ -10,10 +10,6 @@ import { Link as RouterLink } from 'react-router-dom'
 import Link from '@material-ui/core/Link'
 import Tooltip from '@material-ui/core/Tooltip'
 
-// Components
-import JoinQueue from './components/joinQueue'
-import PayButton from '../payments/payButton'
-
 // MISC
 import ReactSVG from 'react-svg'
 import ReactGA from 'react-ga'
@@ -138,7 +134,6 @@ class GetStarted extends Component {
                   rows='13'
                   rowsMax='13'
                   label='Message'
-                  multiline
                   type='email'
                   onChange={this.handleChangeMessage}
                   margin='normal'

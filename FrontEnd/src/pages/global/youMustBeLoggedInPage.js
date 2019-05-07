@@ -4,10 +4,6 @@ import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 
 class YouMustBeLoggedInPage extends React.Component {
-  constructor (props) {
-    super(props)
-  }
-
   render () {
     return (
       <div className='YouMustBeLoggedInPage'>

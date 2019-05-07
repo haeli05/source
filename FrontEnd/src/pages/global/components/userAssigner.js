@@ -1,7 +1,6 @@
 // User Assigner
 import React, { Component } from 'react'
 // Material UI
-import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 // MISC
 import PersonChip from './personChip'
@@ -10,8 +9,6 @@ import AddPerson from './../../../assets/svg/addperson.svg'
 
 // Redux
 import { connect } from 'react-redux'
-import { fetchPersonChip } from './../../../actions/people.actions'
-import { getPersonChip } from './../../../reducers/people.reducer'
 
 class UserAssigner extends Component {
   constructor (props) {

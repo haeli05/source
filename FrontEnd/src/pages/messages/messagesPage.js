@@ -1,29 +1,13 @@
-//Messages PAGES
-//
-//Types: DM, Groups, Public Rooms
+// Messages PAGES
+// Types: DM, Groups, Public Rooms
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Button from '@material-ui/core/Button';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import {basic_lightbulb} from 'react-icons-kit/linea/basic_lightbulb';
-import Icon from 'react-icons-kit';
 import Paper from '@material-ui/core/Paper';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import Divider from '@material-ui/core/Divider';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import TextField from '@material-ui/core/TextField';
-import {connect} from 'react-redux';
-
-import MessageCard from './components/messageCard.js';
-
-
 
 function TabContainer(props) {
   return (

@@ -124,7 +124,6 @@ const user = (state = initialState, action) => {
         avatarStatus: action.status
       })
     case 'AWS':
-      var signedInUserCopy = state.signedInUser
       signedInUserCopy.aws = action.data
       return Object.assign({}, state, {
         awsStatus: 'SUCCESS',
@@ -135,7 +134,6 @@ const user = (state = initialState, action) => {
         awsStatus: action.status
       })
     case 'UPDATE_USER':
-      var signedInUserCopy = state.signedInUser
       signedInUserCopy.user = action.data
       return Object.assign({}, state, {
         updateUserStatus: 'SUCCESS',
@@ -150,7 +148,7 @@ const user = (state = initialState, action) => {
       // Push or removed the person's id to the signed in user's following array
       var newUser = state.signedInUser.user
       if (newUser.following.includes(action.id)) {
-        var index = newUser.following.indexOf(action.id)
+        let index = newUser.following.indexOf(action.id)
         newUser.following.splice(index, 1)
       } else {
         newUser.following.push(action.id)
@@ -201,13 +199,11 @@ const user = (state = initialState, action) => {
     case 'FOLLOW_TAG':
       var isInArray = state.signedInUser.user.tags.indexOf(action.data)
       if (isInArray === -1) {
-        var signedInUserCopy = state.signedInUser
         signedInUserCopy.user.tags.push(action.data)
         return Object.assign({}, state, {
           signedInUser: signedInUserCopy
         })
       } else {
-        var signedInUserCopy = state.signedInUser
         signedInUserCopy.user.tags.splice(isInArray, 1)
         return Object.assign({}, state, {
           signedInUser: signedInUserCopy
@@ -217,8 +213,6 @@ const user = (state = initialState, action) => {
     case 'ADD_VOTE':
       // Check if voted id is already in array
       var isInVoted = state.signedInUser.user.voted.find(votedArray => votedArray.id === action.id)
-      // Creat a copy of the signed in user object
-      var signedInUserCopy = state.signedInUser
       // If vote doesn't exist, push to the array
       if (isInVoted === undefined) {
         signedInUserCopy.user.voted.push({
@@ -228,7 +222,7 @@ const user = (state = initialState, action) => {
         })
       } else {
         // Else get the index and check if the vote needs to be changed or removed
-        var index = signedInUserCopy.user.voted.indexOf(isInVoted)
+        let index = signedInUserCopy.user.voted.indexOf(isInVoted)
         if (isInVoted.which === action.up) {
           signedInUserCopy.user.voted.splice(index, 1)
         } else {

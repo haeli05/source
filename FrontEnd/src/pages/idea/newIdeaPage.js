@@ -1,9 +1,6 @@
 import React from 'react'
 // Material UI
 import Typography from '@material-ui/core/Typography'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListSubheader from '@material-ui/core/ListSubheader'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import CircularProgress from '@material-ui/core/CircularProgress'
@@ -16,7 +13,6 @@ import { newIdea } from './../../actions/ideas.actions'
 import { getIdeaSubmitStatus } from './../../reducers/ideas.reducer'
 import { getUser } from './../../reducers/user.reducer'
 // Components
-import { Link } from 'react-router-dom'
 import YouMustBeLoggedInPage from './../global/youMustBeLoggedInPage'
 import ReactQuillEditor from './../global/components/reactQuillEditor'
 import Chip from './../global/components/chip.js'
@@ -111,7 +107,7 @@ class NewIdeaPage extends React.Component {
         <div className='NewIdeaPage'>
           <div className='Body'>
             <div className='PageTitle'>
-              <Typography variant='overline' variant='overline'>NEW IDEA</Typography>
+              <Typography variant='overline'>NEW IDEA</Typography>
               <TextField
                 label='Idea Title'
                 error={this.state.ideaTitleError}

@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import LinearProgress from '@material-ui/core/LinearProgress'
-import TextField from '@material-ui/core/TextField'
 // SVG
 import ReactSVG from 'react-svg'
 import Simpleclock from './../../../assets/svg/simpleclock.svg'
@@ -102,13 +101,14 @@ class IssuePage extends Component {
                   ))}
                 </div>
               </Paper>
-              {this.props.issue.blobs.map((comment, index) => {
-                if (index > 0) {
+              {this.props.issue.blobs
+                .filter((comment, index) => index > 0)
+                .map((comment, index) => {
                   return (
                     <Comment {...this.props} comment={comment} type='issuecomment' key={comment._id} />
                   )
                 }
-              })}
+              )}
               {(this.props.user.token !== false && this.props.user.token !== undefined) && (
                 <div className='SignInToComment'>
                   {this.props.issueCommentStatus === 'PENDING' && (

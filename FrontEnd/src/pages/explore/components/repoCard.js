@@ -1,37 +1,17 @@
 import React from 'react'
 // Material UI
 import Typography from '@material-ui/core/Typography'
-import Avatar from '@material-ui/core/Avatar'
-import CardMedia from '@material-ui/core/CardMedia'
-// Icons
-import Icon from 'react-icons-kit'
-import { star } from 'react-icons-kit/fa/star'
-import { starO } from 'react-icons-kit/fa/starO'
-import { ecommerce_money } from 'react-icons-kit/linea/ecommerce_money'
-import { arrows_question } from 'react-icons-kit/linea/arrows_question'
-import { music_diapason } from 'react-icons-kit/linea/music_diapason'
-import { basic_pencil_ruler } from 'react-icons-kit/linea/basic_pencil_ruler'
 // SVG
 import ReactSVG from 'react-svg'
 import CodeLanguage from './../../../assets/svg/codelanguage.svg'
 import CodeFork from './../../../assets/svg/codefork.svg'
-import Friend from './../../../assets/svg/friend.svg'
-import HelmetGoggles from './../../../assets/svg/helmet_goggles.svg'
 import Simpleclock from './../../../assets/svg/simple_clock.svg'
-import Wallet from './../../../assets/svg/wallet.svg'
 import Issue from './../../../assets/svg/issue.svg'
 import Star from './../../../assets/svg/star.svg'
-import StarFilled from './../../../assets/svg/starfilled.svg'
 // Components
 import Chip from './../../global/components/chip'
 import VoteButtons from './../../global/components/voteButtons.js'
 import { ShareButton } from './../../global/components/majorActionButtons'
-import PersonChip from './../../global/components/personChip'
-// Redux
-import { connect } from 'react-redux'
-// import {starProject} from './../../../actions/repo.actions';
-// import {getStarStatus} from './../../../reducers/repo.reducer'
-import { getUser } from './../../../reducers/user.reducer'
 // MISC
 import ReactTimeAgo from 'react-time-ago'
 import { Link } from 'react-router-dom'

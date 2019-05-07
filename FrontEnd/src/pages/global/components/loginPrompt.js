@@ -3,16 +3,10 @@ import React, { Component } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Dialog from '@material-ui/core/Dialog'
 import Button from '@material-ui/core/Button'
-// Components
-import JoinQueue from './joinQueue'
 // MISC
 import { Link } from 'react-router-dom'
 
 class LoginPrompt extends Component {
-  constructor (props) {
-    super(props)
-  }
-
   render () {
     return (
       <Dialog onClose={this.props.close} open={this.props.open}>

@@ -3,23 +3,14 @@ import React, { Component } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
-import Paper from '@material-ui/core/Paper'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Button from '@material-ui/core/Button'
-import Grid from '@material-ui/core/Grid'
-import Icon from '@material-ui/core/Icon'
 // Components
 import { ShareButton } from '../global/components/majorActionButtons.js'
 import AppCard from './components/appCard.js'
 import TopicBar from './components/topicBar.js'
 // Redux
 import { connect } from 'react-redux'
-import { fetchUsers } from './../../actions/people.actions'
-import { getPeopleStatus, getPeople } from './../../reducers/people.reducer'
-import { getUser } from './../../reducers/user.reducer'
-// SVG
-import ReactSVG from 'react-svg'
-import { group } from '../../assets/svg/people.svg'
 
 class ExploreApps extends Component {
   constructor (props) {

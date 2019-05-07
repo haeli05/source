@@ -1,21 +1,12 @@
 // Banner Notifications
-import React, { Component } from 'react'
+import React from 'react'
 import IconButton from '@material-ui/core/IconButton'
 import ReactSVG from 'react-svg'
-import WalletCoin from './../../../assets/svg/walletcoin.svg'
-
-import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import AppBar from '@material-ui/core/AppBar'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
-import Dialog from '@material-ui/core/Dialog'
 import Cross from './../../../assets/svg/cross.svg'
 import Card from '@material-ui/core/Card'
-import Fade from '@material-ui/core/Fade'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
-import Image from './../img/logo.png'
 
 class NotificationCard extends React.Component {
   constructor (props) {

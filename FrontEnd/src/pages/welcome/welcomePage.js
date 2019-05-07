@@ -9,34 +9,26 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Grid from '@material-ui/core/Grid'
 import Fab from '@material-ui/core/Fab'
 import Fade from '@material-ui/core/Fade'
-import List from '@material-ui/core/List'
 import Chip from '@material-ui/core/Chip'
 // Components
-import JoinQueue from './components/joinQueue'
 import PayButton from '../payments/payButton'
 import ReactSVG from 'react-svg'
 import axios from 'axios'
-import { ShareButton, MessageButton, SupportButton } from './../global/components/majorActionButtons'
+import { ShareButton, MessageButton } from './../global/components/majorActionButtons'
 
 // MISC
-import logo from './img/logo.gif'
 import developerImage from './img/devs.jpg'
 import developerImage2 from './img/dev2.jpg'
-import HammerScrew from '../../assets/svg/hammer_screwdriver_2.svg'
 import Comment from '../../assets/svg/comment.svg'
-import Board from './../workflow/Board'
-import RightBracket from './../../assets/svg/rightbracket.svg'
 import CircleTick from './../../assets/svg/circletick.svg'
 
 import config from '../../utils/config.js'
-import { PayPalButton } from 'react-paypal-button-v2'
 
 // Analytics
 
 import ReactGA from 'react-ga'
 
 const malarkey = require('malarkey')
-const ScrollMagic = require('scrollmagic')
 
 class WelcomePage extends Component {
   constructor (props) {
@@ -325,7 +317,7 @@ class WelcomePage extends Component {
             <PayButton />
             <div className='MajorActionButtonsHorizontal'>
               <div className='MajorActionButtonDiv'>
-                <a href='https://spectrum.chat/sourcenetwork-io?tab=posts' target='_blank'>
+                <a href='https://spectrum.chat/sourcenetwork-io?tab=posts' target='_blank' rel="noopener noreferrer">
                   <MessageButton {...this.props} goToRoom={this.props.goToRoom} />
                 </a>
               </div>

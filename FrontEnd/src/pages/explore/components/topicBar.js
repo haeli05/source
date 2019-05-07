@@ -6,10 +6,6 @@ import Paper from '@material-ui/core/Paper'
 import Chip from './../../global/components/chip.js'
 
 class topicBar extends Component {
-  constructor (props) {
-    super(props)
-  }
-
   render () {
     return (
       <Paper className='TopicBar' elevation={0}>

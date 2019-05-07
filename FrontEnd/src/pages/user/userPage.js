@@ -1,44 +1,31 @@
 import React, { Component } from 'react'
 // Material UI
-import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import Card from '@material-ui/core/Card'
 import Button from '@material-ui/core/Button'
 import Avatar from '@material-ui/core/Avatar'
 import SwipeableViews from 'react-swipeable-views'
 import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListSubheader from '@material-ui/core/ListSubheader'
-import TextField from '@material-ui/core/TextField'
 import CircularProgress from '@material-ui/core/CircularProgress'
 // Components
 import Chip from './../global/components/chip'
 import MajorActionButtons from './../global/components/majorActionButtons'
 import SettingsButton from './../global/components/settingsButton'
-import PayButton from './../payments/payButton'
 import ErrorPage from './../global/errorPage'
 import ThoughtCard from './../global/components/thoughtCard'
 import ReactQuillEditor from './../global/components/reactQuillEditor'
-// Icons
-import Icon from 'react-icons-kit'
-import { basic_settings } from 'react-icons-kit/linea/basic_settings'
 // SVG
 import Write from './../../assets/svg/write.svg'
 import ReactSVG from 'react-svg'
 // MISC
 import { SocialIcon } from 'react-social-icons'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link } from 'react-router-dom'
 // Redux
 import { connect } from 'react-redux'
 import { fetchPerson } from './../../actions/people.actions'
 import { getPerson, getPersonStatus } from './../../reducers/people.reducer'
 import { updateUser } from './../../actions/user.actions'
-import { getUser, getUpdateUserStatus } from './../../reducers/user.reducer'
+import { getUser } from './../../reducers/user.reducer'
 
 class UserPage extends Component {
   constructor (props) {
@@ -85,15 +72,16 @@ class UserPage extends Component {
             <div className='SkillsDiv'>
               <Typography variant='overline'>SKILLS</Typography>
               <div className='ChipsDiv'>
-                {this.props.person.skills.map(skill => {
-                  if (skill !== '') {
+                {this.props.person.skills
+                  .filter(skill => skill !== '')
+                  .map(skill => {
                     return (
                       <div key={skill} className='IndividualChip'>
                         <Chip {...this.props} label={skill} />
                       </div>
                     )
                   }
-                })}
+                )}
               </div>
             </div>
             <div className='SocialDiv'>

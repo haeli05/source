@@ -1,57 +1,29 @@
 import React, { Component } from 'react'
-import WalletGraph from './components/graph'
-import TransferButton2 from './components/transferButton2'
 import Transactions from './components/transactions'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
-import history from './../../history'
 // MUI
 import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
-import FormControl from '@material-ui/core/FormControl'
-import Select from '@material-ui/core/Select'
-
 import { ShareButton } from '../global/components/majorActionButtons.js'
-
 import PayButton from './payButton'
 
-let user = history.location.pathname.split('/')[2]
-// let eosConfig = {
-//   httpEndpoint: 'http://ec2-34-227-77-165.compute-1.amazonaws.com:8888',
+// let updatedData = (data, labels) => {
+//   return {
+//     labels: labels,
+//     datasets: [{
+//       label: 'My First dataset',
+//       fillColor: 'rgba(220,220,220,0.2)',
+//       strokeColor: 'rgba(220,220,220,1)',
+//       pointColor: 'rgba(220,220,220,1)',
+//       pointStrokeColor: '#fff',
+//       pointHighlightFill: '#fff',
+//       pointHighlightStroke: 'rgba(220,220,220,1)',
+//       data: data,
+//       sum: 0
+//     }] }
 // }
-// let eos = Eos(eosConfig);
-//
-// function fl(time,amount){
-//   let n=[]
-//   for(let i=0;i<time.length;i++){
-//     let t = time[i]
-//     let a = amount[i]
-//     let obj = {x:t,y:a}
-//     n.push(obj);
-//   }
-//   return n;
-// }
-
-// const e = async () => {return await eos.getTableRows(true,"records",user,"payments")
-//   .then(rows=>{return rows.rows})}
-// let a =e();
-// console.log("A",a);
-let updatedData = (data, labels) => {
-  return {
-    labels: labels,
-    datasets: [{
-      label: 'My First dataset',
-      fillColor: 'rgba(220,220,220,0.2)',
-      strokeColor: 'rgba(220,220,220,1)',
-      pointColor: 'rgba(220,220,220,1)',
-      pointStrokeColor: '#fff',
-      pointHighlightFill: '#fff',
-      pointHighlightStroke: 'rgba(220,220,220,1)',
-      data: data,
-      sum: 0
-    }] }
-}
 class Wallet extends Component {
   constructor (props) {
     super(props)

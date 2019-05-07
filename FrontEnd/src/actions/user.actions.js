@@ -1,8 +1,6 @@
 import axios from 'axios'
-import history from '../history'
 import config from '../utils/config.js'
 import { addError } from './error.actions.js'
-import { saveStateUser } from './../utils/rehydrate'
 
 // ec2-35-153-131-45.compute-1.amazonaws.com
 /// / TODO: ADD A CONFIG FILE FOR ROUTES
@@ -118,7 +116,6 @@ export function addSignOut () {
 // Upload profile image (3 steps: create form and submit => get new tokens => add both to profile)
 export function uploadProfilePicture (image) {
   let user = localStorage.getItem(`user`)
-  let token = JSON.parse(user).token
   let awsurl = JSON.parse(user).aws.url
   let awskey = JSON.parse(user).aws.key
   let policy = JSON.parse(user).aws.policy

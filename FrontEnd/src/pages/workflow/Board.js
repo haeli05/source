@@ -19,10 +19,6 @@ import {arrows_plus} from 'react-icons-kit/linea/arrows_plus';
 import Column from './Column';
 // DND
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-// Redux
-import { connect } from "react-redux";
-
-
 
 class Board extends Component {
   constructor(props) {
@@ -103,7 +99,6 @@ class Board extends Component {
 
   newCard(columnId) {
     console.log("here",this.state.data.columns[columnId])
-    const newTasks = this.state.data.tasks
     const newTaskId = `task-${Object.keys(this.state.data.tasks).length + 1}`
     const newTask = {
       id: newTaskId,
@@ -130,7 +125,6 @@ class Board extends Component {
   }
 
   newColumn() {
-    const newColumns = this.state.data.columns
     const newColumnId = `column-${this.state.data.columnOrder.length+1}`
     const newColumn = {
       id: newColumnId,

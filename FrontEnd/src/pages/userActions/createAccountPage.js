@@ -4,10 +4,6 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import LinearProgress from '@material-ui/core/LinearProgress'
-import FormControl from '@material-ui/core/FormControl'
-import FormHelperText from '@material-ui/core/FormHelperText'
-import Input from '@material-ui/core/Input'
-import InputLabel from '@material-ui/core/InputLabel'
 import CircularProgress from '@material-ui/core/CircularProgress'
 // Icons
 import Icon from 'react-icons-kit'
@@ -114,8 +110,8 @@ class CreateAccountPage extends Component {
 
   testUsername (username) {
     if (username !== undefined) {
-      var format = /[^-a-zA-Z0-9_'.]/
-      var specialCharacters = format.test(username)
+      let format = /[^-a-zA-Z0-9_'.]/
+      let specialCharacters = format.test(username)
       if (username.length < 4 || username.length > 12 || specialCharacters) {
         this.setState({ usernameError: true })
         this.setState({ usernameErrorText: 'Invalid username' })
@@ -125,8 +121,8 @@ class CreateAccountPage extends Component {
         return true
       }
     } else {
-      var format = /[^-a-zA-Z0-9_'.]/
-      var specialCharacters = format.test(this.state.username)
+      let format = /[^-a-zA-Z0-9_'.]/
+      let specialCharacters = format.test(this.state.username)
       if (this.state.username.length < 4 || this.state.username.length > 12 || specialCharacters) {
         this.setState({ usernameError: true })
         this.setState({ usernameErrorText: 'Invalid username' })

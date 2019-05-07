@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 // Material UI
 import Snackbar from '@material-ui/core/Snackbar'
 import Fade from '@material-ui/core/Fade'
@@ -11,7 +11,7 @@ import TextField from '@material-ui/core/TextField'
 // Redux
 import { connect } from 'react-redux'
 import { closeSnackBar } from './../../../actions/error.actions'
-import { getErrorStatus, getOpen } from './../../../reducers/error.reducer'
+import { getErrorStatus } from './../../../reducers/error.reducer'
 // Components
 import ReactQuillEditor from './reactQuillEditor'
 // MISC

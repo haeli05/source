@@ -3,17 +3,11 @@ import { Link } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Icon from 'react-icons-kit'
-import { medium } from 'react-icons-kit/fa/medium'
-import { socialTwitter } from 'react-icons-kit/ionicons/socialTwitter'
-import IconButton from '@material-ui/core/IconButton'
-import { paperPlane } from 'react-icons-kit/fa/paperPlane'
 import SendFeedback from './sendFeedback'
 import { socialTwitterOutline } from 'react-icons-kit/ionicons/socialTwitterOutline'
 import { iosPaperplaneOutline } from 'react-icons-kit/ionicons/iosPaperplaneOutline'
 import Medium from './../img/mediumOutline.png'
 import Steem from './../img/Steemit.png'
-
-let translate = require('./../../../assets/svg/translate.svg')
 
 class Footer extends Component {
   render () {

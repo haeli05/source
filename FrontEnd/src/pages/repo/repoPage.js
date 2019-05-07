@@ -1,27 +1,13 @@
 import React, { Component } from 'react'
 // Material UI
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
-import Tooltip from '@material-ui/core/Tooltip'
-import FormControl from '@material-ui/core/FormControl'
 import Paper from '@material-ui/core/Paper'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography'
 import Card from '@material-ui/core/Card'
 import AppBar from '@material-ui/core/AppBar'
-import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import LinearProgress from '@material-ui/core/LinearProgress'
-// Icons
-import Icon from 'react-icons-kit'
-import { ecommerce_money } from 'react-icons-kit/linea/ecommerce_money'
-import { arrows_question } from 'react-icons-kit/linea/arrows_question'
-import { basic_settings } from 'react-icons-kit/linea/basic_settings'
-// SVG
-import ReactSVG from 'react-svg'
-import circlebrackets from './../../assets/svg/circlebrackets.svg'
-import forks from './../../assets/svg/forks.svg'
 // Components
 import EmptyRepoMessage from './components/emptyRepoMessage'
 import TabAbout from './components/tabAbout'
@@ -29,7 +15,6 @@ import TabFiles from './components/tabFiles'
 import TabIssues from './components/tabIssues'
 import TabTasks from './components/tabTasks'
 import TabMergeRequests from './components/tabMergeRequests'
-import TabContracts from './components/tabContracts'
 import SettingsButton from './../global/components/settingsButton'
 import ErrorPage from './../global/errorPage'
 import VoteButtons from './../global/components/voteButtons'
@@ -38,30 +23,24 @@ import MajorActionButtons from './../global/components/majorActionButtons'
 import { connect } from 'react-redux'
 import {
   fetchRepo,
-  fetchFile,
-  fetchCommits,
-  starProject,
-  fetchBalance } from './../../actions/repo.actions'
+  fetchFile } from './../../actions/repo.actions'
 import {
   getRepo,
   getRepoStatus,
   getFile,
   getFileStatus,
-  getCommits,
-  getCommitsStatus,
   getStarStatus,
   getBalance,
   getBalanceStatus } from './../../reducers/repo.reducer'
 import { getUser } from './../../reducers/user.reducer'
 // MISC
 import Markdown from 'react-markdown'
-import { Link } from 'react-router-dom'
 import SwipeableViews from 'react-swipeable-views'
 
 // import Eos from 'eosjs';
-let eosConfig = {
-  httpEndpoint: 'http://ec2-34-227-77-165.compute-1.amazonaws.com:8888'
-}
+// let eosConfig = {
+//   httpEndpoint: 'http://ec2-34-227-77-165.compute-1.amazonaws.com:8888'
+// }
 
 // let eos = Eos(eosConfig);
 

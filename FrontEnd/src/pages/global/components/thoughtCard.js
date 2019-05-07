@@ -1,13 +1,8 @@
 // Thought card
-import React, { Component } from 'react'
-import Typography from '@material-ui/core/Typography'
-
+import React from 'react'
 import Card from '@material-ui/core/Card'
 import ReactQuillEditor from './reactQuillEditor'
 import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-import PersonChip from './personChip'
-import Comment from './comment'
 
 class ThoughtCard extends React.Component {
   constructor (props) {

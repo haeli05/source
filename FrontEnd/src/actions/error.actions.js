@@ -1,7 +1,3 @@
-import axios from 'axios'
-import history from '../history'
-import config from '../utils/config.js'
-
 // Add error code to state
 export function addError (error) {
   // Recursively search the error for the depeest message since the errors
@@ -19,83 +15,6 @@ export function addError (error) {
       errorData: error
     }
   }
-
-  /*
-
-  // error.message is the basic message like '400 bad request'
-  // it sucks so we have to check if there's a custom message
-  console.log(error.response)
-  if (error.response.data !== undefined) {
-    if (error.response.data.error !== undefined) {
-      if (error.response.data.error.errors !== undefined) {
-        // oh boy multiple errors!
-        if (typeof error.response.data.error.message === 'string') {
-          return {
-            type: "ADD_ERROR_CODE",
-            errorMessage: error.response.data.error.message,
-            errorData: error.response
-          }
-        } else {
-          let message;
-          for (var prop in error.response.data.error.message) {
-            message = prop[0]
-            console.log(message)
-            break
-          }
-          return {
-            type: "ADD_ERROR_CODE",
-            errorMessage: message,
-            errorData: error.response
-          }
-        }
-      } else {
-        if (typeof error.response.data.error === 'string') {
-          return {
-            type: "ADD_ERROR_CODE",
-            errorMessage: error.response.data.error,
-            errorData: error.response
-          }
-        } else if (error.response.data.error[1] !== undefined) {
-          return {
-            type: "ADD_ERROR_CODE",
-            errorMessage: error.response.data.error[1],
-            errorData: error.response
-          }
-        } else if (typeof error.response.data.error.message === 'string') {
-          return {
-            type: "ADD_ERROR_CODE",
-            errorMessage: error.response.data.error.message,
-            errorData: error.response
-          }
-        } else {
-          let message;
-          for (var prop in error.response.data.error.message) {
-            message = error.response.data.error.message[prop][0]
-            break
-          }
-          return {
-            type: "ADD_ERROR_CODE",
-            errorMessage: message,
-            errorData: error.response
-          }
-        }
-      }
-    } else {
-      return {
-        type: "ADD_ERROR_CODE",
-        errorMessage: error.message,
-        errorData: error.reponse
-      }
-    }
-  } else {
-    return {
-      type: "ADD_ERROR_CODE",
-      errorMessage: error.message,
-      errorData: error.reponse
-    }
-  }
-
-  */
 }
 
 export function recursiveSearchForDeepestMessage (error, depth) {
@@ -106,11 +25,11 @@ export function recursiveSearchForDeepestMessage (error, depth) {
   var deepestMessages = []
   for (var object in error) {
     if (typeof error[object] === 'object') {
-      var deepMessage = recursiveSearchForDeepestMessage(error[object], depth + 1)
+      let deepMessage = recursiveSearchForDeepestMessage(error[object], depth + 1)
       deepestMessages.push(deepMessage)
     } else {
       if (object.includes('message')) {
-        var deepMessage = {
+        let deepMessage = {
           message: error[object],
           depth: depth
         }

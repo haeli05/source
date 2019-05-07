@@ -8,7 +8,6 @@ import Tab from '@material-ui/core/Tab'
 import Button from '@material-ui/core/Button'
 // SVG
 import ReactSVG from 'react-svg'
-import Projects from './../../assets/svg/projects.svg'
 import RightBracket from './../../assets/svg/rightbracket.svg'
 import LeftBracket from './../../assets/svg/leftbracket.svg'
 // Redux
@@ -17,7 +16,6 @@ import { fetchRepos } from './../../actions/repo.actions'
 import { getRepos, getReposStatus } from './../../reducers/repo.reducer'
 import { getUser } from './../../reducers/user.reducer'
 // MISC
-import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 // Components
 import RepoCard from './components/repoCard'
@@ -62,19 +60,21 @@ class ExploreProjects extends Component {
 
   handlePagination (page) {
     if (page === 'next') {
-      var lastID = this.props.repos[this.props.repos.length - 1]._id
+      let lastID = this.props.repos[this.props.repos.length - 1]._id
       this.state.last.push(lastID)
       this.state.pages.push(this.state.pages[this.state.pages.length - 1] + 1)
       this.props.dispatch(fetchRepos(this.state.limit, this.state.topic, lastID, this.state.sort))
     } else if (page === 'back') {
-      var lastID = this.state.last[this.state.last.length - 2]
+      let lastID = this.state.last[this.state.last.length - 2]
       this.state.last.pop()
       this.state.pages.pop()
       this.props.dispatch(fetchRepos(this.state.limit, this.state.topic, lastID, this.state.sort))
     } else {
-      var lastID = this.state.last[page - 1]
-      this.state.last.length = page
-      this.state.pages.length = page
+      let lastID = this.state.last[page - 1]
+      const { last, pages } = this.state
+      last.length = page
+      pages.length = page
+      this.setState({ last, pages })
       this.props.dispatch(fetchRepos(this.state.limit, this.state.topic, lastID, this.state.sort))
     }
   }

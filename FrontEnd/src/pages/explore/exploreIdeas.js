@@ -12,7 +12,6 @@ import RightBracket from './../../assets/svg/rightbracket.svg'
 import LeftBracket from './../../assets/svg/leftbracket.svg'
 // Components
 import Idea from './components/ideaCard'
-import ThoughtCard from '../global/components/thoughtCard'
 import { ShareButton } from '../global/components/majorActionButtons.js'
 import TopicBar from './components/topicBar.js'
 import LoginPrompt from '../global/components/loginPrompt.js'
@@ -24,7 +23,6 @@ import { getIdeas, getFetchIdeasStatus } from './../../reducers/ideas.reducer'
 import { getUser } from './../../reducers/user.reducer'
 // MISC
 import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
 
 class ExploreIdeas extends Component {
   constructor (props) {
@@ -72,19 +70,21 @@ class ExploreIdeas extends Component {
 
   handlePagination (page) {
     if (page === 'next') {
-      var lastID = this.props.ideas[this.props.ideas.length - 1]._id
+      let lastID = this.props.ideas[this.props.ideas.length - 1]._id
       this.state.last.push(lastID)
       this.state.pages.push(this.state.pages[this.state.pages.length - 1] + 1)
       this.props.dispatch(fetchIdeas(this.state.limit, this.state.topic, lastID, this.state.sort))
     } else if (page === 'back') {
-      var lastID = this.state.last[this.state.last.length - 2]
+      let lastID = this.state.last[this.state.last.length - 2]
       this.state.last.pop()
       this.state.pages.pop()
       this.props.dispatch(fetchIdeas(this.state.limit, this.state.topic, lastID, this.state.sort))
     } else {
-      var lastID = this.state.last[page - 1]
-      this.state.last.length = page
-      this.state.pages.length = page
+      let lastID = this.state.last[page - 1]
+      const { last, pages } = this.state
+      last.length = page
+      pages.length = page
+      this.setState({ last, pages })
       this.props.dispatch(fetchIdeas(this.state.limit, this.state.topic, lastID, this.state.sort))
     }
   }
@@ -147,13 +147,13 @@ class ExploreIdeas extends Component {
             )}
             {this.props.ideasStatus === 'SUCCESS' && (
               <div>
-                {this.props.ideas.map(idea => {
-                  if (idea.creator !== null && idea.creator.username !== null) {
+                { this.props.ideas.filter(idea => idea.creator !== null && idea.creator.username !== null)
+                  .map(idea => {
                     return (
                       <Idea idea={idea} {...this.props} key={idea._id} className='IdeaCard' />
                     )
-                  }
-                })}
+                  })
+                }
                 <div className='Flex AlignCenter PaginationDiv'>
                   {(this.state.last.length > 1) && (
                     <IconButton className='PaginationButtonLeft' onClick={() => this.handlePagination('back')} >
