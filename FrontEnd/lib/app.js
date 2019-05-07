@@ -14,7 +14,7 @@ var _welcomePage = require('./pages/welcome/welcomePage')
 
 var _welcomePage2 = _interopRequireDefault(_welcomePage)
 
-var _stylesMin = require('./assets/css/styles.min .css')
+var _stylesMin = require('./assets/css/styles.min.css')
 
 var _stylesMin2 = _interopRequireDefault(_stylesMin)
 
