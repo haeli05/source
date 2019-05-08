@@ -1,9 +1,9 @@
 import { fromJS } from 'immutable'
 import { handleActions } from 'redux-actions'
 import {
-  updateAssets,
-  updateAssetsSuccess,
-  updateAssetsError
+  fetchIdeas,
+  fetchIdeasSuccess,
+  fetchIdeasError
 } from './actions'
 
 const initialState = fromJS({
@@ -13,16 +13,16 @@ const initialState = fromJS({
 
 const reducer = handleActions(
   {
-    [updateAssets] (state) {
+    [fetchIdeas] (state) {
       return state
         .set('loading', true)
     },
-    [updateAssetsSuccess] (state, { payload }) {
+    [fetchIdeasSuccess] (state, { payload }) {
       return state
         .set('loading', false)
-        .set('flash', { status: 'success', type: 'info', code: 'updateSuccess' })
+        .set('flash', { status: 'success', type: 'info', code: 'fetchSuccess' })
     },
-    [updateAssetsError] (state, { payload }) {
+    [fetchIdeasError] (state, { payload }) {
       return state
         .set('loading', false)
         .set('flash', { status: 'error', type: 'danger', msg: payload })

@@ -1,6 +1,6 @@
 import { fork, all } from 'redux-saga/effects'
 
-import chatSaga from './chat/saga'
+import chatSaga from './ideas/saga'
 
 function * rootSagas () {
   yield all([

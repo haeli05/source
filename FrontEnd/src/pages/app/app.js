@@ -89,8 +89,8 @@ class AppPage extends React.Component {
           <div className="Content">
             <div className="Body">
               <div className="AppDiv">
-                <div className="TheAppItself" />
-                QuantStamp is great
+                <div className="TheAppItself">
+                  QuantStamp is great
                 </div>
                 <div className="RowBelow">
                   {this.props.user.id===this.props.idea.creator && (
