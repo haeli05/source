@@ -2903,19 +2903,32 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .CreateAccountPageHeader {
+    @media screen and (max-width: $md) {
+      padding-left: 10%;
+      padding-right: 10%;
+      width: 80%;
+    }
+  }
   .Form {
     margin-top: 25px;
     display: flex;
     flex-direction: column;
     width: 300px;
+    @media screen and (max-width: $md) {
+      padding-left: 10%;
+      padding-right: 10%;
+      width: 80%;
+    }
     .UsernameInputDiv {
       display: flex;
-      width: 330px;
+      width: 100%;
       .UsernameInput {
-        width: 300px;
+        width: 100%;
       }
       .UsernameAvailabilityCheck {
-        margin-left: 10px;
+        margin-left: -35px;
         padding-top: 30px;
       }
     }
@@ -2923,6 +2936,9 @@ body {
       margin-top: 25px;
       margin-bottom: 20px;
     }
+  }
+  @media screen and (max-width: $md) {
+    margin-top: 4em;
   }
 }
 
@@ -2938,6 +2954,11 @@ body {
     display: flex;
     flex-direction: column;
     width: 300px;
+    @media screen and (max-width: $md) {
+      padding-left: 10%;
+      padding-right: 10%;
+      width: 80%;
+    }
     .SubmitButton {
       margin-top: 25px;
     }
@@ -2945,6 +2966,11 @@ body {
       margin-top: 20px;
       text-align: center;
     }
+  }
+  @media screen and (max-width: $md) {
+    margin-top: 4em;
+    padding-left: 10%;
+    padding-right: 10%;
   }
 }
 
