@@ -280,11 +280,11 @@ h4 {
   -moz-osx-font-smoothing: grayscale;
 
   @media screen and (max-width: $md) {
-    font-size: 3em;
+    font-size: 1.5em !important;
   }
   @media screen and (max-width: $sm) {
-    text-align: center;
-    font-size: 1.5em;
+    text-align: center !important;
+    font-size: 1.5em !important;
   }
 }
 h5 {
@@ -3689,9 +3689,29 @@ body {
   padding-left: 5%;
   padding-right: 5%;
   .Form {
+    @media screen and (max-width: $md) {
+      text-align: center;
+      margin-left: 5%;
+      margin-right: 5%;
+      padding-left: 0;
+    }
     .Success {
       display: flex;
       align-items: center;
+    }
+  }
+  .GetStartedFabContainer {
+    display: flex;
+
+    @media screen and (max-width: $md) {
+      margin: auto;
+      justify-content: center;
+    }
+  }
+  .Button {
+    @media screen and (max-width: $md) {
+      margin-right: 0;
+      width: 40%;
     }
   }
 }
@@ -3718,6 +3738,12 @@ body {
   }
   .Button {
     margin-top: 2vh;
+
+    @media screen and (max-width: $md) {
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0;
+    }
   }
 }
 }
