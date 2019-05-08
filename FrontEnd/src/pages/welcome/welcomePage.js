@@ -169,12 +169,12 @@ class WelcomePage extends Component {
         <div className='Hero'>
           <div className='WelcomeSignUp'>
             <Grid container spacing={12}>
-              <Grid item xs={7}>
+              <Grid item sm={12} md={7}>
                 <Typography className='Mission' color='textPrimary' variant='h1'>
-                  The Decentralized <br />Tech Incubator
+                  The Decentralized Tech Incubator
                 </Typography>
               </Grid>
-              <Grid item xs>
+              <Grid item sm={12} md={5}>
                 <Typography className='Mission WhatIsSource' style={{ marginTop: '0em' }} variant='h4' color='textPrimary'>
                 Find <div style={{ display: 'inline' }} id='whatissource' />
                   <br />for your digital projects.
@@ -231,7 +231,7 @@ class WelcomePage extends Component {
           <Typography className='SectionSubTitle' variant='h4'>Source is building a sharing economy to simplify tech development</Typography>
 
           <Grid container spacing={8}>
-            <Grid item xs={6}>
+            <Grid item sm={12} md={6}>
               <div className='Description'>
                 <Typography variant='h5' paragraph >
                     Our community of developers, technology professionals, and consultants support your projects from ideation to implementation.
@@ -252,7 +252,7 @@ class WelcomePage extends Component {
 
               </div>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item sm={12} md={6}>
               <Fade in>
                 <img className='DevImage2' src={developerImage2} alt='developers' />
               </Fade>
@@ -262,12 +262,12 @@ class WelcomePage extends Component {
                     While enabling community driven implementation and funding
           </Typography>
           <Grid container spacing={6}>
-            <Grid item xs={4} sm={3}>
+            <Grid item sm={6} md={3}>
               <Fade in>
                 <img className='DevImage' src={developerImage} alt='developers' />
               </Fade>
             </Grid>
-            <Grid item xs={8} sm={5}>
+            <Grid item sm={6} md={5}>
               <div className='Description'>
                 <Typography variant='h5' paragraph >
                       Open Source Collaboration + Crowdfunding + Monetized Tasks
