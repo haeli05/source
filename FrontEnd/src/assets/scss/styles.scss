@@ -1163,10 +1163,6 @@ time {
     .Feedback {
       margin-right: 7px;
     }
-
-    @media screen and (max-width: $md) {
-      display: none;
-    }
   }
   .Middle {
     margin-bottom: -5px;
@@ -1178,9 +1174,6 @@ time {
   .Icons {
       display: flex;
       justify-content: flex-end;
-      @media screen and (max-width: $md) {
-        margin: auto;
-      }
       margin: 3px;
       padding: 3px;
       .twitter, .medium, .steem {
@@ -1219,7 +1212,6 @@ time {
       a {
         color: inherit;
       }
-
   }
 }
 
@@ -1466,6 +1458,13 @@ time {
     transition: 0.3s ease;
     color: white;
     box-shadow: none;
+
+    .mobileMainNav {
+      @media screen and (min-width: $md) {
+        display: none;
+      }
+    }
+
     .Logo {
       .NavbarTitle {
         display: flex;

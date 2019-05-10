@@ -249,7 +249,21 @@ class MenuAppBar extends React.Component {
                           {(this.state.drawerTab === 2) && <div className='Settings'>
 
                             <List component='nav'>
-                            
+                              <ListItem className='mobileMainNav' button disabled>
+                                <ListItemIcon>
+                                  <ListItemText primary='Ideas' />
+                                </ListItemIcon>
+                              </ListItem>
+                              <ListItem className='mobileMainNav' button disabled>
+                                <ListItemIcon>
+                                  <ListItemText primary='Projects' />
+                                </ListItemIcon>
+                              </ListItem>
+                              <ListItem className='mobileMainNav' button disabled>
+                                <ListItemIcon>
+                                  <ListItemText primary='People' />
+                                </ListItemIcon>
+                              </ListItem>
                               <ListItem button disabled>
                                 <ListItemIcon>
                                   <Icon icon={basic_notebook} size={25} />
