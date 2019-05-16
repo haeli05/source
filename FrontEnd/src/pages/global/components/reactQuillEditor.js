@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 // Components
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
-import './../../../assets/css/styles.min .css'
+import './../../../assets/css/styles.min.css'
 
 let Editor={}
 /*

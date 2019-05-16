@@ -80,7 +80,7 @@ class GetStarted extends Component {
         </Helmet>
         <div className='Section'>
           <Grid container spacing={24}>
-            <Grid item xs={5}>
+            <Grid item sm={12} md={5}>
               <div className='GetStartedLabel'>
                 <Typography className='GetStartedTitle' color='textPrimary' variant='h1'>
                 Get <br />Started
@@ -93,30 +93,32 @@ class GetStarted extends Component {
                   <br />
                   <br />
                   Please reach out if you need immediate technical assistance, or want to list a project.</Typography>
-                <Fab
-                  variant='extended'
-                  size='large'
-                  color='primary'
-                  aria-label='Spectrum Chat'
-                  className='Button'
-                  href='https://spectrum.chat/sourcenetwork-io?tab=posts'
-                >
-                  <ReactSVG src={MessageBlob} className='ReactSVGIcon Icon25 LeftIcon' />
-                  Chat
-                </Fab>
-                <Fab
-                  variant='extended'
-                  size='large'
-                  color='secondary'
-                  className='Button'
-                  href='mailto:source@sourcenetwork.io'
-                >
-                  <ReactSVG src={Letter} className='ReactSVGIcon Icon25 LeftIcon Letter' />
-                  Email
-                </Fab>
+                <div className='GetStartedFabContainer'>
+                  <Fab
+                    variant='extended'
+                    size='large'
+                    color='primary'
+                    aria-label='Spectrum Chat'
+                    className='Button'
+                    href='https://spectrum.chat/sourcenetwork-io?tab=posts'
+                  >
+                    <ReactSVG src={MessageBlob} className='ReactSVGIcon Icon25 LeftIcon' />
+                    Chat
+                  </Fab>
+                  <Fab
+                    variant='extended'
+                    size='large'
+                    color='secondary'
+                    className='Button'
+                    href='mailto:source@sourcenetwork.io'
+                  >
+                    <ReactSVG src={Letter} className='ReactSVGIcon Icon25 LeftIcon Letter' />
+                    Email
+                  </Fab>
+                </div>
               </div>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item sm={12} md={5}>
               <div className='Form'>
                 <Typography className='Mission' variant='h5' color='textPrimary'>
             Fill up this form for general enquiries, we will reply as soon as possible.

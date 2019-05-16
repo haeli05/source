@@ -180,6 +180,12 @@ $PrimaryDark: #1E242F;
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* ================================ BREAKPOINTS ================================ */
+
+$sm: 600px;
+$md: 960px;
+//$break-large: 1200px;
+
 // Main font
 body {
   font-kerning: none;
@@ -218,6 +224,10 @@ p {
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  @media screen and (max-width: $sm) {
+    text-align: center !important;
+  }
 }
 
 // Header fonts and weights
@@ -230,6 +240,14 @@ h1  {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1;
+
+  @media screen and (max-width: $md) {
+    font-size: 5em !important;
+  }
+  @media screen and (max-width: $sm) {
+    text-align: center !important;
+    font-size: 3em !important;
+  }
 }
 h2 {
   line-height: 1;
@@ -251,7 +269,7 @@ h3 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-h4, {
+h4 {
   line-height: 1;
   font-size: 1.999em;
   font-family: "gotham_htfbook";
@@ -260,6 +278,14 @@ h4, {
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  @media screen and (max-width: $md) {
+    font-size: 1.5em !important;
+  }
+  @media screen and (max-width: $sm) {
+    text-align: center !important;
+    font-size: 1.5em !important;
+  }
 }
 h5 {
   line-height: 1;
@@ -948,8 +974,11 @@ time {
   background-color: $Darkest;
   color: $Light;
   height: 36px;
-
   min-width: 550px;
+  @media screen and (max-width: $md) {
+    min-width: 60vw;
+    max-width: 80%;
+  }
   .PayCurrency {
     color: #FFFFFF;
     margin-right: auto;
@@ -983,6 +1012,10 @@ time {
   .PayLabel {
     margin-right:8px;
     color: #FFFFFF;
+
+    @media screen and (max-width: $md) {
+      display: none;
+    }
   }
   .Pay{
     margin-left: auto;
@@ -1116,6 +1149,7 @@ time {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100vw;
   .Left {
     margin-left: 5px;
     display: flex;
@@ -1126,12 +1160,16 @@ time {
     .LanguageButton {
       margin-left: 5px;
     }
-    .Feedback{
+    .Feedback {
       margin-right: 7px;
     }
   }
   .Middle {
     margin-bottom: -5px;
+
+    @media screen and (max-width: $md) {
+      display: none;
+    }
   }
   .Icons {
       display: flex;
@@ -1174,7 +1212,6 @@ time {
       a {
         color: inherit;
       }
-
   }
 }
 
@@ -1421,6 +1458,13 @@ time {
     transition: 0.3s ease;
     color: white;
     box-shadow: none;
+
+    .mobileMainNav {
+      @media screen and (min-width: $md) {
+        display: none;
+      }
+    }
+
     .Logo {
       .NavbarTitle {
         display: flex;
@@ -1434,6 +1478,11 @@ time {
         cursor: pointer;
       }
     }
+    .NavSearch {
+      @media screen and (max-width: $md) {
+        display: none;
+      }
+    }
     .Tabs {
       display: inline-block;
       overflow: hidden;
@@ -1442,6 +1491,10 @@ time {
       float: left;
       position: relative;
       border-bottom: none!important;
+
+      @media screen and (max-width: $md) {
+        display: none;
+      }
     }
     .Right {
       margin-left: auto;
@@ -1450,6 +1503,10 @@ time {
         display: flex;
         .NavbarButton {
           color: white;
+
+          @media screen and (max-width: $md) {
+            display: none;
+          }
         }
       }
       .Menu {
@@ -2845,19 +2902,32 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .CreateAccountPageHeader {
+    @media screen and (max-width: $md) {
+      padding-left: 10%;
+      padding-right: 10%;
+      width: 80%;
+    }
+  }
   .Form {
     margin-top: 25px;
     display: flex;
     flex-direction: column;
     width: 300px;
+    @media screen and (max-width: $md) {
+      padding-left: 10%;
+      padding-right: 10%;
+      width: 80%;
+    }
     .UsernameInputDiv {
       display: flex;
-      width: 330px;
+      width: 100%;
       .UsernameInput {
-        width: 300px;
+        width: 100%;
       }
       .UsernameAvailabilityCheck {
-        margin-left: 10px;
+        margin-left: -35px;
         padding-top: 30px;
       }
     }
@@ -2865,6 +2935,9 @@ body {
       margin-top: 25px;
       margin-bottom: 20px;
     }
+  }
+  @media screen and (max-width: $md) {
+    margin-top: 4em;
   }
 }
 
@@ -2880,6 +2953,11 @@ body {
     display: flex;
     flex-direction: column;
     width: 300px;
+    @media screen and (max-width: $md) {
+      padding-left: 10%;
+      padding-right: 10%;
+      width: 80%;
+    }
     .SubmitButton {
       margin-top: 25px;
     }
@@ -2887,6 +2965,9 @@ body {
       margin-top: 20px;
       text-align: center;
     }
+  }
+  @media screen and (max-width: $md) {
+    margin-top: 4em;
   }
 }
 
@@ -3103,6 +3184,15 @@ body {
     text-align: left;
     padding-left: 7%;
     padding-right: 7%;
+    @media screen and (max-width: $md) {
+      padding-top: 1em;
+      padding-bottom: 3em;
+    }
+    @media screen and (max-width: $sm) {
+      text-align: center;
+      padding-left: 10%;
+      padding-right: 10%;
+    }
     .WelcomeLogo {
       margin-bottom: 75px;
       img {
@@ -3116,10 +3206,24 @@ body {
       opacity: 0.87;
     }
     .Mission {
+      padding-right: 100px;
       padding-top: 50px;
-      text-align:left;
       opacity: 1;
+      
+      @media screen and (max-width: $sm) {
+        padding-right: 0;
+        align-self: center;
+        text-align: center;
+        width: 100%;
+      }
     }
+
+    h1.Mission {
+      @media screen and (max-width: $md) {
+        padding-bottom: .5em;
+      }
+    }
+
     .JoinNow {
       display: flex;
       flex-direction: row;
@@ -3146,7 +3250,12 @@ body {
     }
     .WhatIsSource {
       padding-top: 13px;
-      text-align: left;
+      @media screen and (max-width: $md) {
+        font-size: 2em;
+      }
+      @media screen and (max-width: $sm) {
+        font-size: 1.5em;
+      }
     }
     .WelcomeSignUp {
       .GetStarted{
@@ -3156,6 +3265,7 @@ body {
       }
     }
   }
+  
   .Section {
     display: flex;
     flex-direction: column;
@@ -3167,8 +3277,15 @@ body {
     padding-bottom: 7vh;
     padding-left: 5%;
     padding-right: 5%;
+    @media screen and (max-width: $sm) {
+      padding-left: 10%;
+      padding-right: 10%;
+      font-size: 1em;
+    }
     .SectionTitle {
-    //  margin-bottom: 50px;
+    @media screen and (max-width: $sm) {
+      font-size: 1.5em;
+    }
     }
     .WelcomeButton {
       margin-top: 50px;
@@ -3199,6 +3316,9 @@ body {
         align-items: center;
       }
     }
+    @media screen and (max-width: $sm) {
+      padding-top: 5em;
+    }
   }
   .Section2 {
     // background-image: url("../images/SquareTexture.png");
@@ -3216,7 +3336,6 @@ body {
 
   }
   .Section3 {
-
     background-color: $Light;
     padding-bottom: 6vh;
     .SectionTitle {
@@ -3230,10 +3349,16 @@ body {
     .DevImage {
       // max-width: 220px;
       max-height: 35vh;
+      @media screen and (max-width: $sm) {
+        display: none;
+      }
     }
     .DevImage2 {
       // max-width: 490px;
       max-height: 35vh;
+      @media screen and (max-width: $sm) {
+        max-width: 100%;
+      }
     }
     .Description {
       text-align: left;
@@ -3269,6 +3394,11 @@ body {
         margin-right: 14px;
         margin-bottom: 14px;
       }
+      
+      @media screen and (max-width: $md) {
+        margin-right: 10%;
+        margin-left: 10%;
+      }
     }
 
   }
@@ -3278,14 +3408,31 @@ body {
     .board {
       display: flex;
       justify-content: center;
+
+      @media screen and (max-width: $md) {
+        flex-direction: column;
+      }
       .column {
         text-align: left;
         width: 25vw;
         margin-left: 10px;
         margin-right: 10px;
         margin-top: 20px;
+
+        @media screen and (max-width: $md) {
+          margin-left: auto;
+          margin-right: auto;
+          width: 90%;
+        }
         .task {
           width: 80%;
+
+          @media screen and (max-width: $md) {
+            margin-left: auto;
+            margin-right: auto;
+            width: calc(100% - 20px);
+          }
+
           border: solid 1px lightgrey;
           border-radius: 4px;
           margin-top: 10px;
@@ -3565,9 +3712,29 @@ body {
   padding-left: 5%;
   padding-right: 5%;
   .Form {
+    @media screen and (max-width: $md) {
+      text-align: center;
+      margin-left: 5%;
+      margin-right: 5%;
+      padding-left: 0;
+    }
     .Success {
       display: flex;
       align-items: center;
+    }
+  }
+  .GetStartedFabContainer {
+    display: flex;
+
+    @media screen and (max-width: $md) {
+      margin: auto;
+      justify-content: center;
+    }
+  }
+  .Button {
+    @media screen and (max-width: $md) {
+      margin-right: 0;
+      width: 40%;
     }
   }
 }
@@ -3594,6 +3761,12 @@ body {
   }
   .Button {
     margin-top: 2vh;
+
+    @media screen and (max-width: $md) {
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0;
+    }
   }
 }
 }
