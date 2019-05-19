@@ -1,7 +1,6 @@
 const config = {
   production_url :"https://api.sourcenetwork.io",
-  dev_url: "http://localhost:8001",
-  rust_url:"git.source.lol",
+  dev_url: "http://localhost:8001"
 };
 
-export default config;
+export default config

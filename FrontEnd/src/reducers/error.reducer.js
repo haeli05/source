@@ -5,7 +5,7 @@
 const initialState = {
   errorMessage: false,
   errorData: false,
-  open: false,
+  open: false
 }
 
 const ErrorReducer = (state = initialState, action) => {
@@ -14,21 +14,20 @@ const ErrorReducer = (state = initialState, action) => {
       return {
         errorMessage: action.errorMessage,
         errorData: action.errorData,
-        open: true,
+        open: true
       }
     }
     case 'CLOSE': {
       return {
         errorMessage: state.errorMessage,
         errorData: state.errorData,
-        open: false,
+        open: false
       }
     }
-    default: return state;
+    default: return state
   }
-};
+}
 
-export const getErrorStatus = state => state.error;
+export const getErrorStatus = state => state.error
 
-
-export default ErrorReducer;
+export default ErrorReducer

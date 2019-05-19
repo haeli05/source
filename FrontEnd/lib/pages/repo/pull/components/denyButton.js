@@ -1,87 +1,87 @@
-'use strict';
+'use strict'
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
-});
+})
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = (function () { function defineProperties (target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor) } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor } }())
 
-var _react = require('react');
+var _react = require('react')
 
-var _react2 = _interopRequireDefault(_react);
+var _react2 = _interopRequireDefault(_react)
 
-var _Button = require('@material-ui/core/Button');
+var _Button = require('@material-ui/core/Button')
 
-var _Button2 = _interopRequireDefault(_Button);
+var _Button2 = _interopRequireDefault(_Button)
 
-var _Dialog = require('@material-ui/core/Dialog');
+var _Dialog = require('@material-ui/core/Dialog')
 
-var _Dialog2 = _interopRequireDefault(_Dialog);
+var _Dialog2 = _interopRequireDefault(_Dialog)
 
-var _DialogActions = require('@material-ui/core/DialogActions');
+var _DialogActions = require('@material-ui/core/DialogActions')
 
-var _DialogActions2 = _interopRequireDefault(_DialogActions);
+var _DialogActions2 = _interopRequireDefault(_DialogActions)
 
-var _DialogContent = require('@material-ui/core/DialogContent');
+var _DialogContent = require('@material-ui/core/DialogContent')
 
-var _DialogContent2 = _interopRequireDefault(_DialogContent);
+var _DialogContent2 = _interopRequireDefault(_DialogContent)
 
-var _DialogContentText = require('@material-ui/core/DialogContentText');
+var _DialogContentText = require('@material-ui/core/DialogContentText')
 
-var _DialogContentText2 = _interopRequireDefault(_DialogContentText);
+var _DialogContentText2 = _interopRequireDefault(_DialogContentText)
 
-var _timesCircle = require('react-icons-kit/fa/timesCircle');
+var _timesCircle = require('react-icons-kit/fa/timesCircle')
 
-var _reactIconsKit = require('react-icons-kit');
+var _reactIconsKit = require('react-icons-kit')
 
-var _reactIconsKit2 = _interopRequireDefault(_reactIconsKit);
+var _reactIconsKit2 = _interopRequireDefault(_reactIconsKit)
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault (obj) { return obj && obj.__esModule ? obj : { default: obj } }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function') } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _possibleConstructorReturn (self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called") } return call && (typeof call === 'object' || typeof call === 'function') ? call : self }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass) } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass }
 
-var AlertDialog = function (_React$Component) {
-  _inherits(AlertDialog, _React$Component);
+var AlertDialog = (function (_React$Component) {
+  _inherits(AlertDialog, _React$Component)
 
-  function AlertDialog(props) {
-    _classCallCheck(this, AlertDialog);
+  function AlertDialog (props) {
+    _classCallCheck(this, AlertDialog)
 
-    var _this = _possibleConstructorReturn(this, (AlertDialog.__proto__ || Object.getPrototypeOf(AlertDialog)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (AlertDialog.__proto__ || Object.getPrototypeOf(AlertDialog)).call(this, props))
 
     _this.state = {
       open: false
-    };
-    return _this;
+    }
+    return _this
   }
 
   _createClass(AlertDialog, [{
     key: 'handleClickOpen',
-    value: function handleClickOpen() {
-      this.setState({ open: true });
+    value: function handleClickOpen () {
+      this.setState({ open: true })
     }
   }, {
     key: 'handleClose',
-    value: function handleClose() {
-      this.setState({ open: false });
+    value: function handleClose () {
+      this.setState({ open: false })
     }
   }, {
     key: 'handleAccept',
-    value: function handleAccept() {
-      this.setState({ open: false });
+    value: function handleAccept () {
+      this.setState({ open: false })
     }
   }, {
     key: 'render',
-    value: function render() {
+    value: function render () {
       return _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(
           _Button2.default,
-          { onClick: this.handleClickOpen, style: { fontFamily: "gotham_htfbook" } },
+          { onClick: this.handleClickOpen, style: { fontFamily: 'gotham_htfbook' } },
           _react2.default.createElement(_reactIconsKit2.default, { icon: _timesCircle.timesCircle }),
           'Deny'
         ),
@@ -98,7 +98,7 @@ var AlertDialog = function (_React$Component) {
             null,
             _react2.default.createElement(
               _DialogContentText2.default,
-              { id: 'alert-dialog-description', style: { fontFamily: "gotham_htfbook" } },
+              { id: 'alert-dialog-description', style: { fontFamily: 'gotham_htfbook' } },
               'Are you sure you wish to deny this pull request?'
             )
           ),
@@ -107,21 +107,21 @@ var AlertDialog = function (_React$Component) {
             null,
             _react2.default.createElement(
               _Button2.default,
-              { onClick: this.handleAccept, color: 'primary', style: { fontFamily: "gotham_htfbook" } },
+              { onClick: this.handleAccept, color: 'primary', style: { fontFamily: 'gotham_htfbook' } },
               'Deny'
             ),
             _react2.default.createElement(
               _Button2.default,
-              { onClick: this.handleClose, color: 'primary', autoFocus: true, style: { fontFamily: "gotham_htfbook" } },
+              { onClick: this.handleClose, color: 'primary', autoFocus: true, style: { fontFamily: 'gotham_htfbook' } },
               'Cancel'
             )
           )
         )
-      );
+      )
     }
-  }]);
+  }])
 
-  return AlertDialog;
-}(_react2.default.Component);
+  return AlertDialog
+}(_react2.default.Component))
 
-exports.default = AlertDialog;
+exports.default = AlertDialog

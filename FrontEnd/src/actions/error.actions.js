@@ -1,21 +1,20 @@
-import axios from 'axios';
-import history from '../history';
-import config from '../utils/config.js';
-
+import axios from 'axios'
+import history from '../history'
+import config from '../utils/config.js'
 
 // Add error code to state
-export function addError(error){
+export function addError (error) {
   // Recursively search the error for the depeest message since the errors
   // getting returned are so messy it's too hard to do by hand
-  if (error.response===undefined) {
+  if (error.response === undefined) {
     return {
-      type: "ADD_ERROR_CODE",
+      type: 'ADD_ERROR_CODE',
       errorMessage: error.message,
       errorData: error
     }
   } else {
     return {
-      type: "ADD_ERROR_CODE",
+      type: 'ADD_ERROR_CODE',
       errorMessage: recursiveSearchForDeepestMessage(error.response.data, 1).message,
       errorData: error
     }
@@ -99,7 +98,7 @@ export function addError(error){
   */
 }
 
-export function recursiveSearchForDeepestMessage(error, depth) {
+export function recursiveSearchForDeepestMessage (error, depth) {
   // This isn't perfect because sometimes the error parameter is actually
   // more helpful than the message parameter but it's close to impossible
   // to account for every case so this will have to do until the server
@@ -107,10 +106,10 @@ export function recursiveSearchForDeepestMessage(error, depth) {
   var deepestMessages = []
   for (var object in error) {
     if (typeof error[object] === 'object') {
-       var deepMessage = recursiveSearchForDeepestMessage(error[object], depth+1)
-       deepestMessages.push(deepMessage)
+      var deepMessage = recursiveSearchForDeepestMessage(error[object], depth + 1)
+      deepestMessages.push(deepMessage)
     } else {
-      if (object.includes("message")) {
+      if (object.includes('message')) {
         var deepMessage = {
           message: error[object],
           depth: depth
@@ -121,7 +120,7 @@ export function recursiveSearchForDeepestMessage(error, depth) {
   }
   var theDeepestMessage = {
     message: '',
-    depth: 0,
+    depth: 0
   }
   for (var i in deepestMessages) {
     if (deepestMessages[i].depth > theDeepestMessage.depth) {
@@ -133,8 +132,8 @@ export function recursiveSearchForDeepestMessage(error, depth) {
 }
 
 // Close the snackbar
-export function closeSnackBar(){
+export function closeSnackBar () {
   return {
-    type: "CLOSE"
+    type: 'CLOSE'
   }
 }
