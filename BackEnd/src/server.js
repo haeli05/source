@@ -1,22 +1,33 @@
+// Essentials
 import 'babel-polyfill';
 import Express from 'express';
+import path from 'path';
 import compression from 'compression';
+import bodyParser from 'body-parser';
+// Database
 import mongoose from 'mongoose';
 import mongoSanitize from 'express-mongo-sanitize';
-import bodyParser from 'body-parser';
-import path from 'path';
+// API
 import axios from 'axios';
 import cors from 'cors';
 import HTMLSanitizer from 'express-sanitizer';
-import {config} from './config';
 import repos from './repo/repo.routes';
 import user from './user/user.routes';
 import search from './search/search.routes';
 import issues from './issues/issues.routes';
 import ideas from './ideas/ideas.routes';
 import storage from './storage/storage.routes';
+// Config
+import {config} from './config';
+// ?
 import job from './util/cron.util'
+// Email
 const transporter = require('./config').transporter;
+const feedbackHtml = require('./emailHTMLfiles/feedbackEmail').emailHtml;
+const subscribeHtml = require('./emailHTMLfiles/subscribeEmail').emailHtml;
+
+
+// Redbird proxy registration
 var proxy = require('redbird')({
   port: 80,
   letsencrypt: {
@@ -29,12 +40,11 @@ var proxy = require('redbird')({
   }
 });
 
-var analyticsproxy = require("express-http-proxy")
-
+// App
 const app = new Express();
 
-mongoose.Promise = global.Promise;
 // MongoDB Connection
+mongoose.Promise = global.Promise;
 mongoose.connect(config.mongoURL, { useNewUrlParser: true }, (error) => {
   if (error) {
     console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
@@ -43,15 +53,15 @@ mongoose.connect(config.mongoURL, { useNewUrlParser: true }, (error) => {
   console.log("CONNECTING TO MONGOOSE");
 });
 
+// CORS
 app.use(cors());
-
-
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
+// API
 app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
@@ -98,8 +108,7 @@ app.post("/feedback", (req, res)=>{
       from: '"Source Team" <source@sourcenetwork.io>',
       to: "source@sourcenetwork.io",
       subject: `User Feedback from ${email}`,
-      text: feedback,
-      html: feedback
+      text: feedback
   };
   transporter.sendMail(sourceOptions, (error, info) => {
       if (error) {
@@ -128,8 +137,8 @@ app.post("/feedback", (req, res)=>{
   });
 })
 
-
 // Analytics proxy
+var analyticsproxy = require("express-http-proxy")
 function getIpFromReq (req) { // get the client's IP address
   var bareIP = ":" + ((req.connection.socket && req.connection.socket.remoteAddress)
     || req.headers["x-forwarded-for"] || req.connection.remoteAddress || "");
@@ -142,7 +151,7 @@ app.use("/analytics", analyticsproxy("www.google-analytics.com", {
   }
 }));
 
-
+// ?
 job.start();
 
 // SSL redbird
@@ -150,12 +159,12 @@ proxy.register('api.sourcenetwork.io', '127.0.0.1:8001', {
   ssl: {
     letsencrypt: {
       email: 'source@sourcenetwork.io', // Domain owner/admin email
-      production: true, // WARNING: Only use this flag when the proxy is verified to work correctly to avoid being banned!
+      production: false, // WARNING: Only use this flag when the proxy is verified to work correctly to avoid being banned!
     }
   }
 });
 
-
+// Lift off!
 app.listen(8001, (error) => {
   if (!error) {
     console.log(`Server Started 8001!`); // eslint-disable-line
