@@ -3,7 +3,7 @@
 
 source connects developers and projects.
 
-Interested in contributing? Look up our TODOs on https://www.sourcenetwork.io
+Interested in contributing? Look up our TODOs on https://sourcenetwork.io
 
 #Dispute Resolution
 --coming soon--
