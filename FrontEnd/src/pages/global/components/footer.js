@@ -23,7 +23,6 @@ class Footer extends Component {
           <div className='Feedback'>
             <SendFeedback props={this.props} className='SendFeedbackButton' />
           </div>
-          <Button variant='outlined' component={Link} to='/getstarted'>Contact</Button>
         </div>
         <div className='Middle'>
           <Typography variant='caption' gutterBottom align='center'>Designed in Brooklyn © 2018 </Typography>

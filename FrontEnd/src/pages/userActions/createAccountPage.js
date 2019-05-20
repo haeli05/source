@@ -222,7 +222,7 @@ class CreateAccountPage extends Component {
     return (
       <div className='CreateAccountPage'>
         <PopUp />
-        <Typography variant='display3'>Create Account</Typography>
+        <Typography className='CreateAccountPageHeader' variant='display3'>Create Account</Typography>
         {this.props.newUserStatus === 'PENDING' && (
           <div className='Form'>
             <LinearProgress size={50} color='secondary' />
