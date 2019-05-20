@@ -18,10 +18,10 @@ export function vote(req, res) {
   const user = req.user.id;
   _ideas.vote(which, up, id, user)
   .then(i=>{
-    res.status(200).send(i)
+    res.status(200).json(i)
   })
   .catch(err=> {
-    res.status(400).send('Failed to vote'+ err)
+    res.status(400).json('Failed to vote'+ err)
   });
 }
 
@@ -43,10 +43,10 @@ export function getAll(req,res){
 
   _ideas.getAll(limit, last, tag)
   .then(i=>{
-    res.status(200).send(i)
+    res.status(200).json(i)
   })
   .catch(err=> {
-    res.status(400).send({message: 'Failed to fetch ideas',error: err})
+    res.status(400).json({message: 'Failed to fetch ideas',error: err})
   });
 }
 
@@ -60,10 +60,10 @@ export function getIdea(req,res){
 
     _ideas.getIdea(id)
     .then(i=>{
-      res.status(200).send(i)
+      res.status(200).json(i)
     })
     .catch(err=> {
-      res.status(400).send({message: 'Failed to fetch idea',error: err})
+      res.status(400).json({message: 'Failed to fetch idea',error: err})
     });
 }
 
@@ -93,10 +93,10 @@ export function newIdea(req,res){
 
   _ideas.newIdea(i, project, stringBody)
   .then(i=>{
-    res.status(200).send(i)
+    res.status(200).json(i)
   })
   .catch(err=> {
-    res.status(400).send({message: 'Failed to fetch idea',error: err})
+    res.status(400).json({message: 'Failed to fetch idea',error: err})
   });
 }
 
@@ -112,10 +112,10 @@ export function deleteIdea(req,res){
   let user = req.user.id
   _ideas.deleteIdea(id, user)
   .then(i=>{
-    res.status(200).send(['Successfully deleted idea', i]);
+    res.status(200).json(['Successfully deleted idea', i]);
   })
   .catch(err=> {
-    res.status(400).send({message: 'Failed to delete idea',error: err});
+    res.status(400).json({message: 'Failed to delete idea',error: err});
   });
 }
 
@@ -132,10 +132,10 @@ export function deleteBlob(req,res){
   let user = req.user.id
   _ideas.deleteBlob(ideaID, blobID, user)
   .then(i=>{
-    res.status(200).send(['Successfully deleted blob', i]);
+    res.status(200).json(['Successfully deleted blob', i]);
   })
   .catch(err=> {
-    res.status(400).send({message: 'Failed to delete blob',error: err});
+    res.status(400).json({message: 'Failed to delete blob',error: err});
   });
 }
 
@@ -162,10 +162,10 @@ export function newBlob(req,res){
 
   _ideas.newBlob(ib, stringBody)
     .then((arr)=>{
-      res.status(200).send({blob: arr[1], idea: arr[0]});
+      res.status(200).json({blob: arr[1], idea: arr[0]});
     })
     .catch(err=> {
-      res.status(400).send({message: 'Failed to create blob',error: err});
+      res.status(400).json({message: 'Failed to create blob',error: err});
     });
 }
 
@@ -201,10 +201,10 @@ export function editIdea(req, res) {
 
   _ideas.editIdea(id, user, body, tags, stringBody)
   .then(i=>{
-    res.status(200).send(['Successfully edited idea', i]);
+    res.status(200).json(['Successfully edited idea', i]);
   })
   .catch(err=> {
-    res.status(400).send({message: 'Failed to edit idea',error: err});
+    res.status(400).json({message: 'Failed to edit idea',error: err});
   });
 }
 
@@ -235,9 +235,9 @@ export function editBlob(req,res){
 
   _ideas.editBlob(id, user, body, stringBody)
   .then(i=>{
-    res.status(200).send(['Successfully edited comment', i]);
+    res.status(200).json(['Successfully edited comment', i]);
   })
   .catch(err=> {
-    res.status(400).send({message: 'Failed to edit comment',error: err});
+    res.status(400).json({message: 'Failed to edit comment',error: err});
   });
 }

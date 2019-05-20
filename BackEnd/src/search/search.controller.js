@@ -49,12 +49,12 @@ export async function search(req, res) {
       .catch(err => {error =[true, err];});
 
   if (error[0] == true) {
-    res.status(400).send({message: 'Failed search', error: error[1]});
+    res.status(400).json({message: 'Failed search', error: error[1]});
   }
   else {
     const json = {}
     for (let i in promises) { json[titles[i]] = results[i]}
-    res.status(200).send(json);
+    res.status(200).json(json);
   }
 }
 

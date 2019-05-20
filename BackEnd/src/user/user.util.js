@@ -8,7 +8,7 @@ import mongoose from 'mongoose';
 import * as gitlab from '../util/gitlab.controller';
 import {awsToken} from './../storage/storage.util';
 import ResetPassToken from '../models/resetPassToken';
-import transporter from '../util/mail';
+import transporter from '../config';
 import bcrypt from 'bcrypt'
 //import * as matrix from '../util/chat.util.js'
 import {tokenGenerate} from '../util/authenticate.util';
