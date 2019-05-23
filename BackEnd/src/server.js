@@ -2,7 +2,6 @@
 import 'babel-polyfill';
 import Express from 'express';
 import path from 'path';
-import compression from 'compression';
 import bodyParser from 'body-parser';
 // Database
 import mongoose from 'mongoose';
@@ -63,7 +62,6 @@ app.use(function(req, res, next) {
 
 
 // API
-//app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(mongoSanitize({
