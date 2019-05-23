@@ -19,7 +19,7 @@ import ideas from './ideas/ideas.routes';
 import storage from './storage/storage.routes';
 // Config
 import {config} from './config';
-// ?
+// Cron
 import job from './util/cron.util'
 // Email
 const transporter = require('./config').transporter;
@@ -54,11 +54,18 @@ mongoose.connect(config.mongoURL, { useNewUrlParser: true }, (error) => {
 });
 
 // CORS
-app.use(cors());
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+// app.use(cors());
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Accept-Encoding");
+//   next();
+// });
+
+app.use((req, res, next) => {
+    res.append('Access-Control-Allow-Origin', ['*']);
+    res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.append('Access-Control-Allow-Headers', 'Content-Type');
+    next();
 });
 
 // API
@@ -151,7 +158,7 @@ app.use('/analytics', analyticsproxy('www.google-analytics.com', {
   }
 }));
 
-// ?
+// Cron
 job.start();
 
 // SSL redbird
