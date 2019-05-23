@@ -17,6 +17,5 @@ export default combineReducers({
   people,
   search,
   sourcello,
-  error,
-  chat
+  error
 })
