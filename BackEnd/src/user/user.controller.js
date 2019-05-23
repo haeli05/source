@@ -27,10 +27,10 @@ export function updateUser(req, res) {
   const userId = req.user.id;
   _user.updateUser(cleaned, userId)
   .then((updatedUser)=>{
-    res.status(200).send(updatedUser);
+    res.status(200).json(updatedUser);
   })
   .catch(err=>{
-    res.status(400).send("error updating user " + err);
+    res.status(400).json("error updating user " + err);
   })
 }
 
@@ -38,10 +38,10 @@ export function deleteUser(req,res) {
   let username = req.params.username
   _user.deleteUser(username)
   .then(i=>{
-    res.status(200).send(['Successfully deleted user', i]);
+    res.status(200).json(['Successfully deleted user', i]);
   })
   .catch(err=> {
-    res.status(400).send({message: 'Failed to delete user',error: err});
+    res.status(400).json({message: 'Failed to delete user',error: err});
   });
 }
 
@@ -62,15 +62,15 @@ export function followTopic(req,res){
   else if (['repo', 'repos', 'project', 'projects'].includes(type)) {type = 'repo'}
   else if (['issue','issues'].includes(type)) {type = 'issues'}
 
-  if (type == undefined) {res.status(400).send('failed to provide correct object type to follow'); return;}
-  if (id == undefined) {res.status(400).send('failed to provide object ID to follow'); return;}
+  if (type == undefined) {res.status(400).json('failed to provide correct object type to follow'); return;}
+  if (id == undefined) {res.status(400).json('failed to provide object ID to follow'); return;}
 
   _user.followTopic(id, type, userId)
   .then((followed)=>{
-    res.status(200).send(followed);
+    res.status(200).json(followed);
   })
   .catch(err=>{
-    res.status(400).send("error following object " + err);
+    res.status(400).json("error following object " + err);
   })
 }
 
@@ -87,10 +87,10 @@ export function followTags(req,res){
 
   _user.followTags(tags, userId)
   .then((followed)=>{
-    res.status(200).send(followed);
+    res.status(200).json(followed);
   })
   .catch(err=>{
-    res.status(400).send("error following tags " + err);
+    res.status(400).json("error following tags " + err);
   })
 }
 
@@ -109,10 +109,10 @@ export function followingFeed(req, res) {
 
   _user.followingFeed(userId, sort, ideaId, projectId)
   .then((feed)=>{
-    res.status(200).send(feed);
+    res.status(200).json(feed);
   })
   .catch(err=>{
-    res.status(400).send("error generating following feed " + err);
+    res.status(400).json("error generating following feed " + err);
   })
 }
 
@@ -126,10 +126,10 @@ export function votedFeed(req, res) {
 
   _user.votedFeed(userId)
   .then((feed)=>{
-    res.status(200).send(feed);
+    res.status(200).json(feed);
   })
   .catch(err=>{
-    res.status(400).send("error generating voted feed " + err);
+    res.status(400).json("error generating voted feed " + err);
   })
 }
 
@@ -146,16 +146,16 @@ export function addAvatar(req,res){
   const key = req.body.key;
   const url = req.body.url;
   const user = req.user.id;
-  if (!user) {res.status(400).send('User not signed in'); return;}
-  if (!key || !url) {res.status(400).send('Malformed inputs'); return;}
+  if (!user) {res.status(400).json('User not signed in'); return;}
+  if (!key || !url) {res.status(400).json('Malformed inputs'); return;}
 
   const fullUrl = url + '/' + key;
   _user.addAvatar(user, fullUrl)
   .then(()=>{
-    res.status(200).send('Added avatar');
+    res.status(200).json('Added avatar');
   })
   .catch(err=>{
-    res.status(400).send("error adding avatar " + err);
+    res.status(400).json("error adding avatar " + err);
   })
 }
 
@@ -169,12 +169,12 @@ export function getBalance(req,res){
   let account = req.params.username;
   _user.getBalance(account)
   .then(data=>{
-    res.status(200).send(data);
+    res.status(200).json(data);
   })
   .catch(err=>{
     let error = JSON.parse(err.message).error.details[0].message
     console.log("ERROR Retrieving User Balance",error);
-    res.status(400).send({
+    res.status(400).json({
       message:"Error Finding Balance",
       error:error
     });
@@ -192,10 +192,10 @@ export function getUser(req,res){
   let id = req.params.id;
   _user.getUser(id)
   .then(data=>{
-    res.status(200).send(data);
+    res.status(200).json(data);
   })
   .catch(err=>{
-    res.status(400).send({
+    res.status(400).json({
       message:"Error Getting User",
       error:err
     });
@@ -211,10 +211,10 @@ export function getUserGL(req, res) {
   const id = req.params.id;
   _user.getUserGL(id)
   .then(data => {
-    res.status(200).send(data);
+    res.status(200).json(data);
   })
   .catch(err=>{
-      res.status(400).send({message:"Error fetching user Gitlab profile",error:err});
+      res.status(400).json({message:"Error fetching user Gitlab profile",error:err});
   });
 }
 
@@ -237,10 +237,10 @@ export function newUserGL(req, res) {
 
   _user.newUserGL(info)
   .then(data => {
-    res.status(200).send(data);
+    res.status(200).json(data);
   })
   .catch(err => {
-    res.status(400).send({message:"Error creating gitlab account", error: err});
+    res.status(400).json({message:"Error creating gitlab account", error: err});
   })
 }
 
@@ -260,7 +260,7 @@ export function login(req,res){
     username = req.body.username;
     password = req.body.password;
   } else {
-    res.status(400).send({
+    res.status(400).json({
       message:"Error logging In",
       error: "No username or password specified"
     });
@@ -268,10 +268,10 @@ export function login(req,res){
   }
 
   _user.login(username,password).then(data=>{
-    res.status(200).send(data)
+    res.status(200).json(data)
   })
   .catch(error=>{
-      res.status(400).send({message:"Error Signing in User",error:error});
+      res.status(400).json({message:"Error Signing in User",error:error});
   });
 }
 
@@ -285,10 +285,10 @@ export function login(req,res){
 export function getUsers(req,res){
   _user.getUsers()
     .then(data=>{
-      res.status(200).send(data);
+      res.status(200).json(data);
     })
     .catch(err=>{
-      res.status(400).send({
+      res.status(400).json({
         message: "Error Retrieving All Users",
         error: err
       })
@@ -316,10 +316,10 @@ export function newUser(req,res){
   _user.newUser(info)
   .then(data=>{
     console.log(data)
-    res.status(200).send(data);
+    res.status(200).json(data);
   })
   .catch(err=>{
-    res.status(400).send({
+    res.status(400).json({
       message: "Error creating user",
       error: err
     })
@@ -337,10 +337,10 @@ export function listUserProjects(req,res){
   let id = req.params.id;
   _user.listUserProjects(id)
     .then((data)=>{
-      res.status(200).send(data)
+      res.status(200).json(data)
     })
     .catch(err=>{
-      res.status(400).send({
+      res.status(400).json({
         message: "Error Retrieving User Projects",
         error: err
       })
@@ -361,10 +361,10 @@ export function addSSH(req,res){
 
   _user.addSSH(ssh, title, gitlabToken)
     .then(data=>{
-      res.status(200).send(data)
+      res.status(200).json(data)
     })
     .catch(error=>{
-      res.status(400).send({
+      res.status(400).json({
         message: "Error Adding SSH Key",
         error: error
       })
@@ -383,10 +383,10 @@ export function delSSH(req,res){
   let auth = req.user.gitlabToken;
   _user.delSSH(key, auth)
     .then(data=>{
-      res.status(200).send(data)
+      res.status(200).json(data)
     })
     .catch(err=>{
-      res.status(400).send({
+      res.status(400).json({
         messsage: "Error deleting SSH Key",
         error: err
       })
@@ -402,10 +402,10 @@ export function listSSH(req,res){
   let auth = req.user.gitlabToken;
   _user.listSSH(auth)
     .then(data=>{
-      res.status(200).send(data)
+      res.status(200).json(data)
     })
     .catch(err=>{
-      res.status(400).send({
+      res.status(400).json({
         message: "Error listing SSH Keys",
         error: err
       })
@@ -423,10 +423,10 @@ export function listSSH(req,res){
 //   let repo_id = mongoose.Types.ObjectId(req.body.repo_id);
 //   _user.pstar(username,repo_id)
 //     .then(data=>{
-//       res.status(200).send(data)
+//       res.status(200).json(data)
 //     })
 //     .catch(err=>{
-//       res.status(400).send({
+//       res.status(400).json({
 //         message: "Error Starring For User",
 //         error: err
 //       });
@@ -442,10 +442,10 @@ export function listSSH(req,res){
 //   let repo_id = mongoose.Types.ObjectId(req.body.repo_id);
 //   _user.ppin(username,repo_id)
 //     .then(data=>{
-//       res.status(200).send(data)
+//       res.status(200).json(data)
 //     })
 //     .catch(err=>{
-//       res.status(400).send({
+//       res.status(400).json({
 //         message: "Error Starring For User",
 //         error: err
 //       });
@@ -464,10 +464,10 @@ export function follow(req,res){
 
   _user.follow(id, toFollow)
     .then(data=>{
-      res.status(200).send(data)
+      res.status(200).json(data)
     })
     .catch(err=>{
-      res.status(400).send({
+      res.status(400).json({
         message: "Error Following User",
         error: err
       });
@@ -483,10 +483,10 @@ export function gstar(req,res){
   let id = req.params.id;
   _user.gstar(id)
     .then(data=>{
-      res.status(200).send(data);
+      res.status(200).json(data);
     })
     .catch(err=>{
-      res.status(400).send({
+      res.status(400).json({
         message: "Error Getting Starred Projects",
         error: err
       });
@@ -501,10 +501,10 @@ export function gpin(req,res){
   let id = req.params.id;
   _user.gpin(id)
     .then(data=>{
-      res.status(200).send(data);
+      res.status(200).json(data);
     })
     .catch(err=>{
-      res.status(400).send({
+      res.status(400).json({
         message: "Error Getting Pinned projects",
         error: err
       });
@@ -521,10 +521,10 @@ export function gfollowing(req,res){
   let username = req.params.id;
   _user.gfollowing(username)
     .then(data=>{
-      res.status(200).send(data);
+      res.status(200).json(data);
     })
     .catch(err=>{
-      res.status(400).send({
+      res.status(400).json({
         message: "Error Getting the following list",
         error: err
       });
@@ -542,10 +542,10 @@ export function gfollowers(req,res){
   let username = req.params.id;
   _user.gfollowers(username)
     .then(data=>{
-      res.status(200).send(data);
+      res.status(200).json(data);
     })
     .catch(err=>{
-      res.status(400).send({
+      res.status(400).json({
         message: "Error Getting Followers",
         error: err
       });
@@ -565,11 +565,11 @@ export function newGroup(req,res){
     let update = (name) => {return {$push:{groups_owned:name, groups_joined:name}}}
     User.findOneAndUpdate(query,update(group.name),{new:true}).then(user=>{
       user.save().then(user_json=>{
-        res.send({Message: "New Group Created for User",_user:user_json,group_json:group,})
+        res.json({Message: "New Group Created for User",_user:user_json,group_json:group,})
       })
     })
   }).catch(err=>{
-    res.send({message: "Group Creation Error",error:err});
+    res.json({message: "Group Creation Error",error:err});
   })
 }
 
@@ -589,10 +589,10 @@ export function transferToUser(req, res){
 
   _user.transferToUser(info)
     .then(data=>{
-      res.status(200).send(data);
+      res.status(200).json(data);
     })
     .catch(err=>{
-      res.status(400).send({
+      res.status(400).json({
         message: "Error Transfering SOURCE",
         error: err
       });
@@ -607,10 +607,10 @@ export function getTransfers(req, res) {
   let id = req.params.id;
   _user.getTransfers(id)
   .then(data=>{
-    res.status(200).send(data);
+    res.status(200).json(data);
   })
   .catch(err=>{
-    res.status(400).send({
+    res.status(400).json({
       message: "Error Getting Transfers",
       error: err
     });
@@ -622,13 +622,13 @@ export function getTransfers(req, res) {
 export async function passwordResetRequest(req, res) {
   let email = req.body.email;
   let url = req.headers.origin;
-  if (!email) res.status(400).send({Error: 'Email is required'})
+  if (!email) res.status(400).json({Error: 'Email is required'})
   _user.passwordResetRequest(email, url)
     .then((success) => {
-      res.status(200).send({Message: 'Success'})
+      res.status(200).json({Message: 'Success'})
     })
     .catch((err)=>{
-      res.status(400).send({Error:err});
+      res.status(400).json({Error:err});
     });
 }
 
@@ -638,10 +638,10 @@ export function changePassword(req, res) {
   let newPassword = req.body.newPassword
   _user.changePassword(token, newPassword)
     .then((success)=>{
-      res.status(200).send({Message:"Success"});
+      res.status(200).json({Message:"Success"});
     })
     .catch((err)=>{
-      res.status(400).send({Error:err});
+      res.status(400).json({Error:err});
     });
 }
 
@@ -649,8 +649,8 @@ export function isUserInDB(req, res) {
   let username = req.params.username
   _user.isUsernameInDB(username)
     .then(data=>{
-      res.status(200).send(data)
+      res.status(200).json(data)
     }).catch(err=>{
-      res.status(400).send({Error:err})
+      res.status(400).json({Error:err})
     })
 }

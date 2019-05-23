@@ -8,7 +8,7 @@ import mongoose from 'mongoose';
 import * as gitlab from '../util/gitlab.controller';
 import {awsToken} from './../storage/storage.util';
 import ResetPassToken from '../models/resetPassToken';
-import transporter from '../util/mail';
+import transporter from '../config';
 import bcrypt from 'bcrypt'
 //import * as matrix from '../util/chat.util.js'
 import {tokenGenerate} from '../util/authenticate.util';
@@ -234,7 +234,7 @@ export function getUsers(){
 
 
 /**
-* Creates a new user on Gitlab, MongoDB, and EOS simultenously
+* Creates a new user
 * email, username must be unique
 *
 * @param {JSON} info - email, password, username, name
@@ -248,39 +248,20 @@ export async function newUser(info){
     }
     await checkParams(info.username, info.email)
                 .catch(err=>{return Promise.reject(err)});
-    let privateKey = await ecc.randomKey();
-    let publicKey =  await ecc.privateToPublic(privateKey);
-    let cid = eosUtil.makecid();
-    const struct = {
-      ak : publicKey,
-      ok : publicKey,
-      username : cid
-    }
-
 
     let usr = new User(info);
 
-    // let [glUser, mongoUser, EOSUser] = await Promise.all([gitlab.newUser(info), usr.save(), eosUtil.createUserEOS(struct)])
-    //             .catch((err) => {return Promise.reject(err)});
-
-    let [glUser, mongoUser] = await Promise.all([gitlab.newUser(info),usr.save()])
+    let [mongoUser] = await Promise.all([usr.save()])
                 .catch((err) => {return Promise.reject(err)});
 
-    const token = await gitlab.createToken(glUser.name, glUser.id)
-                .catch(err=>{return Promise.reject(err)});
-
-    const updateQuery = {publicKey: publicKey, privateKey: privateKey, gitlabToken: token.token, gitlabID: glUser.id, EOSUsername: cid};
     const user = await User.findByIdAndUpdate(mongoUser._id, updateQuery, {new: true})
                 .catch(err => {return Promise.reject(err)});
 
     const payload = {
          'username':mongoUser.username,
-         'gitlabId': mongoUser.gitlabID,
-         'EOSUsername': mongoUser.EOSUsername,
          'userId': mongoUser._id,
          'email': mongoUser.email,
-         'issuer': 'https://source.lol',
-         'EOSUsername': mongoUser.EOSUsername,
+         'issuer': 'https://sourcenetwork.io',
        };
 
     const tk = tokenGenerate(payload);

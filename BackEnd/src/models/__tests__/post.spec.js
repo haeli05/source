@@ -52,7 +52,7 @@ test.serial('Should correctly add a post', async t => {
 
   const res = await request(app)
     .post('/api/posts')
-    .send({ post: { name: 'Foo', title: 'bar', content: 'Hello Mern says Foo' } })
+    .json({ post: { name: 'Foo', title: 'bar', content: 'Hello Mern says Foo' } })
     .set('Accept', 'application/json');
 
   t.is(res.status, 200);

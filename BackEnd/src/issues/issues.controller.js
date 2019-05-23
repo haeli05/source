@@ -26,10 +26,10 @@ export function getAll(req,res){
 
   _issues.getAll(repoID, limit, last, tag)
   .then(i=>{
-    res.status(200).send(i)
+    res.status(200).json(i)
   })
   .catch(err=> {
-    res.status(400).send({message: 'Failed to fetch issues',error: err})
+    res.status(400).json({message: 'Failed to fetch issues',error: err})
   });
 }
 
@@ -50,10 +50,10 @@ export function vote(req, res) {
 
   _issues.vote(which, up, id, user)
   .then(i=>{
-    res.status(200).send(i)
+    res.status(200).json(i)
   })
   .catch(err=> {
-    res.status(400).send({message: 'Failed to vote',error: err})
+    res.status(400).json({message: 'Failed to vote',error: err})
   });
 }
 
@@ -69,10 +69,10 @@ export function getIssue(req,res){
   let id = req.params.issueID;
   _issues.getIssue(id)
   .then(i=>{
-    res.status(200).send(i)
+    res.status(200).json(i)
   })
   .catch(err=> {
-    res.status(400).send({message: 'Failed to fetch issue',error: err})
+    res.status(400).json({message: 'Failed to fetch issue',error: err})
   });
 }
 
@@ -103,10 +103,10 @@ export function newIssue(req,res){
 
   _issues.newIssue(info)
     .then(i=>{
-      res.status(200).send(i)
+      res.status(200).json(i)
     })
     .catch(err=> {
-      res.status(400).send({message: 'Failed to create issue',error: err})
+      res.status(400).json({message: 'Failed to create issue',error: err})
     });
 }
 
@@ -124,10 +124,10 @@ export function deleteBlob(req,res){//?
 
   _issues.deleteBlob(id, issue, user)
   .then(i=>{
-    res.status(200).send(i)
+    res.status(200).json(i)
   })
   .catch(err=> {
-    res.status(400).send({message: 'Failed to delete comment', error: err})
+    res.status(400).json({message: 'Failed to delete comment', error: err})
   });
 }
 
@@ -149,10 +149,10 @@ export function newBlob(req,res){
 
   _issues.newBlob(issueID, user, body, stringBody)
   .then(i=>{
-    res.status(200).send(i)
+    res.status(200).json(i)
   })
   .catch(err=> {
-    res.status(400).send({message: 'Failed to create comment',error: err})
+    res.status(400).json({message: 'Failed to create comment',error: err})
   });
 }
 
@@ -184,10 +184,10 @@ export function editIssue(req, res) {
 
   _issues.editIssue(user, issueID, edits, stringBody)
   .then(i=>{
-    res.status(200).send(i)
+    res.status(200).json(i)
   })
   .catch(err=> {
-    res.status(400).send({message: 'Failed to edit issue',error: err})
+    res.status(400).json({message: 'Failed to edit issue',error: err})
   });
 }
 
@@ -208,10 +208,10 @@ export function editBlob(req,res){
 
   _issues.editBlob(user, blobID, edits, stringBody)
   .then(i=>{
-    res.status(200).send(i);
+    res.status(200).json(i);
   })
   .catch(err=> {
-    res.status(400).send({message: 'Failed to edit comment',error: err})
+    res.status(400).json({message: 'Failed to edit comment',error: err})
   });
 }
 
@@ -227,7 +227,7 @@ export function filterAllTag(req, res) {
   Issues
     .find({tags: req.params.tag})
     .sort({'date' : -1})
-    .then(data => res.send({"data":data}));
+    .then(data => res.json({"data":data}));
 }
 
 /**
@@ -243,7 +243,7 @@ export function filterTag(req,res){
     .find({tags: req.params.tag})
     .sort({'date' : -1})
     .limit(25)
-    .then(data => res.send({"data":data}));
+    .then(data => res.json({"data":data}));
 }
 
 
@@ -273,12 +273,12 @@ export function resolve(req,res){
     .then(result =>{
       console.log("EOS transaction: ", result);
       console.log("Resolved issue successfully");
-      res.status(200).send({
+      res.status(200).json({
         message: "Resolved issue successfully",
         resolved: result
       });
     })
-  .catch(err => {res.status(400).send({message: "Resolving issue failed", error: err+""})});
+  .catch(err => {res.status(400).json({message: "Resolving issue failed", error: err+""})});
 }
 
 /**
@@ -305,8 +305,8 @@ export function close(req,res){
   let issueID = req.params.issueID;
   let user = req.user.id;
   _issues.close(issueID,user)
-    .then(data=>{ res.status(200).send({message: "Successfully closed Issue", data }) })
-    .catch(error =>{ console.log("error",error );res.status(400).send({message: "Resolving issue failed", error }) });
+    .then(data=>{ res.status(200).json({message: "Successfully closed Issue", data }) })
+    .catch(error =>{ console.log("error",error );res.status(400).json({message: "Resolving issue failed", error }) });
 }
 
 export function createMergeRequest(){

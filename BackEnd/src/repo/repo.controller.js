@@ -11,11 +11,11 @@ export function tester(req,res){
 
   gitlab.getRepo(repoID)
   .then(msg => {
-    res.status(200).send({message: 'success', result: msg});
+    res.status(200).json({message: 'success', result: msg});
   })
   .catch(err => {
     console.log(err + '$$$');
-    res.status(400).send({message:"Failed Gitlab getRepo", error: err});
+    res.status(400).json({message:"Failed Gitlab getRepo", error: err});
   });
 }
 
@@ -32,16 +32,16 @@ export function verify(req, res) {
   _repo.verify(user, project)
   .then((found)=>{
     if (found) {
-      res.status(200).send();
+      res.status(200).json();
       return
     }
     else {
-      res.status(403).send();
+      res.status(403).json();
       return
     }
   })
   .catch(err=>{
-    res.status(501).send("unable to check db " + err);
+    res.status(501).json("unable to check db " + err);
   })
 }
 
@@ -59,10 +59,10 @@ export function vote(req, res) {
 
   _repo.vote(up, id, user)
   .then(i=>{
-    res.status(200).send(i)
+    res.status(200).json(i)
   })
   .catch(err=> {
-    res.status(400).send('Failed to vote: '+err)
+    res.status(400).json('Failed to vote: '+err)
   });
 }
 
@@ -82,10 +82,10 @@ export function addIdea(req, res) {
 
   _repo.addIdea(projectID, ideaID, userID)
   .then(repo => {
-    res.status(200).send(repo);
+    res.status(200).json(repo);
   })
   .catch(err => {
-    res.status(400).send({message:"Failed add idea", error: err});
+    res.status(400).json({message:"Failed add idea", error: err});
   });
 }
 
@@ -98,10 +98,10 @@ export function addIdea(req, res) {
 export function getRepos(req,res){
   _repo.getRepos()
   .then(repos => {
-    res.status(200).send(repos);
+    res.status(200).json(repos);
   })
   .catch(err => {
-    res.status(400).send({message:"Failed to retrieve repos", error: err});
+    res.status(400).json({message:"Failed to retrieve repos", error: err});
   });
 }
 
@@ -122,10 +122,10 @@ export function getRaw(req,res){
     return _repo.getRaw(repo.gitlabID, sha);
   })
   .then(rawFile => {
-    res.status(200).send(rawFile);
+    res.status(200).json(rawFile);
   })
   .catch(err => {
-    res.status(400).send({message:"Failed to retrieve raw Gitlab file", error: err}); // GITLAB errOR THROWS SHITTY JSON (CIRCULAR)
+    res.status(400).json({message:"Failed to retrieve raw Gitlab file", error: err}); // GITLAB errOR THROWS SHITTY JSON (CIRCULAR)
   });
 }
 
@@ -143,11 +143,11 @@ export function getRaw(req,res){
 //   .then(result =>{
 //     const glrepo = result[0];
 //     const repo = result[1];
-//     res.status(200).send({'glrepo': glrepo, 'repo': repo});
+//     res.status(200).json({'glrepo': glrepo, 'repo': repo});
 //   })
 //   .catch(err => {
 //     console.log(err);
-//     res.status(400).send({message:"Failed to retrieve repo", error: err});
+//     res.status(400).json({message:"Failed to retrieve repo", error: err});
 //   });
 // }
 
@@ -164,10 +164,10 @@ export function getRepo(req,res){
   const user = req.params.user;
   _repo.getRepoData(user,repoID,parent)
   .then(proj =>{
-    res.status(200).send(proj);
+    res.status(200).json(proj);
   })
   .catch(err => {
-    res.status(400).send({message:"Failed to retrieve repo", error: err});
+    res.status(400).json({message:"Failed to retrieve repo", error: err});
   });
 }
 
@@ -195,10 +195,10 @@ export function handleStar(req,res){
       const updatedRepo = results[1];
       const cleanUser = _repo.cleanUser(updatedUser);
 
-      res.status(200).send({message: "Completed Star Action", updatedRepo, cleanUser});
+      res.status(200).json({message: "Completed Star Action", updatedRepo, cleanUser});
   })
   .catch(err => {
-    res.status(400).send({message: "error starring the repo", error: err});
+    res.status(400).json({message: "error starring the repo", error: err});
   });
 }
 
@@ -215,10 +215,10 @@ export function listProjectRepos(req,res){
 
   _repo.listProjectRepos(id)
   .then((repositoriesData) => {
-    res.status(200).send(repositoriesData)
+    res.status(200).json(repositoriesData)
   })
   .catch((err) => {
-    res.status(400).send({message: "error fetching project repos", error: err});
+    res.status(400).json({message: "error fetching project repos", error: err});
   });
 }
 
@@ -242,10 +242,10 @@ export function newProject(req,res){
 
   _repo.newProject(name, description, import_url, user)
   .then(project => {
-    res.status(200).send({message:'Project created successfully', project: project});
+    res.status(200).json({message:'Project created successfully', project: project});
   })
   .catch(err => {
-    res.status(400).send({message: "error creating project", error: err});
+    res.status(400).json({message: "error creating project", error: err});
   });
 }
 
@@ -278,10 +278,10 @@ export function setRepo(req, res) {
 
   _repo.setRepo(data, req.user.id)
   .then(rules => {
-    res.status(200).send({message: "Project rules were set successfully", rules})
+    res.status(200).json({message: "Project rules were set successfully", rules})
   })
   .catch(err => {
-    res.status(400).send({message: "error setting up project rules", error: err});
+    res.status(400).json({message: "error setting up project rules", error: err});
   });
 }
 
@@ -302,10 +302,10 @@ export function addLabels(req, res) {
 
   _repo.addLabels(repoID, user, labels)
   .then(labels => {
-    res.status(200).send(labels)
+    res.status(200).json(labels)
   })
   .catch(err => {
-    res.status(400).send({message: "error adding issue labels", error: err});
+    res.status(400).json({message: "error adding issue labels", error: err});
   });
 }
 
@@ -327,10 +327,10 @@ export function getBalance(req,res) {
     return _repo.getBalance(cid);
   })
   .then(balance => {
-    res.status(200).send('Balance of '+ repoName+': ' +balance);
+    res.status(200).json('Balance of '+ repoName+': ' +balance);
   })
   .catch(err => {
-    res.status(400).send({message: "error getting project balance", error: err});
+    res.status(400).json({message: "error getting project balance", error: err});
   })
 }
 
@@ -358,10 +358,10 @@ export function listProjectFiles(req,res){
 export function newBranch(req,res){
   _repo.newBranch(req)
   .then(branch=>{
-    res.status(200).send({message: "New Branch Created", branch});
+    res.status(200).json({message: "New Branch Created", branch});
   })
   .catch(err => {
-    res.status(400).send({message:"Failed to create new branch", error:err});
+    res.status(400).json({message:"Failed to create new branch", error:err});
   });
 }
 
@@ -378,10 +378,10 @@ export function newBranch(req,res){
 export function delBranch(req,res){
   _repo.delBranch(req)
   .then(result => {
-    res.status(200).send({message: "Deleted Branch", result});
+    res.status(200).json({message: "Deleted Branch", result});
   })
   .catch((err) => {
-    res.status(400).send({message:"Failed to delete branch", error:err});
+    res.status(400).json({message:"Failed to delete branch", error:err});
   })
 }
 
@@ -398,10 +398,10 @@ export function getBranches(req,res){
   let repo = req.params.repo;
   _repo.getBranches(username,repo)
   .then(branches=>{
-    res.status(200).send({message: "Branches found", branches});
+    res.status(200).json({message: "Branches found", branches});
   })
   .catch((err) => {
-    res.status(400).send({message:"Failed to retrieve branches", error:err});
+    res.status(400).json({message:"Failed to retrieve branches", error:err});
   });
 }
 
@@ -419,10 +419,10 @@ export function getBranch(req,res){
   let branch = req.params.branch;
   _repo.getBranch(username,repo,branch)
   .then(branch => {
-    res.status(200).send({message: "Branch found", branch});
+    res.status(200).json({message: "Branch found", branch});
   })
   .catch((err) => {
-    res.status(400).send({message:"Failed to retrieve branch", error:err});
+    res.status(400).json({message:"Failed to retrieve branch", error:err});
   });
 }
 
@@ -452,14 +452,14 @@ export function newMerge(req,res){
   }
 
   if( info.sb===undefined || info.tb===undefined || info.t===undefined || info.repoID===undefined )
-  res.status(400).send({message:"Missing One or More Required Fields [target/source branch,title,ID]"});
+  res.status(400).json({message:"Missing One or More Required Fields [target/source branch,title,ID]"});
 
   _repo.newMerge(info)
   .then(pull => {
-    res.status(200).send({message: "Made new pull request", pull});
+    res.status(200).json({message: "Made new pull request", pull});
   })
   .catch((err) => {
-    res.status(400).send({message:"Failed to make pull request", error:err});
+    res.status(400).json({message:"Failed to make pull request", error:err});
   });
 }
 
@@ -479,10 +479,10 @@ export function deleteM(req,res){
   let user = req.user.id;
   _repo.deleteM(repoID,mergeID,user)
   .then(result => {
-    res.status(200).send({message: "Pull request deleted", result});
+    res.status(200).json({message: "Pull request deleted", result});
   })
   .catch((err) => {
-    res.status(400).send({message:"Failed to delete pull request", error:err});
+    res.status(400).json({message:"Failed to delete pull request", error:err});
   });
 }
 
@@ -501,10 +501,10 @@ export function approveM(req,res){
 
   _repo.approveM(repoID,mergeID,commitMsg,user)
     .then(result => {
-      res.status(200).send({ message: "Merge Request Approved", result });
+      res.status(200).json({ message: "Merge Request Approved", result });
     })
     .catch(err =>{
-      res.status(400).send({ message:"Failed to Approve Merge Request", error : err });
+      res.status(400).json({ message:"Failed to Approve Merge Request", error : err });
     });
 }
 
@@ -520,10 +520,10 @@ export function listMerges(req,res){
   let repoID = req.params.repoID;
   _repo.listMerges(repoID)
   .then(merges => {
-    res.status(200).send({message: "List of merges found", merges});
+    res.status(200).json({message: "List of merges found", merges});
   })
   .catch((err) => {
-    res.status(400).send({message:"Failed to retrieve merges", error:err});
+    res.status(400).json({message:"Failed to retrieve merges", error:err});
   });
 }
 
@@ -539,10 +539,10 @@ export function getMerge(req,res){
 
   _repo.getMerge(repoID,mergeID)
   .then(merges => {
-    res.status(200).send({message: "Merges found", merges});
+    res.status(200).json({message: "Merges found", merges});
   })
   .catch((err) => {
-    res.status(400).send({message:"Failed to retrieve merge", error:err});
+    res.status(400).json({message:"Failed to retrieve merge", error:err});
   });
 }
 
@@ -567,10 +567,10 @@ export function updateMerge(req,res){
   }
   _repo.updateMerge(info)
   .then(merge => {
-    res.status(200).send({message: "Updated merge", merge});
+    res.status(200).json({message: "Updated merge", merge});
   })
   .catch((err) => {
-    res.status(400).send({message:"Failed to update merge", error:err});
+    res.status(400).json({message:"Failed to update merge", error:err});
   });
 }
 
@@ -581,10 +581,10 @@ export function closeMerge(req,res){
   }
   _repo.closeMerge(info)
   .then(merge => {
-    res.status(200).send({message: "Updated merge", merge});
+    res.status(200).json({message: "Updated merge", merge});
   })
   .catch((err) => {
-    res.status(400).send({message:"Failed to update merge", error:err});
+    res.status(400).json({message:"Failed to update merge", error:err});
   });
 }
 
@@ -599,12 +599,12 @@ export function closeMerge(req,res){
 export function getPull(req,res){
   gitlab.getPull(req).then(pull=>{
     console.log("Get Pull Requests created");
-    res.send({
+    res.json({
       message: "Pull Requests goten"
     })
   }).catch(err =>{
     console.log(err.response.data);
-    res.status(400).send({message:'Failed to get pull', error:err});
+    res.status(400).json({message:'Failed to get pull', error:err});
   })
 }
 
@@ -618,13 +618,13 @@ export function getPull(req,res){
 export function getSinglePull(req,res){
   gitlab.getSinglePull(req).then(reqs=>{
     console.log("Single Pull Request found");
-    res.send({
+    res.json({
       message: "Request Found",
       reqs
     });
   }).catch(err=>{
     console.log(err.response.data);
-    res.status(400).send({message:'Failed to get single pull' ,error:err});
+    res.status(400).json({message:'Failed to get single pull' ,error:err});
   })
 }
 
@@ -632,13 +632,13 @@ export function getCommits(req,res){
   let id = req.params.id;
   _repo.getCommits(id)
     .then(Data=>{
-      res.send({
+      res.json({
         message: "Commits Found",
         Data
       });
     })
     .catch(err=>{
-      res.status(400).send({message:'Failed to get commits' ,error:err});
+      res.status(400).json({message:'Failed to get commits' ,error:err});
     })
 }
 
@@ -648,9 +648,9 @@ export function forkRepo(req, res) {
   console.log("controller",repoId,userId)
   _repo.fork_repo(repoId, userId)
     .then(data => {
-      res.status(200).send({ message: 'forked successfully', data });
+      res.status(200).json({ message: 'forked successfully', data });
     })
     .catch(error => {
-      res.status(400).send({ error, message: 'fork failure' });
+      res.status(400).json({ error, message: 'fork failure' });
     });
 }
