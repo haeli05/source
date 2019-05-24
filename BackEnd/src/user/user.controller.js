@@ -315,10 +315,10 @@ export function newUser(req,res){
 
   _user.newUser(info)
   .then(data=>{
-    console.log(data)
     res.status(200).json(data);
   })
   .catch(err=>{
+    console.log(err)
     res.status(400).json({
       message: "Error creating user",
       error: err

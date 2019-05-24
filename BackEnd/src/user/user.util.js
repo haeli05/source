@@ -247,13 +247,10 @@ export async function newUser(info){
     await checkParams(info.username, info.email)
                 .catch(err=>{return Promise.reject(err)});
 
-    let usr = new User(info);
+    let user = new User(info);
 
-    let [mongoUser] = await Promise.all([usr.save()])
+    let [mongoUser] = await Promise.all([user.save()])
                 .catch((err) => {return Promise.reject(err)});
-
-    const user = await User.findByIdAndUpdate(mongoUser._id, updateQuery, {new: true})
-                .catch(err => {return Promise.reject(err)});
 
     const payload = {
          'username':mongoUser.username,

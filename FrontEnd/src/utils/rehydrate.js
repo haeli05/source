@@ -32,7 +32,7 @@ export function loadState () {
     let client = { client: false }
     return (dispatch) => {
       dispatch(
-        stateLoaderUser(user),
+        stateLoaderUser(user)
       )
     }
   }
