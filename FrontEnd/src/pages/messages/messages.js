@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import {ShareButton} from '../global/components/majorActionButtons.js';
 import MessageCard from './components/messageCard.js';
-//import {refreshChat} from './../../actions/chat.actions.js';
 import {connect} from 'react-redux';
 
 function TabContainer(props) {
