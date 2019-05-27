@@ -1645,6 +1645,31 @@ time {
       margin-right: 25px;
     }
   }
+  
+}
+
+/* -------------------------- reactDraftEditor.js -------------------------- */
+
+.ReactDraftEditor {
+  .md-RichEditor-root {
+    background-color: $Light;
+    border: 1px solid $Dark;
+    border-radius: 4px;
+
+    .md-side-toolbar {
+      left: -70px;
+    }
+    .md-block-todo input[type=checkbox] {
+      top: -1px;
+    }
+  }
+  a {
+    color: $PrimaryLight;
+    text-decoration: underline;
+  }
+  .md-sb-button {
+    background-color: $Light;
+  }
 }
 
 /* ------------------------------ search.js --------------------------------- */
