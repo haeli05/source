@@ -1501,12 +1501,14 @@ time {
       .Actions {
         min-width: 209px;
         display: flex;
+
+        @media screen and (max-width: $md) {
+          min-width: 0;
+          padding-right: 20px;
+        }
+
         .NavbarButton {
           color: white;
-
-          @media screen and (max-width: $md) {
-            display: none;
-          }
         }
       }
       .Menu {
@@ -1661,6 +1663,11 @@ time {
     }
     .md-block-todo input[type=checkbox] {
       top: -1px;
+    }
+    .SideButtonImage {
+      i > svg {
+        vertical-align: -1px !important;
+      }
     }
   }
   a {
@@ -3101,6 +3108,11 @@ body {
     max-width: 300px;
     padding-top: 5px;
     padding-left: 3px;
+
+    @media screen and (max-width: $md) {
+      display: none;
+    }
+
     .Avatar {
       margin-left: auto;
       margin-right: auto;
@@ -3139,6 +3151,12 @@ body {
     padding-top: 15px;
     padding-left: 8px;
     background-color: $Light;
+
+    @media screen and (max-width: $md) {
+      padding-left: 5%;
+      margin: auto;
+    }
+
     .UserTabAbout {
       padding: 10px 0;
     }
