@@ -15,7 +15,6 @@ import {
   convertToRaw
 } from 'medium-draft'
 
-import fetch from 'isomorphic-fetch'
 import 'medium-draft/dist/medium-draft.css'
 import content from 'medium-draft/lib/model/content';
 
@@ -144,7 +143,10 @@ class ReactDraftEditor extends React.Component {
     }]
 
     this.onChange = (editorState) => {
+      const contentState = editorState.getCurrentContent()
       this.setState({ editorState })
+      this.setState({ editorHTML: this.exportHTML(contentState) })
+      this.setState({ stringBody: contentState().convertToRaw() })
     }
   }
 
@@ -152,14 +154,10 @@ class ReactDraftEditor extends React.Component {
     this.refs.editor.focus()
   }
 
-  exportHTML () {
-    const editorState = this.state.editorState
-    const contentState = editorState.getCurrentContent()
+  exportHTML (contentState) {
     const renderedHTML = mediumDraftExporter(contentState)
-    console.log(renderedHTML)
-
-    // Handle HTML file
-    // Probably send HTML file to backend
+    console.log(this.state)
+    return renderedHTML
   }
 
   render () {
