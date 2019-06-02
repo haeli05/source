@@ -17,6 +17,7 @@ import { getIdea, getFetchIdeaStatus, getIdeaSubmitStatus } from './../../reduce
 import { getUser } from './../../reducers/user.reducer'
 // Components
 import ReactQuillEditor from './../global/components/reactQuillEditor'
+import ReactDraftEditor from './../global/components/reactDraftEditor'
 
 class NewIdeaPage extends React.Component {
   constructor (props) {
@@ -125,7 +126,7 @@ class NewIdeaPage extends React.Component {
               />
               <Typography variant='h2'>{this.state.ideaTitle}</Typography>
             </div>
-            <ReactQuillEditor submit={this.submit} text={this.state.text} placeholder={'Great ideas can change the world...'} />
+            <ReactDraftEditor submit={this.submit} text={this.state.text} placeholder={'Great ideas can change the world...'} />
           </div>
           <div className='Sidebar'>
             <div className='Topics'>
