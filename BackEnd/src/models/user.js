@@ -1,5 +1,5 @@
 import validator from 'validator';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 
 'use strict';
 module.exports = (sequelize, DataTypes) => {
