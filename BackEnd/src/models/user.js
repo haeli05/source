@@ -37,10 +37,26 @@ module.exports = (sequelize, DataTypes) => {
 			},
 			allowNull: false
 		},
+		groupsOwned: {
+			type: DataTypes.STRING,
+			validate: {
+				len: [3,60]
+			},
+			allowNull: true
+		},
+		groupsJoined: {
+			type: DataTypes.STRING,
+			validate: {
+				len: [3,60]
+			},
+			allowNull: true
+		},
 	}, {});
 
 	User.associate = function(models) {
 		// associations can be defined here
+		User.hasMany(User, {as: 'follower'});
+		User.hasMany(User, {as: 'following'});
 	};
 
 	// Hashing password before saving it to the database
@@ -52,5 +68,6 @@ module.exports = (sequelize, DataTypes) => {
 			user.password = hash;
 		});
 	});
+
 	return User;
 };
