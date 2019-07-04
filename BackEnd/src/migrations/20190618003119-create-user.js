@@ -26,6 +26,34 @@ module.exports = {
         type: Sequelize.STRING,
 		allowNull: false
       },
+      bio: {
+        type: Sequelize.STRING,
+		allowNull: true
+      },
+      avatar: {
+        type: Sequelize.STRING,
+		allowNull: false
+      },
+      location: {
+        type: Sequelize.STRING,
+		allowNull: true
+      },
+      website: {
+        type: Sequelize.STRING,
+		allowNull: true
+      },
+      skills: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
+		allowNull: true
+      },
+      social: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
+		allowNull: true
+      },
+      description: {
+        type: Sequelize.STRING,
+		allowNull: true
+      },
       groupsOwned: {
         type: Sequelize.STRING,
 		allowNull: true
