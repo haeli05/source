@@ -34,6 +34,10 @@ module.exports = {
         type: Sequelize.STRING,
 		allowNull: false
       },
+      popularity: {
+        type: Sequelize.INTEGER,
+		allowNull: false
+      },
       location: {
         type: Sequelize.STRING,
 		allowNull: true
@@ -52,6 +56,10 @@ module.exports = {
       },
       description: {
         type: Sequelize.STRING,
+		allowNull: true
+      },
+      tags: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
 		allowNull: true
       },
       groupsOwned: {

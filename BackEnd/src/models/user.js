@@ -46,6 +46,11 @@ module.exports = (sequelize, DataTypes) => {
 			defaultValue: "https://s3.amazonaws.com/source-images-xyz/5J2rt6mKx1Fw8cfb3TvbzDs31y9r56MRHHNJzgef7xbnBUMCCQo",
 			allowNull: false
 		},
+		popularity: {
+			type: DataTypes.INTEGER,
+			defaultValue: 0,
+			allowNull: false
+		},
 		location: {
 			type: DataTypes.STRING,
 			allowNull: true
@@ -70,6 +75,13 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		description: {
 			type: DataTypes.STRING,
+			allowNull: true
+		},
+		tags: {
+			type: DataTypes.ARRAY(DataTypes.STRING),
+			validate: {
+				max: 100
+			},
 			allowNull: true
 		},
 		groupsOwned: {
