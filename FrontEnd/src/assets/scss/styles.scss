@@ -3466,7 +3466,7 @@ body {
 .Board {
   width: 100%;
   max-width: 100%;
-  background-color: $Light;
+  background-color: white;
   border-radius: 6px;
   border-style: solid;
   border-color: $Dark;
@@ -3570,7 +3570,7 @@ body {
   border: solid 1px $Dark;
   margin-bottom: 8px;
   background-color: white;
-  //border-radius: 3px;
+  border-radius: 6px;
   padding: 4px;
   .KanbanHeader {
     width: 100%;
@@ -3578,6 +3578,9 @@ body {
       margin-left: auto;
       min-height: 32px;
     }
+  }
+  .KanbanBody {
+  text-align: left;
   }
   .KanbanLabels {
     margin-top: 10px;
