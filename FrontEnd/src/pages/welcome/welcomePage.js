@@ -159,7 +159,7 @@ class WelcomePage extends Component {
     return (
       <div className='WelcomePage'>
         <Helmet>
-          <title>source | Decentralized Tech Incubator</title>
+          <title>source | Build Anything with a Post</title>
           <meta name='keywords' content='decentralized, tech incubator, developers,programming,open source, blockchain, crowdfunding' />
           <meta
             name='description'
@@ -171,7 +171,8 @@ class WelcomePage extends Component {
             <Grid container spacing={12}>
               <Grid item sm={12} md={7}>
                 <Typography className='Mission' color='textPrimary' variant='h1'>
-                  Build Anything with a Post
+                  Build Anything <br/>
+                  with a Post
                 </Typography>
               </Grid>
               <Grid item sm={12} md={5}>
@@ -194,6 +195,8 @@ class WelcomePage extends Component {
           </div>
         </div>
         <div className='Quote'>
+          <Board />
+
           <Typography variant='h5' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" <br /><br /> - Patrick Collison, CEO @ Stripe</Typography>
 
           <div className='JoinMailing'>

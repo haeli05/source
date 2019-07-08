@@ -3209,7 +3209,7 @@ body {
       padding-right: 100px;
       padding-top: 50px;
       opacity: 1;
-      
+
       @media screen and (max-width: $sm) {
         padding-right: 0;
         align-self: center;
@@ -3265,7 +3265,7 @@ body {
       }
     }
   }
-  
+
   .Section {
     display: flex;
     flex-direction: column;
@@ -3394,7 +3394,7 @@ body {
         margin-right: 14px;
         margin-bottom: 14px;
       }
-      
+
       @media screen and (max-width: $md) {
         margin-right: 10%;
         margin-left: 10%;
@@ -3467,7 +3467,7 @@ body {
   width: 100%;
   max-width: 100%;
   background-color: $Light;
-  border-radius: 36px;
+  border-radius: 6px;
   border-style: solid;
   border-color: $Dark;
   border-width: 0.5px;

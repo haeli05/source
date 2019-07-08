@@ -122,7 +122,7 @@ class ExploreIdeas extends Component {
               <ShareButton {...this.props} url={window.location.href} />
             </div>
           </div>
-          <Typography variant='h2'>Explore</Typography>
+          
         </div>
         <LoginPrompt open={this.state.loginPromptPopUp} close={this.closeLoginPrompt} />
         <div className='Body'>

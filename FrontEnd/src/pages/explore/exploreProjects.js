@@ -103,7 +103,6 @@ class ExploreProjects extends Component {
             </div>
           </div>
           <PopUp />
-          <Typography variant='h2'>Explore</Typography>
         </div>
         <LoginPrompt open={this.state.loginPromptPopUp} close={this.closeLoginPrompt} />
         <div className='Body'>
