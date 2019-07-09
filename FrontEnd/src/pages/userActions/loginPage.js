@@ -12,7 +12,6 @@ import PopUp from '../global/components/PopUp'
 import { connect } from 'react-redux'
 import { getUser, getSignInStatus } from './../../reducers/user.reducer'
 import { signIn } from './../../actions/user.actions'
-import { chatLogin } from './../../actions/chat.actions.js'
 
 class LoginPage extends Component {
   constructor (props) {
@@ -51,7 +50,6 @@ class LoginPage extends Component {
 
   submit () {
     this.props.dispatch(signIn(this.state))
-    this.props.dispatch(chatLogin(this.state))
   }
 
   redirect () {

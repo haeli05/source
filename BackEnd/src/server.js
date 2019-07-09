@@ -2,7 +2,6 @@
 import 'babel-polyfill';
 import Express from 'express';
 import path from 'path';
-import compression from 'compression';
 import bodyParser from 'body-parser';
 // Database
 import mongoose from 'mongoose';
@@ -19,7 +18,7 @@ import ideas from './ideas/ideas.routes';
 import storage from './storage/storage.routes';
 // Config
 import {config} from './config';
-// ?
+// Cron
 import job from './util/cron.util'
 // Email
 const transporter = require('./config').transporter;
@@ -57,12 +56,12 @@ mongoose.connect(config.mongoURL, { useNewUrlParser: true }, (error) => {
 app.use(cors());
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Accept-Encoding, Accept-Language, Connection, DNT, Host, If-None-Match, TE, Upgrade-Insecure-Requests, User-Agent");
   next();
 });
 
+
 // API
-app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(mongoSanitize({
@@ -151,7 +150,7 @@ app.use('/analytics', analyticsproxy('www.google-analytics.com', {
   }
 }));
 
-// ?
+// Cron
 job.start();
 
 // SSL redbird

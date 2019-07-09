@@ -6,8 +6,7 @@ import jwtDecode from 'jwt-decode'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers'
 // import throttle from 'lodash/throttle'
-import { loadState, saveStateUser, saveStateChat } from './utils/rehydrate'
-import Chat from './utils/chat.js'
+import { loadState, saveStateUser } from './utils/rehydrate'
 
 export function configureStore (initialState = {}) {
   // Middleware and store enhancers
@@ -25,9 +24,6 @@ export function configureStore (initialState = {}) {
     let presentUser = JSON.parse(localStorage.getItem('user'))
     let storeUser = store.getState().user
 
-    let presentChat = JSON.retrocycle(JSON.parse(localStorage.getItem('chat')))
-    let storeChat = store.getState().chat
-
     saveStateUser(storeUser)
 
     /*
@@ -41,24 +37,6 @@ export function configureStore (initialState = {}) {
       saveStateUser(storeUser);
     }
     */
-    // console.log("cahtsL ps",presentChat,storeChat);
-    if (presentChat === null) {
-      saveStateChat(storeChat)
-    } else if (
-      presentChat.client === false
-    ) {
-      saveStateChat(storeChat)
-    } else if (
-      storeChat.client === false
-    ) {
-      let client = new Chat(presentChat.client.access_token, presentChat.client.username, presentChat.client.deviceId, true)
-    //  store.dispatch({ type:"STATE_LOAD_CHAT" , client  })
-    } else if (
-      storeChat.client.username !== false &&
-      presentChat.client.username === false
-    ) {
-      saveStateChat(storeChat)
-    }
   })
 
   return store

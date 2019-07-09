@@ -31,7 +31,6 @@ import { music_bell } from 'react-icons-kit/linea/music_bell'
 import { connect } from 'react-redux'
 import { getUser } from './../../../reducers/user.reducer'
 import { signOut } from './../../../actions/user.actions'
-import { chatSignOut } from './../../../actions/chat.actions.js'
 // Components
 import JoinQueueButton from './joinQueue'
 import Search from './search.js'
@@ -44,15 +43,6 @@ import ReactPullToRefresh from 'react-pull-to-refresh'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
 
-{ /*
-//livechat
-import {ChatList} from '@livechat/ui-kit';
-import {ChatListItem} from '@livechat/ui-kit';
-import {Column} from '@livechat/ui-kit';
-import {Row} from '@livechat/ui-kit';
-import {Title} from '@livechat/ui-kit';
-import {Subtitle} from '@livechat/ui-kit';
-*/ }
 
 class MenuAppBar extends React.Component {
   constructor (props) {
@@ -103,7 +93,6 @@ class MenuAppBar extends React.Component {
   llogout () {
     window.location = `/`
     this.props.dispatch(signOut())
-    this.props.dispatch(chatSignOut())
   }
 
   checkLoggedIn () {
@@ -322,7 +311,6 @@ const mapStateToProps = (state) => {
     token: state.user.signedInUser.token,
     username: state.user.signedInUser.username,
     logout: state.user.signOutStatus,
-    chat: state.chat.client.matrix,
     user: getUser(state)
   }
 }

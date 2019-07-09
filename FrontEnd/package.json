@@ -25,7 +25,6 @@
     "mail": "^0.2.3",
     "malarkey": "^2.0.2",
     "marked": "^0.5.2",
-    "matrix-js-sdk": "^0.11.1",
     "nodemailer": "^4.7.0",
     "normalize.css": "^8.0.1",
     "npm": "^6.8.0",

@@ -190,24 +190,22 @@ export function login(username,password){
     User.authenticate(username,password,async function(err,user){
       if(!err){
         let payload = {
-          username:user.username, gitlabID: user.gitlabID, EOSUsername: user.EOSUsername, id: user._id,
-          email: user.email, issuer: 'https://source.lol',
+          username:user.username, id: user._id,
+          email: user.email, issuer: 'https://sourcenetwork.io',
         };
         let token = tokenGenerate(payload)
-        let gluser = await User.findOne({_id: user._id})
-        .select('+gitlabToken');
-        console.log(
-         gluser.gitlabToken
-        )
         user = user.toObject();
         delete user.password;
 
-        awsToken()
+        resolve({message: 'Sign-in Successful', user, token: token})
+
+        // TODO: AWS when new API has been configured
+        /*awsToken()
         .then((awsObj) => {
           resolve({message: 'Sign-in Successful', user, token: token, aws: awsObj})
         })
         .catch(err => {reject('Failed to get AWS Token: ' + err)})
-
+        */
       }else{
         reject("Username or Password Incorrect");
       }
@@ -249,13 +247,10 @@ export async function newUser(info){
     await checkParams(info.username, info.email)
                 .catch(err=>{return Promise.reject(err)});
 
-    let usr = new User(info);
+    let user = new User(info);
 
-    let [mongoUser] = await Promise.all([usr.save()])
+    let [mongoUser] = await Promise.all([user.save()])
                 .catch((err) => {return Promise.reject(err)});
-
-    const user = await User.findByIdAndUpdate(mongoUser._id, updateQuery, {new: true})
-                .catch(err => {return Promise.reject(err)});
 
     const payload = {
          'username':mongoUser.username,
