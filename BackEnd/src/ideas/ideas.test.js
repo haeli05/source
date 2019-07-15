@@ -1,5 +1,5 @@
-const Ideas =require('../models/ideas.js').Ideas;
-const IdeaBlob = require('../models/blob').IdeaBlob;
+// const Ideas =require('../models/ideas.js').Ideas;
+// const IdeaBlob = require('../models/blob').IdeaBlob;
 
 
 async function getIdea(_id) {

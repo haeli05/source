@@ -1,8 +1,7 @@
 //import sanitize from 'sanitizeHtml';
 import axios from 'axios';
-import Repo from '../models/repo';
+import Repo from '../models/project';
 import User from '../models/user';
-const Ideas =require('../models/ideas.js').Ideas;
 
 import {config} from '../config';
 import {newRepoEOS, setRepoEOS, userActionEOS, makecid, checkAccountEOS,to64, checkRepoEOS, getBalanceEOS} from '../util/eos.util';

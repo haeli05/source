@@ -1,3 +1,4 @@
+const Project = require('./project');
 const validator = require('validator');
 const bcrypt    = require('bcrypt');
 
@@ -104,6 +105,7 @@ module.exports = (sequelize, DataTypes) => {
 		// associations can be defined here
 		User.hasMany(User, {as: 'follower'});
 		User.hasMany(User, {as: 'following'});
+		User.hasMany(models.Project, {as: 'project'});
 	};
 
 	// Hashing password before saving it to the database

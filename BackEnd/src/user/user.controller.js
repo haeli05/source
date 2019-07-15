@@ -312,6 +312,7 @@ export function newUser(req,res){
     password: req.body.password,
     invitecode: req.body.invitecode
   }
+	console.log(req);
 
   _user.newUser(info)
   .then(data=>{

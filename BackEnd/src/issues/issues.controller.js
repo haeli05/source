@@ -1,5 +1,5 @@
-const Issues =require('../models/issue.js').Issues;
-const IssueBlob = require('../models/blob').IssueBlob;
+// const Issues =require('../models/issue.js').Issues;
+// const IssueBlob = require('../models/blob').IssueBlob;
 const mongoose = require('mongoose');
 const config = require('../config');
 import {userActionEOS, checkAccountEOS} from '../util/eos.util';

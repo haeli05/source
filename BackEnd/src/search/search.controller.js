@@ -1,6 +1,6 @@
-const Users =require('../models/user.js');
-const Ideas =require('../models/ideas.js').Ideas;
-const Projects =require('../models/repo.js');
+// const Users =require('../models/user.js');
+// const Ideas =require('../models/ideas.js').Ideas;
+// const Projects =require('../models/repo.js');
 import {sanitizeTags} from '../util/helpers.util';
 import mongoose from 'mongoose';
 

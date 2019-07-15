@@ -1,13 +1,9 @@
-import User from '../models/user';
-import FollowTopic from '../models/followTopic';
-import Upvote from '../models/upvotes';
-import Transfer from '../models/transfer';
+const User = require('../models').User
 import ecc from 'eosjs-ecc';
 import * as eosUtil from '../util/eos.util';
 import mongoose from 'mongoose';
 import * as gitlab from '../util/gitlab.controller';
 import {awsToken} from './../storage/storage.util';
-import ResetPassToken from '../models/resetPassToken';
 import transporter from '../config';
 import bcrypt from 'bcrypt'
 //import * as matrix from '../util/chat.util.js'
@@ -240,26 +236,19 @@ export function getUsers(){
 **/
 export async function newUser(info){
     info.username = info.username.toLowerCase();
-    const datum = ['email', 'username', 'name', 'password'];
-    for(let i = 0; i <datum.length; i++) {
-      if (info[datum[i]] == undefined) {return Promise.reject(datum[i] + ' not specified')}
-    }
-    await checkParams(info.username, info.email)
-                .catch(err=>{return Promise.reject(err)});
-
-    let user = new User(info);
-
-    let [mongoUser] = await Promise.all([user.save()])
-                .catch((err) => {return Promise.reject(err)});
-
-    const payload = {
-         'username':mongoUser.username,
-         'userId': mongoUser._id,
-         'email': mongoUser.email,
-         'issuer': 'https://sourcenetwork.io',
-       };
-
-    const tk = tokenGenerate(payload);
+	User.create(info)
+		.then(user => {
+			const payload = {
+				'username': user.username,
+				'userId': user.id,
+				'email': user.email,
+				'issuer': 'https://sourcenetwork.io',
+			};
+			const tk = tokenGenerate(payload);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 
     //return {user, token: tk, eos_tx: EOSUser};
     return {user, token: tk};

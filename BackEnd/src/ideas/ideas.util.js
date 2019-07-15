@@ -1,6 +1,6 @@
-const Ideas =require('../models/ideas.js').Ideas;
-const IdeaBlob = require('../models/blob').IdeaBlob;
-const Repo = require('../models/repo');
+// const Ideas =require('../models/ideas.js').Ideas;
+// const IdeaBlob = require('../models/blob').IdeaBlob;
+// const Repo = require('../models/repo');
 const mongoose = require('mongoose');
 const config = require('../config');
 

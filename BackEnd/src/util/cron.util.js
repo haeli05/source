@@ -1,8 +1,8 @@
 const CronJob = require('cron').CronJob;
 
-import Repo from '../models/repo';
-const Ideas =require('../models/ideas.js').Ideas;
-const Issues =require('../models/issue.js').Issues;
+// import Repo from '../models/repo';
+// const Ideas =require('../models/ideas.js').Ideas;
+// const Issues =require('../models/issue.js').Issues;
 import User from '../models/user';
 
 const job = new CronJob('*/10 * * * *', function() {

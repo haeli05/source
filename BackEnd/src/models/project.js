@@ -1,3 +1,5 @@
+const User = require('./user');
+
 'use strict';
 module.exports = (sequelize, DataTypes) => {
 	const Project = sequelize.define('Project', {
@@ -8,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
 	}, {});
 	Project.associate = function(models) {
 		// associations can be defined here
-		Project.belongsTo(User, {as: 'creator'});
+		Project.belongsTo(models.User, {as: 'creator'});
 	};
 	return Project;
 };

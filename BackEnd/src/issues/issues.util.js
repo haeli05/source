@@ -1,7 +1,7 @@
-const Issues =require('../models/issue.js').Issues;
-const Repo = require('../models/repo.js');
-const User = require('../models/user.js').User;
-const IssueBlob = require('../models/blob').IssueBlob;
+// const Issues =require('../models/issue.js').Issues;
+// const Repo = require('../models/repo.js');
+// const User = require('../models/user.js').User;
+// const IssueBlob = require('../models/blob').IssueBlob;
 // import User from '../models/user';
 
 const mongoose = require('mongoose');
