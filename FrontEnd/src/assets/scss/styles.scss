@@ -3252,7 +3252,7 @@ body {
       padding-right: 100px;
       padding-top: 50px;
       opacity: 1;
-      
+
       @media screen and (max-width: $sm) {
         padding-right: 0;
         align-self: center;
@@ -3308,7 +3308,7 @@ body {
       }
     }
   }
-  
+
   .Section {
     display: flex;
     flex-direction: column;
@@ -3437,7 +3437,7 @@ body {
         margin-right: 14px;
         margin-bottom: 14px;
       }
-      
+
       @media screen and (max-width: $md) {
         margin-right: 10%;
         margin-left: 10%;
@@ -3509,8 +3509,8 @@ body {
 .Board {
   width: 100%;
   max-width: 100%;
-  background-color: $Light;
-  border-radius: 36px;
+  background-color: white;
+  border-radius: 6px;
   border-style: solid;
   border-color: $Dark;
   border-width: 0.5px;
@@ -3613,7 +3613,7 @@ body {
   border: solid 1px $Dark;
   margin-bottom: 8px;
   background-color: white;
-  //border-radius: 3px;
+  border-radius: 6px;
   padding: 4px;
   .KanbanHeader {
     width: 100%;
@@ -3621,6 +3621,9 @@ body {
       margin-left: auto;
       min-height: 32px;
     }
+  }
+  .KanbanBody {
+  text-align: left;
   }
   .KanbanLabels {
     margin-top: 10px;
