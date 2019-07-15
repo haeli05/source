@@ -28,6 +28,7 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isEditable: false,
       startX: null,
       startScrollX: null,
       boardColor : this.props.boardColor? this.props.boardColor : "#FFFFFF",

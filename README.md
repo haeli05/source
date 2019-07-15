@@ -54,3 +54,19 @@ We aim to maintain a civil and productive community that best serves our project
   - Board.js
   - Column.js
   - KanbanCard.js
+
+### Board.js
+<Board isEditable={boolean} data={}/>  
+
+####isEditable
+is true for Admin and Project Managers who can edit the board. False otherwise
+
+####data
+Board data for columns and cards.
+
+Specification:
+data = {
+  boardTitle: "Board Title",
+  admins: ["Username"], //Users who can edit
+  column
+}
