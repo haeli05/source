@@ -3517,7 +3517,7 @@ body {
   width: 100%;
   max-width: 100%;
   background-color: $Light;
-  border-radius: 6px;
+//  border-radius: 6px;
 //  border-style: solid;
 //  border-color: $Dark;
   border-width: 0.5px;
@@ -3573,13 +3573,13 @@ body {
 .Column {
   padding: 4px;
   margin: 4px;
-  border-radius: 6px;
-  background-color: #BAC1D0;
+  border-radius: 3px;
+  background-color: rgba(0,0,0,0.07);
 //  border: solid 1px $Dark;
   .ColumnHeader {
     padding: 0px 2px 0px 2px;
     //border-radius: 6px 6px 0px 0px;
-//    background-color: rgba(255,255,255,0.7);
+
     display: flex;
     align-items: center;
 
@@ -3622,13 +3622,17 @@ body {
 /* ---------------------------- KanbanCard.js ------------------------------- */
 
 .KanbanCard {
-  border: solid 1px $Dark;
+//  border: solid 1px $Dark;
   margin-bottom: 8px;
+  padding-left: 4px;
+  padding-right: 4px;
   background-color: white;
-  border-radius: 6px;
+  border-radius: 3px;
   padding: 4px;
   .KanbanHeader {
     width: 100%;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
     .Actions {
       margin-left: auto;
       min-height: 32px;
@@ -3638,7 +3642,7 @@ body {
   text-align: left;
   }
   .KanbanLabels {
-    margin-top: 10px;
+    margin-top: 0px;
     display: flex;
     flex-wrap: wrap;
     .KanbanLabel {
@@ -3693,8 +3697,8 @@ body {
   border: solid 1px lightgrey;
 }
 .KanbanCardDialog {
-  width: 550px;
-  min-height: 400px;
+  min-width: 650px;
+  min-height: 600px;
   padding: 10px;
   display: flex;
   flex-direction: column;

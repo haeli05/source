@@ -177,13 +177,16 @@ export default class KanbanCard extends React.Component {
               )}
               {!this.state.editDescription && (
                 <div className='Description' onClick={() => { this.editToggle('editDescription') }}>
+                Admins and Project Managers Buttons go here
                   <Markdown
                     escapeHtml
                     source={this.props.task.description}
                   />
                 </div>
+
               )}
               <div className='KanbanCardDialogLabels'>
+                Tags and Labels go here
                 {this.state.dueDateSelector && (
                   <TextField
                     className='MarginRight10'
@@ -200,6 +203,7 @@ export default class KanbanCard extends React.Component {
                 {!this.state.dueDateSelector && (
                   <Button className='MarginRight10' variant='outlined' onClick={this.selectDueDate}>Add Due Date</Button>
                 )}
+                <Button className='MarginRight10' variant='outlined'>Add Tags</Button>
                 {this.props.task.compensation === undefined && (
                   <Button className='MarginRight10' variant='outlined'>Add Compensation</Button>
                 )}
@@ -246,7 +250,6 @@ export default class KanbanCard extends React.Component {
               <div className='KanbanBody'>
                 <Typography variant='body1'>{this.props.task.content}</Typography>
               </div>
-
               {provided.placeholder}
             </div>
           }
