@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 // Material UI
 import Typography from '@material-ui/core/Typography'
 import Tooltip from '@material-ui/core/Tooltip'
@@ -23,7 +24,9 @@ class GlobalChip extends Component {
   }
 
   componentDidMount () {
-    if (this.props.user.user !== false && this.props.user.user !== undefined) {
+    if (this.props.user == undefined) {
+      return
+    } else if (this.props.user.user !== false && this.props.user.user !== undefined) {
       if (this.props.user.user.tags !== undefined && this.props.user.user.tags !== false) {
         var isFollowing = this.props.user.user.tags.includes(this.props.label)
         if (isFollowing) {
@@ -36,7 +39,10 @@ class GlobalChip extends Component {
   }
 
   handleFollow () {
-    if (this.props.user.username !== false) {
+    if (this.props.user == undefined) {
+      this.setState({ loginPromptPopUp: true })
+      return
+    } else if (this.props.user.username !== false) {
       this.props.dispatch(followTag(this.props.label))
       this.setState({ following: !this.state.following })
       if (this.state.following) {
@@ -69,9 +75,18 @@ class GlobalChip extends Component {
   }
 }
 
+GlobalChip.defaultProps = {
+  label: "undefined"
+}
+
+GlobalChip.propTypes = {
+  label: PropTypes.string.isRequired
+}
+
 const mapStateToProps = (state) => {
   return {
   }
 }
+
 
 export default connect(mapStateToProps)(GlobalChip)

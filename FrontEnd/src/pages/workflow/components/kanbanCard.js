@@ -11,6 +11,7 @@ import { Draggable } from 'react-beautiful-dnd'
 // Components
 import UserAssigner from './../../global/components/userAssigner'
 import { DeleteButton } from './../../global/components/majorActionButtons'
+import Chip from './../../global/components/chip'
 // Icons
 import Icon from 'react-icons-kit'
 import { ic_more_horiz } from 'react-icons-kit/md/ic_more_horiz'
@@ -186,7 +187,7 @@ export default class KanbanCard extends React.Component {
 
               )}
               <div className='KanbanCardDialogLabels'>
-                Tags and Labels go here
+                <Chip label="test skills" />
                 {this.state.dueDateSelector && (
                   <TextField
                     className='MarginRight10'
@@ -234,7 +235,6 @@ export default class KanbanCard extends React.Component {
                 <div className='Actions' onClick={(e) => { e.stopPropagation() }}>
                   {this.renderActions()}
                 </div>
-
               </div>
               <div className='KanbanLabels'>
                 {this.props.task.dueDate && (

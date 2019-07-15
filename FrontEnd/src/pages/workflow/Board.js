@@ -33,48 +33,57 @@ class Board extends Component {
       startScrollX: null,
       boardColor : this.props.boardColor? this.props.boardColor : "#FFFFFF",
       data: {
+        Editors: {
+
+        },
         tasks: {
           'task-1': {
             id: 'task-1',
             title: "Database Migration",
             content: "MongoDB to PostGreSQL",
             dueDate: "",
-            compensation: 1500
+            compensation: 1500,
+            skills: []
           },
           'task-2': {
             id: 'task-2',
             title: "Git Hosting",
             content: "GitLab to Gitolite",
             dueDate: "",
-            compensation: 1500
+            compensation: 1500,
+            skills: []
           },
           'task-3':{
             id: 'task-3',
             title: "Social Logins (FB, Twitter, GitHub,Google)",
             content: "Integrate logins with these methods",
             dueDate: "",
-            compensation: 1000
+            compensation: 1000,
+            skills: []
           },
           'task-4':{
             id: 'task-4',
             title: "Real Time Notifications",
             content: "Apollo",
             dueDate: "",
-            compensation: 500
+            compensation: 500,
+            skills: []
             },
           'task-5':{
             id:'task-5',
             title: "Riot Chat integration",
             content: "Riot.im",
             dueDate: "",
-            compensation: 500
+            compensation: 500,
+            skills: []
           },
           'task-6':{
             id:'task-6',
             title: "Marketing funnel",
             content: "Discuss",
             dueDate: "",
-            compensation: 500
+            compensation: 500,
+            skills: []
           }
         },
         columns: {
