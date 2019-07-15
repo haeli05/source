@@ -66,7 +66,13 @@ export default class Column extends Component {
               >
                 {this.props.column.title}
               </Typography>
-              <div className='Actions'>
+
+              <div className='Actions AlignRight'>
+              <div className='NewCard'>
+                <div className='NewCardButton Pointer' onClick={() => { this.props.newCard(this.props.column.id) }}>
+                  <Icon icon={arrows_plus} size={20} />
+                </div>
+              </div>
                 {this.renderActions()}
               </div>
             </div>
@@ -88,11 +94,7 @@ export default class Column extends Component {
                       />
                     })}
                   </div>
-                  <div className='NewCard'>
-                    <div className='NewCardButton Pointer' onClick={() => { this.props.newCard(this.props.column.id) }}>
-                      <Icon icon={arrows_plus} size={20} />
-                    </div>
-                  </div>
+
                   {provided.placeholder}
                 </div>
               )}

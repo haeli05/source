@@ -362,37 +362,37 @@ class Board extends Component {
     return (
       <div className="Board">
         <div className="Header">
-        <div className="Flex MarginTop10 MarginBottom10 AlignCenter None">
-          <div className="BoardSelector">
-            <FormControl variant="outlined">
-              <InputLabel ref={ref => {this.boardref = ReactDOM.findDOMNode(ref);}}>
-                Board
-              </InputLabel>
-              <Select
-                value={this.state.board}
-                onChange={this.handleChange}
-                inputProps={{
-                  name: 'board',
-                }}
-                input={
-                  <OutlinedInput
-                    labelWidth={this.boardref ? this.boardref.offsetWidth : 0}
-                  />
-                }
-              >
-              <MenuItem value="tutorial">tutorial</MenuItem>
-              <MenuItem value="new board">new board</MenuItem>
-              </Select>
-            </FormControl>
-          </div>
-          <div className="NewBoardButton">
-            <Button variant="outlined"><Icon icon={arrows_plus} size={20}/>New Board</Button>
-          </div>
-
-        </div>
           <div className="Title MarginRight10">
-            <Typography variant="h5">{this.props.boardTitle}</Typography>
+            <Typography variant="h4">{this.props.boardTitle} Board Title</Typography>
             <Typography variant="subtitle2">{this.props.description}</Typography>
+          </div>
+          <div className="Flex MarginTop10 MarginBottom10 AlignCenter None">
+            <div className="BoardSelector">
+              <FormControl variant="outlined">
+                <InputLabel ref={ref => {this.boardref = ReactDOM.findDOMNode(ref);}}>
+                  Board
+                </InputLabel>
+                <Select
+                  value={this.state.board}
+                  onChange={this.handleChange}
+                  inputProps={{
+                    name: 'board',
+                  }}
+                  input={
+                    <OutlinedInput
+                      labelWidth={this.boardref ? this.boardref.offsetWidth : 0}
+                    />
+                  }
+                >
+                <MenuItem value="tutorial">tutorial</MenuItem>
+                <MenuItem value="new board">new board</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="NewBoardButton">
+              <Button variant="outlined"><Icon icon={arrows_plus} size={20}/>New Board</Button>
+            </div>
+
           </div>
           <div className="Actions Flex AlignCenter None">
             <Button variant="fab" mini className="EditButton MarginRight10"><ReactSVG src={Write} className="ReactSVGIcon"/></Button>

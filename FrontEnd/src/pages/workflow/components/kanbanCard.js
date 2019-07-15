@@ -230,9 +230,7 @@ export default class KanbanCard extends React.Component {
                 <div className='Actions' onClick={(e) => { e.stopPropagation() }}>
                   {this.renderActions()}
                 </div>
-              </div>
-              <div className='KanbanBody'>
-                <Typography variant='body1'>{this.props.task.content}</Typography>
+
               </div>
               <div className='KanbanLabels'>
                 {this.props.task.dueDate && (
@@ -244,7 +242,11 @@ export default class KanbanCard extends React.Component {
                   <Typography>{this.props.task.compensation}</Typography>
                 </div>
                 <div className='KanbanLabel Assigned' />
+                </div>
+              <div className='KanbanBody'>
+                <Typography variant='body1'>{this.props.task.content}</Typography>
               </div>
+
               {provided.placeholder}
             </div>
           }

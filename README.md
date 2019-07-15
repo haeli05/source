@@ -42,3 +42,15 @@ We aim to maintain a civil and productive community that best serves our project
 1. Discuss the scope of your work with the project manager
 2. Start your own branch and complete the task while meeting performative standards agreed upon prior
 3. Submit a Pull Request when finished
+
+#Documentation
+
+##Table of Contents:
+- Components
+- Material-UI
+- WELCOME
+- Global
+- Board
+  - Board.js
+  - Column.js
+  - KanbanCard.js

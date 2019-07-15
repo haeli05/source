@@ -596,6 +596,13 @@ time {
   align-items: center;
 }
 
+.AlignRight {
+  align-items: right;
+}
+.AlignLeft {
+  align-items: left;
+}
+
 .AlignBaseline {
   align-items: baseline;
 }
@@ -1647,7 +1654,7 @@ time {
       margin-right: 25px;
     }
   }
-  
+
 }
 
 /* -------------------------- reactDraftEditor.js -------------------------- */
@@ -3509,17 +3516,18 @@ body {
 .Board {
   width: 100%;
   max-width: 100%;
-  background-color: white;
+  background-color: $Light;
   border-radius: 6px;
-  border-style: solid;
-  border-color: $Dark;
+//  border-style: solid;
+//  border-color: $Dark;
   border-width: 0.5px;
   padding-bottom: 24px;
   padding-left: 4px;
   padding-right: 4px;
   .Header{
+    min-height: 24px;
     display: flex;
-    align-items: center;
+    align-items: Left;
     justify-content: center;
     width: calc(100% - 20px);
     padding: 5px;
@@ -3563,17 +3571,21 @@ body {
 /* ------------------------------ Column.js --------------------------------- */
 
 .Column {
-  padding: 8px;
-  margin: 3px;
-  border-radius: 12px;
-  border: solid 1px $Dark;
+  padding: 4px;
+  margin: 4px;
+  border-radius: 6px;
+  background-color: #BAC1D0;
+//  border: solid 1px $Dark;
   .ColumnHeader {
-    padding: 4px 8px 0px 8px;
+    padding: 0px 2px 0px 2px;
     //border-radius: 6px 6px 0px 0px;
-    background-color: rgba(255,255,255,0.7);
+//    background-color: rgba(255,255,255,0.7);
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+
     .Actions {
+      display: inline-flex;
+      align-items: center;
       margin-left: auto;
       min-height: 32px;
     }
@@ -3585,7 +3597,7 @@ body {
     width: 350px;
     padding: 8px 8px 1px 8px;
     //border-radius: 0px 0px 6px 6px;
-    background-color: rgba(255,255,255,0.7);
+//    background-color: rgba(255,255,255,0.7);
   }
   .NewCard {
     margin-top: 10px;

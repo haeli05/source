@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "create-react-class": "^15.6.3",
     "date-fns": "^1.30.1",
+    "draft-convert": "^2.1.5",
     "draft-js": "^0.10.5",
     "express": "^4.16.4",
     "history": "^4.7.2",
