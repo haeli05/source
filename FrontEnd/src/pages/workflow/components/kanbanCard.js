@@ -100,7 +100,9 @@ export default class KanbanCard extends React.Component {
   }
 
   renderDueDate (dueDate) {
-    if (dueDate) {
+    if(dueDate == undefined || dueDate == ""){
+      return
+    }else if (dueDate) {
       var today = new Date()
       var mm = ((today.getMonth() + 1) < 10 ? ('0' + String((today.getMonth() + 1))) : today.getMonth() + 1)
       var dd = ((today.getDate() + 1) < 10 ? ('0' + String((today.getDate() + 1))) : today.getDate() + 1)
@@ -246,6 +248,7 @@ export default class KanbanCard extends React.Component {
                   <Typography>{this.props.task.compensation}</Typography>
                 </div>
                 <div className='KanbanLabel Assigned' />
+                <Chip label="test skills" />
                 </div>
               <div className='KanbanBody'>
                 <Typography variant='body1'>{this.props.task.content}</Typography>
