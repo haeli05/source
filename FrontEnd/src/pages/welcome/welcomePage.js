@@ -25,6 +25,7 @@ import developerImage2 from './img/dev2.jpg'
 import HammerScrew from '../../assets/svg/hammer_screwdriver_2.svg'
 import Comment from '../../assets/svg/comment.svg'
 import Board from './../workflow/Board'
+import KanbanCard from './../workflow/components/kanbanCard'
 import RightBracket from './../../assets/svg/rightbracket.svg'
 import CircleTick from './../../assets/svg/circletick.svg'
 
@@ -196,7 +197,6 @@ class WelcomePage extends Component {
         </div>
         <div className='Quote'>
           <Board />
-
           <Typography variant='h5' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" <br /><br /> - Patrick Collison, CEO @ Stripe</Typography>
 
           <div className='JoinMailing'>
