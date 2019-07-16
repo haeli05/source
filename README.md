@@ -24,6 +24,13 @@ Telegram: https://t.me/joinchat/EbiqAxL2g2baSz4fulFeHg
 4. `gulp` (for FrontEnd SaSS)
 5. `npm start`
 
+##Troubleshooting:
+
+react-scripts: command not found
+
+`rm -rf node_modules`
+`npm install`
+
 # How to Contribute
 1. Reach out to us if you want to build a component.
 2. Fork a branch.
