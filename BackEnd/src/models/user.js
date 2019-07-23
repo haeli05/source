@@ -80,7 +80,9 @@ const UserSchema = new mongoose.Schema({
     required: [true, 'Password is required.'],
     select: false
   },
-  bio:{},
+  bio:{
+    type: String
+  },
   location:{type:String},
   website:{type:String},
   skills:{
@@ -103,19 +105,6 @@ const UserSchema = new mongoose.Schema({
       message: 'Cannot have more than 10 social links.'
     }
   },
-  description: {type:String},
-  gitlabID: {
-    type: Number,
-  },
-  gitlabToken:{
-    type: String,
-    select: false
-  },
-  totalSRC: {
-    type: Number,
-    default: 0,
-    select: false
-  },
   projects:[{
         project: {type: Schema.Types.ObjectId, ref: 'repo'},
         role: {type: String}      //The role of the user (as specified on EOS)
@@ -125,19 +114,9 @@ const UserSchema = new mongoose.Schema({
   following: [{type: Schema.Types.ObjectId, ref: 'user'}],
   groupsOwned: [{type:String}],
   groupsJoined: [{type:String}],
-  starred:[{type: Schema.Types.ObjectId, ref: 'repo'}],
-  pinned:[{type: Schema.Types.ObjectId, ref: 'repo'}],
-  transfers: [{type: Schema.Types.ObjectId, ref: 'transfer'}],
   avatar: {
     type: String,
     default: "https://s3.amazonaws.com/source-images-xyz/5J2rt6mKx1Fw8cfb3TvbzDs31y9r56MRHHNJzgef7xbnBUMCCQo"
-  },
-  trending: { type: TrendingSchema, default: TrendingSchema, select:false },
-  popularity: {
-    type: Number,
-    default: 0,
-    index: true,
-    select: false
   },
   tags:{
     type: [String],
@@ -148,11 +127,7 @@ const UserSchema = new mongoose.Schema({
       },
       message: 'Cannot follow more than 100 tags.'
     }
-  },
-  chat_token:{
-    type: String,
-    select: false
-  },
+  }
 });
 
 UserSchema.index({ username: 'text', name: 'text'}, {name: 'search_index', weights: {username: 10, name: 7}, default_language: 'english'});

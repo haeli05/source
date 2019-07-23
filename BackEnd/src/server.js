@@ -10,14 +10,13 @@ import mongoSanitize from 'express-mongo-sanitize';
 import axios from 'axios';
 import cors from 'cors';
 import HTMLSanitizer from 'express-sanitizer';
-import repos from './repo/repo.routes';
 import user from './user/user.routes';
 import search from './search/search.routes';
 import issues from './issues/issues.routes';
 import ideas from './ideas/ideas.routes';
 import storage from './storage/storage.routes';
 // Config
-import {config} from './config';
+import {mongoURL} from './config';
 // Cron
 import job from './util/cron.util'
 // Email
@@ -44,7 +43,7 @@ const app = new Express();
 
 // MongoDB Connection
 mongoose.Promise = global.Promise;
-mongoose.connect(config.mongoURL, { useNewUrlParser: true }, (error) => {
+mongoose.connect(mongoURL, { useNewUrlParser: true }, (error) => {
   if (error) {
     console.error('Please make sure Mongodb is installed and running!') // eslint-disable-line no-console
     throw error
@@ -69,7 +68,6 @@ app.use(mongoSanitize({
 })) // MongoDB sanitizer, gets rid of '$', to prevent NoSQL injections
 app.use(HTMLSanitizer()) // Makes it so No HTML can be saved on the server (removes all HTML tags). Prevents XSS
 app.use(Express.static(path.resolve(__dirname, '../dist/client')))
-app.use('/api', repos)
 app.use('/api', issues)
 app.use('/api', user)
 app.use('/api', ideas)

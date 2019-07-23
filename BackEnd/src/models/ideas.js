@@ -25,6 +25,7 @@ const IdeasSchema = new mongoose.Schema({
     required: [true, 'Title is required']
   },
   body: {
+    type: String
   },
   stringBody: {
     type: String
@@ -43,8 +44,6 @@ const IdeasSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
     index: true
-  },
-  link: {
   },
   tags: {
     type: [String],
@@ -69,13 +68,6 @@ const IdeasSchema = new mongoose.Schema({
   search: { //used internally for text search (as index)
     type: String,
     default: '',
-    select: false
-  },
-  trending: { type: TrendingSchema, default: TrendingSchema, select:false },
-  popularity: {
-    type: Number,
-    default: 0,
-    index: true,
     select: false
   },
   deleted: {

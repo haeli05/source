@@ -5,12 +5,10 @@ import Transfer from '../models/transfer';
 import ecc from 'eosjs-ecc';
 import * as eosUtil from '../util/eos.util';
 import mongoose from 'mongoose';
-import * as gitlab from '../util/gitlab.controller';
 import {awsToken} from './../storage/storage.util';
 import ResetPassToken from '../models/resetPassToken';
 import transporter from '../config';
 import bcrypt from 'bcrypt'
-//import * as matrix from '../util/chat.util.js'
 import {tokenGenerate} from '../util/authenticate.util';
 
 import {searchTags} from '../search/search.controller';
@@ -141,42 +139,6 @@ export async function getUser(id) {
   return usr;
 }
 
-/**
-* Function gets a user's Gitlab profile
-* @param {string} id - a user's Gitlab id
-* @returns Promise of gitlab user account
-**/
-export async function getUserGL(id) {
-  if (id == undefined) {return Promise.reject('User ID not specified')}
-  if (!mongoose.Types.ObjectId.isValid(id))  {return Promise.reject('Invalid Mongoose User ID')}
-  const mongoUser = await User.findById(id)
-        .catch(err => {return Promise.reject(['Mongoose', err])});
-
-  if (mongoUser ==null || mongoUser == undefined) {return Promise.reject('User not found')}
-
-  const usr = await gitlab.getUser(mongoUser.gitlabID)
-        .catch(err => {return Promise.reject(['Gitlab', err])});
-
-  if (usr ==null || usr == undefined) {return Promise.reject('User not found')}
-  return usr;
-}
-
-/**
-* Function creates a new profile on gitlab
-* @param {JSON} info - email, username, name, password
-* @returns Promise of gitlab newly created user account
-**/
-export async function newUserGL(info) {
-  const datum = ['email', 'username', 'name', 'password'];
-  for(let i = 0; i <datum.length; i++) {
-    if (info[datum[i]] == undefined) {return Promise.reject(datum[i] + ' not specified')}
-  }
-  const usr = await gitlab.newUser(info)
-        .catch(err => {return Promise.reject(['Gitlab', err])});
-
-  if (usr ==null || usr == undefined) {return Promise.reject('User was not created')}
-  return usr;
-}
 
 /**
 * Function logs a user in and sends her an AWS token
@@ -350,53 +312,6 @@ export async function listUserProjects(id) {
                         .catch(err => {return Promise.reject(['Mongo', err]);});
 
   return projects;
-}
-
-/**
-* Function adds an SSH key for a user
-* @param {String} auth - GL auth Token for user
-* @returns {JSON} Reciept of successful token addition
-* @throws {String} Error Data from GL
-**/
-export function addSSH(ssh, title, gitlabToken){
-  return new Promise((resolve,reject)=>{
-    if (ssh == undefined) {reject('SSH key not specified')}
-    if (title == undefined) {reject('SSH title not specified')}
-    if (gitlabToken == undefined) {reject('User not logged in')}
-
-    gitlab.addSSH(ssh, title, gitlabToken)
-    .then(reciept=>{
-      resolve(reciept);
-    }).catch(err=>{
-      console.log("SSH key addition error",err);
-      reject(err.response.data);
-    })
-  })
-}
-
-export function delSSH(key, auth){
-  return new Promise((resolve,reject)=>{
-    if (key == undefined) {reject('SSH key not specified')}
-    if (auth == undefined) {reject('User not logged in')}
-    gitlab.deleteSSH(key,auth)
-    .then(reciept=>{
-      resolve(reciept);
-    }).catch(err=>{
-      console.log("SSH key deletion error",err);
-      reject(err.response.data);
-    })
-  })
-}
-
-export function listSSH(auth){
-  return new Promise((resolve,reject)=>{
-    gitlab.listSSH(auth).then(reciept =>{
-      resolve(reciept);
-    }).catch(err => {
-      console.log("SSH key deletion error",err);
-      reject(err.response.data);
-    });
-  })
 }
 
 

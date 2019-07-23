@@ -1,75 +1,55 @@
+// AWS
 import AWS from 'aws-sdk';
-import {aws_access_key_id, aws_secret_access_key} from '../config';
-import ecc from 'eosjs-ecc';
+import {aws_access_key_id, aws_secret_access_key, aws_bucket_name} from '../config';
+// Dependencies
+const fs = require('fs');
+const fileType = require('file-type');
+const bluebird = require('bluebird');
+const multiparty = require('multiparty');
 
 
-const s3 = new AWS.S3({
-  accessKeyId: aws_access_key_id,
-  region: 'us-east-1',
-  secretAccessKey: aws_secret_access_key
-});
+export async function upload(request) {
+  // configure the keys for accessing AWS
+  AWS.config.update({
+    accessKeyId: aws_access_key_id,
+    secretAccessKey: aws_secret_access_key
+  });
+  // configure AWS to work with promises
+  AWS.config.setPromisesDependency(bluebird);
+  // create a new instance of S3
+  const s3 = new AWS.S3();
 
+  // abstracts function to upload a file returning a promise
+  const uploadFile = (buffer, name, type) => {
+    const params = {
+      ACL: 'public-read',
+      Body: buffer,
+      Bucket: process.env.S3_BUCKET,
+      ContentType: type.mime,
+      Key: `${name}.${type.ext}`
+    };
+    return s3.upload(params).promise();
+  };
 
-//generates a random key to use as image index
-//then sends a presigned post object to be used in an HTML form
-export async function awsToken() {
-  const _key = await ecc.unsafeRandomKey().catch(err => {throw err;});
-  const data = await awsPost({Bucket: 'source-images-xyz', Fields: {key: _key}}).catch(err => {throw err});
-  const obj = parseAWS(data);
-  obj.key = _key;
-  return obj;
+  console.log(request)
+  console.log()
+  console.log(request.body)
+  console.log(request.files)
+
+  // parse form and post it
+  const form = new multiparty.Form();
+  form.parse(request.body, async (error, fields, files) => {
+    if (error) throw new Error(error);
+    try {
+      const path = files.file[0].path;
+      const buffer = fs.readFileSync(path);
+      const type = fileType(buffer);
+      const timestamp = Date.now().toString();
+      const fileName = `bucketFolder/${timestamp}-lg`;
+      const data = await uploadFile(buffer, fileName, type);
+      return response.status(200).send(data);
+    } catch (error) {
+      return response.status(400).send(error);
+    }
+  });
 }
-
-
-//promisified s3.createPresignedPost
-function awsPost(q) {
-  return new Promise((resolve, reject) => {
-    s3.createPresignedPost(q, function(err, data) {
-      if (err) {reject(err)}
-      else {
-        resolve(data)
-      }
-    });
-  })
-}
-
-
-
-
-
-
-//Parses the response sent by AWS S3 createPresignedPost
-function parseAWS(data) {
-  const obj = {}
-  obj['x-amz-signature']   = data.fields['X-Amz-Signature'];
-  obj['x-amz-algorithm']   = data.fields['X-Amz-Algorithm'];
-  obj['x-amz-credential']  = data.fields['X-Amz-Credential'];
-  obj['x-amz-date']        = data.fields['X-Amz-Date'];
-  obj['bucket']            = data.fields['bucket'];
-  obj['policy']            = data.fields.Policy;
-  obj['url']               = data.url;
-  return obj;
-}
-
-
-
-/*
-export async function awsToken() {
-  const _key = await ecc.unsafeRandomKey().catch(err => {throw err;});
-  const data = await awsPost({Bucket: 'source-images-xyz', Key: _key}).catch(err => {throw err});
-  return data;
-}
-
-
-//promisified s3.createPresignedPost
-function awsPost(q) {
-  return new Promise((resolve, reject) => {
-    s3.getSignedUrl('putObject',q, function(err, data) {
-      if (err) {reject(err)}
-      else {
-        resolve(data)
-      }
-    });
-  })
-}
-*/
