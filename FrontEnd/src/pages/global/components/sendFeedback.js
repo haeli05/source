@@ -81,6 +81,18 @@ export default class SendFeedback extends React.Component {
             <div className='FeedbackPopUpForm'>
               <DialogTitle>Bugs & Feedback</DialogTitle>
               <DialogContent>
+                <Typography variant='h5'>
+                1. How would you feel if you could no longer use the product?
+                </Typography>
+                <Typography variant='h5'>
+                2. What type of people do you think would most benefit from Source?
+                </Typography>
+                <Typography variant='h5'>
+                3. What is the main benefit you receive from Superhuman?
+                </Typography>
+                <Typography variant='h5'>
+                4. How can we improve Superhuman for you?
+                </Typography>
                 <Typography variant='caption'>Notify us about bugs and give us your suggestions! Help improve Source!</Typography>
                 <TextField
                   id='Email'

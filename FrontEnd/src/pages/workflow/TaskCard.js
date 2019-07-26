@@ -21,7 +21,7 @@ import Markdown from 'react-markdown'
 
 
 
-class KanbanCard extends React.Component {
+class TaskCard extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -253,7 +253,7 @@ class KanbanCard extends React.Component {
   }
 }
 
-KanbanCard.propTypes = {
+TaskCard.propTypes = {
   task: {
     title: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
@@ -263,7 +263,7 @@ KanbanCard.propTypes = {
   }
 }
 
-KanbanCard.defaultProps = {
+TaskCard.defaultProps = {
   task: {
     title: "undefined",
     id: "undefined",
@@ -273,4 +273,4 @@ KanbanCard.defaultProps = {
   }
 }
 
-export default KanbanCard
+export default TaskCard
