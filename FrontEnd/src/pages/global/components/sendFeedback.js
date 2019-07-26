@@ -7,6 +7,12 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import Typography from '@material-ui/core/Typography'
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 // Components
 import ReactQuillEditor from './reactQuillEditor'
 // MISC
@@ -18,17 +24,27 @@ export default class SendFeedback extends React.Component {
     this.state = {
       open: false,
       email: '',
+      satisfaction: '',
+      beneficiaries: '',
+      benefit:'',
+      improvements:'',
       emailError: false,
       emailErrorText: '',
       feedback: '',
       sent: false
     }
     this.handleTextChange = this.handleTextChange.bind(this)
+    this.handleSatisfactionChange = this.handleSatisfactionChange.bind(this)
     this.toggleOpen = this.toggleOpen.bind(this)
     this.submit = this.submit.bind(this)
   };
 
   handleTextChange (target, e) {
+    let change = {}
+    change[target] = e.target.value
+    this.setState(change)
+  }
+  handleSatisfactionChange (target, e) {
     let change = {}
     change[target] = e.target.value
     this.setState(change)
@@ -53,6 +69,7 @@ export default class SendFeedback extends React.Component {
   };
 
   render () {
+    var value
     return (
       <div className='SendFeedback'>
         <Button className='MainButton' variant='outlined' size='small' onClick={this.toggleOpen}>Feedback</Button>
@@ -81,19 +98,9 @@ export default class SendFeedback extends React.Component {
             <div className='FeedbackPopUpForm'>
               <DialogTitle>Bugs & Feedback</DialogTitle>
               <DialogContent>
-                <Typography variant='h5'>
-                1. How would you feel if you could no longer use the product?
-                </Typography>
-                <Typography variant='h5'>
-                2. What type of people do you think would most benefit from Source?
-                </Typography>
-                <Typography variant='h5'>
-                3. What is the main benefit you receive from Superhuman?
-                </Typography>
-                <Typography variant='h5'>
-                4. How can we improve Superhuman for you?
-                </Typography>
-                <Typography variant='caption'>Notify us about bugs and give us your suggestions! Help improve Source!</Typography>
+              <Typography variant='h5'>
+                What's Your Email:
+              </Typography>
                 <TextField
                   id='Email'
                   label='Email'
@@ -105,6 +112,66 @@ export default class SendFeedback extends React.Component {
                   margin='normal'
                   variant='outlined'
                 />
+                <Typography variant='h5'>
+                1. How would you feel if you could no longer use the product?
+                </Typography>
+                <RadioGroup
+                    aria-label="satisfaction"
+                    name="satisfaction"
+                    value={value}
+                    onChange={this.handleSatisfactionChange}
+                  >
+                    <FormControlLabel value="Dont Care" control={<Radio />} label="Don't Care" />
+                    <FormControlLabel value="slightly dissapointed" control={<Radio />} label="Slightly Dissapointed" />
+                    <FormControlLabel
+                      value="very dissapointed"
+                      control={<Radio />}
+                      label="Very dissapointed"
+                    />
+                  </RadioGroup>
+                <Typography variant='h5'>
+                2. What type of people do you think would most benefit from Source?
+                </Typography>
+                <TextField
+                  id='Email'
+                  label='Who would benefit?'
+                  error={this.state.emailError}
+                  helperText={this.state.emailErrorText}
+                  value={this.state.email}
+                  onChange={(event) => { this.handleTextChange('email', event) }}
+                  fullWidth
+                  margin='normal'
+                  variant='outlined'
+                />
+                <Typography variant='h5'>
+                3. What is the main benefit you receive from Source?
+                </Typography>
+                <TextField
+                  id='Email'
+                  label='Your main benefit'
+                  error={this.state.emailError}
+                  helperText={this.state.emailErrorText}
+                  value={this.state.email}
+                  onChange={(event) => { this.handleTextChange('email', event) }}
+                  fullWidth
+                  margin='normal'
+                  variant='outlined'
+                />
+                <Typography variant='h5'>
+                4. How can we improve Source for you?
+                </Typography>
+                <TextField
+                  id='improve'
+                  label='Improvements'
+                  error={this.state.emailError}
+                  helperText={this.state.emailErrorText}
+                  value={this.state.email}
+                  onChange={(event) => { this.handleTextChange('email', event) }}
+                  fullWidth
+                  margin='normal'
+                  variant='outlined'
+                />
+                <Typography variant='h5'>5. Notify us about bugs and give us your suggestions! Help improve Source!</Typography>
                 <ReactQuillEditor placeholder='Please include details of what you were trying to do ...' submit={this.submit} cancel={this.toggleOpen} />
               </DialogContent>
             </div>
