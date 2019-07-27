@@ -17,6 +17,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import ReactQuillEditor from './reactQuillEditor'
 // MISC
 import axios from 'axios'
+import config from '../../../utils/config.js'
 
 export default class SendFeedback extends React.Component {
   constructor (props) {
@@ -30,21 +31,14 @@ export default class SendFeedback extends React.Component {
       improvements:'',
       emailError: false,
       emailErrorText: '',
-      feedback: '',
       sent: false
     }
-    this.handleTextChange = this.handleTextChange.bind(this)
-    this.handleSatisfactionChange = this.handleSatisfactionChange.bind(this)
+    this.handleFeedbackChange = this.handleFeedbackChange.bind(this)
     this.toggleOpen = this.toggleOpen.bind(this)
     this.submit = this.submit.bind(this)
   };
 
-  handleTextChange (target, e) {
-    let change = {}
-    change[target] = e.target.value
-    this.setState(change)
-  }
-  handleSatisfactionChange (target, e) {
+  handleFeedbackChange (target, e) {
     let change = {}
     change[target] = e.target.value
     this.setState(change)
@@ -58,9 +52,27 @@ export default class SendFeedback extends React.Component {
   };
 
   submit (text, stringBody) {
+    var feedback = `
+1. How would you feel if you could no longer use the product?
+${this.state.satisfaction}
+
+2. What type of people do you think would most benefit from Source?
+${this.state.beneficiaries}
+
+3. What is the main benefit you receive from Source?
+${this.state.benefit}
+
+4. How can we improve Source for you?
+${this.state.improvements}
+
+5. Notify us about bugs and give us your suggestions! Help improve Source!
+${stringBody}
+    `
     if (this.state.email !== '' && this.state.email.includes('@') && this.state.email.includes('.')) {
-      axios.post('/mail', { email: this.state.email })
-      axios.post('/mail2', { email: this.state.email, feedback: text })
+      axios.post(`${config.production_url}/feedback/`, {
+        email: this.state.email,
+        feedback: feedback
+      })
       this.setState({ sent: true })
     } else {
       this.setState({ emailError: true })
@@ -107,71 +119,63 @@ export default class SendFeedback extends React.Component {
                   error={this.state.emailError}
                   helperText={this.state.emailErrorText}
                   value={this.state.email}
-                  onChange={(event) => { this.handleTextChange('email', event) }}
+                  onChange={(event) => { this.handleFeedbackChange('email', event) }}
                   fullWidth
                   margin='normal'
                   variant='outlined'
                 />
                 <Typography variant='h5'>
-                1. How would you feel if you could no longer use the product?
+                  1. How would you feel if you could no longer use the product?
                 </Typography>
                 <RadioGroup
                     aria-label="satisfaction"
                     name="satisfaction"
-                    value={value}
-                    onChange={this.handleSatisfactionChange}
+                    value={this.state.satisfaction}
+                    onChange={(event) => { this.handleFeedbackChange('satisfaction', event) }}
                   >
                     <FormControlLabel value="Dont Care" control={<Radio />} label="Don't Care" />
-                    <FormControlLabel value="slightly dissapointed" control={<Radio />} label="Slightly Dissapointed" />
-                    <FormControlLabel
-                      value="very dissapointed"
-                      control={<Radio />}
-                      label="Very dissapointed"
-                    />
+                    <FormControlLabel value="Slightly Dissapointed" control={<Radio />} label="Slightly Dissapointed" />
+                    <FormControlLabel value="Very Dissapointed" control={<Radio />} label="Very dissapointed" />
                   </RadioGroup>
                 <Typography variant='h5'>
-                2. What type of people do you think would most benefit from Source?
+                  2. What type of people do you think would most benefit from Source?
                 </Typography>
                 <TextField
                   id='Email'
                   label='Who would benefit?'
-                  error={this.state.emailError}
-                  helperText={this.state.emailErrorText}
-                  value={this.state.email}
-                  onChange={(event) => { this.handleTextChange('email', event) }}
+                  value={this.state.beneficiaries}
+                  onChange={(event) => { this.handleFeedbackChange('beneficiaries', event) }}
                   fullWidth
                   margin='normal'
                   variant='outlined'
                 />
                 <Typography variant='h5'>
-                3. What is the main benefit you receive from Source?
+                  3. What is the main benefit you receive from Source?
                 </Typography>
                 <TextField
                   id='Email'
                   label='Your main benefit'
-                  error={this.state.emailError}
-                  helperText={this.state.emailErrorText}
-                  value={this.state.email}
-                  onChange={(event) => { this.handleTextChange('email', event) }}
+                  value={this.state.benefit}
+                  onChange={(event) => { this.handleFeedbackChange('benefit', event) }}
                   fullWidth
                   margin='normal'
                   variant='outlined'
                 />
                 <Typography variant='h5'>
-                4. How can we improve Source for you?
+                  4. How can we improve Source for you?
                 </Typography>
                 <TextField
                   id='improve'
                   label='Improvements'
-                  error={this.state.emailError}
-                  helperText={this.state.emailErrorText}
-                  value={this.state.email}
-                  onChange={(event) => { this.handleTextChange('email', event) }}
+                  value={this.state.improvements}
+                  onChange={(event) => { this.handleFeedbackChange('improvements', event) }}
                   fullWidth
                   margin='normal'
                   variant='outlined'
                 />
-                <Typography variant='h5'>5. Notify us about bugs and give us your suggestions! Help improve Source!</Typography>
+                <Typography variant='h5'>
+                  5. Notify us about bugs and give us your suggestions! Help improve Source!
+                </Typography>
                 <ReactQuillEditor placeholder='Please include details of what you were trying to do ...' submit={this.submit} cancel={this.toggleOpen} />
               </DialogContent>
             </div>
