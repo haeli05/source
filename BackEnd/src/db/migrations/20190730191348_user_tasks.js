@@ -6,14 +6,14 @@ exports.up = function(knex) {
         .primary()
         .unique();
       table
-        .string("task_id")
-        .references("task_id")
-        .inTable("tasks")
-        .onDelete("cascade");
-      table
         .string("user_id")
         .references("user_id")
         .inTable("users")
+        .onDelete("cascade");
+      table
+        .string("task_id")
+        .references("task_id")
+        .inTable("tasks")
         .onDelete("cascade");
       table
         .timestamp("created_at")
