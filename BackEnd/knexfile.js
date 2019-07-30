@@ -4,10 +4,10 @@ module.exports = {
   test: {
     client: "postgresql",
     migrations: {
-      directory: `${__dirname}/db/migrations`
+      directory: `${__dirname}/src/db/migrations`
     },
     seeds: {
-      directory: `${__dirname}/db/seeds/test`
+      directory: `${__dirname}/src/db/seeds/test`
     }
   },
   development: {
@@ -24,10 +24,10 @@ module.exports = {
       database: process.env.PGDATABASE || "postgres"
     },
     migrations: {
-      directory: `${__dirname}/db/migrations`
+      directory: `${__dirname}/src/db/migrations`
     },
     seeds: {
-      directory: `${__dirname}/db/seeds/development`
+      directory: `${__dirname}/src/db/seeds/development`
     },
     pool: {
       min: 2,
@@ -48,10 +48,10 @@ module.exports = {
       max: 20
     },
     migrations: {
-      directory: `${__dirname}/db/migrations`
+      directory: `${__dirname}/src/db/migrations`
     },
     seeds: {
-      directory: `${__dirname}/db/seeds/production`
+      directory: `${__dirname}/src/db/seeds/production`
     }
   }
 };

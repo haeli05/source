@@ -5,6 +5,7 @@ exports.up = function(knex) {
         .string("user_id")
         .primary()
         .unique();
+      table.json("settings");
       table.string("full_name");
       table.string("username").unique();
       table.text("bio");
@@ -35,25 +36,20 @@ exports.down = function(knex) {
 };
 
 // Table users {
-//     user_id varchar [pk, unique]
-//     full_name varchar
-//     username varchar [unique]
-//     bio varchar [note: "Rich text with html tags"] //used text
-//     email varchar [unique]
-//     password varchar [note: "We're using bcrypt to encrypt passwords"]
-//     created_at datetime
-//     location varchar
-//     website varchar
-//     projects array [ref: > projects.project_id] //pending
-//     ideas array [ref: > ideas.idea_id] //pending
-//     assigned_tasks array [ref: > tasks.task_id] //pending
-//     skills array[varchar] [note: "Max 100"] //set limits on the array
-//     social_links array[varchar]
-//     wallet_links array[varchar]
-//     user_followers array [ref: > users.user_id] //pending
-//     user_following array [ref: > users.user_id] //pending
-//     avatar varchar [note: "Link to S3 image"]
-//     tags_following array[varchar]
-//     comments array [ref: > comments.comment_id] //pending
-//     deleted boolean
-//   }
+//   user_id varchar [pk, unique]
+//   settings json [note: "JSON object of user's settings"]
+//   full_name varchar
+//   username varchar [unique]
+//   bio varchar [note: "Rich text with html tags"]
+//   email varchar [unique]
+//   password varchar [note: "We're using bcrypt to encrypt passwords"]
+//   created_at datetime
+//   location varchar
+//   website varchar
+//   skills array[varchar] [note: "Max 100"]
+//   social_links array[varchar]
+//   wallet_links array[varchar]
+//   avatar varchar [note: "Link to S3 image"]
+//   tags_following array[varchar]
+//   deleted boolean
+// }

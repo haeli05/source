@@ -7,7 +7,11 @@ exports.up = function(knex) {
         .unique();
       table.string("title");
       table.text("description");
-
+      table
+        .string("creator")
+        .references("user_id")
+        .inTable("users")
+        .onDelete("cascade");
       table
         .timestamp("created")
         .notNullable()
@@ -18,6 +22,7 @@ exports.up = function(knex) {
         .notNullable()
         .defaultTo(knex.fn.now());
       table.specificType("tags", "text ARRAY[10]");
+      table.boolean("private");
     })
   ]);
 };
@@ -27,12 +32,12 @@ exports.down = function(knex) {
 };
 
 // Table boards {
-//     board_id varchar [pk,unique]
-//     title varchar
-//     description varchar
-//     creator varchar [ref: > users.user_id] //pending
-//     created datetime
-//     last_edit_date datetime
-//     columns array [ref: > columns.column_id]//
-//     tags array[varchar] [note: "Max 10"]
-//   }
+//   board_id varchar [pk,unique]
+//   title varchar
+//   description varchar
+//   creator varchar [ref: > users.user_id]
+//   created datetime
+//   last_edit_date datetime
+//   tags array[varchar] [note: "Max 10"]
+//   private boolean
+// }

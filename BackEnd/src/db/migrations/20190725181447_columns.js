@@ -5,7 +5,13 @@ exports.up = function(knex) {
         .string("column_id")
         .primary()
         .unique();
+      table
+        .string("board_id")
+        .references("board_id")
+        .inTable("boards")
+        .onDelete("cascade");
       table.string("title");
+      table.boolean("private");
       table.specificType("tags", "text ARRAY[10]");
       table
         .timestamp("created_at")
@@ -24,9 +30,9 @@ exports.down = function(knex) {
 };
 
 // Table columns {
-//     column_id varchar [pk,unique]
-//     board_id varchar [ref: > boards.board_id] //pending
-//     title string
-//     tasks array [ref: > tasks.task_id]//pending
-//     tags array[varchar] [note: "Max 10"]
-//   }
+//   column_id varchar [pk,unique]
+//   board_id varchar [ref: > boards.board_id]
+//   title string
+//   private boolean
+//   tags array[varchar] [note: "Max 10"]
+// }
