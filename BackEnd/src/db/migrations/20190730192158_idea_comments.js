@@ -11,7 +11,7 @@ exports.up = function(knex) {
         .inTable("ideas")
         .onDelete("cascade");
       table
-        .string("comments")
+        .string("comment_id")
         .references("comment_id")
         .inTable("comments")
         .onDelete("cascade");

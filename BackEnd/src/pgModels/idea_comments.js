@@ -15,7 +15,7 @@ IdeaComments.create = function(obj) {
 
 // IdeaComments.create({
 //   idea_id: "bfc12554-a05c-4ee2-b770-3196fe004ae9",
-//   comments: "875086e1-b43b-4ff7-bd3d-1b23bd5c3b3f"
+//   comment_id: "875086e1-b43b-4ff7-bd3d-1b23bd5c3b3f"
 // }).then(data => console.log(data));
 
 IdeaComments.update = function(obj) {
@@ -31,7 +31,7 @@ IdeaComments.update = function(obj) {
 
 // IdeaComments.update({
 //   idea_comments_id: "6c3f6f2b-77ae-4b18-be32-fdbf3a722d99",
-//   comments: "875086e1-b43b-4ff7-bd3d-1b23bd5c3b3f"
+//   comment_id: "875086e1-b43b-4ff7-bd3d-1b23bd5c3b3f"
 // }).then(data => console.log(data));
 
 IdeaComments.get = function(obj) {
@@ -43,7 +43,7 @@ IdeaComments.get = function(obj) {
 };
 
 // IdeaComments.get({
-//   comments: "875086e1-b43b-4ff7-bd3d-1b23bd5c3b3f"
+//   comment_id: "875086e1-b43b-4ff7-bd3d-1b23bd5c3b3f"
 // }).then(data => console.log(data));
 
 IdeaComments.delete = function(obj) {
