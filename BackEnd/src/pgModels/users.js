@@ -1,6 +1,6 @@
 "use strict";
 
-let db = require("../db/knex");
+let { db } = require("../db/knex");
 let uuid = require("uuid/v4");
 let P = require("bluebird");
 let Users = {};
@@ -13,17 +13,37 @@ Users.create = function(obj) {
   });
 };
 
+// Users.create({
+//   settings: { a: 1, b: 3, c: 4 },
+//   full_name: "Harish ",
+//   username: "harishydv",
+//   bio: "This is the bio I am working with",
+//   email: "harishyd@protonmail.com",
+//   password: uuid(),
+//   location: "India",
+//   website: "harish.com",
+//   skills: ["javascript", "react", "html"],
+//   social_links: ["facebook.com", "twitter.com"],
+//   wallet_links: ["stripe.com", "paypal.com", "transferwise"],
+//   avatar: "https://s3.aws.lalala/adafafafda",
+//   tags_following: ["yolo, yola", "tota"]
+// }).then(data => console.log(data));
+
 Users.update = function(obj) {
   return P.try(() => {
     const { user_id } = obj;
     delete obj["user_id"];
     if (!user_id) return false;
-    obj.delete();
     return db(table)
       .where({ user_id: user_id })
       .update({ ...obj }, ["*"]);
   });
 };
+
+// Users.update({
+//   user_id: "fa02c729-0090-4231-8536-fc60af7171e8",
+//   full_name: "Harish"
+// }).then(data => console.log(data));
 
 Users.get = function(obj) {
   return P.try(() => {
@@ -32,6 +52,8 @@ Users.get = function(obj) {
       .select("*");
   });
 };
+
+// Users.get({ full_name: "Harish" }).then(data => console.log(data));
 
 Users.delete = function(obj) {
   return P.try(() => {
@@ -43,5 +65,9 @@ Users.delete = function(obj) {
       .delete();
   });
 };
+
+// Users.delete({ user_id: "25a10763-b7f3-47ed-a9c5-f34a27a4cce6" }).then(data =>
+//   console.log(data)
+// );
 
 module.exports = Users;

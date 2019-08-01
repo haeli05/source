@@ -1,6 +1,6 @@
 "use strict";
 
-let db = require("../db/knex");
+let { db } = require("../db/knex");
 let uuid = require("uuid/v4");
 let P = require("bluebird");
 let Projects = {};
@@ -13,17 +13,33 @@ Projects.create = function(obj) {
   });
 };
 
+// Projects.create({
+//   creator: "f7839cb9-f287-4e80-9f79-9834949157b4",
+//   contributors: "Harish Yadav",
+//   settings: { a: 1, b: 3, c: 4 },
+//   project_name: "New Project",
+//   description: "This is the new project I am working with",
+//   tags: ["yolo, yola", "tota"],
+//   social_links: ["facebook.com", "twitter.com"],
+//   wallet_links: ["stripe.com", "paypal.com", "transferwise"],
+//   private: true
+// }).then(data => console.log(data));
+
 Projects.update = function(obj) {
   return P.try(() => {
     const { project_id } = obj;
     delete obj["project_id"];
     if (!project_id) return false;
-    obj.delete();
     return db(table)
       .where({ project_id: project_id })
       .update({ ...obj }, ["*"]);
   });
 };
+
+// Projects.update({
+//   project_id: "635ccff3-6d3b-43d6-89eb-4713cd867328",
+//   contributors: "Harish"
+// }).then(data => console.log(data));
 
 Projects.get = function(obj) {
   return P.try(() => {
@@ -32,6 +48,10 @@ Projects.get = function(obj) {
       .select("*");
   });
 };
+
+// Projects.get({ creator: "f7839cb9-f287-4e80-9f79-9834949157b4" }).then(data =>
+//   console.log(data)
+// );
 
 Projects.delete = function(obj) {
   return P.try(() => {
@@ -43,5 +63,9 @@ Projects.delete = function(obj) {
       .delete();
   });
 };
+
+// Projects.delete({ project_id: "a62d3d65-b71a-472b-8926-3ccca12543ef" }).then(
+//   data => console.log(data)
+// );
 
 module.exports = Projects;

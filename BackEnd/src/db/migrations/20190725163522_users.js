@@ -2,7 +2,7 @@ exports.up = function(knex) {
   return Promise.all([
     knex.schema.createTable("users", table => {
       table
-        .uuid("user_id")
+        .string("user_id")
         .primary()
         .unique();
       table.json("settings");
