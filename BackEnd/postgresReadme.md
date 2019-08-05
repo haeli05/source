@@ -37,3 +37,13 @@ To create tables, in your project folder you need to run command
 With this command `knex.js` will run the migrations i.e, create the tables as per the migration definitions.
 
 I have created some generic CRUD APIs for all the tables along with commented out examples. These models are available in the folder `/Backend/src/pgModels`
+
+**Running Tests**
+
+The testing framework that I have used is Mocha and Chai. Due to relational constraints the tests for tall the Models should be run sequentially where the table row that is being referred to must be executed before the creation of referring table. Thus I have created all the tests in `/Backend/src/pgModels/test/allModels.spec.js`
+
+The tests can be run with a single command
+
+`npm run tes`
+
+This test will also populate your postgres tables with seed data generated during testing. Since We need some data for sequential testing.
