@@ -17,8 +17,8 @@ Ideas.create = function(obj) {
 //   idea_name: "Best Idea Ever",
 //   body: "This is the new project I am working with",
 //   string_body: "This is the new project I am working with",
-//   creator: "f7839cb9-f287-4e80-9f79-9834949157b4",
-//   tags: ["yolo, yola", "tota"],
+//   creator: "0baa3e37-0606-4745-8887-1df0432c0b8d",
+//   tags: ["harish, yola", "tota"],
 //   upvotes: 100,
 //   private: true
 // }).then(data => console.log(data));
@@ -47,7 +47,33 @@ Ideas.get = function(obj) {
   });
 };
 
+// return db(table)
+// .whereRaw(`array_to_string(tags, ',') like '%harish%'`)
+// .select("*");
+
 // Ideas.get({ idea_name: "Another Great Idea" }).then(data => console.log(data));
+
+// Ideas.getAll = async (limit, last, tag) => {
+//   console.log("last: ", last, { idea_id: last });
+//   try {
+//     const lastIdea = await Ideas.get({ idea_id: last });
+//     console.log("lastIdea: ", lastIdea[0].created);
+
+//     const rawWheres = [];
+//     if (last)
+//       rawWheres.push(
+//         `created < to_timestamp(${new Date(lastIdea[0].created).now()})`
+//       );
+//     const list = await db(table)
+//       .whereRaw(rawWheres[0])
+//       .select("*");
+//     console.log("list: ", list);
+//   } catch (error) {
+//     return false;
+//   }
+// };
+
+// Ideas.getAll(100, "0f580b1b-3016-4af3-9e36-e76d9008b34d");
 
 Ideas.delete = function(obj) {
   return P.try(() => {

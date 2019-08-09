@@ -55,13 +55,21 @@ Users.get = function(obj) {
 
 // Users.get({ full_name: "Harish" }).then(data => console.log(data));
 
+Users.getAll = function() {
+  return P.try(() => {
+    return db(table).select("*");
+  });
+};
+
+// Users.getAll().then(data => console.log(data));
+
 Users.delete = function(obj) {
   return P.try(() => {
     const { user_id } = obj;
     delete obj["user_id"];
     if (!user_id) return false;
     return db(table)
-      .where({ user_id: user_id })
+      .where({ ...obj })
       .delete();
   });
 };
@@ -69,5 +77,25 @@ Users.delete = function(obj) {
 // Users.delete({ user_id: "25a10763-b7f3-47ed-a9c5-f34a27a4cce6" }).then(data =>
 //   console.log(data)
 // );
+
+Users.authenticate = function(Username, password, callback) {
+  Users.get({ username: Username })
+    .then(function(user) {
+      if (!user) {
+        const err = new Error("Username or Password mismatch");
+        err.status = 401;
+        return callback(err, null);
+      }
+      bcrypt.compare(password, user.password, function(err, result) {
+        if (result === true) {
+          return callback(null, user);
+        } else {
+          const err = new Error("Username or Password mismatch");
+          return callback(err, null);
+        }
+      });
+    })
+    .catch(err => callback(err));
+};
 
 module.exports = Users;
