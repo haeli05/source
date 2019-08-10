@@ -1,6 +1,6 @@
 import * as _ideas from "./ideas.util";
 import { sanitizeTags } from "../util/helpers.util";
-import * as _test from "./ideas.test";
+// import * as _test from "./ideas.test";
 import Ideas from "../pgModels/ideas";
 import ProjectIdeas from "../pgModels/project_ideas";
 import Comments from "../pgModels/comments";
@@ -34,7 +34,7 @@ import UserComments from "../pgModels/user_comments";
 /**
  * Get 50 ideas, sorted by date, includes pagination functionality, can filter by tag
  * @param req.body.limit - the number of ideas to get per page
- * @param req.body.last - Mongoose id of the last idea seen on a page (used for pagination)
+ * @param req.body.offset - offset for the query based on the previous paginated (used for pagination)
  * @param req.body.tag - tag to filter by
  * @returns void
  */
@@ -50,11 +50,10 @@ export function getAll(req, res) {
   if (limit == undefined) {
     limit = 50;
   }
-  let last = req.body.last == undefined ? "0" : req.body.last;
+  let offset = req.body.last == undefined ? 0 : parseInt(req.body.offset);
   let tag = req.body.tag == undefined ? null : req.body.tag;
 
-  _ideas
-    .getAll(limit, last, tag)
+  Ideas.getAll(offset, limit, tag)
     .then(i => {
       res.status(200).json(i);
     })
@@ -72,7 +71,6 @@ export function getIdea(req, res) {
   let id = req.params.id;
 
   Ideas.get({ idea_id: id })
-    .getIdea(id)
     .then(i => {
       res.status(200).json(i);
     })
@@ -126,18 +124,22 @@ export async function newIdea(req, res) {
     i.private = req.body.private;
   }
 
-  i.creator = req.user.id;
+  i.creator = req.body.user.id;
+  console.log("i: ", i);
 
   try {
+    const projectID = req.body.projectID;
     const newIdea = await Ideas.create(i);
+    console.log("newIdea: ", newIdea);
     ProjectIdeas.create({
       project_id: projectID,
       idea_id: newIdea[0].idea_id
     })
       .then(i => {
-        res.status(200).json(i);
+        res.status(200).json(newIdea);
       })
       .catch(error => {
+        console.log("error: ", error);
         Ideas.delete({ idea_id: newIdea[0].idea_id }).then(() => {
           return res
             .status(400)
@@ -145,6 +147,7 @@ export async function newIdea(req, res) {
         });
       });
   } catch (error) {
+    console.log("error: ", error);
     res.status(400).json({ message: "Failed to create idea", error: error });
   }
 
@@ -166,7 +169,7 @@ export async function newIdea(req, res) {
  */
 export async function deleteIdea(req, res) {
   let id = req.params.id;
-  let user = req.user.id;
+  let user = req.body.user.id;
 
   try {
     const [idea] = await Ideas.get({ idea_id: id });
@@ -202,74 +205,94 @@ export async function deleteIdea(req, res) {
  * @param req.user - JWT payload of authenticated user
  * @returns void
  */
-export function deleteBlob(req, res) {
+export async function deleteBlob(req, res) {
   let ideaID = req.params.ideaID;
   let commentID = req.body.blobID;
-  let user = req.user.id;
+  let user = req.body.user.id;
+  console.log("user: ", user);
 
   try {
-    const [comment] = await Comments.get({comment_id: commentID});
+    const [comment] = await Comments.get({ comment_id: commentID });
+    console.log("comment: ", comment);
+    console.log("comment.creator: ", comment.user);
+    if (comment.user != user)
+      return res.status(401).json({ message: "Not authorised to delete blob" });
 
-    if (comment.creator != user) return res.status(401).json({ message: "Not authorised to delete blob" });
+    await Comments.update({ comment_id: commentID, deleted: true });
 
-    await Comments.update({comment_id: commentID, deleted:true})
+    const [ideaComment] = await IdeaComments.get({
+      idea_id: ideaID,
+      comment_id: commentID
+    });
 
-    const [ideaComment] = IdeaComments.get({idea_id : ideaID, comment_id : commentID })
-    
-    IdeaComments.update({idea_comment_id : ideaComment.idea_comment_id, deleted:true}).then(i => {
+    await IdeaComments.update({
+      idea_comment_id: ideaComment.idea_comment_id,
+      deleted: true
+    }).then(i => {
       res.status(200).json(["Successfully deleted blob", i]);
-    })
+    });
   } catch (error) {
     res.status(400).json({ message: "Failed to delete blob", error: error });
   }
-  _ideas
-    .deleteBlob(ideaID, blobID, user)
-    .then(i => {
-      res.status(200).json(["Successfully deleted blob", i]);
-    })
-    .catch(error => {
-      res.status(400).json({ message: "Failed to delete blob", error: error });
-    });
+  // _ideas
+  //   .deleteBlob(ideaID, blobID, user)
+  //   .then(i => {
+  //     res.status(200).json(["Successfully deleted blob", i]);
+  //   })
+  //   .catch(error => {
+  //     res.status(400).json({ message: "Failed to delete blob", error: error });
+  //   });
 }
 
 /**
  * Create a new blob (i.e. comment) on an idea
  * @param req.user - JWT payload of authenticated user
  * @param req.params.id - mongoose id of the idea being blobbed
- * @param req.body.nest - mongoose id of the blob this blob comments on (nests from).. can be undefined, subcomment 
+ * @param req.body.nest - mongoose id of the blob this blob comments on (nests from).. can be undefined, subcomment
  * @param req.body.body - blob content
  * @param req.body.stringBody - string form of body, used for search indexing
  * @returns void
  **/
 export async function newBlob(req, res) {
-
-  const nest = req.body.nest ? req.body.nest : null
+  const nest = req.body.nest ? req.body.nest : null;
 
   let ib = {
-    user: req.user.id,
+    user: req.body.user.id,
     body: req.body.body,
     parent_comment: nest
-  }
+  };
 
-  const ideaID = req.params.id
+  const ideaID = req.params.id;
 
   try {
+    if (ib.parent_comment) {
+      const parentIdeaComment = await IdeaComments.get({
+        comment_id: ib.parent_comment,
+        idea_id: ideaID
+      });
+      if (parentIdeaComment.length === 0)
+        return res
+          .status(400)
+          .json({ message: "Your parent comment is not on the same idea" });
+    }
+
     const [comment] = await Comments.create(ib);
-    const userComment = await UserComments({
-      user_id: user,
+    const userComment = await UserComments.create({
+      user_id: ib.user,
       comment_id: comment.comment_id
-    })
-    const ideaComment = await IdeaComments({
-      idea_id : ideaID,
+    });
+    const ideaComment = await IdeaComments.create({
+      idea_id: ideaID,
       comment_id: comment.comment_id
-    })
+    });
 
     return res.status(200).json({ blob: comment });
-
   } catch (error) {
-    return res.status(400).json({ message: "Failed to create blob", error: error });
+    console.log("error: ", error);
+    return res
+      .status(400)
+      .json({ message: "Failed to create blob", error: error });
   }
-
 
   // const nest = req.body.nest
 
@@ -277,7 +300,6 @@ export async function newBlob(req, res) {
   // if (req.body.stringBody != undefined) {
   //   stringBody = req.body.stringBody;
   // }
-
 
   // _ideas
   //   .newBlob(ib, stringBody)
@@ -298,12 +320,12 @@ export async function newBlob(req, res) {
  * @param req.user - JWT payload of authenticated user
  * @returns void
  */
-export function editIdea(req, res) {
+export async function editIdea(req, res) {
   console.log(req.body);
   let id = req.params.id;
   let body;
   let tags = req.body.tags;
-  let user = req.user.id;
+  let user = req.body.user.id;
   let stringBody = undefined;
 
   if (req.body.stringBody != undefined) {
@@ -313,25 +335,29 @@ export function editIdea(req, res) {
   try {
     //body = JSON.parse(req.body.body);
     body = req.body.body;
+    const [oldIdea] = await Ideas.get({ idea_id: id });
+
+    if (oldIdea.creator != user)
+      return res
+        .status(401)
+        .json({ message: "User not authorised to edit the idea" });
+
+    await Ideas.update({
+      idea_id: id,
+      body: body,
+      tags: tags,
+      creator: user,
+      string_body: stringBody
+    })
+      .then(i => {
+        res.status(200).json(["Successfully edited idea", i]);
+      })
+      .catch(error => {
+        res.status(400).json({ message: "Failed to edit idea", error: error });
+      });
   } catch (err) {
-    body = null;
-    return;
+    res.status(400).json({ message: "Failed to edit idea", error: err });
   }
-
-
-  Ideas.update({
-    idea_id:id,
-    body:body,
-    tags:tags,
-    creator:user,
-    string_body: stringBody
-  })
-  .then(i => {
-    res.status(200).json(["Successfully edited idea", i]);
-  })
-  .catch(error => {
-    res.status(400).json({ message: "Failed to edit idea", error: error });
-  });
 
   // _ideas
   //   .editIdea(id, user, body, tags, stringBody)
@@ -354,7 +380,7 @@ export function editIdea(req, res) {
 export async function editBlob(req, res) {
   let id = req.params.id;
   let body;
-  let user = req.user.id;
+  let user = req.body.user.id;
   let stringBody = undefined;
   if (req.body.stringBody != undefined) {
     stringBody = req.body.stringBody;
@@ -364,29 +390,34 @@ export async function editBlob(req, res) {
     //body = JSON.parse(req.body.body);
     body = req.body.body;
 
-    const userComment = await UserComments.get({user_id: user, comment_id: id })
-
-    if(userComment.length ===0 ) return res.status(401).json(["This user is not authorised to delete this comment", i]);
-   
-    Comments.update({
-      comment_id: id,
-      body:body,
-    })
-    .then(i => {
-      return res.status(200).json(["Successfully edited comment", i]);
-    })
-    .catch(error => {
-      res.status(400).json({ message: "Failed to edit comment", error: error });
+    const userComment = await UserComments.get({
+      user_id: user,
+      comment_id: id
     });
 
+    if (userComment.length === 0)
+      return res
+        .status(401)
+        .json(["This user is not authorised to delete this comment", i]);
+
+    Comments.update({
+      comment_id: id,
+      body: body
+    })
+      .then(i => {
+        return res.status(200).json(["Successfully edited comment", i]);
+      })
+      .catch(error => {
+        res
+          .status(400)
+          .json({ message: "Failed to edit comment", error: error });
+      });
   } catch (err) {
     body = null;
-    return res.status(400).json({ message: "Failed to edit comment", error: error });
-
+    return res
+      .status(400)
+      .json({ message: "Failed to edit comment", error: error });
   }
-
-
-
 
   // _ideas
   //   .editBlob(id, user, body, stringBody)

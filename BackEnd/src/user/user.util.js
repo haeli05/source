@@ -3,11 +3,11 @@ import Users from "../pgModels/users";
 
 import FollowTopic from "../models/followTopic";
 import Upvote from "../models/upvotes";
-import Transfer from "../models/transfer";
+// import Transfer from "../models/transfer";
 import ecc from "eosjs-ecc";
-import * as eosUtil from "../util/eos.util";
+// import * as eosUtil from "../util/eos.util";
 import mongoose from "mongoose";
-import { awsToken } from "./../storage/storage.util";
+// import { awsToken } from "./../storage/storage.util";
 import ResetPassToken from "../models/resetPassToken";
 import transporter from "../config";
 import bcrypt from "bcrypt";
@@ -175,9 +175,9 @@ export async function updateUser(fields, userId) {
  * @returns Promise of account balance
  * @throws {String}
  **/
-export function getBalance(account) {
-  return eosUtil.getBalanceEOS(account);
-}
+// export function getBalance(account) {
+//   return eosUtil.getBalanceEOS(account);
+// }
 
 export async function getUser(id) {
   if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -539,23 +539,23 @@ export async function gfollowing(id) {
  * @param id - mongoose id of user
  * @returns Array of all transfers involving the user
  **/
-export async function getTransfers(id) {
-  if (id == undefined) {
-    return Promise.reject("User ID not specified");
-  }
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return Promise.reject("Invalid Mongoose User ID");
-  }
+// export async function getTransfers(id) {
+//   if (id == undefined) {
+//     return Promise.reject("User ID not specified");
+//   }
+//   if (!mongoose.Types.ObjectId.isValid(id)) {
+//     return Promise.reject("Invalid Mongoose User ID");
+//   }
 
-  const transfers = await User.findById(id)
-    .select("transfers")
-    .populate({ path: "transfers" })
-    .catch(err => {
-      return Promise.reject(["Mongoose", err]);
-    });
+//   const transfers = await User.findById(id)
+//     .select("transfers")
+//     .populate({ path: "transfers" })
+//     .catch(err => {
+//       return Promise.reject(["Mongoose", err]);
+//     });
 
-  return transfers;
-}
+//   return transfers;
+// }
 
 /**
  * Function retrieves a list of user Project
@@ -583,54 +583,54 @@ export async function gfollowers(id) {
  * @param {JSON} info - sender, receiver, message, src (amount)
  * @returns {JSON} EOS transaction receipt for the transfer
  **/
-export async function transferToUser(info) {
-  const datum = ["sender", "receiver", "src"];
-  for (let i = 0; i < datum.length; i++) {
-    if (info[datum[i]] == undefined) {
-      return Promise.reject(datum[i] + " not specified");
-    }
-  }
-  let query = { username: info.sender };
-  let user = await User.findOne(query)
-    .select("+privateKey")
-    .catch(err => {
-      return Promise.reject(err);
-    });
+// export async function transferToUser(info) {
+//   const datum = ["sender", "receiver", "src"];
+//   for (let i = 0; i < datum.length; i++) {
+//     if (info[datum[i]] == undefined) {
+//       return Promise.reject(datum[i] + " not specified");
+//     }
+//   }
+//   let query = { username: info.sender };
+//   let user = await User.findOne(query)
+//     .select("+privateKey")
+//     .catch(err => {
+//       return Promise.reject(err);
+//     });
 
-  let tx = await eosUtil
-    .transferEOS(
-      info.sender,
-      info.receiver,
-      info.src,
-      info.message,
-      user.privateKey
-    )
-    .catch(err => {
-      return Promise.reject(err);
-    });
+//   let tx = await eosUtil
+//     .transferEOS(
+//       info.sender,
+//       info.receiver,
+//       info.src,
+//       info.message,
+//       user.privateKey
+//     )
+//     .catch(err => {
+//       return Promise.reject(err);
+//     });
 
-  let newTransfer = new Transfer({
-    from: info.sender,
-    to: info.receiver,
-    quantity: info.src,
-    memo: info.message,
-    txID: tx.transaction_id
-  });
-  Promise.all([
-    newTransfer.save(),
-    User.findOneAndUpdate(
-      { EOSUsername: receiver },
-      { $push: { transfers: newTransfer._id } },
-      { new: true, upsert: true }
-    ).select("-privateKey"),
-    User.findOneAndUpdate(
-      { EOSUsername: sender },
-      { $push: { transfers: newTransfer._id } },
-      { new: true }
-    )
-  ]);
-  return tx;
-}
+//   let newTransfer = new Transfer({
+//     from: info.sender,
+//     to: info.receiver,
+//     quantity: info.src,
+//     memo: info.message,
+//     txID: tx.transaction_id
+//   });
+//   Promise.all([
+//     newTransfer.save(),
+//     User.findOneAndUpdate(
+//       { EOSUsername: receiver },
+//       { $push: { transfers: newTransfer._id } },
+//       { new: true, upsert: true }
+//     ).select("-privateKey"),
+//     User.findOneAndUpdate(
+//       { EOSUsername: sender },
+//       { $push: { transfers: newTransfer._id } },
+//       { new: true }
+//     )
+//   ]);
+//   return tx;
+// }
 
 /**
  * Function checks uniqueness of email/username so that user creation will not fail

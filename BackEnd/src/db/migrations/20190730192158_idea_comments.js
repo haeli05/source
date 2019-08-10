@@ -15,6 +15,7 @@ exports.up = function(knex) {
         .references("comment_id")
         .inTable("comments")
         .onDelete("cascade");
+      table.boolean("deleted").defaultTo(false);
       table
         .timestamp("created_at")
         .notNullable()

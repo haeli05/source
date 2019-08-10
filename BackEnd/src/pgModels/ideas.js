@@ -54,27 +54,23 @@ Ideas.get = function(obj) {
 
 // Ideas.get({ idea_name: "Another Great Idea" }).then(data => console.log(data));
 
-// Ideas.getAll = async (limit, last, tag) => {
-//   console.log("last: ", last, { idea_id: last });
-//   try {
-//     const lastIdea = await Ideas.get({ idea_id: last });
-//     console.log("lastIdea: ", lastIdea[0].created);
+Ideas.getAll = async (offset, limit, tag) => {
+  return P.try(() => {
+    if (tag) {
+      return db(table)
+        .select("*")
+        .whereRaw(`array_to_string(tags, ',') like '%${tag}%'`)
+        .limit(typeof limit === "number" ? limit : "ALL")
+        .offset(typeof offset === "number" ? offset : 0);
+    }
+    return db(table)
+      .select("*")
+      .limit(typeof limit === "number" ? limit : "ALL")
+      .offset(typeof offset === "number" ? offset : 0);
+  });
+};
 
-//     const rawWheres = [];
-//     if (last)
-//       rawWheres.push(
-//         `created < to_timestamp(${new Date(lastIdea[0].created).now()})`
-//       );
-//     const list = await db(table)
-//       .whereRaw(rawWheres[0])
-//       .select("*");
-//     console.log("list: ", list);
-//   } catch (error) {
-//     return false;
-//   }
-// };
-
-// Ideas.getAll(100, "0f580b1b-3016-4af3-9e36-e76d9008b34d");
+// Ideas.getAll(0, 5, "hahaha").then(x => console.log(x));
 
 Ideas.delete = function(obj) {
   return P.try(() => {

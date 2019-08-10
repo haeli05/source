@@ -6,6 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha ./src/**/test/*.spec.js  --reporter spec",
     "start": "nodemon src/server.js --exec babel-node",
+    "startTest": "nodemon src/testServer.js --exec babel-node",
     "build": "babel src -d lib",
     "run": "npm run-script build && npm run-script start"
   },

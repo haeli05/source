@@ -1,4 +1,4 @@
-import * as _user from "./user.util";
+// import * as _user from "./user.util";
 import mongoose from "mongoose";
 import { sanitizeTags } from "../util/helpers.util";
 
@@ -36,14 +36,14 @@ export function updateUser(req, res) {
   req.body.social == undefined
     ? true
     : (cleaned.social_links = req.body.social);
-  const userId = req.user.id;
+  const userId = req.body.user.id; // change it get user from passport
   cleaned.user_id = userId;
 
   Users.update(cleaned)
     .then(updatedUser => {
       return res.status(200).json(updatedUser);
     })
-    .catch(err => {
+    .catch(error => {
       return res.status(400).json("error updating user " + err);
     });
 
@@ -52,7 +52,7 @@ export function updateUser(req, res) {
   //   .then(updatedUser => {
   //     res.status(200).json(updatedUser);
   //   })
-  //   .catch(err => {
+  //   .catch(error=> {
   //     res.status(400).json("error updating user " + err);
   //   });
 }
@@ -64,10 +64,10 @@ export function deleteUser(req, res) {
     .then(i => {
       return res.status(200).json(["Successfully deleted user", i]);
     })
-    .catch(err => {
+    .catch(error => {
       return res
         .status(400)
-        .json({ message: "Failed to delete user", error: err });
+        .json({ message: "Failed to delete user", error: error });
     });
 
   // _user
@@ -75,8 +75,8 @@ export function deleteUser(req, res) {
   //   .then(i => {
   //     res.status(200).json(["Successfully deleted user", i]);
   //   })
-  //   .catch(err => {
-  //     res.status(400).json({ message: "Failed to delete user", error: err });
+  //   .catch(error=> {
+  //     res.status(400).json({ message: "Failed to delete user", error: error});
   //   });
 }
 
@@ -116,7 +116,7 @@ export function deleteUser(req, res) {
 //     .then(followed => {
 //       res.status(200).json(followed);
 //     })
-//     .catch(err => {
+//     .catch(error=> {
 //       res.status(400).json("error following object " + err);
 //     });
 // }
@@ -128,19 +128,22 @@ export function deleteUser(req, res) {
  * @returns
  **/
 export async function followTags(req, res) {
-  const userId = req.user.id;
+  const userId = req.body.user.id;
   const tags = sanitizeTags(req.body.tags);
 
   try {
-    const user = Users.get({ user_id: userId });
+    const [user] = await Users.get({ user_id: userId });
     let { tags_following } = user;
-    tags_following = [...tags_following, ...tags];
+    tags_following = tags_following ? [...tags_following, ...tags] : tags;
 
-    Users.update({ tags_following }).then(followed => {
+    await Users.update({
+      user_id: user.user_id,
+      tags_following: tags_following
+    }).then(followed => {
       res.status(200).json(followed);
     });
   } catch (error) {
-    return res.status(400).json("error following tags " + err);
+    return res.status(400).json("error following tags " + error);
   }
 
   // _user
@@ -148,7 +151,7 @@ export async function followTags(req, res) {
   //   .then(followed => {
   //     res.status(200).json(followed);
   //   })
-  //   .catch(err => {
+  //   .catch(error=> {
   //     res.status(400).json("error following tags " + err);
   //   });
 }
@@ -177,7 +180,7 @@ export function followingFeed(req, res) {
       const { tags_following } = user;
       res.status(200).json(tags_following);
     })
-    .catch(err => {
+    .catch(error => {
       res.status(400).json("error generating following feed " + err);
     });
 
@@ -186,7 +189,7 @@ export function followingFeed(req, res) {
   //   .then(feed => {
   //     res.status(200).json(feed);
   //   })
-  //   .catch(err => {
+  //   .catch(error=> {
   //     res.status(400).json("error generating following feed " + err);
   //   });
 }
@@ -206,7 +209,7 @@ export function followingFeed(req, res) {
 //     .then(feed => {
 //       res.status(200).json(feed);
 //     })
-//     .catch(err => {
+//     .catch(error=> {
 //       res.status(400).json("error generating voted feed " + err);
 //     });
 // }
@@ -221,7 +224,7 @@ export function followingFeed(req, res) {
 export function addAvatar(req, res) {
   const key = req.body.key;
   const url = req.body.url;
-  const user = req.user.id;
+  const user = req.body.user.id;
   if (!user) {
     res.status(400).json("User not signed in");
     return;
@@ -233,11 +236,12 @@ export function addAvatar(req, res) {
 
   const fullUrl = url + "/" + key;
 
-  Users.update({ avatar: fullUrl })
-    .then(() => {
-      res.status(200).json("Added avatar");
+  Users.update({ user_id: user, avatar: fullUrl })
+    .then(user => {
+      console.log("user: ", user);
+      res.status(200).json(user);
     })
-    .catch(err => {
+    .catch(error => {
       res.status(400).json("error adding avatar " + err);
     });
 
@@ -246,7 +250,7 @@ export function addAvatar(req, res) {
   //   .then(() => {
   //     res.status(200).json("Added avatar");
   //   })
-  //   .catch(err => {
+  //   .catch(error=> {
   //     res.status(400).json("error adding avatar " + err);
   //   });
 }
@@ -267,7 +271,7 @@ export function addAvatar(req, res) {
 //     .then(data => {
 //       res.status(200).json(data);
 //     })
-//     .catch(err => {
+//     .catch(error=> {
 //       let error = JSON.parse(err.message).error.details[0].message;
 //       console.log("ERROR Retrieving User Balance", error);
 //       res.status(400).json({
@@ -290,7 +294,7 @@ export function getUser(req, res) {
     .then(data => {
       res.status(200).json(data);
     })
-    .catch(err => {
+    .catch(error => {
       res.status(400).json({
         message: "Error Getting User",
         error: err
@@ -302,7 +306,7 @@ export function getUser(req, res) {
   //   .then(data => {
   //     res.status(200).json(data);
   //   })
-  //   .catch(err => {
+  //   .catch(error=> {
   //     res.status(400).json({
   //       message: "Error Getting User",
   //       error: err
@@ -325,10 +329,10 @@ export function getUser(req, res) {
 //     .then(data => {
 //       res.status(200).json(data);
 //     })
-//     .catch(err => {
+//     .catch(error=> {
 //       res
 //         .status(400)
-//         .json({ message: "Error fetching user Gitlab profile", error: err });
+//         .json({ message: "Error fetching user Gitlab profile", error: error});
 //     });
 // }
 
@@ -356,10 +360,10 @@ export function getUser(req, res) {
 //     .then(data => {
 //       res.status(200).json(data);
 //     })
-//     .catch(err => {
+//     .catch(error=> {
 //       res
 //         .status(400)
-//         .json({ message: "Error creating gitlab account", error: err });
+//         .json({ message: "Error creating gitlab account", error: error});
 //     });
 // }
 
@@ -371,29 +375,29 @@ export function getUser(req, res) {
  * @returns JSON of account balance
  **/
 
-export function login(req, res) {
-  let username = "";
-  let password = "";
-  if (req.body.username && req.body.password) {
-    username = req.body.username;
-    password = req.body.password;
-  } else {
-    res.status(400).json({
-      message: "Error logging In",
-      error: "No username or password specified"
-    });
-    return;
-  }
-  //New Model Integrated in the Older Util
-  _user
-    .login(username, password)
-    .then(data => {
-      res.status(200).json(data);
-    })
-    .catch(error => {
-      res.status(400).json({ message: "Error Signing in User", error: error });
-    });
-}
+// export function login(req, res) {
+//   let username = "";
+//   let password = "";
+//   if (req.body.username && req.body.password) {
+//     username = req.body.username;
+//     password = req.body.password;
+//   } else {
+//     res.status(400).json({
+//       message: "Error logging In",
+//       error: "No username or password specified"
+//     });
+//     return;
+//   }
+//   //New Model Integrated in the Older Util
+//   _user
+//     .login(username, password)
+//     .then(data => {
+//       res.status(200).json(data);
+//     })
+//     .catch(error => {
+//       res.status(400).json({ message: "Error Signing in User", error: error });
+//     });
+// }
 
 /**
  * Function retrives all users
@@ -406,7 +410,7 @@ export function getUsers(req, res) {
     .then(data => {
       res.status(200).json(data);
     })
-    .catch(err => {
+    .catch(error => {
       res.status(400).json({
         message: "Error Retrieving All Users",
         error: err
@@ -417,7 +421,7 @@ export function getUsers(req, res) {
   //   .then(data => {
   //     res.status(200).json(data);
   //   })
-  //   .catch(err => {
+  //   .catch(error=> {
   //     res.status(400).json({
   //       message: "Error Retrieving All Users",
   //       error: err
@@ -445,7 +449,7 @@ export function newUser(req, res) {
     .then(data => {
       res.status(200).json(data);
     })
-    .catch(err => {
+    .catch(error => {
       console.log(err);
       res.status(400).json({
         message: "Error creating user",
@@ -466,7 +470,7 @@ export function newUser(req, res) {
   //   .then(data => {
   //     res.status(200).json(data);
   //   })
-  //   .catch(err => {
+  //   .catch(error=> {
   //     console.log(err);
   //     res.status(400).json({
   //       message: "Error creating user",
@@ -504,7 +508,7 @@ export async function listUserProjects(req, res) {
   //   .then(data => {
   //     res.status(200).json(data);
   //   })
-  //   .catch(err => {
+  //   .catch(error=> {
   //     res.status(400).json({
   //       message: "Error Retrieving User Projects",
   //       error: err
@@ -557,7 +561,7 @@ export async function listUserProjects(req, res) {
 //     .then(data => {
 //       res.status(200).json(data);
 //     })
-//     .catch(err => {
+//     .catch(error=> {
 //       res.status(400).json({
 //         messsage: "Error deleting SSH Key",
 //         error: err
@@ -579,7 +583,7 @@ export async function listUserProjects(req, res) {
 //     .then(data => {
 //       res.status(200).json(data);
 //     })
-//     .catch(err => {
+//     .catch(error=> {
 //       res.status(400).json({
 //         message: "Error listing SSH Keys",
 //         error: err
@@ -632,15 +636,14 @@ export async function listUserProjects(req, res) {
  * @param {JSON} req.body.toFollow - mongoose ID of the user to follow/unfollow
  **/
 export function follow(req, res) {
-  let id = req.user.id;
-  let toFollow = mongoose.Types.ObjectId(req.body.toFollow);
+  let id = req.body.user.id;
+  let toFollow = req.body.toFollow;
 
   UserFollowers.create({ user_id: id, user_follower: toFollow })
-    .follow(id, toFollow)
     .then(data => {
       res.status(200).json(data);
     })
-    .catch(err => {
+    .catch(error => {
       res.status(400).json({
         message: "Error Following User",
         error: err
@@ -651,7 +654,7 @@ export function follow(req, res) {
   //   .then(data => {
   //     res.status(200).json(data);
   //   })
-  //   .catch(err => {
+  //   .catch(error=> {
   //     res.status(400).json({
   //       message: "Error Following User",
   //       error: err
@@ -673,7 +676,7 @@ export function follow(req, res) {
 //     .then(data => {
 //       res.status(200).json(data);
 //     })
-//     .catch(err => {
+//     .catch(error=> {
 //       res.status(400).json({
 //         message: "Error Getting Starred Projects",
 //         error: err
@@ -695,7 +698,7 @@ export function follow(req, res) {
 //     .then(data => {
 //       res.status(200).json(data);
 //     })
-//     .catch(err => {
+//     .catch(error=> {
 //       res.status(400).json({
 //         message: "Error Getting Pinned projects",
 //         error: err
@@ -719,7 +722,7 @@ export function follow(req, res) {
 //     .then(data => {
 //       res.status(200).json(data);
 //     })
-//     .catch(err => {
+//     .catch(error=> {
 //       res.status(400).json({
 //         message: "Error Getting the following list",
 //         error: err
@@ -757,7 +760,7 @@ export async function gfollowers(req, res) {
   //   .then(data => {
   //     res.status(200).json(data);
   //   })
-  //   .catch(err => {
+  //   .catch(error=> {
   //     res.status(400).json({
   //       message: "Error Getting Followers",
   //       error: err
@@ -794,8 +797,8 @@ export async function gfollowers(req, res) {
 //         }
 //       );
 //     })
-//     .catch(err => {
-//       res.json({ message: "Group Creation Error", error: err });
+//     .catch(error=> {
+//       res.json({ message: "Group Creation Error", error: error});
 //     });
 // }
 
@@ -820,7 +823,7 @@ export async function gfollowers(req, res) {
 //     .then(data => {
 //       res.status(200).json(data);
 //     })
-//     .catch(err => {
+//     .catch(error=> {
 //       res.status(400).json({
 //         message: "Error Transfering SOURCE",
 //         error: err
@@ -842,7 +845,7 @@ export async function gfollowers(req, res) {
 //     .then(data => {
 //       res.status(200).json(data);
 //     })
-//     .catch(err => {
+//     .catch(error=> {
 //       res.status(400).json({
 //         message: "Error Getting Transfers",
 //         error: err
@@ -863,11 +866,10 @@ export async function gfollowers(req, res) {
 //     .then(success => {
 //       res.status(200).json({ Message: "Success" });
 //     })
-//     .catch(err => {
-//       res.status(400).json({ Error: err });
+//     .catch(error=> {
+//       res.status(400).json({ Error: error});
 //     });
 // }
-
 
 //Not Present in the new schema
 
@@ -879,28 +881,27 @@ export async function gfollowers(req, res) {
 //     .then(success => {
 //       res.status(200).json({ Message: "Success" });
 //     })
-//     .catch(err => {
-//       res.status(400).json({ Error: err });
+//     .catch(error=> {
+//       res.status(400).json({ Error: error});
 //     });
 // }
 
 export function isUserInDB(req, res) {
   let username = req.params.username;
-  Users.get({username})
+  Users.get({ username })
     .then(data => {
-      if (data.length===1) return res.status(200).json(data);
-      return  res.status(404).json({ message: "User Not found" });
-
+      if (data.length === 1) return res.status(200).json(data);
+      return res.status(404).json({ message: "User Not found" });
     })
-    .catch(err => {
-      res.status(400).json({ Error: err });
+    .catch(error => {
+      res.status(400).json({ Error: error });
     });
   // _user
   //   .isUsernameInDB(username)
   //   .then(data => {
   //     res.status(200).json(data);
   //   })
-  //   .catch(err => {
-  //     res.status(400).json({ Error: err });
+  //   .catch(error=> {
+  //     res.status(400).json({ Error: error});
   //   });
 }
