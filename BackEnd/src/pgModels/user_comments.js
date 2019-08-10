@@ -9,7 +9,8 @@ const table = "user_comments";
 
 UserComments.create = function(obj) {
   return P.try(() => {
-    return db(table).insert({ user_comments_id: uuid(), ...obj }, ["*"]);
+    obj.user_comments_id = uuid();
+    return db(table).insert(obj, ["*"]);
   });
 };
 // UserComments.create({
@@ -25,7 +26,7 @@ UserComments.update = function(obj) {
 
     return db(table)
       .where({ user_comments_id: user_comments_id })
-      .update({ ...obj }, ["*"]);
+      .update(obj, ["*"]);
   });
 };
 // UserComments.update({
@@ -36,7 +37,7 @@ UserComments.update = function(obj) {
 UserComments.get = function(obj) {
   return P.try(() => {
     return db(table)
-      .where({ ...obj })
+      .where(obj)
       .select("*");
   });
 };

@@ -9,7 +9,8 @@ const table = "board_columns";
 
 BoardColumns.create = function(obj) {
   return P.try(() => {
-    return db(table).insert({ board_columns_id: uuid(), ...obj }, ["*"]);
+    obj.board_columns_id = uuid();
+    return db(table).insert(obj, ["*"]);
   });
 };
 
@@ -37,7 +38,7 @@ BoardColumns.update = function(obj) {
 BoardColumns.get = function(obj) {
   return P.try(() => {
     return db(table)
-      .where({ ...obj })
+      .where(obj)
       .select("*");
   });
 };

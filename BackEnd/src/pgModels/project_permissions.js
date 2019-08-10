@@ -9,7 +9,8 @@ const table = "project_permissions";
 
 ProjectPermissions.create = function(obj) {
   return P.try(() => {
-    return db(table).insert({ project_permissions_id: uuid(), ...obj }, ["*"]);
+    obj.project_permissions_id = uuid();
+    return db(table).insert(obj, ["*"]);
   });
 };
 // ProjectPermissions.create({
@@ -25,7 +26,7 @@ ProjectPermissions.update = function(obj) {
 
     return db(table)
       .where({ project_permissions_id: project_permissions_id })
-      .update({ ...obj }, ["*"]);
+      .update(obj, ["*"]);
   });
 };
 // ProjectPermissions.update({
@@ -36,7 +37,7 @@ ProjectPermissions.update = function(obj) {
 ProjectPermissions.get = function(obj) {
   return P.try(() => {
     return db(table)
-      .where({ ...obj })
+      .where(obj)
       .select("*");
   });
 };

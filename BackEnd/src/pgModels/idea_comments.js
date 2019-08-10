@@ -9,7 +9,8 @@ const table = "idea_comments";
 
 IdeaComments.create = function(obj) {
   return P.try(() => {
-    return db(table).insert({ idea_comments_id: uuid(), ...obj }, ["*"]);
+    obj.idea_comments_id = uuid();
+    return db(table).insert(obj, ["*"]);
   });
 };
 
@@ -25,7 +26,7 @@ IdeaComments.update = function(obj) {
     if (!idea_comments_id) return false;
     return db(table)
       .where({ idea_comments_id: idea_comments_id })
-      .update({ ...obj }, ["*"]);
+      .update(obj, ["*"]);
   });
 };
 
@@ -37,7 +38,7 @@ IdeaComments.update = function(obj) {
 IdeaComments.get = function(obj) {
   return P.try(() => {
     return db(table)
-      .where({ ...obj })
+      .where(obj)
       .select("*");
   });
 };

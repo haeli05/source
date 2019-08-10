@@ -9,7 +9,8 @@ const table = "user_followers";
 
 UserFollowers.create = function(obj) {
   return P.try(() => {
-    return db(table).insert({ user_followers_id: uuid(), ...obj }, ["*"]);
+    obj.user_followers_id = uuid();
+    return db(table).insert(obj, ["*"]);
   });
 };
 // UserFollowers.create({
@@ -25,7 +26,7 @@ UserFollowers.update = function(obj) {
 
     return db(table)
       .where({ user_followers_id: user_followers_id })
-      .update({ ...obj }, ["*"]);
+      .update(obj, ["*"]);
   });
 };
 // UserFollowers.update({
@@ -36,7 +37,7 @@ UserFollowers.update = function(obj) {
 UserFollowers.get = function(obj) {
   return P.try(() => {
     return db(table)
-      .where({ ...obj })
+      .where(obj)
       .select("*");
   });
 };

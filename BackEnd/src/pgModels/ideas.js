@@ -9,7 +9,8 @@ const table = "ideas";
 
 Ideas.create = function(obj) {
   return P.try(() => {
-    return db(table).insert({ idea_id: uuid(), ...obj }, ["*"]);
+    obj.idea_id = uuid();
+    return db(table).insert(obj, ["*"]);
   });
 };
 
@@ -30,7 +31,7 @@ Ideas.update = function(obj) {
     if (!idea_id) return false;
     return db(table)
       .where({ idea_id: idea_id })
-      .update({ ...obj }, ["*"]);
+      .update(obj, ["*"]);
   });
 };
 
@@ -42,7 +43,7 @@ Ideas.update = function(obj) {
 Ideas.get = function(obj) {
   return P.try(() => {
     return db(table)
-      .where({ ...obj })
+      .where(obj)
       .select("*");
   });
 };

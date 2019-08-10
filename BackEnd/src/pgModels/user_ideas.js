@@ -9,7 +9,8 @@ const table = "user_ideas";
 
 UserIdeas.create = function(obj) {
   return P.try(() => {
-    return db(table).insert({ user_ideas_id: uuid(), ...obj }, ["*"]);
+    obj.user_ideas_id = uuid();
+    return db(table).insert(obj, ["*"]);
   });
 };
 // UserIdeas.create({
@@ -25,7 +26,7 @@ UserIdeas.update = function(obj) {
 
     return db(table)
       .where({ user_ideas_id: user_ideas_id })
-      .update({ ...obj }, ["*"]);
+      .update(obj, ["*"]);
   });
 };
 // UserIdeas.update({
@@ -36,7 +37,7 @@ UserIdeas.update = function(obj) {
 UserIdeas.get = function(obj) {
   return P.try(() => {
     return db(table)
-      .where({ ...obj })
+      .where(obj)
       .select("*");
   });
 };

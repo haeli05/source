@@ -9,7 +9,8 @@ const table = "comments";
 
 Comments.create = function(obj) {
   return P.try(() => {
-    return db(table).insert({ comment_id: uuid(), ...obj }, ["*"]);
+    obj.comment_id = uuid();
+    return db(table).insert(obj, ["*"]);
   });
 };
 
@@ -27,7 +28,7 @@ Comments.update = function(obj) {
 
     return db(table)
       .where({ comment_id: comment_id })
-      .update({ ...obj }, ["*"]);
+      .update(obj, ["*"]);
   });
 };
 
@@ -39,7 +40,7 @@ Comments.update = function(obj) {
 Comments.get = function(obj) {
   return P.try(() => {
     return db(table)
-      .where({ ...obj })
+      .where(obj)
       .select("*");
   });
 };

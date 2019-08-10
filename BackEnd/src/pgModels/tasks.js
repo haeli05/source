@@ -9,7 +9,8 @@ const table = "tasks";
 
 Tasks.create = function(obj) {
   return P.try(() => {
-    return db(table).insert({ task_id: uuid(), ...obj }, ["*"]);
+    obj.task_id = uuid();
+    return db(table).insert(obj, ["*"]);
   });
 };
 
@@ -35,7 +36,7 @@ Tasks.update = function(obj) {
 
     return db(table)
       .where({ task_id: task_id })
-      .update({ ...obj }, ["*"]);
+      .update(obj, ["*"]);
   });
 };
 
@@ -47,7 +48,7 @@ Tasks.update = function(obj) {
 Tasks.get = function(obj) {
   return P.try(() => {
     return db(table)
-      .where({ ...obj })
+      .where(obj)
       .select("*");
   });
 };

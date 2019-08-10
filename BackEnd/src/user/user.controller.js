@@ -733,7 +733,7 @@ export function follow(req, res) {
  * @param {JSON} res - Response JSON object
  * @returns Array of users
  **/
-export function gfollowers(req, res) {
+export async function gfollowers(req, res) {
   const user_id = req.params.id;
 
   try {

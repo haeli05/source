@@ -9,7 +9,8 @@ const table = "task_assigned_to";
 
 TaskAssignedTo.create = function(obj) {
   return P.try(() => {
-    return db(table).insert({ task_assigned_to_id: uuid(), ...obj }, ["*"]);
+    obj.task_assigned_to_id = uuid();
+    return db(table).insert(obj, ["*"]);
   });
 };
 // TaskAssignedTo.create({
@@ -25,7 +26,7 @@ TaskAssignedTo.update = function(obj) {
 
     return db(table)
       .where({ task_assigned_to_id: task_assigned_to_id })
-      .update({ ...obj }, ["*"]);
+      .update(obj, ["*"]);
   });
 };
 // TaskAssignedTo.update({
@@ -36,7 +37,7 @@ TaskAssignedTo.update = function(obj) {
 TaskAssignedTo.get = function(obj) {
   return P.try(() => {
     return db(table)
-      .where({ ...obj })
+      .where(obj)
       .select("*");
   });
 };

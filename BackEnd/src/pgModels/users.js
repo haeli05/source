@@ -9,7 +9,8 @@ const table = "users";
 
 Users.create = function(obj) {
   return P.try(() => {
-    return db(table).insert({ user_id: uuid(), ...obj }, ["*"]);
+    obj.user_id = uuid();
+    return db(table).insert(obj, ["*"]);
   });
 };
 
@@ -36,7 +37,7 @@ Users.update = function(obj) {
     if (!user_id) return false;
     return db(table)
       .where({ user_id: user_id })
-      .update({ ...obj }, ["*"]);
+      .update(obj, ["*"]);
   });
 };
 
@@ -48,7 +49,7 @@ Users.update = function(obj) {
 Users.get = function(obj) {
   return P.try(() => {
     return db(table)
-      .where({ ...obj })
+      .where(obj)
       .select("*");
   });
 };
@@ -69,7 +70,7 @@ Users.delete = function(obj) {
     delete obj["user_id"];
     if (!user_id) return false;
     return db(table)
-      .where({ ...obj })
+      .where(obj)
       .delete();
   });
 };

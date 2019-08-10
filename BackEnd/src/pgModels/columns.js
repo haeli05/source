@@ -9,7 +9,8 @@ const table = "columns";
 
 Columns.create = function(obj) {
   return P.try(() => {
-    return db(table).insert({ column_id: uuid(), ...obj }, ["*"]);
+    obj.column_id = uuid();
+    return db(table).insert(obj, ["*"]);
   });
 };
 
@@ -28,7 +29,7 @@ Columns.update = function(obj) {
 
     return db(table)
       .where({ column_id: column_id })
-      .update({ ...obj }, ["*"]);
+      .update(obj, ["*"]);
   });
 };
 
@@ -40,7 +41,7 @@ Columns.update = function(obj) {
 Columns.get = function(obj) {
   return P.try(() => {
     return db(table)
-      .where({ ...obj })
+      .where(obj)
       .select("*");
   });
 };

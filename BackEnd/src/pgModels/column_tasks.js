@@ -9,7 +9,8 @@ const table = "column_tasks";
 
 ColumnTasks.create = function(obj) {
   return P.try(() => {
-    return db(table).insert({ column_tasks_id: uuid(), ...obj }, ["*"]);
+    obj.column_tasks_id = uuid();
+    return db(table).insert(obj, ["*"]);
   });
 };
 // ColumnTasks.create({
@@ -24,7 +25,7 @@ ColumnTasks.update = function(obj) {
     if (!column_tasks_id) return false;
     return db(table)
       .where({ column_tasks_id: column_tasks_id })
-      .update({ ...obj }, ["*"]);
+      .update(obj, ["*"]);
   });
 };
 // ColumnTasks.update({
@@ -35,7 +36,7 @@ ColumnTasks.update = function(obj) {
 ColumnTasks.get = function(obj) {
   return P.try(() => {
     return db(table)
-      .where({ ...obj })
+      .where(obj)
       .select("*");
   });
 };

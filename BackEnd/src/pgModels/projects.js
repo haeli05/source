@@ -9,7 +9,8 @@ const table = "projects";
 
 Projects.create = function(obj) {
   return P.try(() => {
-    return db(table).insert({ project_id: uuid(), ...obj }, ["*"]);
+    obj.project_id = uuid();
+    return db(table).insert(obj, ["*"]);
   });
 };
 
@@ -32,7 +33,7 @@ Projects.update = function(obj) {
     if (!project_id) return false;
     return db(table)
       .where({ project_id: project_id })
-      .update({ ...obj }, ["*"]);
+      .update(obj, ["*"]);
   });
 };
 
@@ -44,7 +45,7 @@ Projects.update = function(obj) {
 Projects.get = function(obj) {
   return P.try(() => {
     return db(table)
-      .where({ ...obj })
+      .where(obj)
       .select("*");
   });
 };
