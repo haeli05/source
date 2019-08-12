@@ -29,7 +29,7 @@ router.route("/user/:id/projects").get(UserController.listUserProjects);
 // Create a new User
 router.route("/user/new").post(UserController.newUser);
 //Login a User
-// router.route("/user/login").post(UserController.login);
+router.route("/user/login").post(UserController.login);
 //Create new group
 // router.route("/user/newGroup").post(UserController.newGroup); //NOTE: are we keeping groups?
 //Transfer tokens to another user

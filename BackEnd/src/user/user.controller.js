@@ -1,4 +1,4 @@
-// import * as _user from "./user.util";
+import * as _user from "./user.util";
 import mongoose from "mongoose";
 import { sanitizeTags } from "../util/helpers.util";
 
@@ -375,29 +375,29 @@ export function getUser(req, res) {
  * @returns JSON of account balance
  **/
 
-// export function login(req, res) {
-//   let username = "";
-//   let password = "";
-//   if (req.body.username && req.body.password) {
-//     username = req.body.username;
-//     password = req.body.password;
-//   } else {
-//     res.status(400).json({
-//       message: "Error logging In",
-//       error: "No username or password specified"
-//     });
-//     return;
-//   }
-//   //New Model Integrated in the Older Util
-//   _user
-//     .login(username, password)
-//     .then(data => {
-//       res.status(200).json(data);
-//     })
-//     .catch(error => {
-//       res.status(400).json({ message: "Error Signing in User", error: error });
-//     });
-// }
+export function login(req, res) {
+  let username = "";
+  let password = "";
+  if (req.body.username && req.body.password) {
+    username = req.body.username;
+    password = req.body.password;
+  } else {
+    res.status(400).json({
+      message: "Error logging In",
+      error: "No username or password specified"
+    });
+    return;
+  }
+  //New Model Integrated in the Older Util
+  _user
+    .login(username, password)
+    .then(data => {
+      res.status(200).json(data);
+    })
+    .catch(error => {
+      res.status(400).json({ message: "Error Signing in User", error: error });
+    });
+}
 
 /**
  * Function retrives all users

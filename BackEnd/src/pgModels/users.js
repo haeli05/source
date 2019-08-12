@@ -81,12 +81,14 @@ Users.delete = function(obj) {
 
 Users.authenticate = function(Username, password, callback) {
   Users.get({ username: Username })
-    .then(function(user) {
+    .then(function([user]) {
+      console.log("in model user: ", user);
       if (!user) {
         const err = new Error("Username or Password mismatch");
         err.status = 401;
         return callback(err, null);
       }
+      console.log("password, user.password: ", password, user.password);
       bcrypt.compare(password, user.password, function(err, result) {
         if (result === true) {
           return callback(null, user);
