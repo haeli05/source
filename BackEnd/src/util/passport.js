@@ -1,6 +1,6 @@
 import passport from "passport";
 import passportJWT from "passport-jwt";
-import {config} from '../config';
+import {secret} from '../config';
 var jwt = require('jsonwebtoken');
 
 let ExtractJwt = passportJWT.ExtractJwt;
@@ -10,7 +10,7 @@ let JwtStrategy = passportJWT.Strategy;
 
 let jwtOptions = {};
 jwtOptions.jwtFromRequest = ExtractJwt.fromBodyField("token");
-jwtOptions.secretOrKey = config.secret;
+jwtOptions.secretOrKey = secret;
 
 let strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
 

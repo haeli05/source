@@ -20,7 +20,7 @@ const TrendingSchema = mongoose.Schema({
 }, {_id: false});
 
 //To-do have unique repository names
-const RepoSchema = new mongoose.Schema({
+const ProjectsSchema = new mongoose.Schema({
   project_name: {
     type: String,
     required: [true, 'Project Name is required.']
@@ -43,41 +43,6 @@ const RepoSchema = new mongoose.Schema({
     type: String,
     default: ""
   },
-  src_raised: {
-    type: Number,
-    default: 0
-  },
-  gitlabID: {
-    type: Number,
-    required: [true, 'Repo ID is required.']
-  },
-  star_count: {
-    type: Number,
-    default: 0
-  },
-  forks_count:{
-    type: Number,
-    default: 0
-  },
-  forked:{
-    type: Boolean,
-    default: false
-  },
-  forked_from: {
-    type: Number,
-  },
-  ssh_url:{
-    type: String,
-    required: [true, "SSH_URL required"]
-  },
-  http_url:{
-    type: String,
-    required: [true,"HTTP_URL required"]
-  },
-  empty:{
-    type: Boolean,
-    default: true
-  },
   tags: {
     type: [String],
     default: [],
@@ -89,25 +54,10 @@ const RepoSchema = new mongoose.Schema({
     },
     index: true
   },
-  cid: {
-    type: String,
-    default: ""
-  },
   idea:[{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'ideas'
   }],
-  roles: [{
-      role: {type: String, required: [true,"Role must have a name"]},
-      actions: {type: [Boolean], required: [true,"Role must have a actions"]}
-  }],
-  trending: { type: TrendingSchema, default: TrendingSchema, select:false },
-  popularity: {
-    type: Number,
-    default: 0,
-    index: true,
-    select: false
-  },
   upvotes: {
     type: Number,
     default: 0
@@ -119,27 +69,19 @@ const RepoSchema = new mongoose.Schema({
   wallet : {
     type: [String],
     default: [],
-  },
-  chat_url:{
-    type: String,
-    required: [true,"HTTP_URL required"]
-  },
-  admins:{
-    type:[Schema.Types.ObjectId],
-    ref: "user",
   }
 });
 
-RepoSchema.index({ project_name: 'text', description: 'text', labels: 'text'}, {name: 'search_index', weights: {project_name: 10, description: 7, labels: 3}, default_language: 'english'});
+ProjectsSchema.index({ project_name: 'text', description: 'text', labels: 'text'}, {name: 'search_index', weights: {project_name: 10, description: 7, labels: 3}, default_language: 'english'});
 
 
-RepoSchema.plugin(searchTextPlugin);
-RepoSchema.plugin(aggregateTrendingPlugin);
-RepoSchema.plugin(addStatsPlugin);
-RepoSchema.plugin(addTextPlugin);
-RepoSchema.plugin(votePlugin);
+ProjectsSchema.plugin(searchTextPlugin);
+ProjectsSchema.plugin(aggregateTrendingPlugin);
+ProjectsSchema.plugin(addStatsPlugin);
+ProjectsSchema.plugin(addTextPlugin);
+ProjectsSchema.plugin(votePlugin);
 
 
 
 
-const Repo = module.exports = mongoose.model('repo', RepoSchema);
+const Repo = module.exports = mongoose.model('repo', ProjectsSchema);

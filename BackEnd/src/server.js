@@ -10,14 +10,12 @@ import mongoSanitize from 'express-mongo-sanitize';
 import axios from 'axios';
 import cors from 'cors';
 import HTMLSanitizer from 'express-sanitizer';
-import repos from './repo/repo.routes';
 import user from './user/user.routes';
 import search from './search/search.routes';
-import issues from './issues/issues.routes';
 import ideas from './ideas/ideas.routes';
 import storage from './storage/storage.routes';
 // Config
-import {config} from './config';
+import {mongoURL} from './config';
 // Cron
 import job from './util/cron.util'
 // Email
@@ -27,30 +25,30 @@ const subscribeHtml = require('./emailHTMLfiles/subscribeEmail').emailHtml;
 
 
 // Redbird proxy registration
-var proxy = require('redbird')({
-  port: 80,
-  letsencrypt: {
-    path: 'certs',
-    port: 9999
-  },
-  ssl: {
-    http2: true,
-    port: 443
-  }
-})
+// var proxy = require('redbird')({
+//   port: 80,
+//   letsencrypt: {
+//     path: 'certs',
+//     port: 9999
+//   },
+//   ssl: {
+//     http2: true,
+//     port: 443
+//   }
+// })
 
 // App
 const app = new Express();
 
 // MongoDB Connection
-mongoose.Promise = global.Promise;
-mongoose.connect(config.mongoURL, { useNewUrlParser: true }, (error) => {
-  if (error) {
-    console.error('Please make sure Mongodb is installed and running!') // eslint-disable-line no-console
-    throw error
-  }
-  console.log("CONNECTING TO MONGOOSE");
-});
+// mongoose.Promise = global.Promise;
+// mongoose.connect(mongoURL, { useNewUrlParser: true }, (error) => {
+//   if (error) {
+//     console.error('Please make sure Mongodb is installed and running!') // eslint-disable-line no-console
+//     throw error
+//   }
+//   console.log("CONNECTING TO MONGOOSE");
+// });
 
 // CORS
 app.use(cors());
@@ -69,8 +67,6 @@ app.use(mongoSanitize({
 })) // MongoDB sanitizer, gets rid of '$', to prevent NoSQL injections
 app.use(HTMLSanitizer()) // Makes it so No HTML can be saved on the server (removes all HTML tags). Prevents XSS
 app.use(Express.static(path.resolve(__dirname, '../dist/client')))
-app.use('/api', repos)
-app.use('/api', issues)
 app.use('/api', user)
 app.use('/api', ideas)
 app.use('/api', storage)
@@ -137,31 +133,31 @@ app.post('/feedback', (req, res) => {
 })
 
 // Analytics proxy
-var analyticsproxy = require("express-http-proxy")
-function getIpFromReq (req) { // get the client's IP address
-  var bareIP = ':' + ((req.connection.socket && req.connection.socket.remoteAddress)
-    || req.headers['x-forwarded-for'] || req.connection.remoteAddress || '')
-  return (bareIP.match(/:([^:]+)$/) || [])[1] || '127.0.0.1'
-}
-app.use('/analytics', analyticsproxy('www.google-analytics.com', {
-  proxyReqPathResolver: function (req) {
-    return req.url + (req.url.indexOf('?') === -1 ? '?' : '&')
-      + 'uip=' + encodeURIComponent(getIpFromReq(req))
-  }
-}));
+// var analyticsproxy = require("express-http-proxy")
+// function getIpFromReq (req) { // get the client's IP address
+//   var bareIP = ':' + ((req.connection.socket && req.connection.socket.remoteAddress)
+//     || req.headers['x-forwarded-for'] || req.connection.remoteAddress || '')
+//   return (bareIP.match(/:([^:]+)$/) || [])[1] || '127.0.0.1'
+// }
+// app.use('/analytics', analyticsproxy('www.google-analytics.com', {
+//   proxyReqPathResolver: function (req) {
+//     return req.url + (req.url.indexOf('?') === -1 ? '?' : '&')
+//       + 'uip=' + encodeURIComponent(getIpFromReq(req))
+//   }
+// }));
 
 // Cron
-job.start();
+// job.start();
 
 // SSL redbird
-proxy.register('api.sourcenetwork.io', '127.0.0.1:8001', {
-  ssl: {
-    letsencrypt: {
-      email: 'source@sourcenetwork.io', // Domain owner/admin email
-      production: false, // WARNING: Only use this flag when the proxy is verified to work correctly to avoid being banned!
-    }
-  }
-});
+// proxy.register('api.sourcenetwork.io', '127.0.0.1:8001', {
+//   ssl: {
+//     letsencrypt: {
+//       email: 'source@sourcenetwork.io', // Domain owner/admin email
+//       production: false, // WARNING: Only use this flag when the proxy is verified to work correctly to avoid being banned!
+//     }
+//   }
+// });
 
 // Lift off!
 app.listen(8001, (error) => {
