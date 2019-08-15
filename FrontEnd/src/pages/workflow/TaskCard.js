@@ -7,8 +7,7 @@ import Avatar from '@material-ui/core/Avatar'
 import Dialog from '@material-ui/core/Dialog'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import TextField from '@material-ui/core/TextField'
-// MISC
-import { Draggable } from 'react-beautiful-dnd'
+
 // Components
 import UserAssigner from './../../global/components/userAssigner'
 import { DeleteButton } from './../../global/components/majorActionButtons'
@@ -22,7 +21,7 @@ import Markdown from 'react-markdown'
 
 
 
-class KanbanCard extends React.Component {
+class TaskCard extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -221,23 +220,13 @@ class KanbanCard extends React.Component {
             </div>
           </div>
         </Dialog>
-        <Draggable
-          isDragDisabled
-          key={this.props.task.id}
-          draggableId={this.props.task.id}
-          index={this.props.index}
-        >
-          {(provided, snapshot) =>
-            <div className={this.getClassName(snapshot.isDragging)}
-              {...provided.draggableProps}
-              {...provided.dragHandleProps}
-              ref={provided.innerRef}
+            <div
               onClick={this.toggleDialog}
               onMouseEnter={() => { this.handleHover(true) }}
               onMouseLeave={() => { this.handleHover(false) }}
             >
               <div className='KanbanHeader Flex JustifyBetween AlignCenter'>
-                <Typography {...provided.dragHandleProps} variant='h6'>{this.props.task.title}</Typography>
+                <Typography variant='h6'>{this.props.task.title}</Typography>
                 <div className='Actions' onClick={(e) => { e.stopPropagation() }}>
                   {this.renderActions()}
                 </div>
@@ -257,16 +246,14 @@ class KanbanCard extends React.Component {
               <div className='KanbanBody'>
                 <Typography variant='body1'>{this.props.task.content}</Typography>
               </div>
-              {provided.placeholder}
             </div>
-          }
-        </Draggable>
+
       </div>
     )
   }
 }
 
-KanbanCard.propTypes = {
+TaskCard.propTypes = {
   task: {
     title: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
@@ -276,7 +263,7 @@ KanbanCard.propTypes = {
   }
 }
 
-KanbanCard.defaultProps = {
+TaskCard.defaultProps = {
   task: {
     title: "undefined",
     id: "undefined",
@@ -286,4 +273,4 @@ KanbanCard.defaultProps = {
   }
 }
 
-export default KanbanCard
+export default TaskCard

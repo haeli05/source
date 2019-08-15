@@ -92,7 +92,6 @@ class ExplorePeople extends Component {
             </div>
           </div>
           <PopUp />
-          <Typography variant='h2'>Explore</Typography>
         </div>
         <div className='Body'>
           <div className='Content'>

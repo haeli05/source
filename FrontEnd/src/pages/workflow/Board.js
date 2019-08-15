@@ -28,52 +28,62 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isEditable: false,
       startX: null,
       startScrollX: null,
       boardColor : this.props.boardColor? this.props.boardColor : "#FFFFFF",
       data: {
+        Editors: {
+
+        },
         tasks: {
           'task-1': {
             id: 'task-1',
             title: "Database Migration",
             content: "MongoDB to PostGreSQL",
             dueDate: "",
-            compensation: 1500
+            compensation: 1500,
+            skills: []
           },
           'task-2': {
             id: 'task-2',
             title: "Git Hosting",
             content: "GitLab to Gitolite",
             dueDate: "",
-            compensation: 1500
+            compensation: 1500,
+            skills: []
           },
           'task-3':{
             id: 'task-3',
             title: "Social Logins (FB, Twitter, GitHub,Google)",
             content: "Integrate logins with these methods",
             dueDate: "",
-            compensation: 1000
+            compensation: 1000,
+            skills: []
           },
           'task-4':{
             id: 'task-4',
             title: "Real Time Notifications",
             content: "Apollo",
             dueDate: "",
-            compensation: 500
+            compensation: 500,
+            skills: []
             },
           'task-5':{
             id:'task-5',
             title: "Riot Chat integration",
             content: "Riot.im",
             dueDate: "",
-            compensation: 500
+            compensation: 500,
+            skills: []
           },
           'task-6':{
             id:'task-6',
             title: "Marketing funnel",
             content: "Discuss",
             dueDate: "",
-            compensation: 500
+            compensation: 500,
+            skills: []
           }
         },
         columns: {
@@ -362,37 +372,37 @@ class Board extends Component {
     return (
       <div className="Board">
         <div className="Header">
-        <div className="Flex MarginTop10 MarginBottom10 AlignCenter None">
-          <div className="BoardSelector">
-            <FormControl variant="outlined">
-              <InputLabel ref={ref => {this.boardref = ReactDOM.findDOMNode(ref);}}>
-                Board
-              </InputLabel>
-              <Select
-                value={this.state.board}
-                onChange={this.handleChange}
-                inputProps={{
-                  name: 'board',
-                }}
-                input={
-                  <OutlinedInput
-                    labelWidth={this.boardref ? this.boardref.offsetWidth : 0}
-                  />
-                }
-              >
-              <MenuItem value="tutorial">tutorial</MenuItem>
-              <MenuItem value="new board">new board</MenuItem>
-              </Select>
-            </FormControl>
-          </div>
-          <div className="NewBoardButton">
-            <Button variant="outlined"><Icon icon={arrows_plus} size={20}/>New Board</Button>
-          </div>
-
-        </div>
           <div className="Title MarginRight10">
-            <Typography variant="h5">{this.props.boardTitle}</Typography>
+            <Typography variant="h4">{this.props.boardTitle} Board Title</Typography>
             <Typography variant="subtitle2">{this.props.description}</Typography>
+          </div>
+          <div className="Flex MarginTop10 MarginBottom10 AlignCenter None">
+            <div className="BoardSelector">
+              <FormControl variant="outlined">
+                <InputLabel ref={ref => {this.boardref = ReactDOM.findDOMNode(ref);}}>
+                  Board
+                </InputLabel>
+                <Select
+                  value={this.state.board}
+                  onChange={this.handleChange}
+                  inputProps={{
+                    name: 'board',
+                  }}
+                  input={
+                    <OutlinedInput
+                      labelWidth={this.boardref ? this.boardref.offsetWidth : 0}
+                    />
+                  }
+                >
+                <MenuItem value="tutorial">tutorial</MenuItem>
+                <MenuItem value="new board">new board</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="NewBoardButton">
+              <Button variant="outlined"><Icon icon={arrows_plus} size={20}/>New Board</Button>
+            </div>
+
           </div>
           <div className="Actions Flex AlignCenter None">
             <Button variant="fab" mini className="EditButton MarginRight10"><ReactSVG src={Write} className="ReactSVGIcon"/></Button>
