@@ -39,6 +39,7 @@ Comments.update = function(obj) {
 
 Comments.get = function(obj) {
   return P.try(() => {
+    obj.deleted = false;
     return db(table)
       .where(obj)
       .select("*");

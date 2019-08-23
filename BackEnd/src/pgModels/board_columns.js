@@ -37,6 +37,7 @@ BoardColumns.update = function(obj) {
 
 BoardColumns.get = function(obj) {
   return P.try(() => {
+    obj.deleted = false;
     return db(table)
       .where(obj)
       .select("*");

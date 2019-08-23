@@ -36,6 +36,7 @@ ProjectIdeas.update = function(obj) {
 
 ProjectIdeas.get = function(obj) {
   return P.try(() => {
+    obj.deleted = false;
     return db(table)
       .where(obj)
       .select("*");

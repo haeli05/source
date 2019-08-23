@@ -40,6 +40,7 @@ Columns.update = function(obj) {
 
 Columns.get = function(obj) {
   return P.try(() => {
+    obj.deleted = false;
     return db(table)
       .where(obj)
       .select("*");

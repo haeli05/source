@@ -35,6 +35,7 @@ UserProjects.update = function(obj) {
 
 UserProjects.get = function(obj) {
   return P.try(() => {
+    obj.deleted = false;
     return db(table)
       .where(obj)
       .select("*");
