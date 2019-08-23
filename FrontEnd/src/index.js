@@ -52,7 +52,7 @@ const theme = createMuiTheme({
       letterSpacing: '-0.058em'
     },
     display3: {
-      fontSize: '3.75em',
+      fontSize: '3.998em',
       fontFamily: 'gotham_htflight',
       color: 'rgba(0, 0, 0, 0.87)',
       letterSpacing: '-0.004em',

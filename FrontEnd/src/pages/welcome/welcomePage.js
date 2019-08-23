@@ -24,8 +24,7 @@ import developerImage from './img/devs.jpg'
 import developerImage2 from './img/dev2.jpg'
 import HammerScrew from '../../assets/svg/hammer_screwdriver_2.svg'
 import Comment from '../../assets/svg/comment.svg'
-import Board from './../workflow/Board'
-import KanbanCard from './../workflow/components/kanbanCard'
+
 import RightBracket from './../../assets/svg/rightbracket.svg'
 import CircleTick from './../../assets/svg/circletick.svg'
 
@@ -172,33 +171,43 @@ class WelcomePage extends Component {
             <Grid container spacing={12}>
               <Grid item sm={12} md={7}>
                 <Typography className='Mission' color='textPrimary' variant='h1'>
-                  Build Anything <br/>
-                  with a Post
+                  The Decentralized<br/>
+                  Tech Incubator
+                </Typography>
+                <Typography className='TagLine' color='textPrimary' variant='h4' style={{marginLeft:"12px", marginTop:"16px"}}>
+                  Find your distributed dev team
                 </Typography>
               </Grid>
               <Grid item sm={12} md={5}>
                 <Typography className='Mission WhatIsSource' style={{ marginTop: '0em' }} variant='h4' color='textPrimary'>
-                Find <div style={{ display: 'inline' }} id='whatissource' />
-                  <br />for your digital projects.
+                Connect with a community of <br />
+                 <div style={{ display: 'inline' }} id='whatissource' />
+                 <br />
+                  to build your digital projects.
                 </Typography>
                 <Button variant='outlined' className='GetStarted' component={Link} to='/getstarted'>
                   Get started
                 </Button>
                 <br />
                 <Typography className='Mission WhatIsSource' variant='h4' color='textPrimary'>
-                  We also help developers monetize their skills. Interested?
+                  If you're a developer, sign up to work on exciting projects!
                 </Typography>
                 <Button variant='contained' color='primary' className='GetStarted' href='#todo'>
-                  Help us build the beta
+                  Register
                 </Button>
               </Grid>
             </Grid>
           </div>
         </div>
         <div className='Quote'>
-          <Board />
-          <Typography variant='h5' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital" <br /><br /> - Patrick Collison, CEO @ Stripe</Typography>
+              <Typography variant='h4' >Finding the right people to build your software project is difficult.</Typography>
+                <br />
+                <Typography variant='h6' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
+                <br /><br /> - Patrick Collison, Cofounder @Stripe</Typography>
 
+                <br/>
+            <Typography variant='h4' >Instead of spending your time on recruiting,
+            why not let those with the right skills come to you?</Typography>
           <div className='JoinMailing'>
             <TextField
               label='Sign up for email updates'
@@ -221,222 +230,115 @@ class WelcomePage extends Component {
             )}
           </div>
         </div>
-        <div className='Section Section2'>
-          <Typography className='SectionTitle' variant='h3' style={{ color: 'white' }}>Can building technology be as simple as writing a blog post?</Typography>
-          <br />
-          <Typography variant='h4' style={{ color: 'white' }}>Why not?</Typography>
-          <br />
-          <Typography variant='h4' style={{ color: 'white' }}>The best developers are already online, <br /><br /> you just need their <b>attention.</b></Typography>
+        <div className='Section Section2' style={{ color: 'white' }}>
+        <Typography className='SectionTitle' variant='h2'>How it works</Typography>
+        <Typography className='SectionSubTitle' variant='h4'>Source is building a sharing economy to simplify tech development</Typography>
 
-        </div>
-        <div className='Section Section3'>
-          <Typography className='SectionTitle' variant='h2'>How it works</Typography>
-          <Typography className='SectionSubTitle' variant='h4'>Source is building a sharing economy to simplify tech development</Typography>
+        <Grid container spacing={8}>
+          <Grid item sm={12} md={6}>
+            <div className='Description'>
+              <Typography variant='h5' paragraph >
+                  Our community of developers, technology professionals, and consultants support your projects from ideation to implementation.
+              </Typography>
+              <Typography variant='body' paragraph style={{ textAlign: 'left' }}>
 
-          <Grid container spacing={8}>
-            <Grid item sm={12} md={6}>
-              <div className='Description'>
-                <Typography variant='h5' paragraph >
-                    Our community of developers, technology professionals, and consultants support your projects from ideation to implementation.
-                </Typography>
-                <Typography variant='body' paragraph style={{ textAlign: 'left' }}>
-
-                  <ul>
-                    <li>Share your ideas and Projects</li>
-                    <li>Receive actionable insight, feedback and contributions.</li>
-                    <li>Get matched with contributors</li>
-                  </ul>
-                      We partnered with devshops, technology providers and institutions of higher education to ensure a high quality of contributions.
-                  <br />
-                      Less time spent on logistics means more time spent on what matters:
-                  <br /><br />
-                  <b>Building the product.</b>
-                </Typography>
-
-              </div>
-            </Grid>
-            <Grid item sm={12} md={6}>
-              <Fade in>
-                <img className='DevImage2' src={developerImage2} alt='developers' />
-              </Fade>
-            </Grid>
-          </Grid>
-          <Typography variant='h4' paragraph className='SectionSubTitle'>
-                    While enabling community driven implementation and funding
-          </Typography>
-          <Grid container spacing={6}>
-            <Grid item sm={6} md={3}>
-              <Fade in>
-                <img className='DevImage' src={developerImage} alt='developers' />
-              </Fade>
-            </Grid>
-            <Grid item sm={6} md={5}>
-              <div className='Description'>
-                <Typography variant='h5' paragraph >
-                      Open Source Collaboration + Crowdfunding + Monetized Tasks
-                </Typography>
-                      Projects are broken down into subtasks, which can be delegated to the community or our specialist partners.
+                <ul>
+                  <li>Share your ideas and Projects</li>
+                  <li>Receive actionable insight, feedback and contributions.</li>
+                  <li>Get matched with contributors</li>
+                </ul>
+                    We partnered with devshops, technology providers and institutions of higher education to ensure a high quality of contributions.
+                <br />
+                    Less time spent on logistics means more time spent on what matters:
                 <br /><br />
-                      How to monetize your skills:
-                <ol>
-                  <li>Find a task relevant to your skillset</li>
-                  <li>Work with the project manager to deliver</li>
-                  <li>???</li>
-                  <li>Profit. Get paid in cash or Crypto.</li>
-                </ol>
-              </div>
-            </Grid>
+                <b>Building the product.</b>
+              </Typography>
+
+            </div>
           </Grid>
-          <br />
-          <Typography variant='overline2'>Have a project you want to list or need help with?</Typography>
-          <br />
-          <Typography variant='h4'>Let us know!</Typography>
-          <br />
-          <Fab
-            variant='extended'
-            size='large'
-            color='primary'
-            className='TodoButton'
-            href='/getstarted'
-          >
-            <ReactSVG src={Comment} className='ReactSVGIcon Icon25 LeftIcon' />
-        Contact Us
-          </Fab>
-
-          <Typography variant='h4'>FAQ</Typography>
-          <div className='Faq'>
-            <ul>
-              <li>I don't want my source code to be public</li>
-              <Typography variant='subtitle1'>That's OK. You can choose to keep your project private,
-                <br />but still list tasks and provide selective access to your chosen developers.</Typography>
+          <Grid item sm={12} md={6}>
+            <Fade in>
+              <img className='DevImage2' src={developerImage2} alt='developers' />
+            </Fade>
+          </Grid>
+        </Grid>
+        <Typography variant='h4' paragraph className='SectionSubTitle'>
+                  While enabling community driven implementation and funding
+        </Typography>
+        <Grid container spacing={6}>
+          <Grid item sm={6} md={3}>
+            <Fade in>
+              <img className='DevImage' src={developerImage} alt='developers' />
+            </Fade>
+          </Grid>
+          <Grid item sm={6} md={5}>
+            <div className='Description'>
+              <Typography variant='h5' paragraph >
+                    Open Source Collaboration + Crowdfunding + Monetized Tasks
+              </Typography>
+                    Projects are broken down into subtasks, which can be delegated to the community or our specialist partners.
               <br /><br />
-              <li>Will you integrate a crypto token?</li>
-              <Typography variant='subtitle1'>We have no plans for a native token so far.
-                <br />Reach out if you want our payment methods to support yours.</Typography>
+                    How to monetize your skills:
+              <ol>
+                <li>Find a task relevant to your skillset</li>
+                <li>Work with the project manager to deliver</li>
+                <li>???</li>
+                <li>Profit. Get paid in cash or Crypto.</li>
+              </ol>
+            </div>
+          </Grid>
+        </Grid>
+        <br />
+        <Typography variant='overline2'>Have a project you want to list or need help with?</Typography>
+        <br />
+        <Typography variant='h4'>Let us know!</Typography>
+        <br />
+        <Fab
+          variant='extended'
+          size='large'
+          color='primary'
+          className='TodoButton'
+          href='/getstarted'
+        >
+          <ReactSVG src={Comment} className='ReactSVGIcon Icon25 LeftIcon' />
+      Contact Us
+        </Fab>
 
-            </ul>
+
           </div>
-        </div>
-        <div className='Section Section5' id='todo'>
-          Help us build the beta!
-          <div className='SectionTitle'>
-            <Typography variant='h2'>source</Typography>
-            <Typography variant='subtitle1'>The Internet's Tech Incubator</Typography>
-          </div>
-          <Typography variant='overline2'>Support this project:  </Typography>
-          <div className='Subheading'>
-            <PayButton />
-            <div className='MajorActionButtonsHorizontal'>
-              <div className='MajorActionButtonDiv'>
-                <a href='https://spectrum.chat/sourcenetwork-io?tab=posts' target='_blank'>
-                  <MessageButton {...this.props} goToRoom={this.props.goToRoom} />
-                </a>
-              </div>
-              <div className='MajorActionButtonDiv'>
-                <ShareButton {...this.props} title={this.props.title} url={this.props.url} />
-              </div>
+          <div className='Section Section3'>
+          <Typography className='SectionTitle' variant='h3' >Pricing</Typography>
+          <br />
+          <Typography variant='h4' >Pay as much as you want,</Typography>
+          <Typography variant='h4' >Or nothing at all</Typography>
+            <div classname="column">
+              <Typography variant="h5">Free</Typography>
+              <Typography variant="overline">Cost:</Typography>
+
+              <Typography variant="caption">Nothing</Typography>
+              <Typography variant="body">•  Be your own project manager.</Typography>
+              <Typography variant="body">•  Connect with our community</Typography>
+              <Typography variant="body">•  Find Volunteers for your tasks</Typography>
+            </div>
+            <div classname="column">
+            <Typography variant="h5">Maintainence</Typography>
+            <Typography variant="overline">Cost:</Typography>
+            <Typography variant="caption">$1000/mo</Typography>
+            <Typography variant="body">•  Get a project manager who will keep track of necessary tasks for your project</Typography>
+            <Typography variant="body">•  Connect with our community</Typography>
+            <Typography variant="body">•  Additional costs for your tasks</Typography>
+            </div>
+            <div classname="column">
+            <Typography variant="h5">Bespoke</Typography>
+            <Typography variant="overline">Cost:</Typography>
+            <Typography variant="caption">Varies according to your needs</Typography>
+            <Typography variant="body">•  Work with our team directly</Typography>
+            <Typography variant="body">•  Connect with our community</Typography>
+            <Typography variant="body">•  Tailored End-to-End development solutions for your project</Typography>
             </div>
           </div>
 
-          <Typography className='Scope' variant='body' paragraph>
-            <b>Temporary repository at:</b> <a href='https://github.com/haeli05/source'>https://github.com/haeli05/source</a>
-            <br /><br />
-            <b>Goals:</b> Source is designed to facilitate discussion and collaboration to build digital projects.
-            <br /><b>Scope:</b>
-            <br />
-          Our stack combines a React.JS front end with modular backend components. We rely heavily on Open Source components to achieve different feature sets.
-            <br /><br />
-            <b>Components:</b>
-            <br />
-          Ideas includes a social-blog like text area to discuss ideas and potential projects (Done)
-            <br /><br />
-          Project hosts a project's files using Git (Implementation WIP), its contributors, task boards, monetized tasks, and displays links for crowdfunding.
-          (Needs work)
-            <br /><br />
-          Git-hosting(current implementation Needs work)
-            <br />
-          People: A page that hosts reviews and a user's reputation. Contains social integration,
-          allows users to indicate relevant skills,
-          while also allowing project managers to track and find contributors.
-            <br /><br />
-            <b>Other features:</b>
-            <br />Riot Chat: Work in progress
-            <br />Messaging: Work in progress
-            <br />Notifications (Apollo) : WIP
-            <br />Tag based filtered content feed: Work in progress
-            <br />App Store: WIP
-            <br />Crypto?: WIP
-
-            <br /><br />
-            <b>How to Contribute?</b>
-            <br />
-          To donate: Use the Pay button above
-            <br />
-          Suggestions: Send us an email or use spectrum
-            <br />
-            <br />
-          Check the todo list and message us on telegram or spectrum if you want to take over the development for a component.
-
-            <br />We will pay for good contributions.
-            <br />
-          Submit PRs: https://github.com/haeli05/source
-            <br /><br />
-            <b>Important!!</b><br />
-          Please reach out to discuss your implementation first before starting work.<br />
-          We will not pay for subpar work that do not fit our criteria.
-          </Typography>
-
-          <div className='TODOLIST'>
-            <Typography variant='h3'>To Do</Typography>
-            <Typography>Features in development. Payment as listed</Typography>
-            <div className='board'>
-              <div className='column'>
-                <Typography variant='h4'>Front End</Typography>
-                <div className='task'>
-                  <Typography variant='h6'>Social Logins (FB, Twitter, GitHub,Google)</Typography>
-                  <Typography variant='p'>Integrate logins with these methods</Typography>
-                  <Chip label='$100' className='compensation' />
-                </div>
-                <div className='task'>
-                  <Typography variant='h6'>Real Time Notifications</Typography>
-                  <Typography variant='p'>Apollo</Typography>
-                  <Chip label='$500' className='compensation' />
-                </div>
-              </div>
-              <div className='column'>
-                <Typography variant='h4'>Back End</Typography>
-                <div className='task'>
-                  <Typography variant='h6'>Database Migration</Typography>
-                  <Typography variant='p'>MongoDB to PostGreSQL, including support for new components</Typography>
-                  <Chip label='$1000' className='compensation' />
-                </div>
-                <div className='task'>
-                  <Typography variant='h6'>Git Hosting</Typography>
-                  <Typography variant='p'>Gitlab to Gitolite</Typography>
-                  <Chip label='$1000' className='compensation' />
-                </div>
-                <div className='task'>
-                  <Typography variant='h6'>Social Logins (FB, Twitter, GitHub,Google)</Typography>
-                  <Typography variant='p'>Integrate logins with these methods</Typography>
-                  <Chip label='$500' className='compensation' />
-                </div>
-              </div>
-              <div className='column'>
-                <Typography variant='h4'>Misc</Typography>
-                <div className='task'>
-                  <Typography variant='h6'>Riot Chat Integration</Typography>
-                  <Typography variant='p'>Riot.im</Typography>
-                  <Chip label='$500' className='compensation' />
-                </div>
-                <div className='task'>
-                  <Typography variant='h6'>Marketing Funnel</Typography>
-                  <Typography variant='p'>Discuss</Typography>
-                  <Chip label='$500' className='compensation' />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      
 
       </div>
     )
