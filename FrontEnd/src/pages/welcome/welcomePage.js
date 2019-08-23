@@ -24,11 +24,10 @@ import developerImage from './img/devs.jpg'
 import developerImage2 from './img/dev2.jpg'
 import toolball from './img/toolball.jpg'
 import HammerScrew from '../../assets/svg/hammer_screwdriver_2.svg'
+import Anchor from '../../assets/svg/anchor.svg'
 import Comment from '../../assets/svg/comment.svg'
-
 import RightBracket from './../../assets/svg/rightbracket.svg'
 import CircleTick from './../../assets/svg/circletick.svg'
-
 import config from '../../utils/config.js'
 import { PayPalButton } from 'react-paypal-button-v2'
 
@@ -207,15 +206,16 @@ class WelcomePage extends Component {
           </div>
 
           <div className='text'>
-              <Typography variant='h4' >Finding the right people to build your software project is difficult.</Typography>
+              <Typography variant='h4' >Finding the right people to build your software project is complicated.</Typography>
                 <br />
                 <Typography variant='h6' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
-                <br /><br /> - Patrick Collison, Cofounder @Stripe</Typography>
+                <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
 
                 <br/>
             <Typography variant='h4' >Instead of spending your time on recruiting,
             why not let those with the right skills come to you?</Typography>
             <div className='JoinMailing'>
+              <ReactSVG src={Anchor} className='ReactSVGIcon Icon25' />
               <TextField
                 label='Sign up for email updates'
                 type='email'
@@ -305,7 +305,7 @@ class WelcomePage extends Component {
           <Typography className='SectionTitle' variant='h3' >Pricing</Typography>
           <br />
           <Typography variant='h4' >Pay as much as you want,</Typography>
-          <Typography variant='h4' >Or nothing at all</Typography>
+          <Typography variant='h4' >or use us for free!</Typography>
           <div classname="board">
             <div classname="column">
               <Typography variant="h5">Free</Typography>

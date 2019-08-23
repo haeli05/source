@@ -3352,19 +3352,20 @@ body {
   }
   .Quote {
     float: left;
+    display: flex;
     clear: none;
     align-items: flex-start;
     padding-top: 10vh;
     padding-bottom: 7vh;
-    padding-left: 14%;
-    padding-right: 14%;
+    padding-left: 12%;
+    padding-right: 12%;
     text-align: center;
     background-color: white;
     background-blend-mode: difference;
     .text{
       margin-left: 5vw;
       float: right;
-      width: 45vw;
+      width: 50vw;
       text-align: left;
     }
     .ballimage{
@@ -3375,12 +3376,16 @@ body {
       }
     }
     .JoinMailing {
-      display: flex;
+      display: inline-flex;
+//      float: left;
       align-items: center;
-      flex-flow: column wrap;
-      vertical-align: middle;
+//      flex-flow: column wrap;
+//      vertical-align: middle;
       margin-top: 4vh;
+
       .SignUpInput {
+        margin-left: 14px;
+        margin-right: 14px;
         margin-bottom: 2vh;
         width: 280px;
       }
