@@ -241,7 +241,10 @@ class WelcomePage extends Component {
         </div>
         <div className='Section Section2' style={{ color: 'white' }}>
         <Typography className='SectionTitle' variant='h2'>How it works</Typography>
-        <Typography className='SectionSubTitle' variant='h4'>Your projects are direct fed to our community of developers, filtered by skillset</Typography>
+        <Typography className='SectionSubTitle' variant='h4'>Plug your projects into source. Tasks on your Todo board are direct fed to our community of developers, filtered by skillset.
+        <br /> You can assign rewards to tasks (or not), and pay only when you're satisfied.</Typography>
+
+          The Result: You
 
         <Grid container spacing={8}>
           <Grid item sm={12} md={6}>
