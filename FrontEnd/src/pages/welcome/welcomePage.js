@@ -22,6 +22,7 @@ import { ShareButton, MessageButton, SupportButton } from './../global/component
 import logo from './img/logo.gif'
 import developerImage from './img/devs.jpg'
 import developerImage2 from './img/dev2.jpg'
+import toolball from './img/toolball.jpg'
 import HammerScrew from '../../assets/svg/hammer_screwdriver_2.svg'
 import Comment from '../../assets/svg/comment.svg'
 
@@ -159,7 +160,7 @@ class WelcomePage extends Component {
     return (
       <div className='WelcomePage'>
         <Helmet>
-          <title>source | Build Anything with a Post</title>
+          <title>source | The Decentralized Tech Incubator</title>
           <meta name='keywords' content='decentralized, tech incubator, developers,programming,open source, blockchain, crowdfunding' />
           <meta
             name='description'
@@ -200,6 +201,12 @@ class WelcomePage extends Component {
           </div>
         </div>
         <div className='Quote'>
+
+          <div className="ballimage">
+              <img className='ToolBall' src={toolball} alt='toolball' />
+          </div>
+
+          <div className='text'>
               <Typography variant='h4' >Finding the right people to build your software project is difficult.</Typography>
                 <br />
                 <Typography variant='h6' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
@@ -208,31 +215,33 @@ class WelcomePage extends Component {
                 <br/>
             <Typography variant='h4' >Instead of spending your time on recruiting,
             why not let those with the right skills come to you?</Typography>
-          <div className='JoinMailing'>
-            <TextField
-              label='Sign up for email updates'
-              type='email'
-              onChange={this.handleChangeSignUp}
-              variant='outlined'
-              className='SignUpInput'
-              error={this.state.emailError}
-            />
-            {(!this.state.sent) && (
-              <Tooltip title={this.state.emailErrorMessage}>
-                <Button variant='outlined' onClick={this.SignUpSubmit}>Sign Up</Button>
-              </Tooltip>
-            )}
-            {(this.state.sent) && (
-              <Typography variant='h4' className='Success'>
-                <ReactSVG src={CircleTick} className='ReactSVGIcon Icon25 MarginRight10' />
-                  Thank you. We will keep in touch
-              </Typography>
-            )}
+            <div className='JoinMailing'>
+              <TextField
+                label='Sign up for email updates'
+                type='email'
+                onChange={this.handleChangeSignUp}
+                variant='outlined'
+                className='SignUpInput'
+                error={this.state.emailError}
+              />
+              {(!this.state.sent) && (
+                <Tooltip title={this.state.emailErrorMessage}>
+                  <Button variant='outlined' onClick={this.SignUpSubmit}>Sign Up</Button>
+                </Tooltip>
+              )}
+              {(this.state.sent) && (
+                <Typography variant='h4' className='Success'>
+                  <ReactSVG src={CircleTick} className='ReactSVGIcon Icon25 MarginRight10' />
+                    Thank you. We will keep in touch
+                </Typography>
+              )}
+            </div>
           </div>
+
         </div>
         <div className='Section Section2' style={{ color: 'white' }}>
         <Typography className='SectionTitle' variant='h2'>How it works</Typography>
-        <Typography className='SectionSubTitle' variant='h4'>Source is building a sharing economy to simplify tech development</Typography>
+        <Typography className='SectionSubTitle' variant='h4'>Your projects are direct fed to our community of developers, filtered by skillset</Typography>
 
         <Grid container spacing={8}>
           <Grid item sm={12} md={6}>
@@ -288,21 +297,7 @@ class WelcomePage extends Component {
             </div>
           </Grid>
         </Grid>
-        <br />
-        <Typography variant='overline2'>Have a project you want to list or need help with?</Typography>
-        <br />
-        <Typography variant='h4'>Let us know!</Typography>
-        <br />
-        <Fab
-          variant='extended'
-          size='large'
-          color='primary'
-          className='TodoButton'
-          href='/getstarted'
-        >
-          <ReactSVG src={Comment} className='ReactSVGIcon Icon25 LeftIcon' />
-      Contact Us
-        </Fab>
+
 
 
           </div>
@@ -311,6 +306,7 @@ class WelcomePage extends Component {
           <br />
           <Typography variant='h4' >Pay as much as you want,</Typography>
           <Typography variant='h4' >Or nothing at all</Typography>
+          <div classname="board">
             <div classname="column">
               <Typography variant="h5">Free</Typography>
               <Typography variant="overline">Cost:</Typography>
@@ -337,8 +333,23 @@ class WelcomePage extends Component {
             <Typography variant="body">•  Tailored End-to-End development solutions for your project</Typography>
             </div>
           </div>
+            <Typography variant='overline2'>Have a project you want to list or need help with?</Typography>
+            <br />
+            <Typography variant='h4'>Let us know!</Typography>
+            <br />
+            <Fab
+              variant='extended'
+              size='large'
+              color='primary'
+              className='TodoButton'
+              href='/getstarted'
+            >
+              <ReactSVG src={Comment} className='ReactSVGIcon Icon25 LeftIcon' />
+          Contact Us
+            </Fab>
+          </div>
 
-      
+
 
       </div>
     )

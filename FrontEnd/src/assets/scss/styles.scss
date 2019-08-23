@@ -3351,6 +3351,9 @@ body {
     }
   }
   .Quote {
+    float: left;
+    clear: none;
+    align-items: flex-start;
     padding-top: 10vh;
     padding-bottom: 7vh;
     padding-left: 14%;
@@ -3358,6 +3361,19 @@ body {
     text-align: center;
     background-color: white;
     background-blend-mode: difference;
+    .text{
+      margin-left: 5vw;
+      float: right;
+      width: 45vw;
+      text-align: left;
+    }
+    .ballimage{
+      width: 30%;
+      float: left;
+      .ToolBall {
+        width: 25vw;
+      }
+    }
     .JoinMailing {
       display: flex;
       align-items: center;
