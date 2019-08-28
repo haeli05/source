@@ -29,7 +29,7 @@ Boards.update = function(obj) {
 
     return db(table)
       .where({ board_id: board_id })
-      .update({ ...obj }, ["*"]);
+      .update(obj, ["*"]);
   });
 };
 
@@ -49,6 +49,23 @@ Boards.get = function(obj) {
 // Boards.get({ board_id: "05fcd4ee-67f3-4526-b5ec-126c2cee96ba" }).then(data =>
 //   console.log(data)
 // );
+
+Boards.getAll = async (offset, limit, tag) => {
+  console.log("limit: ", limit);
+  return P.try(() => {
+    if (tag) {
+      return db(table)
+        .select("*")
+        .whereRaw(`array_to_string(tags, ',') like '%${tag}%'`)
+        .limit(typeof limit === "number" ? limit : "ALL")
+        .offset(typeof offset === "number" ? offset : 0);
+    }
+    return db(table)
+      .select("*")
+      .limit(typeof limit === "number" ? limit : "ALL")
+      .offset(typeof offset === "number" ? offset : 0);
+  });
+};
 
 Boards.delete = function(obj) {
   return P.try(() => {

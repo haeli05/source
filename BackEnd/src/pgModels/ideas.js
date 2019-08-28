@@ -55,17 +55,19 @@ Ideas.get = function(obj) {
 
 // Ideas.get({ idea_name: "Another Great Idea" }).then(data => console.log(data));
 
-Ideas.getAll = async (offset, limit, tag) => {
+Ideas.getAll = async (offset, limit, tag, user_id) => {
   return P.try(() => {
     if (tag) {
       return db(table)
         .select("*")
+        .where({ creator: user_id })
         .whereRaw(`array_to_string(tags, ',') like '%${tag}%'`)
         .limit(typeof limit === "number" ? limit : "ALL")
         .offset(typeof offset === "number" ? offset : 0);
     }
     return db(table)
       .select("*")
+      .where({ creator: user_id })
       .limit(typeof limit === "number" ? limit : "ALL")
       .offset(typeof offset === "number" ? offset : 0);
   });

@@ -27,7 +27,7 @@ BoardColumns.update = function(obj) {
 
     return db(table)
       .where({ board_columns_id: board_columns_id })
-      .update({ ...obj }, ["*"]);
+      .update(obj, ["*"]);
   });
 };
 // BoardColumns.update({

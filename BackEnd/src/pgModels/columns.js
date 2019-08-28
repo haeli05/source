@@ -3,6 +3,8 @@
 let { db } = require("../db/knex");
 let uuid = require("uuid/v4");
 let P = require("bluebird");
+const upsert = require("knex-upsert");
+
 let Columns = {};
 
 const table = "columns";
@@ -15,7 +17,7 @@ Columns.create = function(obj) {
 };
 
 // Columns.create({
-//   board_id: "515482f5-4b7a-4405-99b1-f14247564dee",
+//   board_id: "42e0d014-ba6c-4412-b1f3-b6ff5b3a4d6d",
 //   title: "Column - title",
 //   private: false,
 //   tags: ["yolo, yola", "tota"]
@@ -63,4 +65,27 @@ Columns.delete = function(obj) {
 //   data => console.log(data)
 // );
 
+Columns.upsert = async obj => {
+  return P.try(() => {
+    return upsert({
+      db,
+      table,
+      object: obj,
+      key: "column_id"
+    });
+  });
+};
+
+const obj = {
+  column_id: "03701dde-13ad-4bde-bc74-da137283e89f",
+  board_id: "42e0d014-ba6c-4412-b1f3-b6ff5b3a4d6d",
+  title: "Column - Another title",
+  private: false,
+  tags: ["yolo, yola", "tota"],
+  created_at: "2019-08-28T15:18:16.875Z",
+  last_edit_date: "2019-08-28T15:18:16.875Z",
+  deleted: false
+};
+
+// Columns.upsert(obj).then(x => console.log(x));
 module.exports = Columns;

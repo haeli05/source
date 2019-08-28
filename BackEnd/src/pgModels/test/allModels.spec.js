@@ -68,6 +68,8 @@ describe("Testing User Model", function() {
       const deleted = await Users.delete({
         user_id: testBed.dummyUser.user_id
       });
+      console.log("deleted: ", deleted);
+
       expect(deleted).equals(1);
     });
     it("Should Test Dummy User Doesn't exist in Database anymore", async function() {
