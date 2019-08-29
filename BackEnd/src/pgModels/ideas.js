@@ -30,7 +30,7 @@ Ideas.update = function(obj) {
     delete obj["idea_id"];
     if (!idea_id) return false;
     return db(table)
-      .where({ idea_id: idea_id })
+      .where({ idea_id: idea_id, deleted: false })
       .update(obj, ["*"]);
   });
 };

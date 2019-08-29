@@ -24,7 +24,7 @@ UserProjects.update = function(obj) {
     delete obj["user_projects_id"];
     if (!user_projects_id) return false;
     return db(table)
-      .where({ user_projects_id: user_projects_id })
+      .where({ user_projects_id: user_projects_id, deleted: false })
       .update(obj, ["*"]);
   });
 };

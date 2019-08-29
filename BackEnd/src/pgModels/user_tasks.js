@@ -25,7 +25,7 @@ UserTasks.update = function(obj) {
     if (!user_tasks_id) return false;
 
     return db(table)
-      .where({ user_tasks_id: user_tasks_id })
+      .where({ user_tasks_id: user_tasks_id, deleted: false })
       .update(obj, ["*"]);
   });
 };

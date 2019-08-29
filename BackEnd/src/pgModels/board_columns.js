@@ -21,10 +21,14 @@ BoardColumns.create = function(obj) {
 
 BoardColumns.update = function(obj) {
   return P.try(() => {
-    const { board_columns_id } = obj;
-    delete obj["board_columns_id"];
-    if (!board_columns_id) return false;
+    const { board_columns_id, board_id, column_id } = obj;
+    if (!board_columns_id)
+      return db(table)
+        .where({ board_id, column_id, deleted: false })
+        .update(obj, ["*"])
+        .then(([x]) => x);
 
+    delete obj["board_columns_id"];
     return db(table)
       .where({ board_columns_id: board_columns_id })
       .update(obj, ["*"]);
@@ -60,5 +64,33 @@ BoardColumns.delete = function(obj) {
 // BoardColumns.delete({
 //   board_columns_id: "182c1fe9-3031-40e8-b1bc-364644a81bb7"
 // }).then(data => console.log(data));
+
+BoardColumns.upsert = obj => {
+  return P.try(async () => {
+    if (obj.column_tasks_id)
+      return upsert({
+        db,
+        table,
+        object: obj,
+        key: "column_tasks_id"
+      });
+    const { column_id, board_id, order } = obj;
+    const [boardColumn] = await BoardColumns.get({
+      board_id,
+      column_id
+    });
+    if (!boardColumn)
+      return BoardColumns.create({
+        board_id,
+        column_id,
+        order: typeof order === "number" ? order : 0
+      });
+    return BoardColumns.update({
+      board_id,
+      column_id,
+      order: typeof order === "number" ? order : 0
+    });
+  });
+};
 
 module.exports = BoardColumns;

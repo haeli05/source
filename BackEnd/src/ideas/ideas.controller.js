@@ -6,6 +6,7 @@ import ProjectIdeas from "../pgModels/project_ideas";
 import Comments from "../pgModels/comments";
 import IdeaComments from "../pgModels/idea_comments";
 import UserComments from "../pgModels/user_comments";
+import UserIdeas from "../pgModels/user_ideas";
 
 /**
  * Vote on either an idea or a comment (upvote / downvote)
@@ -132,7 +133,11 @@ export async function newIdea(req, res) {
   try {
     const projectID = req.body.projectID;
     const newIdea = await Ideas.create(i);
-    console.log("newIdea: ", newIdea);
+
+    await UserIdeas.create({
+      user_id: i.creator,
+      idea_id: newIdea[0].idea_id
+    });
     ProjectIdeas.create({
       project_id: projectID,
       idea_id: newIdea[0].idea_id

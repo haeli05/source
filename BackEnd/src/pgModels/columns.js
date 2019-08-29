@@ -30,7 +30,7 @@ Columns.update = function(obj) {
     if (!column_id) return false;
 
     return db(table)
-      .where({ column_id: column_id })
+      .where({ column_id: column_id, deleted: false })
       .update(obj, ["*"]);
   });
 };
@@ -76,16 +76,16 @@ Columns.upsert = async obj => {
   });
 };
 
-const obj = {
-  column_id: "03701dde-13ad-4bde-bc74-da137283e89f",
-  board_id: "42e0d014-ba6c-4412-b1f3-b6ff5b3a4d6d",
-  title: "Column - Another title",
-  private: false,
-  tags: ["yolo, yola", "tota"],
-  created_at: "2019-08-28T15:18:16.875Z",
-  last_edit_date: "2019-08-28T15:18:16.875Z",
-  deleted: false
-};
+// const obj = {
+//   column_id: "03701dde-13ad-4bde-bc74-da137283e89f",
+//   board_id: "42e0d014-ba6c-4412-b1f3-b6ff5b3a4d6d",
+//   title: "Column - Another title",
+//   private: false,
+//   tags: ["yolo, yola", "tota"],
+//   created_at: "2019-08-28T15:18:16.875Z",
+//   last_edit_date: "2019-08-28T15:18:16.875Z",
+//   deleted: false
+// };
 
 // Columns.upsert(obj).then(x => console.log(x));
 module.exports = Columns;

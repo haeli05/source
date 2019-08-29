@@ -53,7 +53,7 @@ Users.update = function(obj) {
     }
     obj.updated_at = new Date();
     return db(table)
-      .where({ user_id: user_id })
+      .where({ user_id: user_id, deleted: false })
       .update(obj, ["*"])
       .then(x =>
         x.map(x => {

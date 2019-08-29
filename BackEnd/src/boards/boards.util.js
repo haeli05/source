@@ -1,5 +1,6 @@
 (async () => {
   const Columns = require("../pgModels/columns");
+  const BoardColumns = require("../pgModels/board_columns");
   const dummyData = {
     board_id: "073937d7-9f9e-4ac8-a20d-ca8ee54bffa2",
     data: {
@@ -74,6 +75,17 @@
     columnOrder: ["column-1", "column-2", "column-3"]
   };
 
+  const boardColumns = await BoardColumns.get({ board_id: dummyData.board_id });
+  // console.log("boardColumns: ", boardColumns);
+
+  const columnsToDelete = boardColumns.filter(boardColumn => {
+    if (!dummyData.data.columns[boardColumn.column_id])
+      return boardColumn.column_id;
+  });
+
+  columnsToDelete = await Promise.all(columnsToDelete.map(x => {}));
+
+  console.log("columnsToDelete: ", columnsToDelete);
   const columns = await Promise.all(
     dummyData.columnOrder.map((column, order) => {
       column = dummyData.data.columns[column];
@@ -82,6 +94,16 @@
       return Columns.upsert(column);
     })
   );
-
   console.log("columns: ", columns);
+  const a = await Promise.all(
+    columns.map((column, order) => {
+      const { board_id, column_id } = column;
+      return BoardColumns.upsert({
+        board_id,
+        column_id,
+        order,
+        deleted: false
+      });
+    })
+  );
 })();

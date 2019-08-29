@@ -25,7 +25,7 @@ UserComments.update = function(obj) {
     if (!user_comments_id) return false;
 
     return db(table)
-      .where({ user_comments_id: user_comments_id })
+      .where({ user_comments_id: user_comments_id, deleted: false })
       .update(obj, ["*"]);
   });
 };

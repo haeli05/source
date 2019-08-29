@@ -25,7 +25,7 @@ ProjectPermissions.update = function(obj) {
     if (!project_permissions_id) return false;
 
     return db(table)
-      .where({ project_permissions_id: project_permissions_id })
+      .where({ project_permissions_id: project_permissions_id, deleted: false })
       .update(obj, ["*"]);
   });
 };

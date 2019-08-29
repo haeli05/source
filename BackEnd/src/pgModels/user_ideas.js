@@ -25,7 +25,7 @@ UserIdeas.update = function(obj) {
     if (!user_ideas_id) return false;
 
     return db(table)
-      .where({ user_ideas_id: user_ideas_id })
+      .where({ user_ideas_id: user_ideas_id, deleted: false })
       .update(obj, ["*"]);
   });
 };

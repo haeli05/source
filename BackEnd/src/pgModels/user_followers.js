@@ -25,7 +25,7 @@ UserFollowers.update = function(obj) {
     if (!user_followers_id) return false;
 
     return db(table)
-      .where({ user_followers_id: user_followers_id })
+      .where({ user_followers_id: user_followers_id, deleted: false })
       .update(obj, ["*"]);
   });
 };

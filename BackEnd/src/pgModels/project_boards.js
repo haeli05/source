@@ -26,7 +26,7 @@ ProjectBoards.update = function(obj) {
     if (!project_boards_id) return false;
 
     return db(table)
-      .where({ project_boards_id: project_boards_id })
+      .where({ project_boards_id: project_boards_id, deleted: false })
       .update(obj, ["*"]);
   });
 };

@@ -28,7 +28,7 @@ Boards.update = function(obj) {
     if (!board_id) return false;
 
     return db(table)
-      .where({ board_id: board_id })
+      .where({ board_id: board_id, deleted: false })
       .update(obj, ["*"]);
   });
 };

@@ -32,7 +32,7 @@ Projects.update = function(obj) {
     delete obj["project_id"];
     if (!project_id) return false;
     return db(table)
-      .where({ project_id: project_id })
+      .where({ project_id: project_id, deleted: false })
       .update(obj, ["*"]);
   });
 };
@@ -55,7 +55,7 @@ Projects.get = function(obj) {
 //   console.log(data)
 // );
 
-Projects.getAll = async (offset, limit, tag) => {
+Projects.getAll = async (offset, limit, tag, user_id) => {
   return P.try(() => {
     if (tag) {
       return db(table)

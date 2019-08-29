@@ -23,7 +23,7 @@ export function getAll(req, res) {
   }
   let offset = req.body.last == undefined ? 0 : parseInt(req.body.offset);
   let tag = req.body.tag == undefined ? null : req.body.tag;
-
+  // const user_id = req.user.id;
   return Projects.getAll(offset, limit, tag)
     .then(i => {
       res.status(200).json(i);

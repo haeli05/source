@@ -25,7 +25,7 @@ IdeaComments.update = function(obj) {
     delete obj["idea_comments_id"];
     if (!idea_comments_id) return false;
     return db(table)
-      .where({ idea_comments_id: idea_comments_id })
+      .where({ idea_comments_id: idea_comments_id, deleted: false })
       .update(obj, ["*"]);
   });
 };

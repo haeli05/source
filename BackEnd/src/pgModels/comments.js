@@ -27,7 +27,7 @@ Comments.update = function(obj) {
     if (!comment_id) return false;
 
     return db(table)
-      .where({ comment_id: comment_id })
+      .where({ comment_id: comment_id, deleted: false })
       .update(obj, ["*"]);
   });
 };
