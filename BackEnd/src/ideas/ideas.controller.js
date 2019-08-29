@@ -351,6 +351,8 @@ export async function editIdea(req, res) {
     //body = JSON.parse(req.body.body);
     body = req.body.body;
     const [oldIdea] = await Ideas.get({ idea_id: id });
+    if (!oldIdea)
+      return res.status(404).json({ message: "The idea doesn't exist" });
 
     if (oldIdea.creator != user)
       return res

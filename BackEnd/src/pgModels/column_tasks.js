@@ -25,6 +25,7 @@ ColumnTasks.update = function(obj) {
     const { column_tasks_id } = obj;
     delete obj["column_tasks_id"];
     if (!column_tasks_id) return false;
+    obj.last_edit_date = new Date();
     return db(table)
       .where({ column_tasks_id: column_tasks_id, deleted: false })
       .update(obj, ["*"]);

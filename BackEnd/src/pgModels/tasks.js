@@ -33,7 +33,7 @@ Tasks.update = function(obj) {
     const { task_id } = obj;
     delete obj["task_id"];
     if (!task_id) return false;
-
+    obj.last_edit_date = new Date();
     return db(table)
       .where({ task_id: task_id, deleted: false })
       .update(obj, ["*"]);

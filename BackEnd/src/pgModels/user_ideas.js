@@ -23,6 +23,7 @@ UserIdeas.update = function(obj) {
     const { user_ideas_id } = obj;
     delete obj["user_ideas_id"];
     if (!user_ideas_id) return false;
+    obj.last_edit_date = new Date();
 
     return db(table)
       .where({ user_ideas_id: user_ideas_id, deleted: false })

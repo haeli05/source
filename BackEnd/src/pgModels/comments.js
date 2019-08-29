@@ -25,7 +25,7 @@ Comments.update = function(obj) {
     const { comment_id } = obj;
     delete obj["comment_id"];
     if (!comment_id) return false;
-
+    obj.last_edit_date = new Date();
     return db(table)
       .where({ comment_id: comment_id, deleted: false })
       .update(obj, ["*"]);

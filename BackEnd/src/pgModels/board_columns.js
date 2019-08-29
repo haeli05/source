@@ -29,6 +29,8 @@ BoardColumns.update = function(obj) {
         .then(([x]) => x);
 
     delete obj["board_columns_id"];
+    obj.last_edit_date = new Date();
+
     return db(table)
       .where({ board_columns_id: board_columns_id })
       .update(obj, ["*"]);

@@ -23,6 +23,8 @@ UserProjects.update = function(obj) {
     const { user_projects_id } = obj;
     delete obj["user_projects_id"];
     if (!user_projects_id) return false;
+    obj.last_edit_date = new Date();
+
     return db(table)
       .where({ user_projects_id: user_projects_id, deleted: false })
       .update(obj, ["*"]);

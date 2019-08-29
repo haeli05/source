@@ -26,7 +26,7 @@ Boards.update = function(obj) {
     const { board_id } = obj;
     delete obj["board_id"];
     if (!board_id) return false;
-
+    obj.last_edit_date = new Date();
     return db(table)
       .where({ board_id: board_id, deleted: false })
       .update(obj, ["*"]);

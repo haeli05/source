@@ -23,6 +23,7 @@ TaskAssignedTo.update = function(obj) {
     const { task_assigned_to_id } = obj;
     delete obj["task_assigned_to_id"];
     if (!task_assigned_to_id) return false;
+    obj.last_edit_date = new Date();
 
     return db(table)
       .where({ task_assigned_to_id: task_assigned_to_id, deleted: false })

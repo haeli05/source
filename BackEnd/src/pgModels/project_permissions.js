@@ -23,7 +23,7 @@ ProjectPermissions.update = function(obj) {
     const { project_permissions_id } = obj;
     delete obj["project_permissions_id"];
     if (!project_permissions_id) return false;
-
+    obj.last_edit_date = new Date();
     return db(table)
       .where({ project_permissions_id: project_permissions_id, deleted: false })
       .update(obj, ["*"]);

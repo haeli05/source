@@ -23,6 +23,7 @@ UserComments.update = function(obj) {
     const { user_comments_id } = obj;
     delete obj["user_comments_id"];
     if (!user_comments_id) return false;
+    obj.last_edit_date = new Date();
 
     return db(table)
       .where({ user_comments_id: user_comments_id, deleted: false })

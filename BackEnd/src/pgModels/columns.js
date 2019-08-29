@@ -28,7 +28,7 @@ Columns.update = function(obj) {
     const { column_id } = obj;
     delete obj["column_id"];
     if (!column_id) return false;
-
+    obj.last_edit_date = new Date();
     return db(table)
       .where({ column_id: column_id, deleted: false })
       .update(obj, ["*"]);

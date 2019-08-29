@@ -31,6 +31,7 @@ Projects.update = function(obj) {
     const { project_id } = obj;
     delete obj["project_id"];
     if (!project_id) return false;
+    obj.updated_at = new Date();
     return db(table)
       .where({ project_id: project_id, deleted: false })
       .update(obj, ["*"]);

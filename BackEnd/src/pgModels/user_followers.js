@@ -23,6 +23,7 @@ UserFollowers.update = function(obj) {
     const { user_followers_id } = obj;
     delete obj["user_followers_id"];
     if (!user_followers_id) return false;
+    obj.last_edit_date = new Date();
 
     return db(table)
       .where({ user_followers_id: user_followers_id, deleted: false })

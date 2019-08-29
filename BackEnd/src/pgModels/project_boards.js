@@ -24,6 +24,7 @@ ProjectBoards.update = function(obj) {
     const { project_boards_id } = obj;
     delete obj["project_boards_id"];
     if (!project_boards_id) return false;
+    obj.last_edit_date = new Date();
 
     return db(table)
       .where({ project_boards_id: project_boards_id, deleted: false })

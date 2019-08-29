@@ -169,6 +169,9 @@ export async function deleteBoard(req, res) {
   let user_id = req.user.id;
   try {
     const [board] = await Boards.get({ board_id: id });
+    if (!board)
+      return res.status(404).json({ message: "The board doesn't exist" });
+
     if (board.creator === user_id)
       return Boards.update({ board_id: id, deleted: true })
         .then(i => {
@@ -195,6 +198,9 @@ export async function getColumns(req, res) {
   let user_id = req.user.id;
   try {
     const [board] = await Boards.get({ board_id: board_id });
+    if (!board)
+      return res.status(404).json({ message: "The board doesn't exist" });
+
     if (!board)
       res.status(404).json({ message: "Board doesn't exist", error: error });
     if (board.creator != user_id)
@@ -229,7 +235,8 @@ export async function getColumn(req, res) {
     if (!column)
       res.status(404).json({ message: "Column doesn't exist", error: error });
     const [board] = await Boards.get({ board_id: column.board_id });
-    console.log("board: ", board);
+    if (!board)
+      return res.status(404).json({ message: "The board doesn't exist" });
     if (board.creator != user_id)
       return res.status(401).json({
         message: "User not authorised to access the board columns"
@@ -254,6 +261,9 @@ export async function getTask(req, res) {
     const [task] = await Tasks.get({ task_id: task_id });
     if (!task) return res.status(404).json({ message: "Task doesn't exist" });
     const [userTask] = await UserTasks.get({ task_id: task.task_id });
+    if (!userTask)
+      return res.status(404).json({ message: "Taks doesn exist for user" });
+
     if (userTask.user_id != user_id)
       return res.status(401).json({
         message: "User not authorised to access this task"

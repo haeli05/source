@@ -29,6 +29,7 @@ Ideas.update = function(obj) {
     const { idea_id } = obj;
     delete obj["idea_id"];
     if (!idea_id) return false;
+    obj.updated_at = new Date();
     return db(table)
       .where({ idea_id: idea_id, deleted: false })
       .update(obj, ["*"]);
