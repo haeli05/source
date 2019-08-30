@@ -22,10 +22,14 @@ ColumnTasks.create = function(obj) {
 
 ColumnTasks.update = function(obj) {
   return P.try(() => {
-    const { column_tasks_id } = obj;
+    const { column_tasks_id, task_id, column_id } = obj;
     delete obj["column_tasks_id"];
-    if (!column_tasks_id) return false;
     obj.last_edit_date = new Date();
+
+    if (!column_tasks_id)
+      return db(table)
+        .where({ task_id, column_id, deleted: false })
+        .update(obj, ["*"]);
     return db(table)
       .where({ column_tasks_id: column_tasks_id, deleted: false })
       .update(obj, ["*"]);
@@ -64,7 +68,7 @@ ColumnTasks.delete = function(obj) {
 // }).then(data => console.log(data));
 
 ColumnTasks.upsert = obj => {
-  return P.try(() => {
+  return P.try(async () => {
     if (obj.column_tasks_id)
       return upsert({
         db,
@@ -73,7 +77,7 @@ ColumnTasks.upsert = obj => {
         key: "column_tasks_id"
       });
     const { column_id, task_id, order } = obj;
-    const [columnTask] = ColumnTasks.get({
+    const [columnTask] = await ColumnTasks.get({
       column_id,
       task_id
     });

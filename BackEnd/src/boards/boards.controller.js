@@ -5,7 +5,7 @@ import Columns from "../pgModels/columns";
 import BoardColumns from "../pgModels/board_columns";
 import Tasks from "../pgModels/tasks";
 import UserTasks from "../pgModels/user_tasks";
-
+import * as BoardManager from "./boards.util";
 /**
  * Get 50 boards, sorted by date, includes pagination functionality, can filter by tag
  * @param req.body.limit - the number of boards to get per page
@@ -185,6 +185,32 @@ export async function deleteBoard(req, res) {
     return res.status(200).json(["The user Provided is incorrect", i]);
   } catch (error) {
     res.status(400).json({ message: "Failed to delete board", error: error });
+  }
+}
+
+// /**
+//  * Update the whole board based on its board_id
+//  * @param req.params.id - board_id of the board
+//  * @returns void
+//  */
+export async function manangeBoard(req, res) {
+  console.log("manage board:");
+  let board_id = req.params.id;
+  const data = req.body;
+
+  try {
+    const boardUpdated = await BoardManager.boardUpdate(
+      Object.assign({ board_id }, data)
+    );
+
+    if (boardUpdated) {
+      const newBoard = await BoardManager.boardFetch(board_id);
+      return res.status(200).json(newBoard);
+    }
+    return res.status(500).json({ message: "Something went wront" });
+  } catch (error) {
+    console.log("error: ", error);
+    res.status(400).json({ message: "Failed to update board", error: error });
   }
 }
 

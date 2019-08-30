@@ -58,11 +58,9 @@ router
 router.route("/boards/tasks/:task_id").post(BoardsController.getTask);
 
 //get task
-router
-  .route("/boards/manage/:id")
-  .put(
-    passport.authenticate("jwt", { session: false }),
-    BoardsController.getBoard
-  );
+router.route("/boards/manage/:id").put(
+  // passport.authenticate("jwt", { session: false }),
+  BoardsController.manangeBoard
+);
 
 export default router;
