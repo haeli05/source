@@ -183,14 +183,14 @@ class WelcomePage extends Component {
                 Connect with a community of <br />
                  <div style={{ display: 'inline' }} id='whatissource' />
                  <br />
-                  to build your digital projects.
+                 anytime, anywhere, any price
                 </Typography>
                 <Button variant='outlined' className='GetStarted' component={Link} to='/getstarted'>
                   Get started
                 </Button>
                 <br />
                 <Typography className='Mission WhatIsSource' variant='h4' color='textPrimary'>
-                  If you're a developer, sign up to work on exciting projects!
+                  Are you a developer? Sign up to get paid instantly.
                 </Typography>
                 <Button variant='contained' color='primary' className='GetStarted' href='#todo'>
                   Register
@@ -200,72 +200,69 @@ class WelcomePage extends Component {
           </div>
         </div>
         <div className='Quote'>
+          <div className="Body">
+            <div className="ballimage">
+                <img className='ToolBall' src={toolball} alt='toolball' />
+            </div>
+            <div className='text'>
+            <Typography variant='h3'>Problem</Typography>
+            <Typography variant='h4' >Building software is complicated.</Typography>
+              <br />
+                  <Typography variant='subtitle1' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
+                  <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
+              <Typography variant='h3'>Solution</Typography>
+              <Typography variant='h4' >Let developers come to you.</Typography>
 
-          <div className="ballimage">
-              <img className='ToolBall' src={toolball} alt='toolball' />
-          </div>
 
-          <div className='text'>
-              <Typography variant='h4' >Finding the right people to build your software project is complicated.</Typography>
-                <br />
-                <Typography variant='h6' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
-                <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
-
-                <br/>
-            <Typography variant='h4' >Instead of spending your time on recruiting,
-            why not let those with the right skills come to you?</Typography>
-            <div className='JoinMailing'>
-              <ReactSVG src={Anchor} className='ReactSVGIcon Icon25' />
-              <TextField
-                label='Sign up for email updates'
-                type='email'
-                onChange={this.handleChangeSignUp}
-                variant='outlined'
-                className='SignUpInput'
-                error={this.state.emailError}
-              />
-              {(!this.state.sent) && (
-                <Tooltip title={this.state.emailErrorMessage}>
-                  <Button variant='outlined' onClick={this.SignUpSubmit}>Sign Up</Button>
-                </Tooltip>
-              )}
-              {(this.state.sent) && (
-                <Typography variant='h4' className='Success'>
-                  <ReactSVG src={CircleTick} className='ReactSVGIcon Icon25 MarginRight10' />
-                    Thank you. We will keep in touch
-                </Typography>
-              )}
+              <div className='JoinMailing'>
+                <ReactSVG src={Anchor} className='ReactSVGIcon Icon25' />
+                <TextField
+                  label='Sign up for email updates'
+                  type='email'
+                  onChange={this.handleChangeSignUp}
+                  variant='outlined'
+                  className='SignUpInput'
+                  error={this.state.emailError}
+                />
+                {(!this.state.sent) && (
+                  <Tooltip title={this.state.emailErrorMessage}>
+                    <Button variant='outlined' onClick={this.SignUpSubmit}>Sign Up</Button>
+                  </Tooltip>
+                )}
+                {(this.state.sent) && (
+                  <Typography variant='h4' className='Success'>
+                    <ReactSVG src={CircleTick} className='ReactSVGIcon Icon25 MarginRight10' />
+                      Thank you. We will keep in touch
+                  </Typography>
+                )}
+              </div>
             </div>
           </div>
-
         </div>
-        <div className='Section Section2' style={{ color: 'white' }}>
-        <Typography className='SectionTitle' variant='h2'>How it works</Typography>
-        <Typography className='SectionSubTitle' variant='h4'>Plug your projects into source. Tasks on your Todo board are direct fed to our community of developers, filtered by skillset.
-        <br /> You can assign rewards to tasks (or not), and pay only when you're satisfied.</Typography>
+        <div className='Section Section2'>
+        <Typography className='SectionTitle' variant='h2' color="inherit">How it works</Typography>
 
-          The Result: You
+        <Typography className='SectionSubTitle' variant='h4' style={{ color: 'white' }}>Onboard your projects,<br /> Assign your tasks to our community. <br /> Get your projects built on demand, instantly.
+        </Typography>
 
         <Grid container spacing={8}>
           <Grid item sm={12} md={6}>
-            <div className='Description'>
+            <div className='Description' >
               <Typography variant='h5' paragraph >
                   Our community of developers, technology professionals, and consultants support your projects from ideation to implementation.
               </Typography>
               <Typography variant='body' paragraph style={{ textAlign: 'left' }}>
-
                 <ul>
                   <li>Share your ideas and Projects</li>
                   <li>Receive actionable insight, feedback and contributions.</li>
                   <li>Get matched with contributors</li>
                 </ul>
-                    We partnered with devshops, technology providers and institutions of higher education to ensure a high quality of contributions.
+                    We partnered with devshops, technology providers and training institutions to ensure a high quality of contributions.
                 <br />
                     Less time spent on logistics means more time spent on what matters:
                 <br /><br />
                 <b>Building the product.</b>
               </Typography>
-
             </div>
           </Grid>
           <Grid item sm={12} md={6}>
@@ -308,7 +305,7 @@ class WelcomePage extends Component {
           <Typography className='SectionTitle' variant='h3' >Pricing</Typography>
           <br />
           <Typography variant='h4' >Pay as much as you want,</Typography>
-          <Typography variant='h4' >or use us for free!</Typography>
+          <Typography variant='h4' >or nothing at all!</Typography>
           <div classname="board">
             <div classname="column">
               <Typography variant="h5">Free</Typography>

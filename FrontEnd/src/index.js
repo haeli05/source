@@ -34,6 +34,10 @@ const theme = createMuiTheme({
     },
     error: {
       main: '#C64444' // red
+    },
+    text: {
+          primary: "#4b4b4b",
+          secondary: "#ffffff"
     }
   },
   // Fonts
@@ -349,28 +353,6 @@ const theme = createMuiTheme({
   }
 })
 
-const chattheme = {
-  vars: {
-    'primary-color': '#427fe1',
-    'secondary-color': '#fbfbfb',
-    'tertiary-color': '#fff',
-    'avatar-border-color': 'black'
-  },
-  AgentBar: {
-    Avatar: {
-      size: '32px'
-    },
-    css: {
-      backgroundColor: 'var(--secondary-color)',
-      borderColor: 'var(--avatar-border-color)'
-    }
-  },
-  Message: {
-    css: {
-      fontWeight: 'bold'
-    }
-  }
-}
 
 const store = configureStore(window.__INITIAL_STATE__)
 ReactDOM.render(

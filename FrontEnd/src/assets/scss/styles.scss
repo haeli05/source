@@ -3351,34 +3351,42 @@ body {
     }
   }
   .Quote {
-    float: left;
-    display: flex;
-    clear: none;
-    align-items: flex-start;
-    padding-top: 10vh;
+    padding-top: 4vh;
     padding-bottom: 7vh;
     padding-left: 12%;
     padding-right: 12%;
     text-align: center;
     background-color: white;
-    background-blend-mode: difference;
-    .text{
-      margin-left: 5vw;
-      float: right;
-      width: 50vw;
-      text-align: left;
-    }
-    .ballimage{
-      width: 30%;
+//    background-blend-mode: difference;
+    .Body {
+       background-blend-mode: difference;
+    padding-top: 4vh;
+    background-color: white;
       float: left;
-      .ToolBall {
-        width: 25vw;
+      display: flex;
+      clear: none;
+      align-items: flex-start;
+      .text{
+        margin-left: 5vw;
+        float: right;
+        width: 50vw;
+        text-align: left;
+      }
+      .ballimage{
+        width: 30%;
+        float: left;
+        .ToolBall {
+          width: 25vw;
+        }
       }
     }
+
     .JoinMailing {
       display: inline-flex;
 //      float: left;
       align-items: center;
+//      align: middle;
+//      vertical-align: middle;
 //      flex-flow: column wrap;
 //      vertical-align: middle;
       margin-top: 4vh;
@@ -3402,7 +3410,7 @@ body {
     // background-image: url("../images/SquareTexture.png");
     // background-repeat: space;
     color: white;
-    background-color: $Darkest;
+    background-color: $Light;
     text-align: center;
     padding-bottom: 7vh;
 
