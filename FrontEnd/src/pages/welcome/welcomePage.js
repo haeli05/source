@@ -267,17 +267,13 @@ class WelcomePage extends Component {
                   Plug and play software development
               </Typography>
               <Avatar alt="Lucas" src={Lucas} className="BigAvatar" />
-              <Typography variant='body' paragraph style={{ textAlign: 'left' }}>
+              <Typography variant='h6' paragraph style={{ textAlign: 'left' }}>
                 <ul>
-                  <li>Work with Projec</li>
-                  <li>Receive actionable insight, feedback and contributions.</li>
-                  <li>Get matched with contributors</li>
+                  <li>Work with a Project Manager to scope out your tasks</li>
+                  <li>Publish tasks and set price points</li>
+                  <li>Only pay when your project manager is satisfied with the result.</li>
                 </ul>
-                    We partnered with devshops, technology providers and training institutions to ensure a high quality of contributions.
-                <br />
-                    Less time spent on logistics means more time spent on what matters:
-                <br /><br />
-                <b>Building the product.</b>
+
               </Typography>
             </div>
           </Grid>
@@ -298,6 +294,11 @@ class WelcomePage extends Component {
             <Typography variant='h3' paragraph className='SectionSubTitle'>
                       Developers-as-a-Service
             </Typography>
+            We partnered with devshops, technology providers and training institutions globally to ensure <br />
+            Paid tasks are delivered at top quality.
+            <br />
+            <br />
+            Our partners can fulfill your requirements at varying price points.
 
             </div>
           </Grid>
