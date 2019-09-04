@@ -11,6 +11,7 @@ import Fab from '@material-ui/core/Fab'
 import Fade from '@material-ui/core/Fade'
 import List from '@material-ui/core/List'
 import Chip from '@material-ui/core/Chip'
+import Avatar from '@material-ui/core/Avatar';
 // Components
 import JoinQueue from './components/joinQueue'
 import PayButton from '../payments/payButton'
@@ -23,13 +24,15 @@ import logo from './img/logo.gif'
 import developerImage from './img/devs.jpg'
 import developerImage2 from './img/dev2.jpg'
 import toolball from './img/toolball.jpg'
+import Lucas from './img/Lucas.png'
 import HammerScrew from '../../assets/svg/hammer_screwdriver_2.svg'
-import Anchor from '../../assets/svg/anchor.svg'
+import Announce from '../../assets/svg/announce.svg'
 import Comment from '../../assets/svg/comment.svg'
 import RightBracket from './../../assets/svg/rightbracket.svg'
 import CircleTick from './../../assets/svg/circletick.svg'
 import config from '../../utils/config.js'
 import { PayPalButton } from 'react-paypal-button-v2'
+
 
 // Analytics
 
@@ -205,17 +208,16 @@ class WelcomePage extends Component {
                 <img className='ToolBall' src={toolball} alt='toolball' />
             </div>
             <div className='text'>
-            <Typography variant='h3'>Problem</Typography>
             <Typography variant='h4' >Building software is complicated.</Typography>
-              <br />
-                  <Typography variant='subtitle1' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
-                  <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
-              <Typography variant='h3'>Solution</Typography>
-              <Typography variant='h4' >Let developers come to you.</Typography>
+            <br />
+            <Typography variant='body1' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
+            <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
+
+              <Typography variant='h4' >We simplify things by matching the right team to your projects, on demand.</Typography>
 
 
               <div className='JoinMailing'>
-                <ReactSVG src={Anchor} className='ReactSVGIcon Icon25' />
+                <ReactSVG src={Announce} className='ReactSVGIcon Icon25' />
                 <TextField
                   label='Sign up for email updates'
                   type='email'
@@ -235,25 +237,39 @@ class WelcomePage extends Component {
                       Thank you. We will keep in touch
                   </Typography>
                 )}
+
               </div>
+              <Typography variant='overline2'>Have a project you need help with?</Typography>
+              <br />
+              <Fab
+                variant='extended'
+                size='large'
+                color='primary'
+                className='TodoButton'
+                href='/getstarted'
+              >
+                <ReactSVG src={Comment} className='ReactSVGIcon Icon25 LeftIcon' />
+            Contact Us
+              </Fab>
             </div>
           </div>
         </div>
         <div className='Section Section2'>
-        <Typography className='SectionTitle' variant='h2' color="inherit">How it works</Typography>
+        <Typography className='SectionTitle' variant='h2' color="textPrimary">How it works</Typography>
 
-        <Typography className='SectionSubTitle' variant='h4' style={{ color: 'white' }}>Onboard your projects,<br /> Assign your tasks to our community. <br /> Get your projects built on demand, instantly.
+        <Typography className='SectionSubTitle' variant='h4'>Onboard your projects, Specify your tasks, Get built by community.
         </Typography>
 
         <Grid container spacing={8}>
           <Grid item sm={12} md={6}>
             <div className='Description' >
-              <Typography variant='h5' paragraph >
-                  Our community of developers, technology professionals, and consultants support your projects from ideation to implementation.
+              <Typography variant='h3' paragraph >
+                  Plug and play software development
               </Typography>
+              <Avatar alt="Lucas" src={Lucas} className="BigAvatar" />
               <Typography variant='body' paragraph style={{ textAlign: 'left' }}>
                 <ul>
-                  <li>Share your ideas and Projects</li>
+                  <li>Work with Projec</li>
                   <li>Receive actionable insight, feedback and contributions.</li>
                   <li>Get matched with contributors</li>
                 </ul>
@@ -271,9 +287,6 @@ class WelcomePage extends Component {
             </Fade>
           </Grid>
         </Grid>
-        <Typography variant='h4' paragraph className='SectionSubTitle'>
-                  While enabling community driven implementation and funding
-        </Typography>
         <Grid container spacing={6}>
           <Grid item sm={6} md={3}>
             <Fade in>
@@ -282,24 +295,32 @@ class WelcomePage extends Component {
           </Grid>
           <Grid item sm={6} md={5}>
             <div className='Description'>
-              <Typography variant='h5' paragraph >
-                    Open Source Collaboration + Crowdfunding + Monetized Tasks
-              </Typography>
-                    Projects are broken down into subtasks, which can be delegated to the community or our specialist partners.
-              <br /><br />
-                    How to monetize your skills:
-              <ol>
-                <li>Find a task relevant to your skillset</li>
-                <li>Work with the project manager to deliver</li>
-                <li>???</li>
-                <li>Profit. Get paid in cash or Crypto.</li>
-              </ol>
+            <Typography variant='h3' paragraph className='SectionSubTitle'>
+                      Developers-as-a-Service
+            </Typography>
+
             </div>
           </Grid>
         </Grid>
 
+        <Grid container spacing={6}>
+          <Typography variant="h4">How we operate</Typography>
+          <Grid item sm={4} md={4}>
+            Trust
 
 
+          </Grid>
+          <Grid item sm={4} md={4}>
+            Accountability
+
+            Tasks and deliverables are
+          </Grid>
+          <Grid item sm={4} md={4}>
+            Clarity
+
+
+          </Grid>
+        </Grid>
           </div>
           <div className='Section Section3'>
           <Typography className='SectionTitle' variant='h3' >Pricing</Typography>
@@ -333,20 +354,7 @@ class WelcomePage extends Component {
             <Typography variant="body">•  Tailored End-to-End development solutions for your project</Typography>
             </div>
           </div>
-            <Typography variant='overline2'>Have a project you want to list or need help with?</Typography>
-            <br />
-            <Typography variant='h4'>Let us know!</Typography>
-            <br />
-            <Fab
-              variant='extended'
-              size='large'
-              color='primary'
-              className='TodoButton'
-              href='/getstarted'
-            >
-              <ReactSVG src={Comment} className='ReactSVGIcon Icon25 LeftIcon' />
-          Contact Us
-            </Fab>
+
           </div>
 
 

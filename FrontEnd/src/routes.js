@@ -5,6 +5,7 @@ import history from './history'
 // Main
 import App from './app'
 import GetStarted from './pages/welcome/getStarted'
+//import Guidelines from './pages/user/guidelines'
 // Explore
 import Ideas from './pages/explore/exploreIdeas'
 import Projects from './pages/explore/exploreProjects'

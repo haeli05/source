@@ -936,6 +936,15 @@ time {
 
 
 /* ================================= GLOBAL ================================= */
+BigAvatar{
+  margin: 10,
+   width: 60,
+   height: 60,
+}
+SmallAvatar{
+  margin: 10,
+}
+
 .Hidden {
   display: hidden;
 }
@@ -3409,7 +3418,7 @@ body {
   .Section2 {
     // background-image: url("../images/SquareTexture.png");
     // background-repeat: space;
-    color: white;
+//    color: white;
     background-color: $Light;
     text-align: center;
     padding-bottom: 7vh;
