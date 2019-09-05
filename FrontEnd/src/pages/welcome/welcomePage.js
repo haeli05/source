@@ -223,11 +223,12 @@ class WelcomePage extends Component {
                 <img className='ToolBall' src={toolball} alt='toolball' />
             </div>
             <div className='text'>
-
+              <Typography variant='h4' >Building software is difficult.</Typography>
+            <br />  
             <Typography variant='body1' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
             <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
 
-              <Typography variant='h4' >Building software is difficult.
+              <Typography variant='h4' >
               <br /><br />
               We make it easy by giving you have access to the right developers, experts, and programmers on demand!</Typography>
 
