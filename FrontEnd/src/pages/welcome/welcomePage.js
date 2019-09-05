@@ -292,7 +292,7 @@ class WelcomePage extends Component {
           <Grid item sm={12} md={6}>
             <div className='Description' >
               <Typography variant='h3' paragraph >
-                  Plug and play software development
+                  A plug and play paradigm for software development
               </Typography>
               <Avatar alt="Lucas" src={Lucas} className="BigAvatar" />
               <Typography variant='h6' paragraph style={{ textAlign: 'left' }}>
@@ -320,7 +320,7 @@ class WelcomePage extends Component {
           <Grid item sm={6} md={5}>
             <div className='Description'>
             <Typography variant='h3' paragraph className='SectionSubTitle'>
-                      Developers-as-a-Service
+                      Introducing: Developers-as-a-Service
             </Typography>
             We partnered with devshops, technology providers and training institutions globally to ensure <br />
             Paid tasks are delivered at top quality.

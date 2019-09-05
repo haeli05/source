@@ -949,7 +949,8 @@ time {
 
 /* ================================= GLOBAL ================================= */
 .Vertical {
-
+  display: flex;
+  flex-direction: column;
 }
 .BigAvatar{
   margin: 10;
@@ -3386,7 +3387,7 @@ body {
     background-color: white;
 //    background-blend-mode: difference;
     .Body {
-       background-blend-mode: difference;
+    background-blend-mode: difference;
     padding-top: 4vh;
     background-color: white;
       float: left;
@@ -3419,6 +3420,7 @@ body {
       margin-top: 4vh;
 
       .SignUpInput {
+        color: textPrimary;
         margin-left: 14px;
         margin-right: 14px;
         margin-bottom: 2vh;
