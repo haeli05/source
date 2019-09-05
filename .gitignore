@@ -13,6 +13,7 @@ config.js
 mail.js
 build
 certs
+gulpfile.js
 
 # Packages #
 ############
