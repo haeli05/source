@@ -28,6 +28,8 @@ import toolball from './img/toolball.jpg'
 import Lucas from './img/Lucas.png'
 import HammerScrew from '../../assets/svg/hammer_screwdriver_2.svg'
 import Announce from '../../assets/svg/announce.svg'
+import Level from '../../assets/svg/level.svg'
+import Edit from '../../assets/svg/edit.svg'
 import Comment from '../../assets/svg/comment.svg'
 import RightBracket from './../../assets/svg/rightbracket.svg'
 import CircleTick from './../../assets/svg/circletick.svg'
@@ -224,13 +226,14 @@ class WelcomePage extends Component {
             </div>
             <div className='text'>
               <Typography variant='h4' >Building software is difficult.</Typography>
-            <br />  
+            <br />
             <Typography variant='body1' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
             <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
-
-              <Typography variant='h4' >
               <br /><br />
-              We make it easy by giving you have access to the right developers, experts, and programmers on demand!</Typography>
+              <Typography paragraph variant='h4' >
+              Teams can work quickly when expert help is within reach.
+              <br /><br />
+              Sign up and get connected to the right developers, experts, and programmers on demand.</Typography>
 
 
               <div className='JoinMailing'>
@@ -263,18 +266,25 @@ class WelcomePage extends Component {
         <div className='Section Section2'>
         <Typography className='SectionTitle' variant='h2' color="textPrimary">How it works</Typography>
         <Grid container spacing={8}>
-          <Grid item sm={12} md={6}>
+          <Grid item sm={3} md={4} className="Vertical">
 
-          <ReactSVG src={WorkMan} className='ReactSVGIcon Icon75 CircleBorder' />
-          <Typography className='SectionSubTitle' variant='h4'>Onboard your projects
+          <ReactSVG src={Level} className='ReactSVGIcon Icon75' />
+          <Typography variant='h5'>
+          Onboard your projects
           </Typography>
 
           </Grid>
-          <Grid item sm={12} md={6}>
-          Specify your tasks,
+          <Grid item sm={3} md={4} className="Vertical">
+          <ReactSVG src={Edit} className='ReactSVGIcon Icon75' />
+          <Typography variant='h5'>
+          Specify your tasks
+          </Typography>
           </Grid>
-          <Grid item sm={12} md={6}>
-          Get built by community.
+          <Grid item sm={3} md={4} className="Vertical">
+          <ReactSVG src={WorkMan} className='ReactSVGIcon Icon75' />
+          <Typography variant='h5'>
+          Build with community
+          </Typography>
           </Grid>
         </Grid>
 
