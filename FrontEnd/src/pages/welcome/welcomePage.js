@@ -24,12 +24,14 @@ import logo from './img/logo.gif'
 import developerImage from './img/devs.jpg'
 import developerImage2 from './img/dev2.jpg'
 import toolball from './img/toolball.jpg'
+
 import Lucas from './img/Lucas.png'
 import HammerScrew from '../../assets/svg/hammer_screwdriver_2.svg'
 import Announce from '../../assets/svg/announce.svg'
 import Comment from '../../assets/svg/comment.svg'
 import RightBracket from './../../assets/svg/rightbracket.svg'
 import CircleTick from './../../assets/svg/circletick.svg'
+import WorkMan from './../../assets/svg/workman.svg'
 import config from '../../utils/config.js'
 import { PayPalButton } from 'react-paypal-button-v2'
 
@@ -186,7 +188,7 @@ class WelcomePage extends Component {
                 Connect with a community of <br />
                  <div style={{ display: 'inline' }} id='whatissource' />
                  <br />
-                 anytime, anywhere, any price
+                 to build your project
                 </Typography>
                 <Button variant='outlined' className='GetStarted' component={Link} to='/getstarted'>
                   Get started
@@ -200,20 +202,34 @@ class WelcomePage extends Component {
                 </Button>
               </Grid>
             </Grid>
+            <Typography variant='overline2'>Have a project you need help with?</Typography>
+            <br />
+            <Fab
+              variant='extended'
+              size='large'
+              color='primary'
+              className='TodoButton'
+              href='/getstarted'
+            >
+              <ReactSVG src={Comment} className='ReactSVGIcon Icon25 LeftIcon' />
+          Contact Us
+            </Fab>
           </div>
         </div>
         <div className='Quote'>
+        <Typography variant='h2'>Solving Tech's Biggest Problem</Typography>
           <div className="Body">
             <div className="ballimage">
                 <img className='ToolBall' src={toolball} alt='toolball' />
             </div>
             <div className='text'>
-            <Typography variant='h4' >Building software is complicated.</Typography>
-            <br />
+
             <Typography variant='body1' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
             <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
 
-              <Typography variant='h4' >We simplify things by matching the right team to your projects, on demand.</Typography>
+              <Typography variant='h4' >Building software is difficult.
+              <br /><br />
+              We make it easy by giving you have access to the right developers, experts, and programmers on demand!</Typography>
 
 
               <div className='JoinMailing'>
@@ -239,26 +255,27 @@ class WelcomePage extends Component {
                 )}
 
               </div>
-              <Typography variant='overline2'>Have a project you need help with?</Typography>
-              <br />
-              <Fab
-                variant='extended'
-                size='large'
-                color='primary'
-                className='TodoButton'
-                href='/getstarted'
-              >
-                <ReactSVG src={Comment} className='ReactSVGIcon Icon25 LeftIcon' />
-            Contact Us
-              </Fab>
+
             </div>
           </div>
         </div>
         <div className='Section Section2'>
         <Typography className='SectionTitle' variant='h2' color="textPrimary">How it works</Typography>
+        <Grid container spacing={8}>
+          <Grid item sm={12} md={6}>
 
-        <Typography className='SectionSubTitle' variant='h4'>Onboard your projects, Specify your tasks, Get built by community.
-        </Typography>
+          <ReactSVG src={WorkMan} className='ReactSVGIcon Icon75 CircleBorder' />
+          <Typography className='SectionSubTitle' variant='h4'>Onboard your projects
+          </Typography>
+
+          </Grid>
+          <Grid item sm={12} md={6}>
+          Specify your tasks,
+          </Grid>
+          <Grid item sm={12} md={6}>
+          Get built by community.
+          </Grid>
+        </Grid>
 
         <Grid container spacing={8}>
           <Grid item sm={12} md={6}>

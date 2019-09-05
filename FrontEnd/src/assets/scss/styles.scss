@@ -375,12 +375,24 @@ time {
   fill: currentColor;
   color: currentColor;
 }
+.CircleBorder {
+  border: 2px solid black;
+  border-radius: 36px;
+}
 .LeftIcon {
   margin-right: 9px;
 }
 .Icon25 {
   width: 25px;
   height: 25px;
+}
+.Icon75 {
+  width: 75px;
+  height: 75px;
+}
+.Icon125 {
+  width: 125px;
+  height: 125px;
 }
 .Letter {
   margin-top: 4px;
@@ -937,9 +949,10 @@ time {
 
 /* ================================= GLOBAL ================================= */
 .BigAvatar{
-  margin: 10,
-   width: 60,
-   height: 60
+  margin: 10;
+  height: 60;
+   width: 60;
+
 }
 .SmallAvatar{
   margin: 10
@@ -3238,8 +3251,9 @@ body {
 
 .WelcomePage {
   .Hero {
-    padding-top: 150px;
-    padding-bottom: 200px;
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+    height: 70vh;
     text-align: left;
     padding-left: 7%;
     padding-right: 7%;
