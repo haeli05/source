@@ -225,15 +225,15 @@ class WelcomePage extends Component {
                 <img className='ToolBall' src={toolball} alt='toolball' />
             </div>
             <div className='text'>
-              <Typography variant='h4' color="textPrimary">Building software is difficult.</Typography>
+              <Typography variant='h4' color="textPrimary">Building software can be difficult.</Typography>
             <br />
             <Typography variant='body1' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
             <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
               <br /><br />
               <Typography paragraph variant='h4' color="textPrimary">
-              But we learnt, from hackathons and incubators, that teams can work quickly when expert help is within reach.
+              We are here to provide you with expert help.
               <br /><br />
-              We built source to connect you to developers, experts, and project managers on demand.</Typography>
+              Sign up to connect you with developers, experts, and project managers instantly.</Typography>
 
 
               <div className='JoinMailing'>
@@ -265,30 +265,36 @@ class WelcomePage extends Component {
         </div>
         <div className='Section Section2'>
         <Typography className='SectionTitle' variant='h2' color="textPrimary">How it works</Typography>
-        <Grid container spacing={8}>
-          <Grid item sm={3} md={4} className="Vertical">
-
-          <ReactSVG src={Level} className='ReactSVGIcon Icon75' />
-          <Typography variant='h5'>
-          Onboard your projects
-          </Typography>
-
+        <Grid
+        container
+        justify="center"
+        alignItems="center"
+        spacing={1}>
+          <Grid item sm={2} md={4} className="Vertical">
+            <ReactSVG src={Level} className='ReactSVGIcon Icon50' />
+            <Typography variant='h5'>
+            1. Onboard your projects
+            </Typography>
           </Grid>
-          <Grid item sm={3} md={4} className="Vertical">
-          <ReactSVG src={Edit} className='ReactSVGIcon Icon75' />
-          <Typography variant='h5'>
-          Specify your tasks
-          </Typography>
+          <Grid item sm={2} md={4} className="Vertical">
+            <ReactSVG src={Edit} className='ReactSVGIcon Icon50' />
+            <Typography variant='h5'>
+            2. Specify your tasks
+            </Typography>
           </Grid>
-          <Grid item sm={3} md={4} className="Vertical">
-          <ReactSVG src={WorkMan} className='ReactSVGIcon Icon75' />
-          <Typography variant='h5'>
-          Build with community
-          </Typography>
+          <Grid item sm={2} md={4} className="Vertical">
+            <ReactSVG src={WorkMan} className='ReactSVGIcon Icon50' />
+            <Typography variant='h5'>
+            3. Build with community
+            </Typography>
           </Grid>
         </Grid>
 
-        <Grid container spacing={8}>
+        <Grid
+        container
+        justify="center"
+        alignItems="center"
+        spacing={8}>
           <Grid item sm={12} md={6}>
             <div className='Description' >
               <Typography variant='h3' paragraph >
@@ -299,7 +305,7 @@ class WelcomePage extends Component {
                 <ul>
                   <li>Work with a Project Manager to scope out your tasks</li>
                   <li>Publish tasks and set price points</li>
-                  <li>Only pay when your project manager is satisfied with the result.</li>
+                  <li>Only pay when you or your project manager is satisfied with the result.</li>
                 </ul>
 
               </Typography>
@@ -311,7 +317,7 @@ class WelcomePage extends Component {
             </Fade>
           </Grid>
         </Grid>
-        <Grid container spacing={6}>
+        <Grid container spacing={3}>
           <Grid item sm={6} md={3}>
             <Fade in>
               <img className='DevImage' src={developerImage} alt='developers' />
@@ -331,21 +337,20 @@ class WelcomePage extends Component {
             </div>
           </Grid>
         </Grid>
-
-        <Grid container spacing={6}>
-          <Typography variant="h4">How we operate</Typography>
-          <Grid item sm={4} md={4}>
-            Trust
+        <Typography variant="h2">How we operate</Typography>
+        <Grid container spacing={2}>
+          <Grid item sm={4} md={4} className="Vertical">
+          <Typography variant="h4">Trust</Typography>
 
 
           </Grid>
-          <Grid item sm={4} md={4}>
-            Accountability
+          <Grid item sm={4} md={4} className="Vertical">
+          <Typography variant="h4">Clarity</Typography>
 
             Tasks and deliverables are
           </Grid>
-          <Grid item sm={4} md={4}>
-            Clarity
+          <Grid item sm={4} md={4} className="Vertical">
+          <Typography variant="h4">Accountability</Typography>
 
 
           </Grid>

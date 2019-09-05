@@ -386,6 +386,10 @@ time {
   width: 25px;
   height: 25px;
 }
+.Icon50 {
+  width: 50px;
+  height: 50px;
+}
 .Icon75 {
   width: 75px;
   height: 75px;
@@ -950,12 +954,14 @@ time {
 /* ================================= GLOBAL ================================= */
 .Vertical {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  flex-flow: column wrap;
+  vertical-align: middle;
 }
 .BigAvatar{
-  margin: 10;
-   width: 60;
-   height: 60;
+  margin: 20px;
+   width: 80px;
+   height: 80px;
 }
 .SmallAvatar{
   margin: 10
@@ -3334,6 +3340,7 @@ body {
       }
     }
     .WelcomeSignUp {
+
       align-items: center;
       align: center;
       .GetStarted{
@@ -3448,7 +3455,19 @@ body {
       opacity: 0.87;
       line-height: 1.3;
     }
-
+    .DevImage {
+//      max-width: 220px;
+      max-height: 35vh;
+      @media screen and (max-width: $sm) {
+        display: none;
+      }
+    }
+    .DevImage2 {
+      // max-width: 490px;
+      max-height: 35vh;
+      @media screen and (max-width: $sm) {
+        max-width: 100%;
+      }
   }
   .Section3 {
     background-color: $Light;
@@ -3461,19 +3480,7 @@ body {
       margin-bottom: 6vh;
       text-align: center;
     }
-    .DevImage {
-      // max-width: 220px;
-      max-height: 35vh;
-      @media screen and (max-width: $sm) {
-        display: none;
-      }
-    }
-    .DevImage2 {
-      // max-width: 490px;
-      max-height: 35vh;
-      @media screen and (max-width: $sm) {
-        max-width: 100%;
-      }
+
     }
     .Description {
       text-align: left;

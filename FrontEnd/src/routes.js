@@ -39,6 +39,7 @@ import Footer from './pages/global/components/footer'
 import SnackBar from './pages/global/components/snackBar'
 import ReactGA from 'react-ga'
 import Intercom from 'react-intercom'
+import Guidelines from './pages/user/guidelines'
 // TEST
 import FileUploadTest from './pages/global/fileUploadTest'
 
@@ -112,7 +113,7 @@ let Routes = () => (
           <Route exact path='/getstarted' render={props => <GetStarted {...props} />} />
 
           <Route render={props => <Four0FourPage {...props} />} />
-
+          <Route render={props => <Guidelines {...props} />} />
         </Switch>
       </div>
       <Route path='/' render={props => <Footer {...props} />} />
