@@ -204,12 +204,12 @@ class WelcomePage extends Component {
                 </Button>
               </Grid>
             </Grid>
-            <Typography variant='overline2'>Have a project you need help with?</Typography>
+            <Typography variant='h5'>Have a project you need help with?</Typography>
             <br />
             <Fab
               variant='extended'
               size='large'
-              color='primary'
+              color='secondary'
               className='TodoButton'
               href='/getstarted'
             >
@@ -219,21 +219,21 @@ class WelcomePage extends Component {
           </div>
         </div>
         <div className='Quote'>
-        <Typography variant='h2'>Solving Tech's Biggest Problem</Typography>
+        <Typography variant='h2' color="textPrimary">Solving Tech's Biggest Problem</Typography>
           <div className="Body">
             <div className="ballimage">
                 <img className='ToolBall' src={toolball} alt='toolball' />
             </div>
             <div className='text'>
-              <Typography variant='h4' >Building software is difficult.</Typography>
+              <Typography variant='h4' color="textPrimary">Building software is difficult.</Typography>
             <br />
             <Typography variant='body1' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
             <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
               <br /><br />
-              <Typography paragraph variant='h4' >
-              Teams can work quickly when expert help is within reach.
+              <Typography paragraph variant='h4' color="textPrimary">
+              But we learnt, from hackathons and incubators, that teams can work quickly when expert help is within reach.
               <br /><br />
-              Sign up and get connected to the right developers, experts, and programmers on demand.</Typography>
+              We built source to connect you to developers, experts, and project managers on demand.</Typography>
 
 
               <div className='JoinMailing'>

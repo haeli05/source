@@ -949,7 +949,7 @@ time {
 
 /* ================================= GLOBAL ================================= */
 .Vertical {
-  
+
 }
 .BigAvatar{
   margin: 10;
@@ -3333,6 +3333,8 @@ body {
       }
     }
     .WelcomeSignUp {
+      align-items: center;
+      align: center;
       .GetStarted{
         margin-top: 2vh;
         display: inline-block;
