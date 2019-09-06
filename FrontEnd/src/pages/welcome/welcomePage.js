@@ -175,7 +175,10 @@ class WelcomePage extends Component {
         </Helmet>
         <div className='Hero'>
           <div className='WelcomeSignUp'>
-            <Grid container spacing={12}>
+            <Grid container
+            spacing={12}
+            justify="center"
+            alignItems="center">
               <Grid item sm={12} md={7}>
                 <Typography variant="overline" style={{marginLeft:"3px"}}>
                   Welcome To
@@ -207,8 +210,8 @@ class WelcomePage extends Component {
               </Grid>
             </Grid>
 
-            <div style={{textAlign:"center"}}>
-            <Typography variant='overline'>Have a project you need help with?</Typography>
+            <div style={{textAlign:"center", marginTop: "22vh"}}>
+            <Typography variant='caption'>Have a project you need help with?</Typography>
               <br />
                 <Fab
                   variant='extended'
@@ -224,21 +227,26 @@ class WelcomePage extends Component {
           </div>
         </div>
         <div className='Quote'>
-          <Typography variant='h2' color="textPrimary">Solving Tech's Biggest Problem</Typography>
+
           <div className="Body">
             <div className="ballimage">
                 <img className='ToolBall' src={toolball} alt='toolball' />
             </div>
             <div className='text'>
-                <Typography variant='h4' color="textPrimary">Building software can be difficult.</Typography>
+                <Typography variant='h3' color="textPrimary">Solving Tech's Biggest Problem</Typography>
                 <br />
-                <Typography variant='body1' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
+                <Typography variant='body1' color="textPrimary">Building software is difficult.</Typography>
+                <br />
+                <Typography variant='body2' paragraph quote style={{marginLeft:"14px"}}>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
                 <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
+
+                <Typography paragraph variant='body1'>
+                But we noticed that many teams can work more efficiently in environments where experts and potential team members are easily available, such as hackathons or incubators.
+                So we set out to build a virtual environment - A Decentralized Tech Incubator - to help you supercharge your development process.
                 <br /><br />
-                <Typography paragraph variant='h4' color="textPrimary">
-                We are here to provide you with expert help.
-                <br /><br />
-                Sign up to connect you with developers, experts, and project managers instantly.
+
+                <br/>
+                Sign up to connect with developers, experts, and project managers instantly.
                 </Typography>
               <div className='JoinMailing'>
                 <ReactSVG src={Announce} className='ReactSVGIcon Icon25' />
@@ -266,7 +274,7 @@ class WelcomePage extends Component {
           </div>
         </div>
         <div className='Section Section2'>
-        <Typography className='SectionTitle' variant='h2' color="textPrimary">How it works</Typography>
+        <Typography className='SectionTagline' variant='h2' color="textPrimary">How It Works</Typography>
         <Grid
         container
         justify="center"
@@ -274,19 +282,19 @@ class WelcomePage extends Component {
         spacing={1}>
           <Grid item sm={2} md={4} className="Vertical">
             <ReactSVG src={Level} className='ReactSVGIcon Icon50' />
-            <Typography variant='h5'>
+            <Typography variant='subtitle1'>
             1. Onboard your projects
             </Typography>
           </Grid>
           <Grid item sm={2} md={4} className="Vertical">
             <ReactSVG src={Edit} className='ReactSVGIcon Icon50' />
-            <Typography variant='h5'>
+            <Typography variant='subtitle1'>
             2. Specify your tasks
             </Typography>
           </Grid>
           <Grid item sm={2} md={4} className="Vertical">
             <ReactSVG src={WorkMan} className='ReactSVGIcon Icon50' />
-            <Typography variant='h5'>
+            <Typography variant='subtitle1'>
             3. Build with community
             </Typography>
           </Grid>
@@ -339,7 +347,7 @@ class WelcomePage extends Component {
             </div>
           </Grid>
         </Grid>
-        <Typography variant="h2">How we operate</Typography>
+        <Typography variant="h2">How We Operate</Typography>
         <Grid container spacing={2}>
           <Grid item sm={4} md={4} className="Vertical">
           <Typography variant="h4">Trust</Typography>
@@ -363,33 +371,58 @@ class WelcomePage extends Component {
           <br />
           <Typography variant='h4' >Pay as much as you want,</Typography>
           <Typography variant='h4' >or nothing at all!</Typography>
-          <div classname="board">
-            <div classname="column">
+          <Grid container >
+            <Grid item sm={4} md={4} className="Vertical">
               <Typography variant="h5">Free</Typography>
               <Typography variant="overline">Cost:</Typography>
 
-              <Typography variant="caption">Nothing</Typography>
-              <Typography variant="body">•  Be your own project manager.</Typography>
-              <Typography variant="body">•  Connect with our community</Typography>
-              <Typography variant="body">•  Find Volunteers for your tasks</Typography>
-            </div>
-            <div classname="column">
-            <Typography variant="h5">Maintainence</Typography>
-            <Typography variant="overline">Cost:</Typography>
-            <Typography variant="caption">$1000/mo</Typography>
-            <Typography variant="body">•  Get a project manager who will keep track of necessary tasks for your project</Typography>
-            <Typography variant="body">•  Connect with our community</Typography>
-            <Typography variant="body">•  Additional costs for your tasks</Typography>
-            </div>
-            <div classname="column">
-            <Typography variant="h5">Bespoke</Typography>
-            <Typography variant="overline">Cost:</Typography>
-            <Typography variant="caption">Varies according to your needs</Typography>
-            <Typography variant="body">•  Work with our team directly</Typography>
-            <Typography variant="body">•  Connect with our community</Typography>
-            <Typography variant="body">•  Tailored End-to-End development solutions for your project</Typography>
-            </div>
-          </div>
+              <Typography variant="subtitle1">Nothing</Typography>
+              <ul style={{textAlign:"left"}}>
+                <li>
+                <Typography variant="body">Be your own project manager.</Typography>
+                </li>
+                <li>
+                <Typography variant="body">Connect with our community</Typography>
+                </li>
+                <li>
+                <Typography variant="body">Find Volunteers for your tasks</Typography>
+                </li>
+              </ul>
+            </Grid>
+            <Grid item sm={4} md={4} className="Vertical">
+              <Typography variant="h5">Maintainence</Typography>
+              <Typography variant="overline">Cost:</Typography>
+              <Typography variant="subtitle1">$1000/mo</Typography>
+              <ul style={{textAlign:"left"}}>
+                <li>
+                <Typography variant="body">Get a project manager who will keep track of necessary tasks for your project</Typography>
+                </li>
+                <li>
+                <Typography variant="body">Connect with our community</Typography>
+                </li>
+                <li>
+                <Typography variant="body">Additional costs for your tasks</Typography>
+                </li>
+              </ul>
+            </Grid>
+            <Grid item sm={4} md={4} className="Vertical">
+              <Typography variant="h5">Bespoke</Typography>
+              <Typography variant="overline">Cost:</Typography>
+              <Typography variant="subtitle1">Varies</Typography>
+              <ul style={{textAlign:"left"}}>
+                <li>
+              <Typography variant="body">Work with our team directly</Typography>
+                </li>
+                <li>
+              <Typography variant="body">Connect with our community</Typography>
+                </li>
+                <li>
+              <Typography variant="body">Tailored End-to-End development solutions for your project</Typography>
+                </li>
+              </ul>
+            </Grid>
+          </Grid>
+
 
           </div>
 
