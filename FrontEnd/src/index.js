@@ -36,7 +36,7 @@ const theme = createMuiTheme({
       main: '#C64444' // red
     },
     text: {
-          primary: "#4b4b4b",
+          primary: "#231f20",
           secondary: "#ffffff"
     }
   },
@@ -44,95 +44,95 @@ const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
     // Root font
-    fontSize: '13px',
+    fontSize: '13.5px',
     fontFamily: "'gotham_htfbook', 'Arial', sans-serif",
     color: 'rgba(0,0,0,0.87)',
     fontWeight: '300',
     // Displays 1-4, headline, title, subheading, body1-2, button, caption
-    display4: {
-      fontSize: '4.409em',
-      fontFamily: 'gotham_htflight',
-      color: 'rgba(0,0,0,0.87)',
-      letterSpacing: '-0.058em'
-    },
-    display3: {
-      fontSize: '3.998em',
-      fontFamily: 'gotham_htflight',
-      color: 'rgba(0, 0, 0, 0.87)',
-      letterSpacing: '-0.004em',
-      fontWeight: 400
-    },
-    display2: {
-      fontSize: '3em',
-      fontFamily: 'gotham_htfbook',
-      color: 'rgba(0, 0, 0, 0.87)',
-      letterSpacing: '0'
-    },
-    display1: {
-      fontSize: '2.125em',
-      fontFamily: 'gotham_htfbook',
-      color: 'rgba(0, 0, 0, 0.87)',
-      letterSpacing: '0.015625em'
-    },
+    // display4: {
+    //   fontSize: '4.409em',
+    //   fontFamily: 'gotham_htflight',
+    //   color: 'rgba(0,0,0,0.87)',
+    //   letterSpacing: '-0.058em'
+    // },
+    // display3: {
+    //   fontSize: '3.998em',
+    //   fontFamily: 'gotham_htflight',
+    //   color: 'rgba(0, 0, 0, 0.87)',
+    //   letterSpacing: '-0.004em',
+    //   fontWeight: 400
+    // },
+    // display2: {
+    //   fontSize: '3em',
+    //   fontFamily: 'gotham_htfbook',
+    //   color: 'rgba(0, 0, 0, 0.87)',
+    //   letterSpacing: '0'
+    // },
+    // display1: {
+    //   fontSize: '2.125em',
+    //   fontFamily: 'gotham_htfbook',
+    //   color: 'rgba(0, 0, 0, 0.87)',
+    //   letterSpacing: '0.015625em'
+    // },
 
     // legacy. New here:
     h1: {
-      fontSize: '5.653em',
-      fontFamily: 'gotham_htflight',
-      color: 'rgba(0,0,0,0.87)',
+      fontSize: '4.21em',
+      fontFamily: 'gotham_htfbook',
+      color: 'rgba(0,0,0,1)',
       letterSpacing: '-0.058em'
 
     },
     h2: {
-      fontSize: '3.998em',
-      fontFamily: 'gotham_htflight',
-      color: 'rgba(0, 0, 0, 0.87)',
+      fontSize: '3.157em',
+      fontFamily: 'gotham_htfbook',
+      color: 'rgba(0, 0, 0, 1)',
       letterSpacing: '-0.004em',
       fontWeight: 400
     },
     h3: {
-      fontSize: '2.827em',
+      fontSize: '2.369em',
       fontFamily: 'gotham_htfbook',
-      color: 'rgba(0, 0, 0, 0.87)',
+      color: 'rgba(0, 0, 0, 1)',
       letterSpacing: '0em',
       fontWeight: 400
     },
     h4: {
-      fontSize: '1.999em',
+      fontSize: '1.563em',
       fontFamily: 'gotham_htfbook',
-      color: 'rgba(0, 0, 0, 0.87)',
+      color: 'rgba(0, 0, 0, 1)',
       letterSpacing: '0.015625em'
     },
     h5: {
-      fontSize: '1.414em',
+      fontSize: '1.777em',
       fontFamily: 'gotham_htfmedium',
-      color: 'rgba(0, 0, 0, 0.87)',
+      color: 'rgba(0, 0, 0, 1)',
       letterSpacing: '0'
     },
     h6: {
       fontSize: '1em',
       fontFamily: 'gotham_htfmedium',
-      color: 'rgba(0, 0, 0, 0.87)',
+      color: 'rgba(0, 0, 0, 1)',
       letterSpacing: '0.015625em'
     },
     subtitle1: {
-      fontSize: '1em',
+      fontSize: '1.333em',
       fontFamily: 'gotham_htfbook',
-      color: 'rgba(0, 0, 0, 0.6)',
+      color: 'rgba(0, 0, 0, 1)',
       letterSpacing: '  0.03125em',
       lineHeight: '1.618em'
     },
     subtitle2: {
-      fontSize: '0.875em',
+      fontSize: '1em',
       fontFamily: 'gotham_htfbook',
-      color: 'rgba(0, 0, 0, 0.6)',
+      color: 'rgba(0, 0, 0, 0.87)',
       letterSpacing: '0.00625em',
       lineHeight: '1.618em'
     },
     overline: {
-      fontSize: '0.743125em',
-      fontFamily: 'gotham_htfmedium',
-      color: 'rgba(0, 0, 0, 0.6)',
+      fontSize: '0.75em',
+      fontFamily: 'gotham_htf',
+      color: 'rgba(0, 0, 0, 1)',
       letterSpacing: '0.125em',
       fontWeight: 'normal',
       textTransform: 'initial'
@@ -162,26 +162,27 @@ const theme = createMuiTheme({
       fontSize: '1em',
       fontFamily: 'gotham_htfbook',
       color: 'rgba(0, 0, 0, 0.87)',
-      letterSpacing: '0.009375em',
+      letterSpacing: '0.12px',
       lineHeight: '1.618'
     },
     body2: {
       fontSize: '0.8125em',
-      fontFamily: 'gotham_htfmedium',
-      color: 'rgba(0, 0, 0, 0.6)',
+      fontFamily: 'gotham_htfbook',
+      color: 'rgba(0, 0, 0, 0.87)',
       letterSpacing: '0.25px',
       lineHeight: '1.618em'
     },
     button: {
-      fontSize: '0.85731933292em',
+      fontSize: '1em',
       fontFamily: 'gotham_htfbook',
-      color: 'rgba(0, 0, 0, 0.6)',
+      color: 'rgba(0, 0, 0, 1)',
       letterSpacing: '1.25px'
     },
     caption: {
-      fontSize: '0.9846153846em',
+      fontSize: '0.8em',
       fontFamily: 'gotham_htflight',
-      color: 'rgba(0, 0, 0, 0.87)'
+      color: 'rgba(0, 0, 0, 1)',
+      fontWeight: 400
     }
   },
   /* ========== CSS Overrides ========== */

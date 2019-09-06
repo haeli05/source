@@ -24,8 +24,8 @@ import logo from './img/logo.gif'
 import developerImage from './img/devs.jpg'
 import developerImage2 from './img/dev2.jpg'
 import toolball from './img/toolball.jpg'
-
 import Lucas from './img/Lucas.png'
+import LogoPNG from  './img/logo.png'
 import HammerScrew from '../../assets/svg/hammer_screwdriver_2.svg'
 import Announce from '../../assets/svg/announce.svg'
 import Level from '../../assets/svg/level.svg'
@@ -177,12 +177,15 @@ class WelcomePage extends Component {
           <div className='WelcomeSignUp'>
             <Grid container spacing={12}>
               <Grid item sm={12} md={7}>
-                <Typography className='Mission' color='textPrimary' variant='h1'>
-                  The Decentralized<br/>
-                  Tech Incubator
+                <Typography variant="overline" style={{marginLeft:"3px"}}>
+                  Welcome To
                 </Typography>
-                <Typography className='TagLine' color='textPrimary' variant='h4' style={{marginLeft:"12px", marginTop:"16px"}}>
-                  Find your distributed dev team
+                <img src={LogoPNG} width="175px" />
+                <Typography className='Mission' color='textPrimary' variant='h1'>
+                The Decentralized <br />Tech Incubator
+                </Typography>
+                <Typography className='TagLine' color='textPrimary' variant='h4' style={{marginLeft:"3px", marginTop:"16px"}}>
+                Find your distributed dev team
                 </Typography>
               </Grid>
               <Grid item sm={12} md={5}>
@@ -204,22 +207,25 @@ class WelcomePage extends Component {
                 </Button>
               </Grid>
             </Grid>
-            <Typography variant='h5'>Have a project you need help with?</Typography>
-            <br />
-            <Fab
-              variant='extended'
-              size='large'
-              color='secondary'
-              className='TodoButton'
-              href='/getstarted'
-            >
-              <ReactSVG src={Comment} className='ReactSVGIcon Icon25 LeftIcon' />
-          Contact Us
+
+            <div style={{textAlign:"center"}}>
+            <Typography variant='overline'>Have a project you need help with?</Typography>
+              <br />
+                <Fab
+                  variant='extended'
+                  size='large'
+                  color='secondary'
+                  className='TodoButton'
+                  href='/getstarted'
+                >
+                  <ReactSVG src={Comment} className='ReactSVGIcon Icon25 LeftIcon' />
+              Contact Us
             </Fab>
+            </div>
           </div>
         </div>
         <div className='Quote'>
-        <Typography variant='h2' color="textPrimary">Solving Tech's Biggest Problem</Typography>
+          <Typography variant='h2' color="textPrimary">Solving Tech's Biggest Problem</Typography>
           <div className="Body">
             <div className="ballimage">
                 <img className='ToolBall' src={toolball} alt='toolball' />
@@ -257,9 +263,7 @@ class WelcomePage extends Component {
                       Thank you. We will keep in touch
                   </Typography>
                 )}
-
               </div>
-
             </div>
           </div>
         </div>
