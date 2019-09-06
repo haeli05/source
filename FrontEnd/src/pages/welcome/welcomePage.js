@@ -180,7 +180,6 @@ class WelcomePage extends Component {
                 <Typography variant="overline" style={{marginLeft:"3px"}}>
                   Welcome To
                 </Typography>
-                <img src={LogoPNG} width="175px" />
                 <Typography className='Mission' color='textPrimary' variant='h1'>
                 The Decentralized <br />Tech Incubator
                 </Typography>
@@ -231,17 +230,16 @@ class WelcomePage extends Component {
                 <img className='ToolBall' src={toolball} alt='toolball' />
             </div>
             <div className='text'>
-              <Typography variant='h4' color="textPrimary">Building software can be difficult.</Typography>
-            <br />
-            <Typography variant='body1' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
-            <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
-              <br /><br />
-              <Typography paragraph variant='h4' color="textPrimary">
-              We are here to provide you with expert help.
-              <br /><br />
-              Sign up to connect you with developers, experts, and project managers instantly.</Typography>
-
-
+                <Typography variant='h4' color="textPrimary">Building software can be difficult.</Typography>
+                <br />
+                <Typography variant='body1' paragraph>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
+                <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
+                <br /><br />
+                <Typography paragraph variant='h4' color="textPrimary">
+                We are here to provide you with expert help.
+                <br /><br />
+                Sign up to connect you with developers, experts, and project managers instantly.
+                </Typography>
               <div className='JoinMailing'>
                 <ReactSVG src={Announce} className='ReactSVGIcon Icon25' />
                 <TextField
