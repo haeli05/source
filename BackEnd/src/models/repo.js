@@ -72,16 +72,16 @@ const ProjectsSchema = new mongoose.Schema({
   }
 });
 
-RepoSchema.index({ project_name: 'text', description: 'text', labels: 'text'}, {name: 'search_index', weights: {project_name: 10, description: 7, labels: 3}, default_language: 'english'});
+ProjectsSchema.index({ project_name: 'text', description: 'text', labels: 'text'}, {name: 'search_index', weights: {project_name: 10, description: 7, labels: 3}, default_language: 'english'});
 
 
-RepoSchema.plugin(searchTextPlugin);
-RepoSchema.plugin(aggregateTrendingPlugin);
-RepoSchema.plugin(addStatsPlugin);
-RepoSchema.plugin(addTextPlugin);
-RepoSchema.plugin(votePlugin);
+ProjectsSchema.plugin(searchTextPlugin);
+ProjectsSchema.plugin(aggregateTrendingPlugin);
+ProjectsSchema.plugin(addStatsPlugin);
+ProjectsSchema.plugin(addTextPlugin);
+ProjectsSchema.plugin(votePlugin);
 
 
 
 
-const Repo = module.exports = mongoose.model('repo', RepoSchema);
+const Repo = module.exports = mongoose.model('repo', ProjectsSchema);

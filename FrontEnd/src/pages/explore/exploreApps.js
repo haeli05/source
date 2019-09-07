@@ -44,7 +44,7 @@ class ExploreApps extends Component {
               <ShareButton {...this.props} url={window.location.href} />
             </div>
           </div>
-          <Typography variant='h2'>Explore</Typography>
+        
         </div>
         <div className='Body'>
           <div className='Content'>
