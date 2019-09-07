@@ -5,7 +5,6 @@ import history from './history'
 // Main
 import App from './app'
 import GetStarted from './pages/welcome/getStarted'
-//import Guidelines from './pages/user/guidelines'
 // Explore
 import Ideas from './pages/explore/exploreIdeas'
 import Projects from './pages/explore/exploreProjects'
@@ -39,7 +38,6 @@ import Footer from './pages/global/components/footer'
 import SnackBar from './pages/global/components/snackBar'
 import ReactGA from 'react-ga'
 import Intercom from 'react-intercom'
-import Guidelines from './pages/user/guidelines'
 // TEST
 import FileUploadTest from './pages/global/fileUploadTest'
 
@@ -113,7 +111,6 @@ let Routes = () => (
           <Route exact path='/getstarted' render={props => <GetStarted {...props} />} />
 
           <Route render={props => <Four0FourPage {...props} />} />
-          <Route render={props => <Guidelines {...props} />} />
         </Switch>
       </div>
       <Route path='/' render={props => <Footer {...props} />} />

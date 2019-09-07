@@ -131,7 +131,7 @@ const theme = createMuiTheme({
     },
     overline: {
       fontSize: '0.75em',
-      fontFamily: 'gotham_htf',
+      fontFamily: 'gotham_htfbook',
       color: 'rgba(0, 0, 0, 1)',
       letterSpacing: '0.125em',
       fontWeight: 'normal',
