@@ -365,15 +365,10 @@ class WelcomePage extends Component {
             </div>
           </Grid>
         </Grid>
-
-
-
-
             <Typography variant="h3">How We Operate</Typography>
             <Grid container spacing={2}>
               <Grid item sm={4} md={4} className="Vertical">
                 <Typography variant="h4">Trust</Typography>
-
 
               </Grid>
               <Grid item sm={4} md={4} className="Vertical">
@@ -390,11 +385,9 @@ class WelcomePage extends Component {
 
               </Grid>
             </Grid>
-
-
-
           </div>
-          <div className='Section Section3'>
+
+          <div className='Section3 Section'>
           <Typography className='SectionTitle' variant='h2' style={{marginBottom:"7vh"}}>Pricing</Typography>
           <br />
           <Typography variant='h4' >Pay as much as you need, or nothing at all!</Typography>
