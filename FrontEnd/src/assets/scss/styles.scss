@@ -376,8 +376,9 @@ time {
   color: currentColor;
 }
 .CircleBorder {
-  border: 2px solid black;
+  border: 1px solid $Darker;
   border-radius: 76px;
+  padding: 14px;
 }
 .LeftIcon {
   margin-right: 9px;
@@ -3394,7 +3395,7 @@ body {
     }
   }
   .Quote {
-    height: 76vh;
+    height: 100%;
     padding-left: 12%;
     padding-right: 12%;
     text-align: center;
