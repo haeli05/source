@@ -958,6 +958,10 @@ time {
   flex-flow: column wrap;
   vertical-align: middle;
 }
+.Border {
+  border: 1px solid black;
+  border-radius: 24px;
+}
 .BigAvatar{
   margin: 20px;
    width: 80px;

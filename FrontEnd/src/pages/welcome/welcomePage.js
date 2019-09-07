@@ -241,12 +241,14 @@ class WelcomePage extends Component {
                 <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
 
                 <Typography paragraph variant='body1'>
-                But we noticed that many teams can work more efficiently in environments where experts and potential team members are easily available, such as hackathons or incubators.
+                But we noticed that many teams work more efficiently in environments where experts and potential team members are easily available, such as hackathons or incubators.
                 So we set out to build a virtual environment - A Decentralized Tech Incubator - to help you supercharge your development process.
                 <br /><br />
 
                 <br/>
                 Sign up to connect with developers, experts, and project managers instantly.
+                <br />
+                We can't wait to see what you build.
                 </Typography>
               <div className='JoinMailing'>
                 <ReactSVG src={Announce} className='ReactSVGIcon Icon25' />
@@ -329,9 +331,7 @@ class WelcomePage extends Component {
         </Grid>
         <Grid container spacing={3}>
           <Grid item sm={6} md={3}>
-            <Fade in>
-              <img className='DevImage' src={developerImage} alt='developers' />
-            </Fade>
+
           </Grid>
           <Grid item sm={6} md={5}>
             <div className='Description'>
@@ -347,32 +347,48 @@ class WelcomePage extends Component {
             </div>
           </Grid>
         </Grid>
-        <Typography variant="h2">How We Operate</Typography>
-        <Grid container spacing={2}>
-          <Grid item sm={4} md={4} className="Vertical">
-          <Typography variant="h4">Trust</Typography>
-
-
+        <Grid container spacing={2}
+        justify="center"
+        alignItems="center">
+          <Grid item sm={4} md={3}>
+            <Fade in>
+              <img className='DevImage' src={developerImage} alt='developers' />
+            </Fade>
           </Grid>
-          <Grid item sm={4} md={4} className="Vertical">
-          <Typography variant="h4">Clarity</Typography>
+          <Grid item sm={8} md={3}
+          direction="column"
+          justify="center"
+          alignItems="center">
+            <Typography variant="h2">How We Operate</Typography>
+            <Grid container spacing={2}>
+              <Grid item sm={4} md={4} className="Vertical">
+              <Typography variant="h4">Trust</Typography>
 
-            Tasks and deliverables are
-          </Grid>
-          <Grid item sm={4} md={4} className="Vertical">
-          <Typography variant="h4">Accountability</Typography>
+
+              </Grid>
+              <Grid item sm={4} md={4} className="Vertical">
+              <Typography variant="h4">Clarity</Typography>
+
+                Tasks and deliverables are
+              </Grid>
+              <Grid item sm={4} md={4} className="Vertical">
+              <Typography variant="h4">Accountability</Typography>
 
 
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
+
+
           </div>
           <div className='Section Section3'>
           <Typography className='SectionTitle' variant='h3' >Pricing</Typography>
           <br />
-          <Typography variant='h4' >Pay as much as you want,</Typography>
-          <Typography variant='h4' >or nothing at all!</Typography>
-          <Grid container >
-            <Grid item sm={4} md={4} className="Vertical">
+          <Typography variant='h4' >Pay as much as you need, or nothing at all!</Typography>
+          <br /><br /><br />
+          <Grid container spacing={4}>
+            <Grid item sm={3} md={4} className="Vertical Border">
               <Typography variant="h5">Free</Typography>
               <Typography variant="overline">Cost:</Typography>
 
@@ -389,7 +405,7 @@ class WelcomePage extends Component {
                 </li>
               </ul>
             </Grid>
-            <Grid item sm={4} md={4} className="Vertical">
+            <Grid item sm={3} md={4} className="Vertical Border">
               <Typography variant="h5">Maintainence</Typography>
               <Typography variant="overline">Cost:</Typography>
               <Typography variant="subtitle1">$1000/mo</Typography>
@@ -405,7 +421,7 @@ class WelcomePage extends Component {
                 </li>
               </ul>
             </Grid>
-            <Grid item sm={4} md={4} className="Vertical">
+            <Grid item sm={3} md={4} className="Vertical Border">
               <Typography variant="h5">Bespoke</Typography>
               <Typography variant="overline">Cost:</Typography>
               <Typography variant="subtitle1">Varies</Typography>
