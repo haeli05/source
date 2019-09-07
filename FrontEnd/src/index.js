@@ -131,7 +131,7 @@ const theme = createMuiTheme({
     },
     overline: {
       fontSize: '0.75em',
-      fontFamily: 'gotham_htfbook',
+      fontFamily: 'gotham_htflight',
       color: 'rgba(0, 0, 0, 1)',
       letterSpacing: '0.125em',
       fontWeight: 'normal',
@@ -166,14 +166,14 @@ const theme = createMuiTheme({
       lineHeight: '1.618'
     },
     body2: {
-      fontSize: '0.8125em',
+      fontSize: '0.9em',
       fontFamily: 'gotham_htfbook',
       color: 'rgba(0, 0, 0, 0.87)',
       letterSpacing: '0.25px',
       lineHeight: '1.618em'
     },
     button: {
-      fontSize: '1em',
+      fontSize: '0.9em',
       fontFamily: 'gotham_htfbook',
       color: 'rgba(0, 0, 0, 1)',
       letterSpacing: '1.25px'
