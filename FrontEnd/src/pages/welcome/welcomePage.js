@@ -176,9 +176,10 @@ class WelcomePage extends Component {
         <div className='Hero'>
           <div className='WelcomeSignUp'>
             <Grid container
-            spacing={12}
+            spacing={4}
             justify="center"
-            alignItems="center">
+            alignItems="center"
+            >
               <Grid item sm={12} md={7}>
                 <Typography variant="overline" style={{marginLeft:"3px"}}>
                   Welcome To
@@ -278,19 +279,19 @@ class WelcomePage extends Component {
                   style={{marginBottom:"18vh"}}
                   >
                     <Grid item sm={2} md={4} className="Vertical">
-                      <ReactSVG src={Level} className='ReactSVGIcon Icon50 CircleBorder' />
+                      <ReactSVG src={Level} className='ReactSVGIcon Icon50 CircleBorder' style={{marginBottom:"2vh"}} />
                       <Typography variant='subtitle1'>
                       1. Onboard your Project
                       </Typography>
                     </Grid>
                     <Grid item sm={2} md={4} className="Vertical">
-                      <ReactSVG src={Edit} className='ReactSVGIcon Icon50 CircleBorder' />
+                      <ReactSVG src={Edit} className='ReactSVGIcon Icon50 CircleBorder' style={{marginBottom:"2vh"}} />
                       <Typography variant='subtitle1'>
                       2. Specify your Tasks
                       </Typography>
                     </Grid>
                     <Grid item sm={2} md={4} className="Vertical">
-                      <ReactSVG src={WorkMan} className='ReactSVGIcon Icon50 CircleBorder' />
+                      <ReactSVG src={WorkMan} className='ReactSVGIcon Icon50 CircleBorder' style={{marginBottom:"2vh"}} />
                       <Typography variant='subtitle1'>
                       3. Find Collaborators
                       </Typography>
@@ -337,22 +338,22 @@ class WelcomePage extends Component {
         <Grid container
         justify="center"
         alignItems="flex-start"
-        spacing={3}
+        spacing={6}
         style={{marginTop:"7vh"}}>
-        <Grid item xs={2}>
-        <Fade in>
-          <img className='DevImage' src={devImage3} alt='developers' />
-        </Fade>
-        </Grid>
+          <Grid item xs={2}>
+          <Fade in>
+            <img className='DevImage' src={devImage3} alt='developers' />
+          </Fade>
+          </Grid>
           <Grid item xs={2}>
           <Fade in>
             <img className='DevImage' src={developerImage} alt='developers' />
           </Fade>
           </Grid>
-          <Grid item xs>
-            <div className='Description'>
-            <Typography variant='h4' paragraph className='SectionSubTitle'>
-            Scale flexibly with Developers-as-a-Service
+          <Grid item xs={7}>
+            <div className='Description' style={{textAlign:"left", marginLeft:"7px"}}>
+            <Typography variant='h4' paragraph className='SectionSubTitle' >
+            Scale flexibly using Developers-as-a-Service
             </Typography>
             We partnered with devshops, technology providers and training institutions globally to ensure <br />
             Paid tasks are delivered at top quality.
@@ -365,7 +366,7 @@ class WelcomePage extends Component {
             </div>
           </Grid>
         </Grid>
-            <Typography variant="h3">How We Operate</Typography>
+            <Typography variant="h4" style={{marginTop:"7vh", marginBottom:"7%"}}>How We Operate</Typography>
             <Grid container spacing={2}>
               <Grid item sm={4} md={4} className="Vertical">
                 <Typography variant="h4">Trust</Typography>
@@ -379,12 +380,16 @@ class WelcomePage extends Component {
               <Grid item sm={4} md={4} className="Vertical">
                 <Typography variant="h4">Accountability</Typography>
 
-                <Button variant='outlined'  component={Link} to='/guidelines'>
-                  Guidelines
-                </Button>
+
 
               </Grid>
             </Grid>
+            <Typography variant="body2" style={{marginTop:"7vh", marginBottom:"3vh"}}>
+            Read the Contribution Guidelines
+            </Typography>
+            <Button variant='outlined'  component={Link} to='/guidelines'>
+              Guidelines
+            </Button>
           </div>
 
           <div className='Section3 Section'>
