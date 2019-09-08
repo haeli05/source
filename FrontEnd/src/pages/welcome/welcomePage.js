@@ -24,6 +24,7 @@ import logo from './img/logo.gif'
 import developerImage from './img/devs.jpg'
 import developerImage2 from './img/dev2.jpg'
 import devImage3 from './img/dev3.png'
+import BW from './img/bw.png'
 import toolball from './img/toolball.jpg'
 import Lucas from './img/Lucas.png'
 import HammerScrew from '../../assets/svg/hammer_screwdriver_2.svg'
@@ -293,48 +294,52 @@ class WelcomePage extends Component {
                     <Grid item sm={2} md={4} className="Vertical">
                       <ReactSVG src={WorkMan} className='ReactSVGIcon Icon50 CircleBorder' style={{marginBottom:"2vh"}} />
                       <Typography variant='subtitle1'>
-                      3. Find Collaborators
+                      3. Work with Collaborators
                       </Typography>
                     </Grid>
                   </Grid>
         <Grid
         container
-        justify="center"
+        justify="flex-start"
         alignItems="flex-start"
-        spacing={2}>
-          <Grid item xs>
+        spacing={1}>
+          <Grid item xs={7} >
             <div className='Description' >
-              <Typography variant='h4'>
+              <Typography variant='h4' style={{ textAlign: 'left', marginBottom:"14px" }}>
                 A plug and play paradigm for software development
               </Typography>
-              <Avatar alt="Lucas" src={Lucas} className="BigAvatar" />
               <Typography variant='body1' paragraph style={{ textAlign: 'left' }}>
-                Building your project starts with specifying what you need. When is it due? What is the tech stack?
+                We bring an open source inspired, Agile development based, massively internationally distributed approach to building software.
+                <br /><br />
+                Building your project starts with specifying what you need.
+                <br /> <br />
+                Who are the key team members? Do you need a project manager? When is it due? What is the tech stack?
+                Do you have a budget?(Or are you seeking volunteers?) How can we best help you? What are the tasks that needs to get done?
                 <br /><br />
                 Typically, a project lead has to find, interview and recruit the right developers. But
-                here, developers will come to projects instead.
-                <br /><br />
-                We match users to suitable projects and tasks, based on their interests and skills.
+                here, we match users to suitable projects and tasks, based on their interests and skills. So kick back and wait.
                 <br /><br />
                 User profiles allow you to identify who you're working with, their prior work, and their reputation.
                 <br /><br />
                 Hire developers only for the tasks you need. Pay as much as you want.
-
-                <ul>
-                  <li>Work with a Project Manager to scope out your tasks</li>
-                  <li>Publish tasks and set price points</li>
-                  <li>Only pay when you or your project manager is satisfied with the result.</li>
-                </ul>
-
               </Typography>
             </div>
           </Grid>
           <Grid item xs>
             <Fade in>
-              <img className='DevImage2' src={developerImage2} alt='developers' />
+              <img className='DevImage2' src={BW} alt='developers' />
             </Fade>
           </Grid>
         </Grid>
+        <Grid container
+        justify="center"
+        alignItems="flex-start"
+        spacing={6}
+        style={{marginTop:"7vh"}}>
+          <Grid item xs={2}>
+          </Grid>
+        </Grid>  
+
         <Grid container
         justify="center"
         alignItems="flex-start"
