@@ -25,6 +25,7 @@ import developerImage from './img/devs.jpg'
 import developerImage2 from './img/dev2.jpg'
 import devImage3 from './img/dev3.png'
 import BW from './img/bw.png'
+import Table from './img/table.gif'
 import toolball from './img/toolball.jpg'
 import Lucas from './img/Lucas.png'
 import HammerScrew from '../../assets/svg/hammer_screwdriver_2.svg'
@@ -336,25 +337,25 @@ class WelcomePage extends Component {
         alignItems="flex-start"
         spacing={6}
         style={{marginTop:"7vh"}}>
-          <Grid item xs={2}>
+          <Grid item xs>
+          <Fade in>
+            <img className='DevImage' src={Table} alt='developers' />
+          </Fade>
           </Grid>
-        </Grid>  
+          <Grid item xs>
+            <Typography variant="h4">Community based project management</Typography>
+            <Typography variant="body1">
+            1. Project managers
+            2.
+            </Typography>
+          </Grid>
+        </Grid>
 
         <Grid container
         justify="center"
         alignItems="flex-start"
         spacing={6}
         style={{marginTop:"7vh"}}>
-          <Grid item xs={2}>
-          <Fade in>
-            <img className='DevImage' src={devImage3} alt='developers' />
-          </Fade>
-          </Grid>
-          <Grid item xs={2}>
-          <Fade in>
-            <img className='DevImage' src={developerImage} alt='developers' />
-          </Fade>
-          </Grid>
           <Grid item xs={7}>
             <div className='Description' style={{textAlign:"left", marginLeft:"7px"}}>
             <Typography variant='h4' paragraph className='SectionSubTitle' >
@@ -364,11 +365,21 @@ class WelcomePage extends Component {
             Paid tasks are delivered at top quality.
             <br />
             <br />
-            Our development partners are based in the USA, Canada, China India, Ukraine.
+            Our development partners come from all around the world, including the USA, Canada, China India, Ukraine.
             <br />
             Our wider community of users and freelancers come from all around the world.
 
             </div>
+          </Grid>
+          <Grid item xs={2}>
+          <Fade in>
+            <img className='DevImage' src={devImage3} alt='developers' />
+          </Fade>
+          </Grid>
+          <Grid item xs={2}>
+          <Fade in>
+            <img className='DevImage' src={developerImage} alt='developers' />
+          </Fade>
           </Grid>
         </Grid>
             <Typography variant="h4" style={{marginTop:"7vh", marginBottom:"7%"}}>How We Operate</Typography>
@@ -400,7 +411,7 @@ class WelcomePage extends Component {
           <div className='Section3 Section'>
           <Typography className='SectionTitle' variant='h2' style={{marginBottom:"7vh"}}>Pricing</Typography>
           <br />
-          <Typography variant='h4' >Pay as much as you need, or nothing at all!</Typography>
+          <Typography variant='h4'>Pay as much as you need, or nothing at all!</Typography>
           <br /><br /><br />
           <Grid container
           spacing={4}
