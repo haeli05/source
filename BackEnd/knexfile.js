@@ -1,6 +1,5 @@
 // Update with your config settings.
-require('dotenv').config();
-
+require('dotenv').config()
 
 module.exports = {
   test: {
@@ -42,7 +41,8 @@ module.exports = {
       host: process.env.PGHOST,
       user: process.env.PGUSER,
       port: process.env.PGPORT,
-      password: process.env.PGPASS
+      password: process.env.PGPASS,
+      database: process.env.PGDATABASE
     },
     pool: {
       min: 2,
