@@ -23,9 +23,9 @@ UserTasks.update = function(obj) {
     const { user_tasks_id } = obj;
     delete obj["user_tasks_id"];
     if (!user_tasks_id) return false;
-
+    obj.last_edit_date = new Date();
     return db(table)
-      .where({ user_tasks_id: user_tasks_id })
+      .where({ user_tasks_id: user_tasks_id, deleted: false })
       .update(obj, ["*"]);
   });
 };
@@ -37,6 +37,7 @@ UserTasks.update = function(obj) {
 
 UserTasks.get = function(obj) {
   return P.try(() => {
+    obj.deleted = false;
     return db(table)
       .where(obj)
       .select("*");

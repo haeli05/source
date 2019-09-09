@@ -24,8 +24,9 @@ IdeaComments.update = function(obj) {
     const { idea_comments_id } = obj;
     delete obj["idea_comments_id"];
     if (!idea_comments_id) return false;
+    obj.last_edit_date = new Date();
     return db(table)
-      .where({ idea_comments_id: idea_comments_id })
+      .where({ idea_comments_id: idea_comments_id, deleted: false })
       .update(obj, ["*"]);
   });
 };
@@ -37,6 +38,7 @@ IdeaComments.update = function(obj) {
 
 IdeaComments.get = function(obj) {
   return P.try(() => {
+    obj.deleted = false;
     return db(table)
       .where(obj)
       .select("*");

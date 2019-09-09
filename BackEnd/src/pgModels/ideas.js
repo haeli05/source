@@ -29,8 +29,9 @@ Ideas.update = function(obj) {
     const { idea_id } = obj;
     delete obj["idea_id"];
     if (!idea_id) return false;
+    obj.updated_at = new Date();
     return db(table)
-      .where({ idea_id: idea_id })
+      .where({ idea_id: idea_id, deleted: false })
       .update(obj, ["*"]);
   });
 };
@@ -42,6 +43,7 @@ Ideas.update = function(obj) {
 
 Ideas.get = function(obj) {
   return P.try(() => {
+    obj.deleted = false;
     return db(table)
       .where(obj)
       .select("*");
@@ -54,17 +56,19 @@ Ideas.get = function(obj) {
 
 // Ideas.get({ idea_name: "Another Great Idea" }).then(data => console.log(data));
 
-Ideas.getAll = async (offset, limit, tag) => {
+Ideas.getAll = async (offset, limit, tag, user_id) => {
   return P.try(() => {
     if (tag) {
       return db(table)
         .select("*")
+        .where({ creator: user_id })
         .whereRaw(`array_to_string(tags, ',') like '%${tag}%'`)
         .limit(typeof limit === "number" ? limit : "ALL")
         .offset(typeof offset === "number" ? offset : 0);
     }
     return db(table)
       .select("*")
+      .where({ creator: user_id })
       .limit(typeof limit === "number" ? limit : "ALL")
       .offset(typeof offset === "number" ? offset : 0);
   });

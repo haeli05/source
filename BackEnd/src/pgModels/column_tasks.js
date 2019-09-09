@@ -3,6 +3,8 @@
 let { db } = require("../db/knex");
 let uuid = require("uuid/v4");
 let P = require("bluebird");
+const upsert = require("knex-upsert");
+
 let ColumnTasks = {};
 
 const table = "column_tasks";
@@ -20,11 +22,16 @@ ColumnTasks.create = function(obj) {
 
 ColumnTasks.update = function(obj) {
   return P.try(() => {
-    const { column_tasks_id } = obj;
+    const { column_tasks_id, task_id, column_id } = obj;
     delete obj["column_tasks_id"];
-    if (!column_tasks_id) return false;
+    obj.last_edit_date = new Date();
+
+    if (!column_tasks_id)
+      return db(table)
+        .where({ task_id, column_id, deleted: false })
+        .update(obj, ["*"]);
     return db(table)
-      .where({ column_tasks_id: column_tasks_id })
+      .where({ column_tasks_id: column_tasks_id, deleted: false })
       .update(obj, ["*"]);
   });
 };
@@ -35,6 +42,7 @@ ColumnTasks.update = function(obj) {
 
 ColumnTasks.get = function(obj) {
   return P.try(() => {
+    obj.deleted = false;
     return db(table)
       .where(obj)
       .select("*");
@@ -58,5 +66,33 @@ ColumnTasks.delete = function(obj) {
 // ColumnTasks.delete({
 //   column_tasks_id: "d0954c9a-b5c0-448a-b0a3-181d10c3a173"
 // }).then(data => console.log(data));
+
+ColumnTasks.upsert = obj => {
+  return P.try(async () => {
+    if (obj.column_tasks_id)
+      return upsert({
+        db,
+        table,
+        object: obj,
+        key: "column_tasks_id"
+      });
+    const { column_id, task_id, order } = obj;
+    const [columnTask] = await ColumnTasks.get({
+      column_id,
+      task_id
+    });
+    if (!columnTask)
+      return ColumnTasks.create({
+        column_id,
+        task_id,
+        order: typeof order === "number" ? order : 0
+      });
+    return ColumnTasks.update({
+      column_id,
+      task_id,
+      order: typeof order === "number" ? order : 0
+    });
+  });
+};
 
 module.exports = ColumnTasks;

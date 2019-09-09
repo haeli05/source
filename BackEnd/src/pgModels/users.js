@@ -1,25 +1,38 @@
 "use strict";
 
 let { db } = require("../db/knex");
+const knex = require("knex");
 let uuid = require("uuid/v4");
 let P = require("bluebird");
 let Users = {};
+const bcrypt = require("bcrypt");
 
 const table = "users";
 
-Users.create = function(obj) {
-  return P.try(() => {
+Users.create = async function(obj) {
+  return P.try(async () => {
     obj.user_id = uuid();
-    return db(table).insert(obj, ["*"]);
+    if (obj.password) {
+      const hashedPassword = await bcrypt.hash(obj.password, 10);
+      obj.password = hashedPassword;
+    }
+    return db(table)
+      .insert(obj, ["*"])
+      .then(x =>
+        x.map(x => {
+          if (x[0]) delete x[0].password;
+          return x;
+        })
+      );
   });
 };
 
 // Users.create({
 //   settings: { a: 1, b: 3, c: 4 },
 //   full_name: "Harish ",
-//   username: "harishydv",
+//   username: "harishydvassaasddaa",
 //   bio: "This is the bio I am working with",
-//   email: "harishyd@protonmail.com",
+//   email: "harishyadaasssddaa@protonmail.com",
 //   password: uuid(),
 //   location: "India",
 //   website: "harish.com",
@@ -31,34 +44,59 @@ Users.create = function(obj) {
 // }).then(data => console.log(data));
 
 Users.update = function(obj) {
-  return P.try(() => {
+  return P.try(async () => {
     const { user_id } = obj;
     delete obj["user_id"];
-    if (!user_id) return false;
+    if (obj.password) {
+      const hashedPassword = await bcrypt.hash(obj.password, 10);
+      obj.password = hashedPassword;
+    }
+    obj.updated_at = new Date();
     return db(table)
-      .where({ user_id: user_id })
-      .update(obj, ["*"]);
+      .where({ user_id: user_id, deleted: false })
+      .update(obj, ["*"])
+      .then(x =>
+        x.map(x => {
+          console.log("x: ", x);
+          if (x) delete x.password;
+          return x;
+        })
+      );
   });
 };
 
 // Users.update({
-//   user_id: "fa02c729-0090-4231-8536-fc60af7171e8",
-//   full_name: "Harish"
+//   user_id: "3e187210-46eb-47dd-9451-2d7572e6148a",
+//   password: "Harish"
 // }).then(data => console.log(data));
 
 Users.get = function(obj) {
   return P.try(() => {
+    obj.deleted = false;
     return db(table)
       .where(obj)
-      .select("*");
+      .select("*")
+      .then(x => {
+        if (x[0]) delete x[0].password;
+        return x;
+      });
   });
 };
 
-// Users.get({ full_name: "Harish" }).then(data => console.log(data));
+// Users.get({ user_id: "1ba03612-8043-4f13-841a-73803803f06c" }).then(data =>
+//   console.log("ad", data)
+// );
 
 Users.getAll = function() {
   return P.try(() => {
-    return db(table).select("*");
+    return db(table)
+      .select("*")
+      .then(x =>
+        x.map(x => {
+          if (x) delete x.password;
+          return x;
+        })
+      );
   });
 };
 
@@ -67,28 +105,27 @@ Users.getAll = function() {
 Users.delete = function(obj) {
   return P.try(() => {
     const { user_id } = obj;
-    delete obj["user_id"];
     if (!user_id) return false;
     return db(table)
-      .where(obj)
+      .where({ user_id })
       .delete();
   });
 };
 
-// Users.delete({ user_id: "25a10763-b7f3-47ed-a9c5-f34a27a4cce6" }).then(data =>
+// Users.delete({ user_id: "22750b60-23f0-41cf-9466-f542f9ce1b20" }).then(data =>
 //   console.log(data)
 // );
 
 Users.authenticate = function(Username, password, callback) {
-  Users.get({ username: Username })
+  return db(table)
+    .where({ username: Username, deleted: false })
+    .select("*")
     .then(function([user]) {
-      console.log("in model user: ", user);
       if (!user) {
         const err = new Error("Username or Password mismatch");
         err.status = 401;
         return callback(err, null);
       }
-      console.log("password, user.password: ", password, user.password);
       bcrypt.compare(password, user.password, function(err, result) {
         if (result === true) {
           return callback(null, user);
@@ -100,5 +137,9 @@ Users.authenticate = function(Username, password, callback) {
     })
     .catch(err => callback(err));
 };
+
+// Users.authenticate("harishydvassaasddaa", "Harish", (x, y) =>
+//   console.log(x, y)
+// );
 
 module.exports = Users;

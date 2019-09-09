@@ -3,6 +3,8 @@
 let { db } = require("../db/knex");
 let uuid = require("uuid/v4");
 let P = require("bluebird");
+const upsert = require("knex-upsert");
+
 let Tasks = {};
 
 const table = "tasks";
@@ -33,9 +35,9 @@ Tasks.update = function(obj) {
     const { task_id } = obj;
     delete obj["task_id"];
     if (!task_id) return false;
-
+    obj.last_edit_date = new Date();
     return db(table)
-      .where({ task_id: task_id })
+      .where({ task_id: task_id, deleted: false })
       .update(obj, ["*"]);
   });
 };
@@ -47,6 +49,7 @@ Tasks.update = function(obj) {
 
 Tasks.get = function(obj) {
   return P.try(() => {
+    obj.deleted = false;
     return db(table)
       .where(obj)
       .select("*");
@@ -68,5 +71,17 @@ Tasks.delete = function(obj) {
 // Tasks.delete({ task_id: "8268f67f-366a-40e9-916a-2941b71dc610" }).then(data =>
 //   console.log(data)
 // );
+
+Tasks.upsert = async obj => {
+  obj.deleted = false;
+  return P.try(() => {
+    return upsert({
+      db,
+      table,
+      object: obj,
+      key: "task_id"
+    });
+  });
+};
 
 module.exports = Tasks;

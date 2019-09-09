@@ -36,7 +36,11 @@ export function updateUser(req, res) {
   req.body.social == undefined
     ? true
     : (cleaned.social_links = req.body.social);
-  const userId = req.body.user.id; // change it get user from passport
+  req.body.password == undefined
+    ? true
+    : (cleaned.password = req.body.password);
+
+  const userId = req.user.id; // change it get user from passport
   cleaned.user_id = userId;
 
   Users.update(cleaned)
@@ -57,18 +61,24 @@ export function updateUser(req, res) {
   //   });
 }
 
-export function deleteUser(req, res) {
+export async function deleteUser(req, res) {
   let username = req.params.username;
+  const user_id = req.user.id;
 
-  Users.delete({ username })
-    .then(i => {
-      return res.status(200).json(["Successfully deleted user", i]);
-    })
-    .catch(error => {
-      return res
-        .status(400)
-        .json({ message: "Failed to delete user", error: error });
-    });
+  try {
+    const [user] = await Users.get({ user_id: user_id });
+
+    if (user && user.username === username) {
+      return Users.update({ user_id, deleted: true }).then(user => {
+        return res.status(200).json(["successfully deleted user", user]);
+      });
+    }
+    return res.status(401).json(["Not authorised to delete user"]);
+  } catch (error) {
+    return res
+      .status(400)
+      .json({ message: "Failed to delete user", error: error });
+  }
 
   // _user
   //   .deleteUser(username)
@@ -128,7 +138,7 @@ export function deleteUser(req, res) {
  * @returns
  **/
 export async function followTags(req, res) {
-  const userId = req.body.user.id;
+  const userId = req.user.id;
   const tags = sanitizeTags(req.body.tags);
 
   try {
@@ -224,7 +234,7 @@ export function followingFeed(req, res) {
 export function addAvatar(req, res) {
   const key = req.body.key;
   const url = req.body.url;
-  const user = req.body.user.id;
+  const user = req.user.id;
   if (!user) {
     res.status(400).json("User not signed in");
     return;
@@ -238,7 +248,6 @@ export function addAvatar(req, res) {
 
   Users.update({ user_id: user, avatar: fullUrl })
     .then(user => {
-      console.log("user: ", user);
       res.status(200).json(user);
     })
     .catch(error => {
@@ -273,7 +282,7 @@ export function addAvatar(req, res) {
 //     })
 //     .catch(error=> {
 //       let error = JSON.parse(err.message).error.details[0].message;
-//       console.log("ERROR Retrieving User Balance", error);
+//
 //       res.status(400).json({
 //         message: "Error Finding Balance",
 //         error: error
@@ -289,6 +298,10 @@ export function addAvatar(req, res) {
  **/
 export function getUser(req, res) {
   let id = req.params.id;
+  if (req.params.id != req.user.id)
+    return res.status(401).json({
+      message: "Not Authorised to access user"
+    });
 
   Users.get({ user_id: id })
     .then(data => {
@@ -413,7 +426,7 @@ export function getUsers(req, res) {
     .catch(error => {
       res.status(400).json({
         message: "Error Retrieving All Users",
-        error: err
+        error: error
       });
     });
   // _user
@@ -450,7 +463,6 @@ export function newUser(req, res) {
       res.status(200).json(data);
     })
     .catch(error => {
-      console.log(error);
       res.status(400).json({
         message: "Error creating user",
         error: error
@@ -471,7 +483,7 @@ export function newUser(req, res) {
   //     res.status(200).json(data);
   //   })
   //   .catch(error=> {
-  //     console.log(err);
+  //
   //     res.status(400).json({
   //       message: "Error creating user",
   //       error: err
@@ -636,7 +648,7 @@ export async function listUserProjects(req, res) {
  * @param {JSON} req.body.toFollow - mongoose ID of the user to follow/unfollow
  **/
 export function follow(req, res) {
-  let id = req.body.user.id;
+  let id = req.user.id;
   let toFollow = req.body.toFollow;
 
   UserFollowers.create({ user_id: id, user_follower: toFollow })
@@ -646,7 +658,7 @@ export function follow(req, res) {
     .catch(error => {
       res.status(400).json({
         message: "Error Following User",
-        error: err
+        error: error
       });
     });
   // _user

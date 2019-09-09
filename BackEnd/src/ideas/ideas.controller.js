@@ -6,6 +6,7 @@ import ProjectIdeas from "../pgModels/project_ideas";
 import Comments from "../pgModels/comments";
 import IdeaComments from "../pgModels/idea_comments";
 import UserComments from "../pgModels/user_comments";
+import UserIdeas from "../pgModels/user_ideas";
 
 /**
  * Vote on either an idea or a comment (upvote / downvote)
@@ -47,13 +48,13 @@ export function getAll(req, res) {
   } catch (err) {
     limit = undefined;
   }
-  if (limit == undefined) {
+  if (limit == undefined || limit == NaN) {
     limit = 50;
   }
   let offset = req.body.last == undefined ? 0 : parseInt(req.body.offset);
   let tag = req.body.tag == undefined ? null : req.body.tag;
-
-  Ideas.getAll(offset, limit, tag)
+  const user_id = req.user.id;
+  Ideas.getAll(offset, limit, tag, user_id)
     .then(i => {
       res.status(200).json(i);
     })
@@ -100,6 +101,7 @@ export function getIdea(req, res) {
  * @returns void
  */
 export async function newIdea(req, res) {
+  console.log("req: ", req);
   let i = {};
   let project = undefined;
   let stringBody;
@@ -123,14 +125,19 @@ export async function newIdea(req, res) {
   if (req.body.private != undefined) {
     i.private = req.body.private;
   }
+  console.log("req.user: ", req.user);
+  i.creator = req.user.id;
 
-  i.creator = req.body.user.id;
   console.log("i: ", i);
 
   try {
     const projectID = req.body.projectID;
     const newIdea = await Ideas.create(i);
-    console.log("newIdea: ", newIdea);
+
+    await UserIdeas.create({
+      user_id: i.creator,
+      idea_id: newIdea[0].idea_id
+    });
     ProjectIdeas.create({
       project_id: projectID,
       idea_id: newIdea[0].idea_id
@@ -169,10 +176,12 @@ export async function newIdea(req, res) {
  */
 export async function deleteIdea(req, res) {
   let id = req.params.id;
-  let user = req.body.user.id;
+  let user = req.user.id;
 
   try {
     const [idea] = await Ideas.get({ idea_id: id });
+    if (!idea) return res.status(404).json({ message: "Idea does not exist" });
+
     if (idea.creator === user)
       return Ideas.update({ idea_id: id, deleted: true })
         .then(i => {
@@ -208,11 +217,14 @@ export async function deleteIdea(req, res) {
 export async function deleteBlob(req, res) {
   let ideaID = req.params.ideaID;
   let commentID = req.body.blobID;
-  let user = req.body.user.id;
+  let user = req.user.id;
   console.log("user: ", user);
 
   try {
     const [comment] = await Comments.get({ comment_id: commentID });
+    if (!comment)
+      return res.status(404).json({ message: "Comment does not exist" });
+
     console.log("comment: ", comment);
     console.log("comment.creator: ", comment.user);
     if (comment.user != user)
@@ -224,6 +236,8 @@ export async function deleteBlob(req, res) {
       idea_id: ideaID,
       comment_id: commentID
     });
+    if (!ideaComment)
+      return res.status(200).json(["Wrong Idea for comment", i]);
 
     await IdeaComments.update({
       idea_comment_id: ideaComment.idea_comment_id,
@@ -232,6 +246,7 @@ export async function deleteBlob(req, res) {
       res.status(200).json(["Successfully deleted blob", i]);
     });
   } catch (error) {
+    console.log("error: ", error);
     res.status(400).json({ message: "Failed to delete blob", error: error });
   }
   // _ideas
@@ -257,7 +272,7 @@ export async function newBlob(req, res) {
   const nest = req.body.nest ? req.body.nest : null;
 
   let ib = {
-    user: req.body.user.id,
+    user: req.user.id,
     body: req.body.body,
     parent_comment: nest
   };
@@ -325,7 +340,7 @@ export async function editIdea(req, res) {
   let id = req.params.id;
   let body;
   let tags = req.body.tags;
-  let user = req.body.user.id;
+  let user = req.user.id;
   let stringBody = undefined;
 
   if (req.body.stringBody != undefined) {
@@ -336,6 +351,8 @@ export async function editIdea(req, res) {
     //body = JSON.parse(req.body.body);
     body = req.body.body;
     const [oldIdea] = await Ideas.get({ idea_id: id });
+    if (!oldIdea)
+      return res.status(404).json({ message: "The idea doesn't exist" });
 
     if (oldIdea.creator != user)
       return res
@@ -380,7 +397,7 @@ export async function editIdea(req, res) {
 export async function editBlob(req, res) {
   let id = req.params.id;
   let body;
-  let user = req.body.user.id;
+  let user = req.user.id;
   let stringBody = undefined;
   if (req.body.stringBody != undefined) {
     stringBody = req.body.stringBody;

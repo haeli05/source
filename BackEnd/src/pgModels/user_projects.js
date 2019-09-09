@@ -23,8 +23,10 @@ UserProjects.update = function(obj) {
     const { user_projects_id } = obj;
     delete obj["user_projects_id"];
     if (!user_projects_id) return false;
+    obj.last_edit_date = new Date();
+
     return db(table)
-      .where({ user_projects_id: user_projects_id })
+      .where({ user_projects_id: user_projects_id, deleted: false })
       .update(obj, ["*"]);
   });
 };
@@ -35,6 +37,7 @@ UserProjects.update = function(obj) {
 
 UserProjects.get = function(obj) {
   return P.try(() => {
+    obj.deleted = false;
     return db(table)
       .where(obj)
       .select("*");

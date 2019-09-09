@@ -31,8 +31,9 @@ Projects.update = function(obj) {
     const { project_id } = obj;
     delete obj["project_id"];
     if (!project_id) return false;
+    obj.updated_at = new Date();
     return db(table)
-      .where({ project_id: project_id })
+      .where({ project_id: project_id, deleted: false })
       .update(obj, ["*"]);
   });
 };
@@ -44,6 +45,7 @@ Projects.update = function(obj) {
 
 Projects.get = function(obj) {
   return P.try(() => {
+    obj.deleted = false;
     return db(table)
       .where(obj)
       .select("*");
@@ -54,6 +56,21 @@ Projects.get = function(obj) {
 //   console.log(data)
 // );
 
+Projects.getAll = async (offset, limit, tag, user_id) => {
+  return P.try(() => {
+    if (tag) {
+      return db(table)
+        .select("*")
+        .whereRaw(`array_to_string(tags, ',') like '%${tag}%'`)
+        .limit(typeof limit === "number" ? limit : "ALL")
+        .offset(typeof offset === "number" ? offset : 0);
+    }
+    return db(table)
+      .select("*")
+      .limit(typeof limit === "number" ? limit : "ALL")
+      .offset(typeof offset === "number" ? offset : 0);
+  });
+};
 Projects.delete = function(obj) {
   return P.try(() => {
     const { project_id } = obj;

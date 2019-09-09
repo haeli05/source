@@ -1,31 +1,50 @@
 import { Router } from "express";
 import * as UserController from "./user.controller";
-// import passport from "../util/passport";
+import passport from "../util/passport";
 
 const router = new Router();
 
 // Delete user
-router.route("/user/delete/:username").post(UserController.deleteUser);
+router
+  .route("/user/delete/:username")
+  .post(
+    passport.authenticate("jwt", { session: false }),
+    UserController.deleteUser
+  );
 
 // Get all Users
 //TODO: this route is inefficient. Need to getUsers per specific data
 //      (all users related to given user, etc.)
 router.route("/user").get(UserController.getUsers);
 //Get a user public information
-router.route("/user/:id").get(UserController.getUser);
+router
+  .route("/user/:id")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    UserController.getUser
+  );
 //Get a user by username
-router.route("/user/name/:username").get(UserController.isUserInDB);
+router
+  .route("/user/name/:username")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    UserController.isUserInDB
+  );
 
-//Get a user's gitlab account
-// router.route("/user/gl/:id").get(UserController.getUserGL);
-//Update a user's info
-// router.route('/user/update').post(passport.authenticate('jwt',{session: false}), UserController.updateUser); //NOTE: UNTESTED
-router.route("/user/update").post(UserController.updateUser); //NOTE: UNTESTED
+router
+  .route("/user/update")
+  .post(
+    passport.authenticate("jwt", { session: false }),
+    UserController.updateUser
+  ); //NOTE: UNTESTED
 
-//create a user on gitlab
-// router.route("/user/gl/new").post(UserController.newUserGL);
 //Lists Projects for user
-router.route("/user/:id/projects").get(UserController.listUserProjects);
+router
+  .route("/user/:id/projects")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    UserController.listUserProjects
+  );
 // Create a new User
 router.route("/user/new").post(UserController.newUser);
 //Login a User
@@ -44,14 +63,13 @@ router.route("/user/login").post(UserController.login);
 //Get all transfers sent to a user
 // router.route("/user/:id/transfers").get(UserController.getTransfers);
 //Add avatar
-// router
-//   .route("/user/addAvatar")
-//   .post(
-//     passport.authenticate("jwt", { session: false }),
-//     UserController.addAvatar
-//   );
 
-router.route("/user/addAvatar").post(UserController.addAvatar);
+router
+  .route("/user/addAvatar")
+  .post(
+    passport.authenticate("jwt", { session: false }),
+    UserController.addAvatar
+  );
 //Follow idea, project, or issue
 // router
 //   .route("/user/followTopic")
@@ -60,13 +78,12 @@ router.route("/user/addAvatar").post(UserController.addAvatar);
 //     UserController.followTopic
 //   );
 //Follow tag
-// router
-//   .route("/user/followTags")
-//   .post(
-//     passport.authenticate("jwt", { session: false }),
-//     UserController.followTags
-//   );
-router.route("/user/followTags").post(UserController.followTags);
+router
+  .route("/user/followTags")
+  .post(
+    passport.authenticate("jwt", { session: false }),
+    UserController.followTags
+  );
 
 //Returns topics the user has followed.  query parameters (?sort= trending / popularity | ?ideaId | ?projectId)
 // router.route("/user/:id/followingFeed").get(UserController.followingFeed);
@@ -96,13 +113,12 @@ router.route("/user/followTags").post(UserController.followTags);
 //   ); //NOTE: UNTESTED
 
 //Follow / Unfollow a user
-// router
-//   .route("/user/follow")
-//   .post(
-//     passport.authenticate("jwt", { session: false }),
-//     UserController.follow
-//   );
-router.route("/user/follow").post(UserController.follow);
+router
+  .route("/user/follow")
+  .post(
+    passport.authenticate("jwt", { session: false }),
+    UserController.follow
+  );
 //Add or update a user to follow
 // router.route("/user/:id/following").get(UserController.gfollowing);
 // //Add or update followers for a user

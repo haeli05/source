@@ -15,6 +15,67 @@ import { tokenGenerate } from "../util/authenticate.util";
 
 // import { searchTags } from "../search/search.controller";
 
+// /**
+//  * Function logs a user in and sends her an AWS token
+//  * @param {JSON} username - Username
+//  * @param {JSON} password - Password
+//  * @returns Response with signed JWT and user information
+//  * @throws {String}
+//  **/
+export function login(username, password) {
+  return new Promise((resolve, reject) => {
+    Users.authenticate(username, password, async function(err, user) {
+      if (!err) {
+        let payload = {
+          username: user.username,
+          id: user.user_id,
+          email: user.email,
+          issuer: "https://sourcenetwork.io"
+        };
+        let token = tokenGenerate(payload);
+        delete user.password;
+
+        resolve({ message: "Sign-in Successful", user, token: token });
+
+        // TODO: AWS when new API has been configured
+        /*awsToken()
+        .then((awsObj) => {
+          resolve({message: 'Sign-in Successful', user, token: token, aws: awsObj})
+        })
+        .catch(err => {reject('Failed to get AWS Token: ' + err)})
+        */
+      } else {
+        reject("Username or Password Incorrect");
+      }
+    });
+    // User.authenticate(username, password, async function(err, user) {
+    //   if (!err) {
+    //     let payload = {
+    //       username: user.username,
+    //       id: user._id,
+    //       email: user.email,
+    //       issuer: "https://sourcenetwork.io"
+    //     };
+    //     let token = tokenGenerate(payload);
+    //     user = user.toObject();
+    //     delete user.password;
+
+    //     resolve({ message: "Sign-in Successful", user, token: token });
+
+    //     // TODO: AWS when new API has been configured
+    //     /*awsToken()
+    //     .then((awsObj) => {
+    //       resolve({message: 'Sign-in Successful', user, token: token, aws: awsObj})
+    //     })
+    //     .catch(err => {reject('Failed to get AWS Token: ' + err)})
+    //     */
+    //   } else {
+    //     reject("Username or Password Incorrect");
+    //   }
+    // });
+  });
+}
+
 // const stats = {
 //   follow: 100,
 //   new: 7
@@ -202,69 +263,6 @@ import { tokenGenerate } from "../util/authenticate.util";
 
 //   return usr;
 // }
-
-// /**
-//  * Function logs a user in and sends her an AWS token
-//  * @param {JSON} username - Username
-//  * @param {JSON} password - Password
-//  * @returns Response with signed JWT and user information
-//  * @throws {String}
-//  **/
-export function login(username, password) {
-  return new Promise((resolve, reject) => {
-    Users.authenticate(username, password, async function(err, user) {
-      console.log("user: ", user);
-      if (!err) {
-        let payload = {
-          username: user.username,
-          id: user._id,
-          email: user.email,
-          issuer: "https://sourcenetwork.io"
-        };
-        let token = tokenGenerate(payload);
-        user = user.toObject();
-        delete user.password;
-
-        resolve({ message: "Sign-in Successful", user, token: token });
-
-        // TODO: AWS when new API has been configured
-        /*awsToken()
-        .then((awsObj) => {
-          resolve({message: 'Sign-in Successful', user, token: token, aws: awsObj})
-        })
-        .catch(err => {reject('Failed to get AWS Token: ' + err)})
-        */
-      } else {
-        reject("Username or Password Incorrect");
-      }
-    });
-    // User.authenticate(username, password, async function(err, user) {
-    //   if (!err) {
-    //     let payload = {
-    //       username: user.username,
-    //       id: user._id,
-    //       email: user.email,
-    //       issuer: "https://sourcenetwork.io"
-    //     };
-    //     let token = tokenGenerate(payload);
-    //     user = user.toObject();
-    //     delete user.password;
-
-    //     resolve({ message: "Sign-in Successful", user, token: token });
-
-    //     // TODO: AWS when new API has been configured
-    //     /*awsToken()
-    //     .then((awsObj) => {
-    //       resolve({message: 'Sign-in Successful', user, token: token, aws: awsObj})
-    //     })
-    //     .catch(err => {reject('Failed to get AWS Token: ' + err)})
-    //     */
-    //   } else {
-    //     reject("Username or Password Incorrect");
-    //   }
-    // });
-  });
-}
 
 // //TODO: Add filtering
 // export function getUsers() {
