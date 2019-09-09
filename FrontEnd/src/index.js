@@ -37,7 +37,7 @@ const theme = createMuiTheme({
     },
     text: {
           primary: "#231f20",
-          secondary: "#ffffff"
+          secondary: "#9BA3B1"
     }
   },
   // Fonts

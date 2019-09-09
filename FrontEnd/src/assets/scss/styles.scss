@@ -3269,20 +3269,36 @@ body {
 
 .WelcomePage {
   background-color: white;
+
   .Hero {
     background-color: $Surface;
-    margin-top: 15vh;
+    padding-top: 15vh;
     margin-bottom: 15vh;
     height: 70vh;
     text-align: left;
     padding-left: 7%;
     padding-right: 7%;
+    .Form {
+      display: flex;
+      vertical-align: center;
+      .UsernameInputDiv{
+        .UsernameInput{
+          width:100%;
+        }
+      }
+      .SubmitButton {
+        margin-top: 2vh;
+        margin-bottom: 1vh;
+        align-self: center;
+      }
+    }
     @media screen and (max-width: $md) {
       padding-top: 1em;
       padding-bottom: 3em;
     }
     @media screen and (max-width: $sm) {
       text-align: center;
+      padding-top: 2em;
       padding-left: 10%;
       padding-right: 10%;
     }
@@ -3331,6 +3347,7 @@ body {
         margin-left: 30px;
       }
     }
+
     .GetPaid {
     display: flex;
     align-items: center;
@@ -3342,7 +3359,7 @@ body {
       }
     }
     .WhatIsSource {
-      padding-top: 13px;
+//      padding-top: 13px;
       @media screen and (max-width: $md) {
         font-size: 2em;
       }
@@ -3361,10 +3378,7 @@ body {
       .Mission{
 
       }
-      .TagLine{
-        margin-left: 32px;
-        margin-top: 16px;
-      }
+    
     }
   }
 
@@ -3419,6 +3433,12 @@ body {
           vertical-align: flex-start;
           margin-top: 4vh;
           color: black;
+          @media screen and (max-width: $sm) {
+            align-items: center;
+            text-align: center;
+            flex-flow: column wrap;
+            vertical-align: middle;
+          }
           .SignUpInput {
             color: black;
             margin-left: 14px;
@@ -3434,19 +3454,21 @@ body {
 
       }
       .ballimage{
-        width: 30%;
+        width: 100%;
         float: left;
+        // @media screen and (max-width: $sm) {
+        //   width: 100%;
+        // }
         .ToolBall {
           width: 25vw;
+          // @media screen and (max-width: $sm) {
+          //   width: 100vw;
+          // }
         }
       }
     }
 
   }
-
-    @media screen and (max-width: $sm) {
-      padding-top: 5em;
-    }
 
   .Section2 {
     background-color: $Light;

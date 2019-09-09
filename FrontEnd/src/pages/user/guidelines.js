@@ -10,6 +10,10 @@ export default class Guidelines extends Component {
     return (
       <div className="Section">
       <Typography variant='h1'>Guidelines</Typography>
+
+      This document outlines the general rules intended to help
+
+      <Typography variant='h2'>Project management</Typography>
       <Typography variant='body1' paragraph>
       What to do
 

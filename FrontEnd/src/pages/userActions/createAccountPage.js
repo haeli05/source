@@ -15,7 +15,6 @@ import { ic_done } from 'react-icons-kit/md/ic_done'
 import { ic_not_interested } from 'react-icons-kit/md/ic_not_interested'
 // Components
 import { Link } from 'react-router-dom'
-import PopUp from '../global/components/PopUp'
 // Redux
 import { connect } from 'react-redux'
 import { newUser, checkUsernameAvailability } from './../../actions/user.actions'
@@ -221,7 +220,6 @@ class CreateAccountPage extends Component {
     }
     return (
       <div className='CreateAccountPage'>
-        <PopUp />
         <Typography className='CreateAccountPageHeader' variant='display3'>Create Account</Typography>
         {this.props.newUserStatus === 'PENDING' && (
           <div className='Form'>
@@ -300,16 +298,6 @@ class CreateAccountPage extends Component {
               value={this.state.passConfirm}
               onChange={(e) => { this.handleChange('passConfirm', e) }}
               helperText={this.state.passConfirmErrorText}
-              fullWidth
-              margin='normal'
-              variant='outlined'
-            />
-            <TextField
-              label='Invite code'
-              error={this.state.tokenError}
-              value={this.state.token}
-              onChange={(e) => { this.handleChange('token', e) }}
-              helperText={this.state.tokenErrorText}
               fullWidth
               margin='normal'
               variant='outlined'

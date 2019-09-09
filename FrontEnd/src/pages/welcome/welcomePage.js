@@ -12,6 +12,12 @@ import Fade from '@material-ui/core/Fade'
 import List from '@material-ui/core/List'
 import Chip from '@material-ui/core/Chip'
 import Avatar from '@material-ui/core/Avatar';
+import LinearProgress from '@material-ui/core/LinearProgress'
+import CircularProgress from '@material-ui/core/CircularProgress'
+//Icons
+import Icon from '@material-ui/core/Icon'
+import { ic_done } from 'react-icons-kit/md/ic_done'
+import { ic_not_interested } from 'react-icons-kit/md/ic_not_interested'
 // Components
 import JoinQueue from './components/joinQueue'
 import PayButton from '../payments/payButton'
@@ -67,48 +73,48 @@ class WelcomePage extends Component {
 
   componentDidMount () {
     document.addEventListener('keydown', this._handleKeyDown.bind(this))
-
-    const element1 = document.querySelector('#whatissource')
-    function callback1 (text) {
-      element1.textContent = text
-    }
-    const options1 = {
-      typeSpeed: 70,
-      deleteSpeed: 20,
-      pauseDuration: 1800,
-      repeat: true
-    }
-    malarkey(callback1, options1)
-      .type(`blockchain engineers`)
-      .pause()
-      .delete()
-      .type(`technology professionals`)
-      .pause()
-      .delete()
-      .type(`software developers`)
-      .pause()
-      .delete()
-      .type(`product managers`)
-      .pause()
-      .delete()
-      .type(`smart contract programmers`)
-      .pause()
-      .delete()
-      .type(`designers`)
-      .pause()
-      .delete()
-      .type(`backers`)
-      .pause()
-      .delete()
-      .type(`consultants`)
-      .pause()
-      .delete()
-      .type(`investors`)
-      .pause()
-      .delete()
-      .type(`fans`)
-      .pause()
-      .delete()
+    //
+    // const element1 = document.querySelector('#whatissource')
+    // function callback1 (text) {
+    //   element1.textContent = text
+    // }
+    // const options1 = {
+    //   typeSpeed: 70,
+    //   deleteSpeed: 20,
+    //   pauseDuration: 1800,
+    //   repeat: true
+    // }
+    // malarkey(callback1, options1)
+    //   .type(`  engineers`)
+    //   .pause()
+    //   .delete()
+    //   .type(` technology professionals`)
+    //   .pause()
+    //   .delete()
+    //   .type(` software developers`)
+    //   .pause()
+    //   .delete()
+    //   .type(` product managers`)
+    //   .pause()
+    //   .delete()
+    //   .type(` smart contract programmers`)
+    //   .pause()
+    //   .delete()
+    //   .type(` designers`)
+    //   .pause()
+    //   .delete()
+    //   .type(` backers`)
+    //   .pause()
+    //   .delete()
+    //   .type(` consultants`)
+    //   .pause()
+    //   .delete()
+    //   .type(` investors`)
+    //   .pause()
+    //   .delete()
+    //   .type(` fans`)
+    //   .pause()
+    //   .delete()
   }
 
   // intercom(){
@@ -179,37 +185,113 @@ class WelcomePage extends Component {
           <div className='WelcomeSignUp'>
             <Grid container
             spacing={4}
-            justify="center"
+            justify="flex-start"
             alignItems="center"
             >
-              <Grid item sm={12} md={7}>
+              <Grid item xs={12} sm={12} md={7}>
                 <Typography variant="overline" style={{marginLeft:"3px"}}>
                   Welcome To
                 </Typography>
                 <Typography className='Mission' color='textPrimary' variant='h1'>
                 The Decentralized <br />Tech Incubator
                 </Typography>
-                <Typography className='TagLine' color='textPrimary' variant='h4' style={{marginLeft:"3px", marginTop:"16px"}}>
-                Find your distributed team
+
+                <br/>
+                <Typography color='textPrimary' variant='h4' style={{marginLeft:"3px"}}>
+                Find your distributed dev team
                 </Typography>
               </Grid>
-              <Grid item sm={12} md={5}>
-                <Typography className='Mission WhatIsSource' style={{ marginTop: '0em' }} variant='h4' color='textPrimary'>
-                Connect with a community of <br />
-                 <div style={{ display: 'inline' }} id='whatissource' />
-                 <br />
-                 to build your project
-                </Typography>
-                <Button variant='outlined' className='GetStarted' component={Link} to='/getstarted'>
-                  Get started
-                </Button>
-                <br />
-                <Typography className='Mission WhatIsSource' variant='h4' color='textPrimary'>
-                  Are you a developer? Sign up to get paid instantly.
-                </Typography>
-                <Button variant='contained' color='primary' className='GetStarted' href='#todo'>
-                  Register
-                </Button>
+              <Grid item xs={12} sm={12} md={4} style={{alignItems:"center"}}>
+              <Typography variant="h4">Sign Up</Typography>
+              <Typography color='textPrimary' variant='subtitle2' style={{marginLeft:"3px"}}>
+              Join the Conversation
+              </Typography>
+
+              {this.props.newUserStatus === 'PENDING' && (
+                <div className='Form Vertical'>
+                  <LinearProgress size={50} color='secondary' />
+                </div>
+              )}
+              {(this.props.newUserStatus !== 'PENDING') && (
+                <div className='Form Vertical'>
+                  <div className='UsernameInputDiv'>
+                    <TextField
+                      className='UsernameInput'
+                      autoFocus
+                      label='Username'
+                      error={this.state.usernameError}
+                      value={this.state.username}
+                      onChange={(e) => { this.handleChange('username', e) }}
+                      helperText={this.state.usernameErrorText}
+                      fullWidth
+                      margin='normal'
+                      variant='outlined'
+                    />
+                    <div className='UsernameAvailabilityCheck'>
+                      {this.props.usernameAvailabilityStatus === 'PENDING' && (
+                        <CircularProgress size={20} color='primary' />
+                      )}
+                      {this.props.usernameAvailabilityStatus === 'ERROR' && (
+                        <Typography variant='body1'>There was an error checking for this username's availability :(</Typography>
+                      )}
+                      {this.props.usernameAvailabilityStatus === 'SUCCESS' && (
+                        <div>
+                          {this.props.usernameAvailability === 'yes' && (
+                            <Icon icon={ic_done} size={20} />
+                          )}
+                          {this.props.usernameAvailability === 'no' && (
+                            <Icon icon={ic_not_interested} size={20} />
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <TextField
+                    label='Display Name'
+                    error={this.state.nameError}
+                    value={this.state.name}
+                    onChange={(e) => { this.handleChange('name', e) }}
+                    helperText={this.state.nameErrorText}
+                    fullWidth
+                    margin='normal'
+                    variant='outlined'
+                  />
+                  <TextField
+                    label='Email'
+                    error={this.state.emailError}
+                    value={this.state.email}
+                    onChange={(e) => { this.handleChange('email', e) }}
+                    helperText={this.state.emailErrorText}
+                    fullWidth
+                    margin='normal'
+                    variant='outlined'
+                  />
+                  <TextField
+                    type='password'
+                    label='Password'
+                    error={this.state.passwordError}
+                    value={this.state.password}
+                    onChange={(e) => { this.handleChange('password', e) }}
+                    helperText={this.state.passwordErrorText}
+                    fullWidth
+                    margin='normal'
+                    variant='outlined'
+                  />
+                  <TextField
+                    type='password'
+                    label='Confirm Password'
+                    error={this.state.passConfirmError}
+                    value={this.state.passConfirm}
+                    onChange={(e) => { this.handleChange('passConfirm', e) }}
+                    helperText={this.state.passConfirmErrorText}
+                    fullWidth
+                    margin='normal'
+                    variant='outlined'
+                  />
+                  <Button variant='contained' color='primary' className='SubmitButton' onClick={this.handleSubmit}>Sign Up</Button>
+                  <Typography variant='caption' component={Link} to='/login' className='TextCenter LinkUnderline' >Already have an account? Login</Typography>
+                </div>
+              )}
               </Grid>
             </Grid>
 
@@ -217,12 +299,13 @@ class WelcomePage extends Component {
           </div>
         </div>
         <div className='Quote'>
-
-          <div className="Body">
-            <div className="ballimage">
+          <Grid
+          container
+           className="Body">
+            <Grid item xs={12} md={4} className="ballimage">
                 <img className='ToolBall' src={toolball} alt='toolball' />
-            </div>
-            <div className='text'>
+            </Grid>
+            <Grid item xs={12} md={7} className='text'>
                 <Typography variant='h3' color="textPrimary">Solving Tech's Biggest Problem</Typography>
                 <br />
                 <Typography variant='body1' color="textPrimary">Building software is difficult.
@@ -248,7 +331,7 @@ class WelcomePage extends Component {
               <div className='JoinMailing' style={{marginBottom:"7vh"}}>
                 <ReactSVG src={Announce} className='ReactSVGIcon Icon25' />
                 <TextField
-                  label='Sign up for email updates'
+                  label='Subscribe for email updates'
                   type='email'
                   onChange={this.handleChangeSignUp}
                   variant='outlined'
@@ -258,7 +341,7 @@ class WelcomePage extends Component {
                 />
                 {(!this.state.sent) && (
                   <Tooltip title={this.state.emailErrorMessage}>
-                    <Button variant='outlined' onClick={this.SignUpSubmit}>Sign Up</Button>
+                    <Button variant='outlined' onClick={this.SignUpSubmit}>Subscribe</Button>
                   </Tooltip>
                 )}
                 {(this.state.sent) && (
@@ -268,8 +351,8 @@ class WelcomePage extends Component {
                   </Typography>
                 )}
               </div>
-            </div>
-          </div>
+            </Grid>
+          </Grid>
         </div>
         <div className='Section Section2'>
           <Typography className='SectionTagline' variant='h2' color="textPrimary">How It Works</Typography>
@@ -281,19 +364,19 @@ class WelcomePage extends Component {
                   spacing={0}
                   style={{marginBottom:"14vh"}}
                   >
-                    <Grid item sm={2} md={4} className="Vertical">
+                    <Grid item sm={12} md={4} className="Vertical">
                       <ReactSVG src={Level} className='ReactSVGIcon Icon50 CircleBorder' style={{marginBottom:"2vh"}} />
                       <Typography variant='subtitle1'>
                       1. Onboard your Project
                       </Typography>
                     </Grid>
-                    <Grid item sm={2} md={4} className="Vertical">
+                    <Grid item sm={12} md={4} className="Vertical">
                       <ReactSVG src={Edit} className='ReactSVGIcon Icon50 CircleBorder' style={{marginBottom:"2vh"}} />
                       <Typography variant='subtitle1'>
                       2. Specify your Tasks
                       </Typography>
                     </Grid>
-                    <Grid item sm={2} md={4} className="Vertical">
+                    <Grid item sm={12} md={4} className="Vertical">
                       <ReactSVG src={WorkMan} className='ReactSVGIcon Icon50 CircleBorder' style={{marginBottom:"2vh"}} />
                       <Typography variant='subtitle1'>
                       3. Work with Collaborators
@@ -311,7 +394,7 @@ class WelcomePage extends Component {
           justify="flex-start"
           alignItems="flex-start"
           spacing={1}>
-          <Grid item xs={7} >
+          <Grid item xs={12} md={6} >
             <div className='Description' >
               <Typography variant='h4' style={{ textAlign: 'left', marginBottom:"14px" }}>
                 A plug and play paradigm for software development
@@ -332,7 +415,7 @@ class WelcomePage extends Component {
               </Typography>
             </div>
           </Grid>
-          <Grid item xs>
+          <Grid item xs={12} md={4}>
             <Fade in>
               <img className="BW" src={BW} alt='developers' />
             </Fade>
@@ -372,7 +455,7 @@ class WelcomePage extends Component {
         alignItems="flex-start"
         spacing={2}
         style={{marginTop:"7vh"}}>
-          <Grid item xs={6}>
+          <Grid item sm={12} md={6}>
             <div className='Description' style={{textAlign:"left", marginLeft:"7px"}}>
             <Typography variant='h4' paragraph className='SectionSubTitle' >
             Scale flexibly with Developers-as-a-Service
