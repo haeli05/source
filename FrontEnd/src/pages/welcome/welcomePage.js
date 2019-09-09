@@ -59,21 +59,21 @@ class WelcomePage extends Component {
     this.state = {
       controller: null,
       lastKeys: [],
-      SignUpEmail: '',
-      emailError: false,
-      emailErrorMessage: '',
+      SubscribeEmail: '',
+      SubscribeEmailError: false,
+      SubscribeEmailErrorMessage: '',
       sent: false
     }
     window.Intercom('boot', {
       app_id: 'f5is3sx5'
     })
-    this.SignUpSubmit = this.SignUpSubmit.bind(this)
-    this.handleChangeSignUp = this.handleChangeSignUp.bind(this)
+    this.subscribeSubmit = this.subscribeSubmit.bind(this)
+    this.handleChangeSubscribe = this.handleChangeSubscribe.bind(this)
   }
 
   componentDidMount () {
     document.addEventListener('keydown', this._handleKeyDown.bind(this))
-    //
+
     // const element1 = document.querySelector('#whatissource')
     // function callback1 (text) {
     //   element1.textContent = text
@@ -142,18 +142,18 @@ class WelcomePage extends Component {
     }
   }
 
-  handleChangeSignUp (e) {
-    this.setState({ SignUpEmail: e.target.value })
-    this.setState({ emailError: false })
-    this.setState({ emailErrorMessage: '' })
+  handleChangeSubscribe (e) {
+    this.setState({ SubscribeEmail: e.target.value })
+    this.setState({ SubscribeEmailError: false })
+    this.setState({ SubscribeEmailErrorMessage: '' })
   }
 
-  SignUpSubmit () {
-    this.setState({ emailError: false })
-    this.setState({ emailErrorMessage: '' })
-    if (this.state.SignUpEmail !== '' && this.state.SignUpEmail.includes('@') && this.state.SignUpEmail.includes('.')) {
+  subscribeSubmit () {
+    this.setState({ SubscribeEmailError: false })
+    this.setState({ SubscribeEmailErrorMessage: '' })
+    if (this.state.SubscribeEmail !== '' && this.state.SubscribeEmail.includes('@') && this.state.SubscribeEmail.includes('.')) {
       axios.post(`${config.production_url}/subscribe`, {
-        email: this.state.SignUpEmail
+        email: this.state.SubscribeEmail
       }).then(res => {
         this.setState({ sent: true })
         ReactGA.event({
@@ -161,12 +161,12 @@ class WelcomePage extends Component {
           action: 'Signed Up for Mailing List'
         })
       }).catch(err => {
-        this.setState({ emailError: true })
-        this.setState({ emailErrorMessage: 'There was an internal error. Please try again.' })
+        this.setState({ SubscribeEmailError: true })
+        this.setState({ SubscribeEmailErrorMessage: 'There was an internal error. Please try again.' })
       })
     } else {
-      this.setState({ emailError: true })
-      this.setState({ emailErrorMessage: 'Please provide a valid email' })
+      this.setState({ SubscribeEmailError: true })
+      this.setState({ SubscribeEmailErrorMessage: 'Please provide a valid email' })
     }
   };
 
@@ -175,7 +175,7 @@ class WelcomePage extends Component {
       <div className='WelcomePage'>
         <Helmet>
           <title>source | The Decentralized Tech Incubator</title>
-          <meta name='keywords' content='decentralized, tech incubator, developers,programming,open source, blockchain, crowdfunding' />
+          <meta name='keywords' content='decentralized, tech incubator, developers, software, programming, open source, blockchain, crowdfunding' />
           <meta
             name='description'
             content='Find developers for your projects'
@@ -202,9 +202,11 @@ class WelcomePage extends Component {
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={4} style={{alignItems:"center"}}>
-              <Typography variant="h4">Sign Up</Typography>
+              <Typography variant="h4">
+              Create a New Account
+              </Typography>
               <Typography color='textPrimary' variant='subtitle2' style={{marginLeft:"3px"}}>
-              Join the Conversation
+              It's quick and easy
               </Typography>
 
               {this.props.newUserStatus === 'PENDING' && (
@@ -258,10 +260,10 @@ class WelcomePage extends Component {
                   />
                   <TextField
                     label='Email'
-                    error={this.state.emailError}
-                    value={this.state.email}
+                    error={this.state.SignUpEmailError}
+                    value={this.state.SignUpEmail}
                     onChange={(e) => { this.handleChange('email', e) }}
-                    helperText={this.state.emailErrorText}
+                    helperText={this.state.SignUpEmailErrorText}
                     fullWidth
                     margin='normal'
                     variant='outlined'
@@ -333,15 +335,15 @@ class WelcomePage extends Component {
                 <TextField
                   label='Subscribe for email updates'
                   type='email'
-                  onChange={this.handleChangeSignUp}
+                  onChange={this.handleChangeSubscribe}
                   variant='outlined'
                   className='SignUpInput'
-                  error={this.state.emailError}
+                  error={this.state.SubscribeEmailError}
                   style={{color:"black"}}
                 />
                 {(!this.state.sent) && (
-                  <Tooltip title={this.state.emailErrorMessage}>
-                    <Button variant='outlined' onClick={this.SignUpSubmit}>Subscribe</Button>
+                  <Tooltip title={this.state.SubscribeEmailErrorMessage}>
+                    <Button variant='outlined' onClick={this.subscribeSubmit}>Subscribe</Button>
                   </Tooltip>
                 )}
                 {(this.state.sent) && (
