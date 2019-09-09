@@ -8,7 +8,12 @@ export default class Guidelines extends Component {
   }
   render () {
     return (
-      <div>
+      <div className="Section">
+      <Typography variant='h1'>Guidelines</Typography>
+      <Typography variant='body1' paragraph>
+      What to do
+
+      </Typography>
       </div>
     )
   }

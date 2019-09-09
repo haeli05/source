@@ -227,16 +227,16 @@ class WelcomePage extends Component {
                 <br />
                 <Typography variant='body1' color="textPrimary">Building software is difficult.
 
-                Finding the right team for your project can be complicated.
+                Finding the right team for your project can be a complicated process.
                 </Typography>
                 <br />
                 <Typography variant='body2' paragraph quote style={{marginLeft:"14px"}}>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
                 <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
 
                 <Typography paragraph variant='body1'>
-                Many organizations aren't functioning at their best because they don't have the right partners.
+                Many organizations aren't functioning at their best because they don't have the right team.
                 <br /><br />
-                But we noticed that many teams work more efficiently in environments where experts and potential team members are easily available, such as during hackathons or incubators.
+                But we noticed that most teams do work more efficiently in environments where experts and potential team members are easily available, such as during hackathons or incubators.
                 So we set out to build a virtual environment - A Decentralized Tech Incubator - to help you get feedback for your ideas, find collaborators, and supercharge your development process.
                 <br />
                 <br/>
@@ -254,6 +254,7 @@ class WelcomePage extends Component {
                   variant='outlined'
                   className='SignUpInput'
                   error={this.state.emailError}
+                  style={{color:"black"}}
                 />
                 {(!this.state.sent) && (
                   <Tooltip title={this.state.emailErrorMessage}>
@@ -261,7 +262,7 @@ class WelcomePage extends Component {
                   </Tooltip>
                 )}
                 {(this.state.sent) && (
-                  <Typography variant='h4' className='Success'>
+                  <Typography variant='subtitle1' className='Success'>
                     <ReactSVG src={CircleTick} className='ReactSVGIcon Icon25 MarginRight10' />
                       Thank you. We will keep in touch
                   </Typography>
@@ -278,7 +279,7 @@ class WelcomePage extends Component {
                   justify="center"
                   alignItems="flex-start"
                   spacing={0}
-                  style={{marginBottom:"18vh"}}
+                  style={{marginBottom:"14vh"}}
                   >
                     <Grid item sm={2} md={4} className="Vertical">
                       <ReactSVG src={Level} className='ReactSVGIcon Icon50 CircleBorder' style={{marginBottom:"2vh"}} />
@@ -299,54 +300,69 @@ class WelcomePage extends Component {
                       </Typography>
                     </Grid>
                   </Grid>
-        <Grid
-        container
-        justify="flex-start"
-        alignItems="flex-start"
-        spacing={1}>
+                  <Typography variant="subtitle2" style={{marginBottom:"2vh"}}>
+                  Read the Contribution Guidelines
+                  </Typography>
+                  <Button variant='outlined'  component={Link} to='/guidelines' style={{marginBottom:"19vh"}}>
+                    Guidelines
+                  </Button>
+          <Grid
+          container
+          justify="flex-start"
+          alignItems="flex-start"
+          spacing={1}>
           <Grid item xs={7} >
             <div className='Description' >
               <Typography variant='h4' style={{ textAlign: 'left', marginBottom:"14px" }}>
                 A plug and play paradigm for software development
               </Typography>
               <Typography variant='body1' paragraph style={{ textAlign: 'left' }}>
-                We bring an open source inspired, Agile development based, massively internationally distributed approach to building software.
+                We bring an open source inspired, Agile development based, internationally distributed approach to building software.
+                Only pay for what you need.
                 <br /><br />
                 Building your project starts with specifying what you need.
                 <br /> <br />
                 Who are the key team members? Do you need a project manager? When is it due? What is the tech stack?
                 Do you have a budget?(Or are you seeking volunteers?) How can we best help you? What are the tasks that needs to get done?
                 <br /><br />
-                Typically, a project lead has to find, interview and recruit the right developers. But
-                here, we match users to suitable projects and tasks, based on their interests and skills. So kick back and wait.
-                <br /><br />
+                We match our talent pool to your projects and tasks, based on their interests and skills.
                 User profiles allow you to identify who you're working with, their prior work, and their reputation.
                 <br /><br />
-                Hire developers only for the tasks you need. Pay as much as you want.
+                Hire developers only for the tasks you need help with.
               </Typography>
             </div>
           </Grid>
           <Grid item xs>
             <Fade in>
-              <img className='DevImage2' src={BW} alt='developers' />
+              <img className="BW" src={BW} alt='developers' />
             </Fade>
           </Grid>
         </Grid>
         <Grid container
-        justify="center"
+        justify="flex-start"
         alignItems="flex-start"
-        spacing={6}
+        spacing={3}
         style={{marginTop:"7vh"}}>
-          <Grid item xs>
+          <Grid item xs={5}>
           <Fade in>
-            <img className='DevImage' src={Table} alt='developers' />
+            <img className='Table' src={Table} alt='developers' />
           </Fade>
           </Grid>
-          <Grid item xs>
-            <Typography variant="h4">Community based project management</Typography>
+          <Grid item style={{textAlign:"left", marginLeft:"7px"}} xs>
+            <Typography variant="h4" style={{marginBottom:"14px"}}>Project management and support on demand</Typography>
             <Typography variant="body1">
-            1. Project managers
-            2.
+            Get matched with a project manager (Or play that role yourself).<br />
+            Consult with our team or community of experts for any other issues.
+            <br /><br />
+            1. Project management <br />
+            Don't know where to start or how to scope your project? Read our user guide or contact us to get professional help.
+            Our team is ready to help you where you are. From initial scoping, to contractual tasks, or completing a major product feature.
+            <br /><br />
+            2. Task delegation <br />
+            Fill out task cards to seamlessly delegate your work to one of your team members or the wider community.
+            <br /><br />
+            3. Feedback and Support <br />
+            Pen an idea post, and get feedback.
             </Typography>
           </Grid>
         </Grid>
@@ -354,59 +370,54 @@ class WelcomePage extends Component {
         <Grid container
         justify="center"
         alignItems="flex-start"
-        spacing={6}
+        spacing={2}
         style={{marginTop:"7vh"}}>
-          <Grid item xs={7}>
+          <Grid item xs={6}>
             <div className='Description' style={{textAlign:"left", marginLeft:"7px"}}>
             <Typography variant='h4' paragraph className='SectionSubTitle' >
-            Scale flexibly using Developers-as-a-Service
+            Scale flexibly with Developers-as-a-Service
             </Typography>
-            We partnered with devshops, technology providers and training institutions globally to ensure <br />
-            Paid tasks are delivered at top quality.
+            We partnered with devshops, technology providers and training institutions from all around the world to ensure
+            paid tasks are completed at the highest standards.
             <br />
             <br />
-            Our development partners come from all around the world, including the USA, Canada, China India, Ukraine.
+
             <br />
-            Our wider community of users and freelancers come from all around the world.
+            <br />
+            Scale your team with a few clicks! Have your pick of our global talent pool. Our development partners come from countries including the USA, Canada, China India, Ukraine.
+            <br />
+            Our wider community of users and freelancers come from all around the world. Scalable quickly according to your needs. Project managers ensure you only pay for work you're satisfied with.
 
             </div>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={3}>
           <Fade in>
             <img className='DevImage' src={devImage3} alt='developers' />
           </Fade>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={3}>
           <Fade in>
             <img className='DevImage' src={developerImage} alt='developers' />
           </Fade>
           </Grid>
         </Grid>
-            <Typography variant="h4" style={{marginTop:"7vh", marginBottom:"7%"}}>How We Operate</Typography>
-            <Grid container spacing={2}>
-              <Grid item sm={4} md={4} className="Vertical">
-                <Typography variant="h4">Trust</Typography>
+        <div style={{textAlign:"center", marginTop: "7vh"}}>
+        <Typography variant='caption'>Have a project you want our help with?</Typography>
+          <br />
+            <Fab
+              variant='extended'
+              size='large'
+              color='secondary'
+              className='TodoButton'
+              href='/getstarted'
+            >
+              <ReactSVG src={Comment} className='ReactSVGIcon Icon25 LeftIcon' />
+          Contact Us
+        </Fab>
+        </div>
 
-              </Grid>
-              <Grid item sm={4} md={4} className="Vertical">
-                <Typography variant="h4">Clarity</Typography>
 
-                  Tasks and deliverables are
-              </Grid>
-              <Grid item sm={4} md={4} className="Vertical">
-                <Typography variant="h4">Accountability</Typography>
-
-
-
-              </Grid>
-            </Grid>
-            <Typography variant="body2" style={{marginTop:"7vh", marginBottom:"3vh"}}>
-            Read the Contribution Guidelines
-            </Typography>
-            <Button variant='outlined'  component={Link} to='/guidelines'>
-              Guidelines
-            </Button>
-          </div>
+        </div>
 
           <div className='Section3 Section'>
           <Typography className='SectionTitle' variant='h2' style={{marginBottom:"7vh"}}>Pricing</Typography>
@@ -419,7 +430,7 @@ class WelcomePage extends Component {
           justify="center"
           alignItems="flex-start"
           >
-            <Grid item sm={3} md={4} className="Vertical">
+            <Grid item xs={4} sm={4} md={4} className="Vertical">
               <Typography variant="h5">Free</Typography>
               <Typography variant="overline">Cost:</Typography>
 
@@ -436,7 +447,7 @@ class WelcomePage extends Component {
                 </li>
               </ul>
             </Grid>
-            <Grid item sm={3} md={4} className="Vertical">
+            <Grid item xs={4} sm={4} md={4} className="Vertical">
               <Typography variant="h5">Maintainence</Typography>
               <Typography variant="overline">Cost:</Typography>
               <Typography variant="subtitle1">$1000/mo</Typography>
@@ -452,7 +463,7 @@ class WelcomePage extends Component {
                 </li>
               </ul>
             </Grid>
-            <Grid item sm={3} md={4} className="Vertical">
+            <Grid item xs={4} sm={4} md={4} className="Vertical">
               <Typography variant="h5">Bespoke</Typography>
               <Typography variant="overline">Cost:</Typography>
               <Typography variant="subtitle1">Varies</Typography>
@@ -469,20 +480,7 @@ class WelcomePage extends Component {
               </ul>
             </Grid>
           </Grid>
-          <div style={{textAlign:"center", marginTop: "22vh"}}>
-          <Typography variant='caption'>Have a project you need help with?</Typography>
-            <br />
-              <Fab
-                variant='extended'
-                size='large'
-                color='secondary'
-                className='TodoButton'
-                href='/getstarted'
-              >
-                <ReactSVG src={Comment} className='ReactSVGIcon Icon25 LeftIcon' />
-            Contact Us
-          </Fab>
-          </div>
+
           </div>
 
 

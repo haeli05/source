@@ -188,7 +188,7 @@ $md: 960px;
 
 // Main font
 body {
-  font-kerning: none;
+  font-kerning: auto;
   font-family: "gotham_htfbook", Arial, sans-serif;
   color: #231f20;
   margin: 0;
@@ -232,6 +232,7 @@ p {
 
 // Header fonts and weights
 h1  {
+    font-kerning: auto;
   font-size: 	4.209em;
   font-family: "gotham_htfbook";
   color: rgba(0,0,0,1);
@@ -3323,6 +3324,7 @@ body {
       margin-top: 4em;
       .SignUpInput {
         width: 300px;
+        color: textPrimary;
       }
       .JoinButton {
         margin-top: 1px;
@@ -3411,6 +3413,25 @@ body {
         float: right;
         width: 50vw;
         text-align: left;
+        .JoinMailing {
+          display: inline-flex;
+          align-items: baseline;
+          vertical-align: flex-start;
+          margin-top: 4vh;
+          color: black;
+          .SignUpInput {
+            color: black;
+            margin-left: 14px;
+            margin-right: 14px;
+            margin-bottom: 2vh;
+            width: 280px;
+          }
+          .Success {
+            display: flex;
+            align-items: center;
+          }
+        }
+
       }
       .ballimage{
         width: 30%;
@@ -3420,25 +3441,7 @@ body {
         }
       }
     }
-    .JoinMailing {
-      display: inline-flex;
 
-      align-items: center;
-
-      margin-top: 4vh;
-
-      .SignUpInput {
-        color: textPrimary;
-        margin-left: 14px;
-        margin-right: 14px;
-        margin-bottom: 2vh;
-        width: 280px;
-      }
-      .Success {
-        display: flex;
-        align-items: center;
-      }
-    }
   }
 
     @media screen and (max-width: $sm) {
@@ -3470,6 +3473,18 @@ body {
         max-width: 100%;
       }
      }
+    .BW {
+      max-height: 45vh;
+      @media screen and (max-width: $sm) {
+        max-width: 100%;
+      }
+    }
+    .Table {
+      max-height: 45vh;
+      @media screen and (max-width: $sm) {
+        max-width: 100%;
+      }
+    }
   }
   .Section3 {
     background-color: $Dark;
