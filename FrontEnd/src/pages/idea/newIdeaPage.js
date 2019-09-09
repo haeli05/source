@@ -18,7 +18,7 @@ import { getUser } from './../../reducers/user.reducer'
 // Components
 import { Link } from 'react-router-dom'
 import YouMustBeLoggedInPage from './../global/youMustBeLoggedInPage'
-import ReactQuillEditor from './../global/components/reactQuillEditor'
+import ReactDraftEditor from './../global/components/reactDraftEditor'
 import Chip from './../global/components/chip.js'
 
 class NewIdeaPage extends React.Component {
@@ -124,7 +124,7 @@ class NewIdeaPage extends React.Component {
                 autoFocus
               />
             </div>
-            <ReactQuillEditor submit={this.submit} placeholder={'What do you think?'} />
+            <ReactDraftEditor submit={this.submit} placeholder={'What do you think?'} />
           </div>
           <div className='NewIdeaSidebar'>
             <div className='Topics'>

@@ -596,6 +596,13 @@ time {
   align-items: center;
 }
 
+.AlignRight {
+  align-items: right;
+}
+.AlignLeft {
+  align-items: left;
+}
+
 .AlignBaseline {
   align-items: baseline;
 }
@@ -1501,12 +1508,14 @@ time {
       .Actions {
         min-width: 209px;
         display: flex;
+
+        @media screen and (max-width: $md) {
+          min-width: 0;
+          padding-right: 20px;
+        }
+
         .NavbarButton {
           color: white;
-
-          @media screen and (max-width: $md) {
-            display: none;
-          }
         }
       }
       .Menu {
@@ -1644,6 +1653,36 @@ time {
     .QuillCancel {
       margin-right: 25px;
     }
+  }
+
+}
+
+/* -------------------------- reactDraftEditor.js -------------------------- */
+
+.ReactDraftEditor {
+  .md-RichEditor-root {
+    background-color: $Light;
+    border: 1px solid $Dark;
+    border-radius: 4px;
+
+    .md-side-toolbar {
+      left: -70px;
+    }
+    .md-block-todo input[type=checkbox] {
+      top: -1px;
+    }
+    .SideButtonImage {
+      i > svg {
+        vertical-align: -1px !important;
+      }
+    }
+  }
+  a {
+    color: $PrimaryLight;
+    text-decoration: underline;
+  }
+  .md-sb-button {
+    background-color: $Light;
   }
 }
 
@@ -3076,6 +3115,11 @@ body {
     max-width: 300px;
     padding-top: 5px;
     padding-left: 3px;
+
+    @media screen and (max-width: $md) {
+      display: none;
+    }
+
     .Avatar {
       margin-left: auto;
       margin-right: auto;
@@ -3114,6 +3158,12 @@ body {
     padding-top: 15px;
     padding-left: 8px;
     background-color: $Light;
+
+    @media screen and (max-width: $md) {
+      padding-left: 5%;
+      margin: auto;
+    }
+
     .UserTabAbout {
       padding: 10px 0;
     }
@@ -3209,7 +3259,7 @@ body {
       padding-right: 100px;
       padding-top: 50px;
       opacity: 1;
-      
+
       @media screen and (max-width: $sm) {
         padding-right: 0;
         align-self: center;
@@ -3263,9 +3313,16 @@ body {
         display: inline-block;
         margin-bottom: 25px;
       }
+      .Mission{
+
+      }
+      .TagLine{
+        margin-left: 32px;
+        margin-top: 16px;
+      }
     }
   }
-  
+
   .Section {
     display: flex;
     flex-direction: column;
@@ -3294,20 +3351,41 @@ body {
     }
   }
   .Quote {
+    float: left;
+    display: flex;
+    clear: none;
+    align-items: flex-start;
     padding-top: 10vh;
     padding-bottom: 7vh;
-    padding-left: 14%;
-    padding-right: 14%;
+    padding-left: 12%;
+    padding-right: 12%;
     text-align: center;
     background-color: white;
     background-blend-mode: difference;
+    .text{
+      margin-left: 5vw;
+      float: right;
+      width: 50vw;
+      text-align: left;
+    }
+    .ballimage{
+      width: 30%;
+      float: left;
+      .ToolBall {
+        width: 25vw;
+      }
+    }
     .JoinMailing {
-      display: flex;
+      display: inline-flex;
+//      float: left;
       align-items: center;
-      flex-flow: column wrap;
-      vertical-align: middle;
+//      flex-flow: column wrap;
+//      vertical-align: middle;
       margin-top: 4vh;
+
       .SignUpInput {
+        margin-left: 14px;
+        margin-right: 14px;
         margin-bottom: 2vh;
         width: 280px;
       }
@@ -3394,7 +3472,7 @@ body {
         margin-right: 14px;
         margin-bottom: 14px;
       }
-      
+
       @media screen and (max-width: $md) {
         margin-right: 10%;
         margin-left: 10%;
@@ -3467,17 +3545,18 @@ body {
   width: 100%;
   max-width: 100%;
   background-color: $Light;
-  border-radius: 36px;
-  border-style: solid;
-  border-color: $Dark;
+  border-radius: 6px;
+//  border-style: solid;
+//  border-color: $Dark;
   border-width: 0.5px;
   padding-bottom: 24px;
   padding-left: 4px;
   padding-right: 4px;
   .Header{
+    min-height: 24px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+//    justify-content: center;
     width: calc(100% - 20px);
     padding: 5px;
     text-align: center;
@@ -3520,17 +3599,21 @@ body {
 /* ------------------------------ Column.js --------------------------------- */
 
 .Column {
-  padding: 8px;
-  margin: 3px;
-  border-radius: 12px;
-  border: solid 1px $Dark;
+  padding: 4px;
+  margin: 4px;
+  border-radius: 3px;
+  background-color: rgba(0,0,0,0.07);
+//  border: solid 1px $Dark;
   .ColumnHeader {
-    padding: 4px 8px 0px 8px;
+    padding: 0px 2px 0px 2px;
     //border-radius: 6px 6px 0px 0px;
-    background-color: rgba(255,255,255,0.7);
+
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+
     .Actions {
+      display: inline-flex;
+      align-items: center;
       margin-left: auto;
       min-height: 32px;
     }
@@ -3542,7 +3625,7 @@ body {
     width: 350px;
     padding: 8px 8px 1px 8px;
     //border-radius: 0px 0px 6px 6px;
-    background-color: rgba(255,255,255,0.7);
+//    background-color: rgba(255,255,255,0.7);
   }
   .NewCard {
     margin-top: 10px;
@@ -3567,20 +3650,28 @@ body {
 /* ---------------------------- KanbanCard.js ------------------------------- */
 
 .KanbanCard {
-  border: solid 1px $Dark;
+//  border: solid 1px $Dark;
+//  box-shadow: 10px 10px #000000;
   margin-bottom: 8px;
+  padding-left: 4px;
+  padding-right: 4px;
   background-color: white;
-  //border-radius: 3px;
+  border-radius: 3px;
   padding: 4px;
   .KanbanHeader {
     width: 100%;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
     .Actions {
       margin-left: auto;
       min-height: 32px;
     }
   }
+  .KanbanBody {
+  text-align: left;
+  }
   .KanbanLabels {
-    margin-top: 10px;
+    margin-top: 0px;
     display: flex;
     flex-wrap: wrap;
     .KanbanLabel {
@@ -3635,8 +3726,8 @@ body {
   border: solid 1px lightgrey;
 }
 .KanbanCardDialog {
-  width: 550px;
-  min-height: 400px;
+  min-width: 650px;
+  min-height: 600px;
   padding: 10px;
   display: flex;
   flex-direction: column;

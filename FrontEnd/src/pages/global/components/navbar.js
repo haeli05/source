@@ -59,7 +59,8 @@ class MenuAppBar extends React.Component {
       drawerTab: 0,
       positionChecked: false,
       notifications: 0,
-      chatDrawers: []
+      chatDrawers: [],
+      navLink: "/"
     }
     this.llogout = this.llogout.bind(this)
     this.toggleDrawer = this.toggleDrawer.bind(this)
@@ -99,8 +100,10 @@ class MenuAppBar extends React.Component {
     const user = JSON.parse(localStorage.getItem('user'))
     if (user === null || user === undefined) {
       this.setState({ token: false })
+      this.setState({navLink: "/"})
     } else {
       this.setState({ token: user.authToken })
+      this.setState({navLink: "/home"})
     }
   }
 
@@ -177,7 +180,7 @@ class MenuAppBar extends React.Component {
           <AppBar className='AppBar' position='static' elevation={3}>
             <Toolbar>
               <div className='Logo'>
-                <Link to='/' className='NavbarTitle'>
+                <Link to={this.state.navLink} className='NavbarTitle'>
                   <img className='LogoImage' src={logo} alt='source' />
                 </Link>
               </div>

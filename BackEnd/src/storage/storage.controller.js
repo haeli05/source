@@ -9,8 +9,8 @@ import * as _storage from './storage.util';
 * @param req.user - JWT of authenticated user
 * @returns {JOSN} Pre-signed POST
 **/
-export async function awsToken(req,res){
-  if (req.user == undefined) {res.status(400).json('Failed to authenticate user'); return;}
-  const awsObj = await _storage.awsToken().catch(err => {res.status(400).json(err); return;})
-  res.status(200).json(awsObj);
+
+export async function upload(req,res){
+  //if (req.user == undefined) {res.status(400).json('Failed to authenticate user'); return;}
+  _storage.upload(req)
 }

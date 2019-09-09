@@ -36,9 +36,10 @@ import Four0FourPage from './pages/global/four0FourPage'
 import Navbar from './pages/global/components/navbar'
 import Footer from './pages/global/components/footer'
 import SnackBar from './pages/global/components/snackBar'
-
 import ReactGA from 'react-ga'
 import Intercom from 'react-intercom'
+// TEST
+import FileUploadTest from './pages/global/fileUploadTest'
 
 ReactGA.initialize('UA-138662125-1')
 ReactGA.initialize({
@@ -66,13 +67,11 @@ const user = {
 
 }
 
-
 let Routes = () => (
   <Router onUpdate={fireTracking} history={history}>
-
     <div className='app'>
+      {/* Global */}
       <Route path='/' render={props => <Intercom appID='f5is3sx5' {...user} />} />
-
       <Route path='/' render={props => <Navbar {...props} />} />
       <Route path='/' render={props => <SnackBar {...props} />} />
       <Route path='/' render={props => <Intercom appID='f5is3sx5' {...user} />} />
@@ -81,31 +80,29 @@ let Routes = () => (
         <Switch>
           {/* Landing */}
           <Route exact path='/' render={props => <App {...props} />} />
-
-
           { /* Explore Pages */ }
-          <Route exact path="/explore/ideas" render={props=><Ideas {...props}/>}/>
-          <Route exact path="/explore/projects" render={props=><Projects {...props}/>}/>
-          <Route exact path="/explore/people" render={props=><People {...props}/>}/>
-          <Route exact path="/explore/apps" render={props=><Apps {...props}/>}/>
-          <Route exact path="/home" render={props=><Home {...props}/>}/>
+          <Route exact path='/explore/ideas' render={props => <Ideas {...props} />} />
+          <Route exact path='/explore/projects' render={props => <Projects {...props} />} />
+          <Route exact path='/explore/people' render={props => <People {...props} />} />
+          <Route exact path='/explore/apps' render={props => <Apps {...props} />} />
+          <Route exact path='/home' render={props => <Home {...props} />} />
           {/* Ideas */}
-          <Route exact path="/newidea" render={props=><NewIdeaPage {...props}/>}/>
-          <Route exact path="/:user/idea/:idea" render={props=><IdeaPage {...props}/>}/>
-          <Route exact path="/:user/idea/:idea/edit" render={props=><EditIdeaPage {...props}/>}/>
+          <Route exact path='/newidea' render={props => <NewIdeaPage {...props} />} />
+          <Route exact path='/:user/idea/:idea' render={props => <IdeaPage {...props} />} />
+          <Route exact path='/:user/idea/:idea/edit' render={props => <EditIdeaPage {...props} />} />
           {/* Projects */}
-          <Route exact path="/newproject" render={props=><NewRepoPage {...props}/>}/>
-          <Route exact path="/:user/project/:projectID" render={props=><RepoPage {...props}/>}/>
-          <Route exact path="/:user/project/:projectID/file/:id/:file" render={props=><FilePage {...props}/>}/>
-          <Route exact path="/:user/project/:projectID/file/*/:id/:file" render={props=><FilePage {...props}/>}/>
-          <Route exact path="/:user/project/:projectID/tree/:id/:tree" render={props=><TreePage {...props}/>}/>
-          <Route exact path="/:user/project/:projectID/tree/*/:id/:tree" render={props=><TreePage {...props}/>}/>
-          <Route exact path="/:user/project/:projectID/issue/:id" render={props=><IssuePage {...props}/>}/>
-          <Route exact path="/:user/project/:projectID/mergerequest/:id" render={props=><MergeRequestPage {...props}/>}/>
+          <Route exact path='/newproject' render={props => <NewRepoPage {...props} />} />
+          <Route exact path='/:user/project/:projectID' render={props => <RepoPage {...props} />} />
+          <Route exact path='/:user/project/:projectID/file/:id/:file' render={props => <FilePage {...props} />} />
+          <Route exact path='/:user/project/:projectID/file/*/:id/:file' render={props => <FilePage {...props} />} />
+          <Route exact path='/:user/project/:projectID/tree/:id/:tree' render={props => <TreePage {...props} />} />
+          <Route exact path='/:user/project/:projectID/tree/*/:id/:tree' render={props => <TreePage {...props} />} />
+          <Route exact path='/:user/project/:projectID/issue/:id' render={props => <IssuePage {...props} />} />
+          <Route exact path='/:user/project/:projectID/mergerequest/:id' render={props => <MergeRequestPage {...props} />} />
           {/* People */}
-          <Route exact path="/:user/messages/" render={props=><Messages {...props}/>}/>
-          <Route exact path="/:user/profile" render={props=><UserPage {...props}/>}/>
-          <Route exact path="/:user/wallet" render={props=><WalletPage {...props}/>}/>
+          <Route exact path='/:user/messages/' render={props => <Messages {...props} />} />
+          <Route exact path='/:user/profile' render={props => <UserPage {...props} />} />
+          <Route exact path='/:user/wallet' render={props => <WalletPage {...props} />} />
           {/* User Actions */}
           <Route exact path='/createaccount' render={props => <CreateAccountPage {...props} />} />
           <Route exact path='/login' render={props => <LoginPage {...props} />} />

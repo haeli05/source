@@ -8,6 +8,8 @@ const router = new Router();
 // router.route('/storage').post(StorageController.getAll);
 //
 //Post an image
-router.route('/storage/getToken').post(passport.authenticate('jwt',{session:false}),StorageController.awsToken);
+
+//router.route('/storage/upload').post(passport.authenticate('jwt',{session:false}),StorageController.upload);
+router.route('/storage/upload').post(StorageController.upload);
 
 export default router;

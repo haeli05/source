@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 // Material UI
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
@@ -11,19 +12,23 @@ import { Draggable } from 'react-beautiful-dnd'
 // Components
 import UserAssigner from './../../global/components/userAssigner'
 import { DeleteButton } from './../../global/components/majorActionButtons'
+import Chip from './../../global/components/chip'
 // Icons
 import Icon from 'react-icons-kit'
 import { ic_more_horiz } from 'react-icons-kit/md/ic_more_horiz'
 // MISC
 import Markdown from 'react-markdown'
 
-export default class KanbanCard extends React.Component {
+
+
+
+class KanbanCard extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       editTitle: false,
       editDescription: false,
-      dueDateSelector: !!this.props.task.dueDate,
+      dueDateSelector: false,
       dialog_open: false,
       isHovering: false
     }
@@ -99,7 +104,9 @@ export default class KanbanCard extends React.Component {
   }
 
   renderDueDate (dueDate) {
-    if (dueDate) {
+    if(dueDate == undefined || dueDate == ""){
+      return
+    }else if (dueDate) {
       var today = new Date()
       var mm = ((today.getMonth() + 1) < 10 ? ('0' + String((today.getMonth() + 1))) : today.getMonth() + 1)
       var dd = ((today.getDate() + 1) < 10 ? ('0' + String((today.getDate() + 1))) : today.getDate() + 1)
@@ -177,13 +184,16 @@ export default class KanbanCard extends React.Component {
               )}
               {!this.state.editDescription && (
                 <div className='Description' onClick={() => { this.editToggle('editDescription') }}>
+                Admins and Project Managers Buttons go here
                   <Markdown
                     escapeHtml
                     source={this.props.task.description}
                   />
                 </div>
+
               )}
               <div className='KanbanCardDialogLabels'>
+                <Chip label="test skills" />
                 {this.state.dueDateSelector && (
                   <TextField
                     className='MarginRight10'
@@ -200,6 +210,7 @@ export default class KanbanCard extends React.Component {
                 {!this.state.dueDateSelector && (
                   <Button className='MarginRight10' variant='outlined' onClick={this.selectDueDate}>Add Due Date</Button>
                 )}
+                <Button className='MarginRight10' variant='outlined'>Add Tags</Button>
                 {this.props.task.compensation === undefined && (
                   <Button className='MarginRight10' variant='outlined'>Add Compensation</Button>
                 )}
@@ -231,9 +242,6 @@ export default class KanbanCard extends React.Component {
                   {this.renderActions()}
                 </div>
               </div>
-              <div className='KanbanBody'>
-                <Typography variant='body1'>{this.props.task.content}</Typography>
-              </div>
               <div className='KanbanLabels'>
                 {this.props.task.dueDate && (
                   <div>
@@ -244,6 +252,10 @@ export default class KanbanCard extends React.Component {
                   <Typography>{this.props.task.compensation}</Typography>
                 </div>
                 <div className='KanbanLabel Assigned' />
+                <Chip label="test skills" />
+                </div>
+              <div className='KanbanBody'>
+                <Typography variant='body1'>{this.props.task.content}</Typography>
               </div>
               {provided.placeholder}
             </div>
@@ -253,3 +265,25 @@ export default class KanbanCard extends React.Component {
     )
   }
 }
+
+KanbanCard.propTypes = {
+  task: {
+    title: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    content: PropTypes.string.isRequired,
+    compensation: PropTypes.number,
+    dueDate: PropTypes.string
+  }
+}
+
+KanbanCard.defaultProps = {
+  task: {
+    title: "undefined",
+    id: "undefined",
+    content: "undefined",
+    compensation: "undefined",
+    dueDate: "undefined",
+  }
+}
+
+export default KanbanCard
