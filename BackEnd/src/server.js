@@ -24,17 +24,17 @@ const feedbackHtml = require("./emailHTMLfiles/feedbackEmail").emailHtml;
 const subscribeHtml = require("./emailHTMLfiles/subscribeEmail").emailHtml;
 
 // Redbird proxy registration
-// var proxy = require('redbird')({
-//   port: 80,
-//   letsencrypt: {
-//     path: 'certs',
-//     port: 9999
-//   },
-//   ssl: {
-//     http2: true,
-//     port: 443
-//   }
-// })
+var proxy = require('redbird')({
+  port: 80,
+  letsencrypt: {
+    path: 'certs',
+    port: 9999
+  },
+  ssl: {
+    http2: true,
+    port: 443
+  }
+})
 
 // App
 const app = new Express();
@@ -137,31 +137,31 @@ app.post("/feedback", (req, res) => {
 });
 
 // Analytics proxy
-// var analyticsproxy = require("express-http-proxy")
-// function getIpFromReq (req) { // get the client's IP address
-//   var bareIP = ':' + ((req.connection.socket && req.connection.socket.remoteAddress)
-//     || req.headers['x-forwarded-for'] || req.connection.remoteAddress || '')
-//   return (bareIP.match(/:([^:]+)$/) || [])[1] || '127.0.0.1'
-// }
-// app.use('/analytics', analyticsproxy('www.google-analytics.com', {
-//   proxyReqPathResolver: function (req) {
-//     return req.url + (req.url.indexOf('?') === -1 ? '?' : '&')
-//       + 'uip=' + encodeURIComponent(getIpFromReq(req))
-//   }
-// }));
+var analyticsproxy = require("express-http-proxy")
+function getIpFromReq (req) { // get the client's IP address
+  var bareIP = ':' + ((req.connection.socket && req.connection.socket.remoteAddress)
+    || req.headers['x-forwarded-for'] || req.connection.remoteAddress || '')
+  return (bareIP.match(/:([^:]+)$/) || [])[1] || '127.0.0.1'
+}
+app.use('/analytics', analyticsproxy('www.google-analytics.com', {
+  proxyReqPathResolver: function (req) {
+    return req.url + (req.url.indexOf('?') === -1 ? '?' : '&')
+      + 'uip=' + encodeURIComponent(getIpFromReq(req))
+  }
+}));
 
 // Cron
 // job.start();
 
 // SSL redbird
-// proxy.register('api.sourcenetwork.io', '127.0.0.1:8001', {
-//   ssl: {
-//     letsencrypt: {
-//       email: 'source@sourcenetwork.io', // Domain owner/admin email
-//       production: false, // WARNING: Only use this flag when the proxy is verified to work correctly to avoid being banned!
-//     }
-//   }
-// });
+proxy.register('api.sourcenetwork.io', '127.0.0.1:8001', {
+  ssl: {
+    letsencrypt: {
+      email: 'source@sourcenetwork.io', // Domain owner/admin email
+      production: false, // WARNING: Only use this flag when the proxy is verified to work correctly to avoid being banned!
+    }
+  }
+});
 
 // Lift off!
 app.listen(8001, error => {
