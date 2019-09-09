@@ -381,12 +381,12 @@ class WelcomePage extends Component {
             paid tasks are completed at the highest standards.
             <br />
             <br />
-
+            Project managers ensure you only pay for work you're satisfied with.
             <br />
             <br />
-            Scale your team with a few clicks! Have your pick of our global talent pool. Our development partners come from countries including the USA, Canada, China India, Ukraine.
+            Scale your team quickly with a few clicks! Have your pick of our global talent pool. Our development partners come from countries including the USA, Canada, China India, Ukraine.
             <br />
-            Our wider community of users and freelancers come from all around the world. Scalable quickly according to your needs. Project managers ensure you only pay for work you're satisfied with.
+            Our wider community of users and freelancers come from all around the world. Scalable quickly according to your needs.
 
             </div>
           </Grid>
