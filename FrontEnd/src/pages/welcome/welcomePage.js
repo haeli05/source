@@ -44,6 +44,10 @@ import CircleTick from './../../assets/svg/circletick.svg'
 import WorkMan from './../../assets/svg/workman.svg'
 import config from '../../utils/config.js'
 import { PayPalButton } from 'react-paypal-button-v2'
+// Redux
+import { connect } from 'react-redux'
+import { newUser, checkUsernameAvailability } from './../../actions/user.actions'
+import { getUser, getUsernameAvailability, getUsernameAvailabilityStatus, getNewUserStatus, getSignInStatus } from './../../reducers/user.reducer'
 
 
 // Analytics
@@ -52,6 +56,7 @@ import ReactGA from 'react-ga'
 
 const malarkey = require('malarkey')
 const ScrollMagic = require('scrollmagic')
+
 
 class WelcomePage extends Component {
   constructor (props) {
@@ -62,59 +67,90 @@ class WelcomePage extends Component {
       SubscribeEmail: '',
       SubscribeEmailError: false,
       SubscribeEmailErrorMessage: '',
-      sent: false
+      sent: false,
+      name: '',
+      nameError: false,
+      nameErrorText: '',
+      username: '',
+      usernameError: false,
+      usernameErrorText: '',
+      password: '',
+      passwordError: false,
+      passwordErrorText: '',
+      passConfirm: '',
+      passConfirmError: false,
+      passConfirmErrorText: '',
+      email: '',
+      emailError: false,
+      emailErrorText: '',
+      token: '',
+      tokenError: false,
+      tokenErrorText: ''
     }
     window.Intercom('boot', {
       app_id: 'f5is3sx5'
     })
     this.subscribeSubmit = this.subscribeSubmit.bind(this)
     this.handleChangeSubscribe = this.handleChangeSubscribe.bind(this)
+    this.usernameAvailabilityCheck = this.usernameAvailabilityCheck.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.testName = this.testName.bind(this)
+    this.testEmail = this.testEmail.bind(this)
+    this.testPassword = this.testPassword.bind(this)
+    this.testPassConfirm = this.testPassConfirm.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.redirect = this.redirect.bind(this)
   }
 
   componentDidMount () {
     document.addEventListener('keydown', this._handleKeyDown.bind(this))
-
-    // const element1 = document.querySelector('#whatissource')
-    // function callback1 (text) {
-    //   element1.textContent = text
-    // }
-    // const options1 = {
-    //   typeSpeed: 70,
-    //   deleteSpeed: 20,
-    //   pauseDuration: 1800,
-    //   repeat: true
-    // }
-    // malarkey(callback1, options1)
-    //   .type(`  engineers`)
-    //   .pause()
-    //   .delete()
-    //   .type(` technology professionals`)
-    //   .pause()
-    //   .delete()
-    //   .type(` software developers`)
-    //   .pause()
-    //   .delete()
-    //   .type(` product managers`)
-    //   .pause()
-    //   .delete()
-    //   .type(` smart contract programmers`)
-    //   .pause()
-    //   .delete()
-    //   .type(` designers`)
-    //   .pause()
-    //   .delete()
-    //   .type(` backers`)
-    //   .pause()
-    //   .delete()
-    //   .type(` consultants`)
-    //   .pause()
-    //   .delete()
-    //   .type(` investors`)
-    //   .pause()
-    //   .delete()
-    //   .type(` fans`)
-    //   .pause()
-    //   .delete()
+    if (this.props.location.state !== undefined) {
+      if (this.props.location.state.username !== undefined) {
+        this.setState({ username: this.props.location.state.username })
+      }
+    }
+    const element1 = document.querySelector('#whatissource')
+    function callback1 (text) {
+      element1.textContent = text
+    }
+    const options1 = {
+      typeSpeed: 70,
+      deleteSpeed: 20,
+      pauseDuration: 1800,
+      repeat: true
+    }
+    malarkey(callback1, options1)
+      .type(`  engineers`)
+      .pause()
+      .delete()
+      .type(` technology professionals`)
+      .pause()
+      .delete()
+      .type(` software developers`)
+      .pause()
+      .delete()
+      .type(` product managers`)
+      .pause()
+      .delete()
+      .type(` smart contract programmers`)
+      .pause()
+      .delete()
+      .type(` designers`)
+      .pause()
+      .delete()
+      .type(` backers`)
+      .pause()
+      .delete()
+      .type(` consultants`)
+      .pause()
+      .delete()
+      .type(` investors`)
+      .pause()
+      .delete()
+      .type(` fans`)
+      .pause()
+      .delete()
   }
 
   // intercom(){
@@ -123,6 +159,25 @@ class WelcomePage extends Component {
   //   };
   //   (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/f5is3sx5';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
   // }
+
+
+  componentDidUpdate () {
+    if (this.props.newUserStatus === 'invite_code_error' && this.state.tokenError === false) {
+      this.setState({ tokenError: true })
+      this.setState({ tokenErrorText: 'Incorrect invite code' })
+    }
+    if (this.state.usernameError === true && this.state.usernameErrorText === 'Invalid username') {
+
+    } else {
+      if (this.props.usernameAvailability === 'no' && this.state.usernameError === false) {
+        this.setState({ usernameError: true })
+        this.setState({ usernameErrorText: 'Username not available' })
+      } else if (this.props.usernameAvailability === 'yes' && this.state.usernameError === true) {
+        this.setState({ usernameError: false })
+        this.setState({ usernameErrorText: '' })
+      }
+    }
+  }
 
   componentWillUnmount () {
     document.removeEventListener('keydown', this._handleKeyDown.bind(this))
@@ -168,7 +223,142 @@ class WelcomePage extends Component {
       this.setState({ SubscribeEmailError: true })
       this.setState({ SubscribeEmailErrorMessage: 'Please provide a valid email' })
     }
-  };
+  }
+
+
+    usernameAvailabilityCheck (username) {
+      this.props.dispatch(checkUsernameAvailability(username))
+    }
+
+    handleChange (target, e) {
+      let change = {}
+      change[target] = e.target.value
+      this.setState(change)
+      if (change.username !== undefined && change.username !== '' && change.username.length > 3) {
+        var validUsername = this.testUsername(change.username)
+        if (validUsername) {
+          this.usernameAvailabilityCheck(change.username)
+        } else {
+          this.setState({ usernameError: true })
+        }
+      }
+    }
+
+    testName () {
+      var format = /[^-a-zA-Z0-9_'.]/
+      var specialCharacters = format.test(this.state.name)
+      if (this.state.name.length < 4 || this.state.name.length > 12 || specialCharacters) {
+        this.setState({ nameError: true })
+        this.setState({ nameErrorText: 'Invalid name' })
+      } else {
+        this.setState({ nameError: false })
+        this.setState({ nameErrorText: '' })
+        return true
+      }
+    }
+
+    testUsername (username) {
+      if (username !== undefined) {
+        var format = /[^-a-zA-Z0-9_'.]/
+        var specialCharacters = format.test(username)
+        if (username.length < 4 || username.length > 12 || specialCharacters) {
+          this.setState({ usernameError: true })
+          this.setState({ usernameErrorText: 'Invalid username' })
+        } else {
+          this.setState({ usernameError: false })
+          this.setState({ usernameErrorText: '' })
+          return true
+        }
+      } else {
+        var format = /[^-a-zA-Z0-9_'.]/
+        var specialCharacters = format.test(this.state.username)
+        if (this.state.username.length < 4 || this.state.username.length > 12 || specialCharacters) {
+          this.setState({ usernameError: true })
+          this.setState({ usernameErrorText: 'Invalid username' })
+        } else {
+          this.setState({ usernameError: false })
+          this.setState({ usernameErrorText: '' })
+          return true
+        }
+      }
+    }
+
+    testEmail () {
+      if (!this.state.email.includes('@') || !this.state.email.includes('.')) {
+        this.setState({ emailError: true })
+        this.setState({ emailErrorText: 'Must be a valid email' })
+      } else {
+        this.setState({ emailError: false })
+        this.setState({ emailErrorText: '' })
+        return true
+      }
+    }
+
+    testPassword () {
+      if (!this.testNumber(this.state.password) || this.state.password.length < 8) {
+        this.setState({ passwordError: true })
+        this.setState({ passwordErrorText: 'Password must contain at least 1 digit and be at least 8 characters long' })
+      } else {
+        this.setState({ passwordError: false })
+        this.setState({ passwordErrorText: '' })
+        return true
+      }
+    }
+
+    testNumber (toTest) {
+      return /\d/.test(toTest)
+    }
+
+    testPassConfirm () {
+      if (this.state.password !== this.state.passConfirm) {
+        this.setState({ passConfirmError: true })
+        this.setState({ passConfirmErrorText: 'Passwords must match' })
+      } else {
+        this.setState({ passConfirmError: false })
+        this.setState({ passConfirmErrorText: '' })
+        return true
+      }
+    }
+
+    testToken () {
+      if (this.state.token === '') {
+        this.setState({ tokenError: true })
+        this.setState({ tokenErrorText: 'Invite code is required' })
+      } else {
+        this.setState({ tokenError: false })
+        this.setState({ tokenErrorText: '' })
+        return true
+      }
+    }
+
+    handleSubmit () {
+      var validUsername = this.testUsername()
+      var validName = this.testName()
+      var validEmail = this.testEmail()
+      var validPassword = this.testPassword()
+      var validPassConfirm = this.testPassConfirm()
+      var validToken = this.testToken()
+      if (validUsername && validName && validEmail && validPassword && validPassConfirm && validToken) {
+        var userData = {
+          username: this.state.username,
+          email: this.state.email,
+          name: this.state.name,
+          password: this.state.password,
+          invitecode: this.state.token
+        }
+        this.props.dispatch(newUser(userData))
+      }
+    }
+
+    handleKeyPress (e) {
+      if (e.key === 'Enter') {
+        this.handleSubmit()
+      }
+    }
+
+    redirect () {
+      this.props.history.push(`${this.props.user.user._id}/profile`)
+    }
 
   render () {
     return (
@@ -184,11 +374,11 @@ class WelcomePage extends Component {
         <div className='Hero'>
           <div className='WelcomeSignUp'>
             <Grid container
-            spacing={4}
+            spacing={6}
             justify="flex-start"
             alignItems="center"
             >
-              <Grid item xs={12} sm={12} md={7}>
+              <Grid item xs={12} sm={12} md={6}>
                 <Typography variant="overline" style={{marginLeft:"3px"}}>
                   Welcome To
                 </Typography>
@@ -197,28 +387,27 @@ class WelcomePage extends Component {
                 </Typography>
 
                 <br/>
-                <Typography color='textPrimary' variant='h4' style={{marginLeft:"3px"}}>
+                <Typography color='textPrimary' variant='heading' style={{marginLeft:"3px"}}>
                 Find your distributed dev team
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={12} md={4} style={{alignItems:"center"}}>
+              <Grid item xs={12} sm={12} md={6} style={{alignItems:"center"}} className="Form Vertical">
               <Typography variant="h4">
               Create a New Account
               </Typography>
-              <Typography color='textPrimary' variant='subtitle2' style={{marginLeft:"3px"}}>
-              It's quick and easy
+              <Typography color='textPrimary' variant='subtitle2' style={{marginLeft:"3px", textAlign:"Left"}}>
+              Connect with <div id="whatissource" style={{display:"inline"}} />
               </Typography>
 
               {this.props.newUserStatus === 'PENDING' && (
-                <div className='Form Vertical'>
+                <div className='Vertical'>
                   <LinearProgress size={50} color='secondary' />
                 </div>
               )}
               {(this.props.newUserStatus !== 'PENDING') && (
-                <div className='Form Vertical'>
-                  <div className='UsernameInputDiv'>
+                <div className='Vertical'>
+                  <div>
                     <TextField
-                      className='UsernameInput'
                       autoFocus
                       label='Username'
                       error={this.state.usernameError}
@@ -308,7 +497,7 @@ class WelcomePage extends Component {
                 <img className='ToolBall' src={toolball} alt='toolball' />
             </Grid>
             <Grid item xs={12} md={7} className='text'>
-                <Typography variant='h3' color="textPrimary">Solving Tech's Biggest Problem</Typography>
+                <Typography variant='h3' color="textPrimary" style={{textAlign:"Left"}}>Solving Tech's Biggest Problem</Typography>
                 <br />
                 <Typography variant='body1' color="textPrimary">Building software is difficult.
 
@@ -417,7 +606,7 @@ class WelcomePage extends Component {
               </Typography>
             </div>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={3}>
             <Fade in>
               <img className="BW" src={BW} alt='developers' />
             </Fade>

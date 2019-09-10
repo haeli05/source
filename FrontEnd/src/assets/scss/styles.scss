@@ -184,8 +184,8 @@ $PrimaryDark: #1E242F;
 
 $sm: 600px;
 $md: 960px;
-//$break-large: 1200px;
-
+$lg: 1280px;
+$xl: 1920px;
 // Main font
 body {
   font-kerning: auto;
@@ -3272,19 +3272,25 @@ body {
 
   .Hero {
     background-color: $Surface;
-    padding-top: 15vh;
-    margin-bottom: 15vh;
-    height: 70vh;
+//    min-height: 85vh;
+    padding-top: 15%;
+    padding-bottom: 15%;
     text-align: left;
     padding-left: 7%;
     padding-right: 7%;
     .Form {
+      width: 100%;
       display: flex;
       vertical-align: center;
-      .UsernameInputDiv{
-        .UsernameInput{
-          width:100%;
-        }
+      @media screen and (max-width: $lg) {
+        min-width: 35vw;
+      }
+      @media screen and (max-width: $md) {
+        padding-top: 3em;
+        padding-bottom: 3em;
+      }
+      @media screen and (max-width: $sm) {
+        padding-top: 3em;
       }
       .SubmitButton {
         margin-top: 2vh;
@@ -3293,8 +3299,10 @@ body {
       }
     }
     @media screen and (max-width: $md) {
+      text-align: center;
+      height: 100%;
       padding-top: 1em;
-      padding-bottom: 3em;
+//      padding-bottom: 14em;
     }
     @media screen and (max-width: $sm) {
       text-align: center;
@@ -3375,10 +3383,8 @@ body {
         display: inline-block;
         margin-bottom: 25px;
       }
-      .Mission{
 
-      }
-    
+
     }
   }
 
@@ -3410,10 +3416,11 @@ body {
     }
   }
   .Quote {
+    padding-top: 7%;
     height: 100%;
     padding-left: 12%;
     padding-right: 12%;
-    text-align: center;
+    text-align: left;
     background-color: white;
     .Body {
       background-color: white;
@@ -3426,7 +3433,7 @@ body {
         margin-left: 5vw;
         float: right;
         width: 50vw;
-        text-align: left;
+        text-align: justify;
         .JoinMailing {
           display: inline-flex;
           align-items: baseline;
@@ -3456,14 +3463,21 @@ body {
       .ballimage{
         width: 100%;
         float: left;
-        // @media screen and (max-width: $sm) {
-        //   width: 100%;
-        // }
+        @media screen and (max-width: $sm) {
+          width: 100%;
+          float:none;
+        }
         .ToolBall {
-          width: 25vw;
-          // @media screen and (max-width: $sm) {
-          //   width: 100vw;
-          // }
+
+          @media screen and (max-width: $lg) {
+            width: 30vw;
+          }
+          @media screen and (max-width: $md) {
+            width: 100%;
+          }
+          @media screen and (max-width: $sm) {
+            width: 100%;
+          }
         }
       }
     }
