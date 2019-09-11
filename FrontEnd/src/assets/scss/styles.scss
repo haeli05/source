@@ -3468,10 +3468,10 @@ body {
           float:none;
         }
         .ToolBall {
-
-          @media screen and (max-width: $lg) {
-            width: 30vw;
-          }
+          width: 100%;
+          // @media screen and (max-width: $lg) {
+          //   width: 30vw;
+          // }
           @media screen and (max-width: $md) {
             width: 100%;
           }

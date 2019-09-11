@@ -391,7 +391,7 @@ class WelcomePage extends Component {
                 Find your distributed dev team
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={12} md={6} style={{alignItems:"center"}} className="Form Vertical">
+              <Grid item xs={12} sm={12} md={5} style={{alignItems:"center"}} className="Form Vertical">
               <Typography variant="h4">
               Create a New Account
               </Typography>
@@ -405,10 +405,9 @@ class WelcomePage extends Component {
                 </div>
               )}
               {(this.props.newUserStatus !== 'PENDING') && (
-                <div className='Vertical'>
+                <div className='Vertical' style={{width:"100%"}}>
                   <div>
                     <TextField
-                      autoFocus
                       label='Username'
                       error={this.state.usernameError}
                       value={this.state.username}
@@ -492,11 +491,14 @@ class WelcomePage extends Component {
         <div className='Quote'>
           <Grid
           container
+          justify="flex-start"
+          alignItems="center"
+          spacing={2}
            className="Body">
-            <Grid item xs={12} md={4} className="ballimage">
+            <Grid item xs={12} md={4} lg={4} className="ballimage">
                 <img className='ToolBall' src={toolball} alt='toolball' />
             </Grid>
-            <Grid item xs={12} md={7} className='text'>
+            <Grid item xs={12} md={7} lg={7} className='text'>
                 <Typography variant='h3' color="textPrimary" style={{textAlign:"Left"}}>Solving Tech's Biggest Problem</Typography>
                 <br />
                 <Typography variant='body1' color="textPrimary">Building software is difficult.
@@ -585,7 +587,7 @@ class WelcomePage extends Component {
           justify="flex-start"
           alignItems="flex-start"
           spacing={1}>
-          <Grid item xs={12} md={6} >
+          <Grid item xs={12} md={12} >
             <div className='Description' >
               <Typography variant='h4' style={{ textAlign: 'left', marginBottom:"14px" }}>
                 A plug and play paradigm for software development
@@ -606,7 +608,7 @@ class WelcomePage extends Component {
               </Typography>
             </div>
           </Grid>
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={12}>
             <Fade in>
               <img className="BW" src={BW} alt='developers' />
             </Fade>
@@ -617,12 +619,12 @@ class WelcomePage extends Component {
         alignItems="flex-start"
         spacing={3}
         style={{marginTop:"7vh"}}>
-          <Grid item xs={5}>
+          <Grid item xs={12} md={12} lg={3}>
           <Fade in>
             <img className='Table' src={Table} alt='developers' />
           </Fade>
           </Grid>
-          <Grid item style={{textAlign:"left", marginLeft:"7px"}} xs>
+          <Grid item xs={12} md={12} lg={7} style={{textAlign:"left", marginLeft:"7px"}} xs>
             <Typography variant="h4" style={{marginBottom:"14px"}}>Project management and support on demand</Typography>
             <Typography variant="body1">
             Get matched with a project manager (Or play that role yourself).<br />
@@ -646,7 +648,7 @@ class WelcomePage extends Component {
         alignItems="flex-start"
         spacing={2}
         style={{marginTop:"7vh"}}>
-          <Grid item sm={12} md={6}>
+          <Grid item sm={12} md={12} lg={5}>
             <div className='Description' style={{textAlign:"left", marginLeft:"7px"}}>
             <Typography variant='h4' paragraph className='SectionSubTitle' >
             Scale flexibly with Developers-as-a-Service
