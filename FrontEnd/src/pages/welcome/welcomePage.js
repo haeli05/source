@@ -388,7 +388,7 @@ class WelcomePage extends Component {
 
                 <br/>
                 <Typography color='textPrimary' variant='heading' style={{marginLeft:"3px"}}>
-                Find your distributed dev team
+                Find your dev team on demand
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={5} style={{alignItems:"center"}} className="Form Vertical">
