@@ -587,7 +587,7 @@ class WelcomePage extends Component {
           justify="flex-start"
           alignItems="flex-start"
           spacing={1}>
-          <Grid item xs={12} md={12} >
+          <Grid item xs={12} sm={12} md={7} >
             <div className='Description' >
               <Typography variant='h4' style={{ textAlign: 'left', marginBottom:"14px" }}>
                 A plug and play paradigm for software development
@@ -608,7 +608,7 @@ class WelcomePage extends Component {
               </Typography>
             </div>
           </Grid>
-          <Grid item xs={12} md={12}>
+          <Grid item xs={12} sm={12} md={5}>
             <Fade in>
               <img className="BW" src={BW} alt='developers' />
             </Fade>
@@ -617,14 +617,14 @@ class WelcomePage extends Component {
         <Grid container
         justify="flex-start"
         alignItems="flex-start"
-        spacing={3}
+        spacing={4}
         style={{marginTop:"7vh"}}>
-          <Grid item xs={12} md={12} lg={3}>
+          <Grid item xs={12}sm={12} md={5} lg={5}>
           <Fade in>
             <img className='Table' src={Table} alt='developers' />
           </Fade>
           </Grid>
-          <Grid item xs={12} md={12} lg={7} style={{textAlign:"left", marginLeft:"7px"}} xs>
+          <Grid item xs={12} sm={12} md={7} lg={7} style={{textAlign:"left"}} xs>
             <Typography variant="h4" style={{marginBottom:"14px"}}>Project management and support on demand</Typography>
             <Typography variant="body1">
             Get matched with a project manager (Or play that role yourself).<br />
@@ -648,7 +648,7 @@ class WelcomePage extends Component {
         alignItems="flex-start"
         spacing={2}
         style={{marginTop:"7vh"}}>
-          <Grid item sm={12} md={12} lg={5}>
+          <Grid item xs={12} sm={12} md={5} lg={5}>
             <div className='Description' style={{textAlign:"left", marginLeft:"7px"}}>
             <Typography variant='h4' paragraph className='SectionSubTitle' >
             Scale flexibly with Developers-as-a-Service
@@ -667,14 +667,14 @@ class WelcomePage extends Component {
             </div>
           </Grid>
           <Grid item xs={3}>
-          <Fade in>
-            <img className='DevImage' src={devImage3} alt='developers' />
-          </Fade>
+            <Fade in>
+              <img className='DevImage' src={devImage3} alt='developers' />
+            </Fade>
           </Grid>
           <Grid item xs={3}>
-          <Fade in>
-            <img className='DevImage' src={developerImage} alt='developers' />
-          </Fade>
+            <Fade in>
+              <img className='DevImage' src={developerImage} alt='developers' />
+            </Fade>
           </Grid>
         </Grid>
         <div style={{textAlign:"center", marginTop: "7vh"}}>
