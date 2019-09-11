@@ -25,6 +25,7 @@ import MergeRequestPage from './pages/repo/mergeRequest/mergeRequestPage'
 // People
 import UserPage from './pages/user/userPage'
 import WalletPage from './pages/payments/walletPage'
+import Guidelines from './pages/user/guidelines'
 // User Actions
 import LoginPage from './pages/userActions/loginPage'
 import CreateAccountPage from './pages/userActions/createAccountPage'
@@ -110,6 +111,7 @@ let Routes = () => (
           <Route exact path='/requestpassword' render={() => <RequestNewPass />} />
           <Route exact path='/getstarted' render={props => <GetStarted {...props} />} />
 
+          <Route render={props => <Guidelines {...props} />} />
           <Route render={props => <Four0FourPage {...props} />} />
         </Switch>
       </div>
