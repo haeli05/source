@@ -234,14 +234,6 @@ class WelcomePage extends Component {
       let change = {}
       change[target] = e.target.value
       this.setState(change)
-      if (change.username !== undefined && change.username !== '' && change.username.length > 3) {
-        var validUsername = this.testUsername(change.username)
-        if (validUsername) {
-          this.usernameAvailabilityCheck(change.username)
-        } else {
-          this.setState({ usernameError: true })
-        }
-      }
     }
 
     testName () {
@@ -406,36 +398,16 @@ class WelcomePage extends Component {
               )}
               {(this.props.newUserStatus !== 'PENDING') && (
                 <div className='Vertical' style={{width:"100%"}}>
-                  <div>
-                    <TextField
-                      label='Username'
-                      error={this.state.usernameError}
-                      value={this.state.username}
-                      onChange={(e) => { this.handleChange('username', e) }}
-                      helperText={this.state.usernameErrorText}
-                      fullWidth
-                      margin='normal'
-                      variant='outlined'
-                    />
-                    <div className='UsernameAvailabilityCheck'>
-                      {this.props.usernameAvailabilityStatus === 'PENDING' && (
-                        <CircularProgress size={20} color='primary' />
-                      )}
-                      {this.props.usernameAvailabilityStatus === 'ERROR' && (
-                        <Typography variant='body1'>There was an error checking for this username's availability :(</Typography>
-                      )}
-                      {this.props.usernameAvailabilityStatus === 'SUCCESS' && (
-                        <div>
-                          {this.props.usernameAvailability === 'yes' && (
-                            <Icon icon={ic_done} size={20} />
-                          )}
-                          {this.props.usernameAvailability === 'no' && (
-                            <Icon icon={ic_not_interested} size={20} />
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  <TextField
+                    label='Username'
+                    error={this.state.usernameError}
+                    value={this.state.username}
+                    onChange={(e) => { this.handleChange('username', e) }}
+                    helperText={this.state.usernameErrorText}
+                    fullWidth
+                    margin='normal'
+                    variant='outlined'
+                  />
                   <TextField
                     label='Display Name'
                     error={this.state.nameError}
