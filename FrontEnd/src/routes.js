@@ -111,7 +111,6 @@ let Routes = () => (
           <Route exact path='/getstarted' render={props => <GetStarted {...props} />} />
 
           <Route render={props => <Four0FourPage {...props} />} />
-
         </Switch>
       </div>
       <Route path='/' render={props => <Footer {...props} />} />

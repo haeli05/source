@@ -25,7 +25,7 @@ class Footer extends Component {
           </div>
         </div>
         <div className='Middle'>
-          <Typography variant='caption' gutterBottom align='center'>Designed in Brooklyn © 2018 </Typography>
+          <Typography variant='caption' gutterBottom align='center'>Made on Manhattan © 2019</Typography>
         </div>
         <div className='Icons'>
           <a href='https://t.me/joinchat/EbiqAxL2g2baSz4fulFeHg'>
