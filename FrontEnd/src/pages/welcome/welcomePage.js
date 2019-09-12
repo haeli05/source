@@ -133,13 +133,13 @@ class WelcomePage extends Component {
       .type(` product managers`)
       .pause()
       .delete()
-      .type(` smart contract programmers`)
+      .type(` data analyst`)
       .pause()
       .delete()
       .type(` designers`)
       .pause()
       .delete()
-      .type(` backers`)
+      .type(` project manager`)
       .pause()
       .delete()
       .type(` consultants`)
@@ -379,8 +379,8 @@ class WelcomePage extends Component {
                 </Typography>
 
                 <br/>
-                <Typography color='textPrimary' variant='heading' style={{marginLeft:"3px"}}>
-                Find your dev team on demand
+                <Typography color='textPrimary' variant='subtitle1' style={{marginLeft:"3px"}}>
+                Find your distributed dev team, on demand
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={5} style={{alignItems:"center"}} className="Form Vertical">
@@ -532,7 +532,7 @@ class WelcomePage extends Component {
                     <Grid item sm={12} md={4} className="Vertical">
                       <ReactSVG src={Level} className='ReactSVGIcon Icon50 CircleBorder' style={{marginBottom:"2vh"}} />
                       <Typography variant='subtitle1'>
-                      1. Onboard your Project
+                      1. Scope your Project
                       </Typography>
                     </Grid>
                     <Grid item sm={12} md={4} className="Vertical">
@@ -633,8 +633,8 @@ class WelcomePage extends Component {
             <br />
             <br />
             Scale your team quickly with a few clicks! Have your pick of our global talent pool. Our development partners come from countries including the USA, Canada, China India, Ukraine.
-            <br />
-            Our wider community of users and freelancers come from all around the world. Scalable quickly according to your needs.
+            <br /><br />
+            Our wider community of users and freelancers come from all around the world. so you can scale quickly according to your needs.
 
             </div>
           </Grid>
