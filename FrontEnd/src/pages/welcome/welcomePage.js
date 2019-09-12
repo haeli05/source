@@ -406,7 +406,7 @@ class WelcomePage extends Component {
               )}
               {(this.props.newUserStatus !== 'PENDING') && (
                 <div className='Vertical' style={{width:"100%"}}>
-                <div>
+                <div style={{width:"100%"}}>
                   <TextField
                     label='Username'
                     error={this.state.usernameError}
@@ -416,6 +416,7 @@ class WelcomePage extends Component {
                     fullWidth
                     margin='normal'
                     variant='outlined'
+                    style={{width:"100%"}}
                   />
                     <div className='UsernameAvailabilityCheck' style={{width:"100%"}}>
                       {this.props.usernameAvailabilityStatus === 'PENDING' && (
@@ -594,7 +595,7 @@ class WelcomePage extends Component {
               </Typography>
               <Typography variant='body1' paragraph style={{ textAlign: 'left' }}>
                 We bring an open source inspired, Agile development based, internationally distributed approach to building software.
-                Only pay for what you need.
+                Only pay for what you use.
                 <br /><br />
                 Building your project starts with specifying what you need.
                 <br /> <br />
