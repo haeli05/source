@@ -903,7 +903,7 @@ export function isUserInDB(req, res) {
   Users.get({ username })
     .then(data => {
       if (data.length === 1) return res.status(200).json({ user: true });
-      return res.status(404).json({ message: "User Not found" });
+      return res.status(200).json({ user: false });
     })
     .catch(error => {
       res.status(400).json({ Error: error });
