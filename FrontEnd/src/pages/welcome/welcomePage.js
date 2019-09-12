@@ -678,7 +678,7 @@ class WelcomePage extends Component {
           justify="center"
           alignItems="flex-start"
           >
-            <Grid item xs={4} sm={4} md={4} className="Vertical">
+            <Grid item xs={12} sm={12} md={4} className="Vertical">
               <Typography variant="h5">Free</Typography>
               <Typography variant="overline">Cost:</Typography>
 
@@ -695,7 +695,7 @@ class WelcomePage extends Component {
                 </li>
               </ul>
             </Grid>
-            <Grid item xs={4} sm={4} md={4} className="Vertical">
+            <Grid item xs={12} sm={12} md={4} className="Vertical">
               <Typography variant="h5">Maintainence</Typography>
               <Typography variant="overline">Cost:</Typography>
               <Typography variant="subtitle1">$1000/mo</Typography>
@@ -711,7 +711,7 @@ class WelcomePage extends Component {
                 </li>
               </ul>
             </Grid>
-            <Grid item xs={4} sm={4} md={4} className="Vertical">
+            <Grid item xs={12} sm={12} md={4} className="Vertical">
               <Typography variant="h5">Bespoke</Typography>
               <Typography variant="overline">Cost:</Typography>
               <Typography variant="subtitle1">Varies</Typography>
