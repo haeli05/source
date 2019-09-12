@@ -902,7 +902,8 @@ export function isUserInDB(req, res) {
   let username = req.params.username;
   Users.get({ username })
     .then(data => {
-      if (data.length === 1) return res.status(200).json(data);
+      if (data.length === 1)
+        return res.status(200).json({ user: data[0].username });
       return res.status(404).json({ message: "User Not found" });
     })
     .catch(error => {

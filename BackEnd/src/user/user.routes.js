@@ -24,12 +24,10 @@ router
     UserController.getUser
   );
 //Get a user by username
-router
-  .route("/user/name/:username")
-  .get(
-    passport.authenticate("jwt", { session: false }),
-    UserController.isUserInDB
-  );
+router.route("/user/name/:username").get(
+  // passport.authenticate("jwt", { session: false }),
+  UserController.isUserInDB
+);
 
 router
   .route("/user/update")
