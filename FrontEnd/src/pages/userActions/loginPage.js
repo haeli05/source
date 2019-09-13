@@ -56,7 +56,7 @@ class LoginPage extends Component {
     // previous location was the landing page
     if (this.props.location.state !== undefined) {
       if (this.props.location.state.from === '/') {
-        this.props.history.push(`${this.props.user.user._id}/profile`)
+        this.props.history.push(`${this.props.user.user.user_id}/profile`)
       } else {
         this.props.history.goBack()
       }

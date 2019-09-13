@@ -211,7 +211,7 @@ class CreateAccountPage extends Component {
   }
 
   redirect () {
-    this.props.history.push(`${this.props.user.user._id}/profile`)
+    this.props.history.push(`${this.props.user.user.user_id}/profile`)
   }
 
   render () {
