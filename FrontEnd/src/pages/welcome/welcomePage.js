@@ -133,13 +133,13 @@ class WelcomePage extends Component {
       .type(` product managers`)
       .pause()
       .delete()
-      .type(` smart contract programmers`)
+      .type(` data analyst`)
       .pause()
       .delete()
       .type(` designers`)
       .pause()
       .delete()
-      .type(` backers`)
+      .type(` project manager`)
       .pause()
       .delete()
       .type(` consultants`)
@@ -234,6 +234,14 @@ class WelcomePage extends Component {
       let change = {}
       change[target] = e.target.value
       this.setState(change)
+      if (change.username !== undefined && change.username !== '' && change.username.length > 3) {
+        var validUsername = this.testUsername(change.username)
+        if (validUsername) {
+          this.usernameAvailabilityCheck(change.username)
+        } else {
+          this.setState({ usernameError: true })
+        }
+      }
     }
 
     testName () {
@@ -349,7 +357,7 @@ class WelcomePage extends Component {
     }
 
     redirect () {
-      this.props.history.push(`${this.props.user.user._id}/profile`)
+      this.props.history.push(`${this.props.user.user.user_id}/profile`)
     }
 
   render () {
@@ -379,8 +387,8 @@ class WelcomePage extends Component {
                 </Typography>
 
                 <br/>
-                <Typography color='textPrimary' variant='heading' style={{marginLeft:"3px"}}>
-                Find your dev team on demand
+                <Typography color='textPrimary' variant='subtitle1' style={{marginLeft:"3px"}}>
+                Find your distributed dev team, on demand
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={5} style={{alignItems:"center"}} className="Form Vertical">
@@ -398,6 +406,7 @@ class WelcomePage extends Component {
               )}
               {(this.props.newUserStatus !== 'PENDING') && (
                 <div className='Vertical' style={{width:"100%"}}>
+                <div style={{width:"100%"}}>
                   <TextField
                     label='Username'
                     error={this.state.usernameError}
@@ -407,7 +416,27 @@ class WelcomePage extends Component {
                     fullWidth
                     margin='normal'
                     variant='outlined'
+                    style={{width:"100%"}}
                   />
+                    <div className='UsernameAvailabilityCheck' style={{width:"100%"}}>
+                      {this.props.usernameAvailabilityStatus === 'PENDING' && (
+                        <CircularProgress size={20} color='primary' />
+                      )}
+                      {this.props.usernameAvailabilityStatus === 'ERROR' && (
+                        <Typography variant='body1'>There was an error checking for this username's availability :(</Typography>
+                      )}
+                      {this.props.usernameAvailabilityStatus === 'SUCCESS' && (
+                        <div>
+                          {this.props.usernameAvailability === 'yes' && (
+                            <Icon icon={ic_done} size={20} />
+                          )}
+                          {this.props.usernameAvailability === 'no' && (
+                            <Icon icon={ic_not_interested} size={20} />
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                   <TextField
                     label='Display Name'
                     error={this.state.nameError}
@@ -532,7 +561,7 @@ class WelcomePage extends Component {
                     <Grid item sm={12} md={4} className="Vertical">
                       <ReactSVG src={Level} className='ReactSVGIcon Icon50 CircleBorder' style={{marginBottom:"2vh"}} />
                       <Typography variant='subtitle1'>
-                      1. Onboard your Project
+                      1. Scope your Project
                       </Typography>
                     </Grid>
                     <Grid item sm={12} md={4} className="Vertical">
@@ -566,7 +595,7 @@ class WelcomePage extends Component {
               </Typography>
               <Typography variant='body1' paragraph style={{ textAlign: 'left' }}>
                 We bring an open source inspired, Agile development based, internationally distributed approach to building software.
-                Only pay for what you need.
+                Only pay for what you use.
                 <br /><br />
                 Building your project starts with specifying what you need.
                 <br /> <br />
@@ -633,8 +662,8 @@ class WelcomePage extends Component {
             <br />
             <br />
             Scale your team quickly with a few clicks! Have your pick of our global talent pool. Our development partners come from countries including the USA, Canada, China India, Ukraine.
-            <br />
-            Our wider community of users and freelancers come from all around the world. Scalable quickly according to your needs.
+            <br /><br />
+            Our wider community of users and freelancers come from all around the world. so you can scale quickly according to your needs.
 
             </div>
           </Grid>

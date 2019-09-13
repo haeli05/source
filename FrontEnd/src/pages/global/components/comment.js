@@ -119,7 +119,7 @@ class Comment extends React.Component {
         <Card className='Comment' elevation={0}>
           {!this.props.comment.deleted && (
             <div className={this.getLeftClassName(this.state.minimised)}>
-              <Avatar component={Link} to={`/${this.props.comment.user._id}/profile`} src={this.props.comment.user.avatar} className={this.getAvatarClassName(this.state.minimised)} />
+              <Avatar component={Link} to={`/${this.props.comment.user.user_id}/profile`} src={this.props.comment.user.avatar} className={this.getAvatarClassName(this.state.minimised)} />
               {!this.state.minimised && (
                 <VoteButtons id={this.props.comment._id} votes={this.props.comment.upvotes} user={this.props.user} type={this.props.type} />
               )}
@@ -128,8 +128,8 @@ class Comment extends React.Component {
           <div className='Right'>
             {!this.props.comment.deleted && (
               <div className='Header'>
-                <Typography variant='body1' component={Link} to={`/${this.props.comment.user._id}/profile`} className='CommentName'>{this.props.comment.user.name}</Typography>
-                <Typography variant='body1' component={Link} to={`/${this.props.comment.user._id}/profile`} className='CommentUsername'>@{this.props.comment.user.username}</Typography>
+                <Typography variant='body1' component={Link} to={`/${this.props.comment.user.user_id}/profile`} className='CommentName'>{this.props.comment.user.name}</Typography>
+                <Typography variant='body1' component={Link} to={`/${this.props.comment.user.user_id}/profile`} className='CommentUsername'>@{this.props.comment.user.username}</Typography>
                 <div className='When'>
                   <ReactSVG src={Simpleclock} className='ReactSVGIcon ClockIcon' />
                   <ReactTimeAgo locale='en' className='CommentTime'>
@@ -193,7 +193,7 @@ class Comment extends React.Component {
                         <div className='ActionButton'><ShareButton {...this.props} mini title={`${this.props.comment.user.username}'s comment on Source`} url={`${window.location.href}#${this.props.comment._id}`} /></div>
                         {!this.state.minimised && (
                           <div>
-                            {this.props.comment.user._id === this.props.user.id && (
+                            {this.props.comment.user.user_id === this.props.user.id && (
                               <div className='Flex'>
                                 <Button variant='fab' mini className='EditButton ActionButton' onClick={this.editComment}><ReactSVG src={Edit} className='ReactSVGIcon EditIcon' /></Button>
                                 <DeleteButton delete={this.deleteComment} mini />

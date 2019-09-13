@@ -211,7 +211,7 @@ class CreateAccountPage extends Component {
   }
 
   redirect () {
-    this.props.history.push(`${this.props.user.user._id}/profile`)
+    this.props.history.push(`${this.props.user.user.user_id}/profile`)
   }
 
   render () {
@@ -220,7 +220,7 @@ class CreateAccountPage extends Component {
     }
     return (
       <div className='CreateAccountPage'>
-        <Typography className='CreateAccountPageHeader' variant='display3'>Create Account</Typography>
+        <Typography className='CreateAccountPageHeader' variant='h4'>Create Account</Typography>
         {this.props.newUserStatus === 'PENDING' && (
           <div className='Form'>
             <LinearProgress size={50} color='secondary' />

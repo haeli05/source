@@ -56,7 +56,7 @@ class LoginPage extends Component {
     // previous location was the landing page
     if (this.props.location.state !== undefined) {
       if (this.props.location.state.from === '/') {
-        this.props.history.push(`${this.props.user.user._id}/profile`)
+        this.props.history.push(`${this.props.user.user.user_id}/profile`)
       } else {
         this.props.history.goBack()
       }
@@ -76,7 +76,7 @@ class LoginPage extends Component {
     if (this.props.signInStatus === 'SUCCESS' || (this.props.user.token !== false && this.props.user.token !== undefined)) { this.redirect() }
     return (
       <div className='LoginPage'>
-        <Typography variant='display3'>Login</Typography>
+        <Typography variant='h4'>Login</Typography>
         {this.props.signInStatus === 'PENDING' && (
           <div className='Form'>
             <LinearProgress size={50} color='secondary' />

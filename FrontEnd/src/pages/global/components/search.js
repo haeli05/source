@@ -167,7 +167,7 @@ class SearchResults extends Component {
                   })}
                   <Typography variant='subtitle1'>People</Typography>
                   {this.props.searchResults.users.map(user => {
-                    return (<PersonCard {...this.props} content={user} key={user._id} />)
+                    return (<PersonCard {...this.props} content={user} key={user.user_id} />)
                   })}
                 </div>
               )}
@@ -199,7 +199,7 @@ class SearchResults extends Component {
                     <div className='NoResults'><Typography variant='title'>No users matched your query</Typography></div>
                   )}
                   {this.props.searchResults.users.map(user => {
-                    return (<PersonCard {...this.props} content={user} key={user._id} />)
+                    return (<PersonCard {...this.props} content={user} key={user.user_id} />)
                   })}
                 </div>
               )}
