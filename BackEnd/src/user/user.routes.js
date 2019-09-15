@@ -20,12 +20,10 @@ router.route("/user").get(UserController.getUsers);
 router
   .route("/user/:id")
   .get(
-    passport.authenticate("jwt", { session: false }),
     UserController.getUser
   );
 //Get a user by username
 router.route("/user/name/:username").get(
-  // passport.authenticate("jwt", { session: false }),
   UserController.isUserInDB
 );
 

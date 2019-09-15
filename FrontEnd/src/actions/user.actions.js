@@ -88,9 +88,8 @@ export function addSignIn (user_data) {
     token: user_data.token,
     username: user_data.user.username,
     email: user_data.user.email,
-    id: user_data.user._id,
-    user: user_data.user,
-    aws: user_data.aws
+    id: user_data.user.user_id,
+    user: user_data.user
   }
 }
 export function addSignInStatus (status) {
@@ -415,7 +414,7 @@ export function inviteCodeCheck(invite){
       if(!res.data.error){
         return dispatch(login(
           res.data.token,res.data.user.username,
-          res.data.user.email,res.data.user._id,res.data.user.name))
+          res.data.user.email,res.data.user.user_id,res.data.user.name))
       }else{
         console.log("error creating user",res.Data.error);
         alert(res.data.error)

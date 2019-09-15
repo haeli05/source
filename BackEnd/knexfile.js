@@ -14,10 +14,6 @@ module.exports = {
   development: {
     client: "postgresql",
     connection: {
-      // host : process.env.PGHOST,
-      // user : process.env.PGUSER,
-      // port : process.env.PGPORT,
-      // database : process.env.PGDATABASE
       host: process.env.PGHOST || "localhost",
       user: process.env.PGUSER || "postgres",
       password: process.env.PGPASS || "",
