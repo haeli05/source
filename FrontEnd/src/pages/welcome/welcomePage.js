@@ -388,8 +388,12 @@ class WelcomePage extends Component {
 
                 <br/>
                 <Typography color='textPrimary' variant='subtitle1' style={{marginLeft:"3px"}}>
-                Connect with developers on demand
+                On demand access to project managers and developers
                 </Typography>
+                <br />
+                <Button variant='outlined'  component={Link} to='/getstarted' style={{alignSelf:"center", maxWidth:"13em"}}>
+                  Get Started
+                </Button>
               </Grid>
               <Grid item xs={12} sm={12} md={5} style={{alignItems:"center"}} className="Form Vertical">
               <Typography variant="h4">
@@ -500,21 +504,22 @@ class WelcomePage extends Component {
                 <img className='ToolBall' src={toolball} alt='toolball' />
             </Grid>
             <Grid item xs={12} md={7} lg={7} className='text ResponsiveMidPaddingBottom'>
-                <Typography variant='h3' color="textPrimary" style={{textAlign:"Left"}}>Solving Tech's Biggest Problem</Typography>
+                <Typography variant='h3' color="textPrimary" style={{textAlign:"Center"}}>Solving Tech's Biggest Problem</Typography>
                 <br />
                 <Typography variant='body1' color="textPrimary">Building software is difficult.
-
-                Finding the right team for your project can be a complicated process.
+                Finding the right team for your project can be a complicated process. Many organizations aren't functioning at their best because they don't have the right team.
                 </Typography>
                 <br />
                 <Typography variant='body2' paragraph quote style={{marginLeft:"14px"}}>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
                 <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
 
                 <Typography paragraph variant='body1'>
-                Many organizations aren't functioning at their best because they don't have the right team.
+
                 <br /><br />
-                But we noticed that most teams do work more efficiently in environments where experts and potential team members are easily available, such as during hackathons or incubators.
-                So we set out to build a virtual environment - A Decentralized Tech Incubator - to help you get feedback for your ideas, find collaborators, and supercharge your development process.
+                We are here to offer teams a virtual environment - A Decentralized Tech Incubator - where experts and potential team members are easily available, similar to a hackathon or incubator.
+                We provide on demand access to advisors, project managers, and a scalable development team.
+
+                 to help you get feedback for your ideas, find collaborators, and supercharge your development process.
                 <br />
                 <br/>
                 Sign up to connect with developers, experts, and project managers instantly.
