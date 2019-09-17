@@ -10,9 +10,9 @@ export default class Guidelines extends Component {
   render () {
     return (
       <div className="StdSection">
-        <Typography variant='overline'>DOCUMENTATION</Typography>
-        <Typography variant='h1'>source</Typography>
-        <Typography variant='subtitle'>GUIDELINES</Typography>
+        <Typography variant='overline' style={{textAlign:"Center"}}>DOCUMENTATION</Typography>
+        <Typography variant='h1' style={{textAlign:"Center"}}>source</Typography>
+        <Typography variant='subtitle' style={{textAlign:"Center"}}>G U I D E L I N E S</Typography>
         <br /> <br />
         We work best when developers and project managers can collaborate productively.
         <br />
