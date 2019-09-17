@@ -298,10 +298,6 @@ export function addAvatar(req, res) {
  **/
 export function getUser(req, res) {
   let id = req.params.id;
-  if (req.params.id != req.user.id)
-    return res.status(401).json({
-      message: "Not Authorised to access user"
-    });
 
   Users.get({ user_id: id })
     .then(data => {

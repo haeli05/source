@@ -78,6 +78,7 @@ Users.get = function(obj) {
       .select("*")
       .then(x => {
         if (x[0]) delete x[0].password;
+        if (x[0]) delete x[0].email;
         return x;
       });
   });
@@ -94,6 +95,7 @@ Users.getAll = function() {
       .then(x =>
         x.map(x => {
           if (x) delete x.password;
+          if (x) delete x.email;
           return x;
         })
       );
