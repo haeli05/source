@@ -59,7 +59,7 @@ class SettingsButton extends React.Component {
       display_name_error: false,
       display_name_helpertext: "",
       user_description: (this.props.user.user.description===undefined) ? '' : this.props.user.user.description,
-      user_skills: (this.props.user.user.skills===undefined) ? '' : this.props.user.user.skills.join(","),
+      // user_skills: (this.props.user.user.skills===undefined) ? '' : this.props.user.user.skills.join(","),
       user_social: (this.props.user.user.social===undefined) ? [] : this.props.user.user.social,
       user_social_input: "",
       user_location: (this.props.user.user.location===undefined) ? '' : this.props.user.user.location,

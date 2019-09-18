@@ -320,25 +320,13 @@ class WelcomePage extends Component {
       }
     }
 
-    testToken () {
-      if (this.state.token === '') {
-        this.setState({ tokenError: true })
-        this.setState({ tokenErrorText: 'Invite code is required' })
-      } else {
-        this.setState({ tokenError: false })
-        this.setState({ tokenErrorText: '' })
-        return true
-      }
-    }
-
     handleSubmit () {
       var validUsername = this.testUsername()
       var validName = this.testName()
       var validEmail = this.testEmail()
       var validPassword = this.testPassword()
       var validPassConfirm = this.testPassConfirm()
-      var validToken = this.testToken()
-      if (validUsername && validName && validEmail && validPassword && validPassConfirm && validToken) {
+      if (validUsername && validName && validEmail && validPassword && validPassConfirm) {
         var userData = {
           username: this.state.username,
           email: this.state.email,
@@ -423,9 +411,6 @@ class WelcomePage extends Component {
                     style={{width:"100%"}}
                   />
                     <div className='UsernameAvailabilityCheck' style={{width:"100%"}}>
-                      {this.props.usernameAvailabilityStatus === 'PENDING' && (
-                        <CircularProgress size={20} color='primary' />
-                      )}
                       {this.props.usernameAvailabilityStatus === 'ERROR' && (
                         <Typography variant='body1'>There was an error checking for this username's availability :(</Typography>
                       )}
@@ -770,4 +755,15 @@ class WelcomePage extends Component {
   }
 }
 
-export default WelcomePage
+
+const mapStateToProps = (state) => {
+  return {
+    user: getUser(state),
+    usernameAvailability: getUsernameAvailability(state),
+    usernameAvailabilityStatus: getUsernameAvailabilityStatus(state),
+    newUserStatus: getNewUserStatus(state),
+    signInStatus: getSignInStatus(state)
+  }
+}
+
+export default connect(mapStateToProps)(WelcomePage)

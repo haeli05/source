@@ -42,7 +42,7 @@ export function fetchPerson (id) {
     dispatch(addPersonStatus('PENDING'))
     return axios.get(`${config.production_url}/api/user/${id}`)
       .then(res => {
-        dispatch(addPerson(res.data))
+        dispatch(addPerson(res.data[0]))
       })
       .catch(err => {
         dispatch(addError(err))
