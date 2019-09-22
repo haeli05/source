@@ -80,7 +80,7 @@ const theme = createMuiTheme({
       fontSize: '4.21em',
       fontFamily: 'gotham_htfbook',
       color: 'rgba(0,0,0,1)',
-      letterSpacing: '-0.058em'
+      letterSpacing: '-0.038em'
 
     },
     h2: {

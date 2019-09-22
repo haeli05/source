@@ -10,9 +10,11 @@ export default class Guidelines extends Component {
   render () {
     return (
       <div className="StdSection">
-        <Typography variant='h1'>Guidelines</Typography>
+        <Typography variant='overline' style={{textAlign:"Center"}}>DOCUMENTATION</Typography>
+        <Typography variant='h1' style={{textAlign:"Center"}}>source</Typography>
+        <Typography variant='subtitle' style={{textAlign:"Center"}}>G U I D E L I N E S</Typography>
         <br /> <br />
-        source connects developers to projects and tasks. We work best when both parties can collaborate productively.
+        We work best when developers and project managers can collaborate productively.
         <br />
         This document outlines the general guidelines intended to help projects and developers work together effectively, and resolve conflicts should they arise.
         <br /><br />

@@ -320,25 +320,13 @@ class WelcomePage extends Component {
       }
     }
 
-    testToken () {
-      if (this.state.token === '') {
-        this.setState({ tokenError: true })
-        this.setState({ tokenErrorText: 'Invite code is required' })
-      } else {
-        this.setState({ tokenError: false })
-        this.setState({ tokenErrorText: '' })
-        return true
-      }
-    }
-
     handleSubmit () {
       var validUsername = this.testUsername()
       var validName = this.testName()
       var validEmail = this.testEmail()
       var validPassword = this.testPassword()
       var validPassConfirm = this.testPassConfirm()
-      var validToken = this.testToken()
-      if (validUsername && validName && validEmail && validPassword && validPassConfirm && validToken) {
+      if (validUsername && validName && validEmail && validPassword && validPassConfirm) {
         var userData = {
           username: this.state.username,
           email: this.state.email,
@@ -388,8 +376,12 @@ class WelcomePage extends Component {
 
                 <br/>
                 <Typography color='textPrimary' variant='subtitle1' style={{marginLeft:"3px"}}>
-                Find your distributed dev team, on demand
+                On demand access to project managers and developers
                 </Typography>
+                <br />
+                <Button variant='outlined'  component={Link} to='/getstarted' style={{alignSelf:"center", maxWidth:"13em"}}>
+                  Get Started
+                </Button>
               </Grid>
               <Grid item xs={12} sm={12} md={5} style={{alignItems:"center"}} className="Form Vertical">
               <Typography variant="h4">
@@ -419,9 +411,6 @@ class WelcomePage extends Component {
                     style={{width:"100%"}}
                   />
                     <div className='UsernameAvailabilityCheck' style={{width:"100%"}}>
-                      {this.props.usernameAvailabilityStatus === 'PENDING' && (
-                        <CircularProgress size={20} color='primary' />
-                      )}
                       {this.props.usernameAvailabilityStatus === 'ERROR' && (
                         <Typography variant='body1'>There was an error checking for this username's availability :(</Typography>
                       )}
@@ -496,25 +485,26 @@ class WelcomePage extends Component {
           alignItems="center"
           spacing={2}
            className="Body">
-            <Grid item xs={12} md={4} lg={4} className="ballimage">
+            <Grid item xs={12} md={4} lg={4} className="ballimage ResponsiveMidPaddingBottom">
                 <img className='ToolBall' src={toolball} alt='toolball' />
             </Grid>
-            <Grid item xs={12} md={7} lg={7} className='text'>
-                <Typography variant='h3' color="textPrimary" style={{textAlign:"Left"}}>Solving Tech's Biggest Problem</Typography>
+            <Grid item xs={12} md={7} lg={7} className='text ResponsiveMidPaddingBottom'>
+                <Typography variant='h3' color="textPrimary" style={{textAlign:"Center"}}>Solving Tech's Biggest Problem</Typography>
                 <br />
                 <Typography variant='body1' color="textPrimary">Building software is difficult.
-
-                Finding the right team for your project can be a complicated process.
+                Finding the right team for your project can be a complicated process. Many organizations aren't functioning at their best because they don't have the right team.
                 </Typography>
                 <br />
                 <Typography variant='body2' paragraph quote style={{marginLeft:"14px"}}>"Companies across the board report the availability of software engineers and just the ability to do things with software as being as big or even bigger a constraint  on their progress as access to capital"
                 <br /><br /> - Patrick Collison, Cofounder/CEO@Stripe</Typography>
 
                 <Typography paragraph variant='body1'>
-                Many organizations aren't functioning at their best because they don't have the right team.
+
                 <br /><br />
-                But we noticed that most teams do work more efficiently in environments where experts and potential team members are easily available, such as during hackathons or incubators.
-                So we set out to build a virtual environment - A Decentralized Tech Incubator - to help you get feedback for your ideas, find collaborators, and supercharge your development process.
+                We are here to offer teams a virtual environment - A Decentralized Tech Incubator - where experts and potential team members are easily available, similar to a hackathon or incubator.
+                We provide on demand access to advisors, project managers, and a scalable development team.
+
+                 to help you get feedback for your ideas, find collaborators, and supercharge your development process.
                 <br />
                 <br/>
                 Sign up to connect with developers, experts, and project managers instantly.
@@ -558,22 +548,22 @@ class WelcomePage extends Component {
                   spacing={0}
                   style={{marginBottom:"14vh"}}
                   >
-                    <Grid item sm={12} md={4} className="Vertical">
+                    <Grid item sm={12} md={4} className="Vertical ResponsiveMidPaddingBottom">
                       <ReactSVG src={Level} className='ReactSVGIcon Icon50 CircleBorder' style={{marginBottom:"2vh"}} />
                       <Typography variant='subtitle1'>
                       1. Scope your Project
                       </Typography>
                     </Grid>
-                    <Grid item sm={12} md={4} className="Vertical">
+                    <Grid item sm={12} md={4} className="Vertical ResponsiveMidPaddingBottom">
                       <ReactSVG src={Edit} className='ReactSVGIcon Icon50 CircleBorder' style={{marginBottom:"2vh"}} />
                       <Typography variant='subtitle1'>
                       2. Specify your Tasks
                       </Typography>
                     </Grid>
-                    <Grid item sm={12} md={4} className="Vertical">
+                    <Grid item sm={12} md={4} className="Vertical ResponsiveMidPaddingBottom">
                       <ReactSVG src={WorkMan} className='ReactSVGIcon Icon50 CircleBorder' style={{marginBottom:"2vh"}} />
                       <Typography variant='subtitle1'>
-                      3. Work with Collaborators
+                      3. Delegate to Collaborators
                       </Typography>
                     </Grid>
                   </Grid>
@@ -588,7 +578,7 @@ class WelcomePage extends Component {
           justify="flex-start"
           alignItems="flex-start"
           spacing={1}>
-          <Grid item xs={12} sm={12} md={7} >
+          <Grid item xs={12} sm={12} md={7} className="ResponsiveMidPaddingBottom">
             <div className='Description' >
               <Typography variant='h4' style={{ textAlign: 'left', marginBottom:"14px" }}>
                 A plug and play paradigm for software development
@@ -609,7 +599,7 @@ class WelcomePage extends Component {
               </Typography>
             </div>
           </Grid>
-          <Grid item xs={12} sm={12} md={5}>
+          <Grid item xs={12} sm={12} md={5}  className="ResponsiveMidPaddingBottom">
             <Fade in>
               <img className="BW" src={BW} alt='developers' />
             </Fade>
@@ -620,7 +610,7 @@ class WelcomePage extends Component {
         alignItems="flex-start"
         spacing={4}
         style={{marginTop:"7vh"}}>
-          <Grid item xs={12}sm={12} md={5} lg={5}>
+          <Grid item xs={12}sm={12} md={5} lg={5} className="ResponsiveMidPaddingBottom">
           <Fade in>
             <img className='Table' src={Table} alt='developers' />
           </Fade>
@@ -644,12 +634,13 @@ class WelcomePage extends Component {
           </Grid>
         </Grid>
 
-        <Grid container
+        <Grid
+        container
         justify="center"
         alignItems="flex-start"
         spacing={2}
         style={{marginTop:"7vh"}}>
-          <Grid item xs={12} sm={12} md={5} lg={5}>
+          <Grid item xs={12} sm={12} md={5} lg={5} className="ResponsiveMidPaddingBottom">
             <div className='Description' style={{textAlign:"left", marginLeft:"7px"}}>
             <Typography variant='h4' paragraph className='SectionSubTitle' >
             Scale flexibly with Developers-as-a-Service
@@ -667,12 +658,12 @@ class WelcomePage extends Component {
 
             </div>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} sm={3} className="ResponsiveMidPaddingBottom">
             <Fade in>
               <img className='DevImage' src={devImage3} alt='developers' />
             </Fade>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} sm={3} className="ResponsiveMidPaddingBottom">
             <Fade in>
               <img className='DevImage' src={developerImage} alt='developers' />
             </Fade>
@@ -701,13 +692,14 @@ class WelcomePage extends Component {
           <br />
           <Typography variant='h4'>Pay as much as you need, or nothing at all!</Typography>
           <br /><br /><br />
-          <Grid container
+          <Grid
+          container
           spacing={4}
           direction="row"
           justify="center"
           alignItems="flex-start"
           >
-            <Grid item xs={12} sm={12} md={4} className="Vertical">
+            <Grid item xs={12} sm={12} md={4} className="Vertical ResponsiveMidPaddingBottom">
               <Typography variant="h5">Free</Typography>
               <Typography variant="overline">Cost:</Typography>
 
@@ -724,7 +716,7 @@ class WelcomePage extends Component {
                 </li>
               </ul>
             </Grid>
-            <Grid item xs={12} sm={12} md={4} className="Vertical">
+            <Grid item xs={12} sm={12} md={4} className="Vertical ResponsiveMidPaddingBottom">
               <Typography variant="h5">Maintainence</Typography>
               <Typography variant="overline">Cost:</Typography>
               <Typography variant="subtitle1">$1000/mo</Typography>
@@ -740,7 +732,7 @@ class WelcomePage extends Component {
                 </li>
               </ul>
             </Grid>
-            <Grid item xs={12} sm={12} md={4} className="Vertical">
+            <Grid item xs={12} sm={12} md={4} className="Vertical ResponsiveMidPaddingBottom">
               <Typography variant="h5">Bespoke</Typography>
               <Typography variant="overline">Cost:</Typography>
               <Typography variant="subtitle1">Varies</Typography>
@@ -757,14 +749,21 @@ class WelcomePage extends Component {
               </ul>
             </Grid>
           </Grid>
-
           </div>
-
-
-
       </div>
     )
   }
 }
 
-export default WelcomePage
+
+const mapStateToProps = (state) => {
+  return {
+    user: getUser(state),
+    usernameAvailability: getUsernameAvailability(state),
+    usernameAvailabilityStatus: getUsernameAvailabilityStatus(state),
+    newUserStatus: getNewUserStatus(state),
+    signInStatus: getSignInStatus(state)
+  }
+}
+
+export default connect(mapStateToProps)(WelcomePage)

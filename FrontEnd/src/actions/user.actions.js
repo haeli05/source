@@ -4,7 +4,7 @@ import config from '../utils/config.js'
 import { addError } from './error.actions.js'
 import { saveStateUser } from './../utils/rehydrate'
 
-// ec2-35-153-131-45.compute-1.amazonaws.com
+
 /// / TODO: ADD A CONFIG FILE FOR ROUTES
 export function logout () {
   localStorage.removeItem('user')
@@ -21,14 +21,10 @@ export function newUser (data) {
     dispatch(addNewUserStatus('PENDING'))
     axios.post(`${config.production_url}/api/user/new`, data)
       .then(res => {
-        return dispatch(addSignIn(res.data))
+        return dispatch(addSignIn(res.data[0]))
       }).catch(err => {
-        if (err.response.data.error === 'Incorrect invite code') {
-          return dispatch(addNewUserStatus('invite_code_error'))
-        } else {
-          dispatch(addError(err))
-          return dispatch(addNewUserStatus('ERROR'))
-        }
+        dispatch(addError(err))
+        return dispatch(addNewUserStatus('ERROR'))
       })
   }
 };
@@ -45,7 +41,7 @@ export function checkUsernameAvailability (username) {
     dispatch(addUsernameAvailabilityStatus('PENDING'))
     axios.get(`${config.production_url}/api/user/name/${username}`)
       .then(res => {
-        if (res.data === false) {
+        if (res.data.user === false) {
           return dispatch(addUsernameAvailability('yes'))
         } else {
           return dispatch(addUsernameAvailability('no'))

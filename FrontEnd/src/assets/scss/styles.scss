@@ -957,6 +957,25 @@ time {
 .StdSection {
   padding: 7% 7% 14% 7%;
 }
+.ResponsiveMidPaddingBottom {
+  @media screen and (max-width: $md) {
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+    vertical-align: middle;
+    text-align: center;
+    padding-bottom: 4em;
+  }
+  @media screen and (max-width: $sm) {
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+    vertical-align: middle;
+    text-align: center;
+    padding-bottom: 4em;
+  }
+
+}
 .Vertical {
   display: flex;
   align-items: center;
@@ -3380,6 +3399,12 @@ body {
     .WelcomeSignUp {
       align-items: center;
       align: center;
+      @media screen and (max-width: $md) {
+        text-align: center;
+      }
+      @media screen and (max-width: $sm) {
+        text-align: center;
+      }
       .GetStarted{
         margin-top: 2vh;
         display: inline-block;
@@ -3536,7 +3561,7 @@ body {
     //    background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
     //    background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
 
-    padding-bottom: 6vh;
+    padding-bottom: 38px;
     .SectionTitle {
     }
     .SectionSubTitle {

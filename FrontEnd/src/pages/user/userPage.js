@@ -82,29 +82,33 @@ class UserPage extends Component {
             <div className='DescriptionDiv'>
               <Typography variant='subtitle1'>{this.props.person.description}</Typography>
             </div>
-            <div className='SkillsDiv'>
-              <Typography variant='overline'>SKILLS</Typography>
-              <div className='ChipsDiv'>
-                {this.props.person.skills.map(skill => {
-                  if (skill !== '') {
-                    return (
-                      <div key={skill} className='IndividualChip'>
-                        <Chip {...this.props} label={skill} />
-                      </div>
-                    )
-                  }
+            {this.props.person.skills !== null && (
+              <div className='SkillsDiv'>
+                <Typography variant='overline'>SKILLS</Typography>
+                <div className='ChipsDiv'>
+                  {this.props.person.skills.map(skill => {
+                    if (skill !== '') {
+                      return (
+                        <div key={skill} className='IndividualChip'>
+                          <Chip {...this.props} label={skill} />
+                        </div>
+                      )
+                    }
+                  })}
+                </div>
+              </div>
+            )}
+            {this.props.person.social !== undefined && (
+              <div className='SocialDiv'>
+                {this.props.person.social.map(social => {
+                  return (
+                    <div key={social} className='MarginRight10'>
+                      <SocialIcon style={{ height: 30, width: 30 }} url={social} />
+                    </div>
+                  )
                 })}
               </div>
-            </div>
-            <div className='SocialDiv'>
-              {this.props.person.social.map(social => {
-                return (
-                  <div key={social} className='MarginRight10'>
-                    <SocialIcon style={{ height: 30, width: 30 }} url={social} />
-                  </div>
-                )
-              })}
-            </div>
+            )}
             <div className='WebsiteDiv'>
               <a href={this.props.person.website}>
                 <Typography variant='subtitle2'>{this.props.person.website}</Typography>
@@ -115,12 +119,6 @@ class UserPage extends Component {
             <div className='PageTitle'>
               <div className='OverlineAndButtons'>
                 <Typography variant='overline'>USER</Typography>
-                <div className='Flex'>
-                  {this.props.user.id === this.props.match.params.user && (
-                    <SettingsButton {...this.props} type='profile' />
-                  )}
-                  <MajorActionButtons {...this.props} orientation='horizontal' title={this.props.person.username} url={window.location.href} type='person' id={this.props.person._id} />
-                </div>
               </div>
               <Typography variant='h1'>{this.props.person.name}</Typography>
             </div>
