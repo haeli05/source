@@ -349,6 +349,7 @@ class WelcomePage extends Component {
     }
 
   render () {
+    if (this.props.signInStatus === 'SUCCESS' || (this.props.user.token !== false && this.props.user.token !== undefined)) { this.redirect() }
     return (
       <div className='WelcomePage'>
         <Helmet>

@@ -21,7 +21,11 @@ export function newUser (data) {
     dispatch(addNewUserStatus('PENDING'))
     axios.post(`${config.production_url}/api/user/new`, data)
       .then(res => {
-        return dispatch(addSignIn(res.data[0]))
+        var signInData = {
+          username: data.username,
+          password: data.password,
+        }
+        return dispatch(signIn(signInData))
       }).catch(err => {
         dispatch(addError(err))
         return dispatch(addNewUserStatus('ERROR'))
