@@ -85,14 +85,9 @@ class GetStarted extends Component {
                 <Typography className='GetStartedTitle' color='textPrimary' variant='h1'>
                 Get Started
                 </Typography>
-                <Typography variant='h4'>Please reach out if you need immediate assistance.<br /><br />
-                  Contact:
-                  <Link component={RouterLink} to='/#todo'>
-                  here.
-                  </Link>
-                  <br />
-                  <br />
-                  </Typography>
+                <Typography variant='subtitle1'>
+                Please reach out if you need immediate assistance.<br /><br />
+                </Typography>
                 <div className='GetStartedFabContainer'>
                   <Fab
                     variant='extended'
@@ -118,9 +113,9 @@ class GetStarted extends Component {
                 </div>
               </div>
             </Grid>
-            <Grid item sm={12} md={5}>
+            <Grid item sm={12} md={6}>
               <div className='Form'>
-                <Typography className='Mission' variant='h5' color='textPrimary'>
+                <Typography className='Mission' variant='subtitle2' color='textPrimary'>
             Fill up this form for general enquiries, we will reply as soon as possible.
                 </Typography>
                 <TextField
