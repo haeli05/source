@@ -109,10 +109,11 @@ class LoginPage extends Component {
                 value='persistence'
                 color='secondary'
               />
-              <Typography variant='body1'>Keep me Logged In</Typography>
+              <Typography variant='body1'>Keep me logged in</Typography>
             </div>
             <Button variant='contained' color='primary' onKeyPress={(e) => { this.handleKeyPress(e) }} onClick={this.submit} className='SubmitButton' >Log In</Button>
             <Typography variant='caption' className='Recovery LinkUnderline' component={Link} to='/requestpassword'>Forgot password?</Typography>
+            <br /><br />
             <Typography variant='caption' component={Link} to='/signUp' className='TextCenter LinkUnderline' >No account? Sign Up</Typography>
 
           </div>
