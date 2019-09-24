@@ -72,7 +72,6 @@ class LoginPage extends Component {
   }
 
   render () {
-    console.log(this.props)
     if (this.props.signInStatus === 'SUCCESS' || (this.props.user.token !== false && this.props.user.token !== undefined)) { this.redirect() }
     return (
       <div className='LoginPage'>
