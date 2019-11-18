@@ -83,16 +83,11 @@ class GetStarted extends Component {
             <Grid item sm={12} md={5}>
               <div className='GetStartedLabel'>
                 <Typography className='GetStartedTitle' color='textPrimary' variant='h1'>
-                Get <br />Started
+                Get Started
                 </Typography>
-                <Typography variant='h4'>The platform is currently under construction.<br /><br />
-                  Follow our progress&nbsp;
-                  <Link component={RouterLink} to='/#todo'>
-                  here.
-                  </Link>
-                  <br />
-                  <br />
-                  Please reach out if you need immediate technical assistance, or want to list a project.</Typography>
+                <Typography variant='subtitle1'>
+                Please reach out if you need immediate assistance.<br /><br />
+                </Typography>
                 <div className='GetStartedFabContainer'>
                   <Fab
                     variant='extended'
@@ -118,9 +113,9 @@ class GetStarted extends Component {
                 </div>
               </div>
             </Grid>
-            <Grid item sm={12} md={5}>
+            <Grid item sm={12} md={6}>
               <div className='Form'>
-                <Typography className='Mission' variant='h5' color='textPrimary'>
+                <Typography className='Mission' variant='subtitle2' color='textPrimary'>
             Fill up this form for general enquiries, we will reply as soon as possible.
                 </Typography>
                 <TextField
@@ -161,7 +156,7 @@ class GetStarted extends Component {
                   </Tooltip>
                 )}
                 {(this.state.sent) && (
-                  <Typography variant='h4' className='Success'>
+                  <Typography variant='subtitle1' className='Success'>
                     <ReactSVG src={CircleTick} className='ReactSVGIcon Icon25 MarginRight10' />
                   Thank you. We will be in touch shortly
                   </Typography>

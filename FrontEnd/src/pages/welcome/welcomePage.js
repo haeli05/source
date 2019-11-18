@@ -349,6 +349,7 @@ class WelcomePage extends Component {
     }
 
   render () {
+    if (this.props.signInStatus === 'SUCCESS' || (this.props.user.token !== false && this.props.user.token !== undefined)) { this.redirect() }
     return (
       <div className='WelcomePage'>
         <Helmet>
@@ -373,10 +374,9 @@ class WelcomePage extends Component {
                 <Typography className='Mission' color='textPrimary' variant='h1'>
                 The Decentralized <br />Tech Incubator
                 </Typography>
-
                 <br/>
                 <Typography color='textPrimary' variant='subtitle1' style={{marginLeft:"3px"}}>
-                On demand access to project managers and developers
+                Your personal team of developers
                 </Typography>
                 <br />
                 <Button variant='outlined'  component={Link} to='/getstarted' style={{alignSelf:"center", maxWidth:"13em"}}>
@@ -384,6 +384,21 @@ class WelcomePage extends Component {
                 </Button>
               </Grid>
               <Grid item xs={12} sm={12} md={5} style={{alignItems:"center"}} className="Form Vertical">
+              <div style={{textAlign:"center", marginTop: "7vh"}}>
+              <Typography variant='h4'>Have a project you need help with?</Typography>
+                <br />
+                  <Fab
+                    variant='extended'
+                    size='large'
+                    color='secondary'
+                    className='TodoButton'
+                    href='/getstarted'
+                  >
+                    <ReactSVG src={Comment} className='ReactSVGIcon Icon25 LeftIcon' />
+                Contact Us
+              </Fab>
+              </div>
+              <div style={{display:"none"}}>
               <Typography variant="h4">
               Create a New Account
               </Typography>
@@ -472,6 +487,7 @@ class WelcomePage extends Component {
                   <Typography variant='caption' component={Link} to='/login' className='TextCenter LinkUnderline' >Already have an account? Login</Typography>
                 </div>
               )}
+              </div>
               </Grid>
             </Grid>
 
@@ -669,20 +685,7 @@ class WelcomePage extends Component {
             </Fade>
           </Grid>
         </Grid>
-        <div style={{textAlign:"center", marginTop: "7vh"}}>
-        <Typography variant='caption'>Have a project you want our help with?</Typography>
-          <br />
-            <Fab
-              variant='extended'
-              size='large'
-              color='secondary'
-              className='TodoButton'
-              href='/getstarted'
-            >
-              <ReactSVG src={Comment} className='ReactSVGIcon Icon25 LeftIcon' />
-          Contact Us
-        </Fab>
-        </div>
+
 
 
         </div>
