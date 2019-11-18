@@ -186,10 +186,8 @@ class MenuAppBar extends React.Component {
               </div>
               <div className='Tabs'>
                 <Tabs value={this.state.currentTab}>
-                  <Tab label='Ideas' component={Link} to='/explore/ideas' onClick={() => this.handleTabChange(0)} />
-                  <Tab label='Projects' component={Link} to='/explore/projects' onClick={() => this.handleTabChange(1)} />
-                  <Tab label='People' component={Link} to='/explore/people' onClick={() => this.handleTabChange(2)} />
-                  <Tab label='Apps' style={{ display: 'none' }} component={Link} to='/explore/apps' onClick={() => this.handleTabChange(3)} />
+                  <Tab label='$99 MVP' component={Link} to='/mvp' onClick={() => this.handleTabChange(0)} />
+                  <Tab label='$1000 Dev' component={Link} to='/dev' onClick={() => this.handleTabChange(1)} />
                 </Tabs>
               </div>
               <Search {...this.props} />
@@ -294,7 +292,7 @@ class MenuAppBar extends React.Component {
                   </div>
                 )}
                 {(this.props.token === false || this.props.token === undefined) && (
-                  <div className='Actions'>
+                  <div className='Actions' style={{display:"none"}}>
                     <Button className='NavbarButton' component={Link} to={{ pathname: '/login', state: { from: window.location.pathname } }}>Login</Button>
                     <Button className='NavbarButton' component={Link} to='/createaccount'>Register</Button>
                   </div>

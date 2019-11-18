@@ -37,6 +37,8 @@ import Four0FourPage from './pages/global/four0FourPage'
 import Navbar from './pages/global/components/navbar'
 import Footer from './pages/global/components/footer'
 import SnackBar from './pages/global/components/snackBar'
+import MVP from './pages/global/mvp'
+import Dev from './pages/global/dev'
 import ReactGA from 'react-ga'
 import Intercom from 'react-intercom'
 // TEST
@@ -87,6 +89,8 @@ let Routes = () => (
           <Route exact path='/explore/people' render={props => <People {...props} />} />
           <Route exact path='/explore/apps' render={props => <Apps {...props} />} />
           <Route exact path='/home' render={props => <Home {...props} />} />
+          <Route exact path='/mvp' render={props => <MVP {...props} />} />
+          <Route exact path='/dev' render={props => <Dev {...props} />} />
           {/* Ideas */}
           <Route exact path='/newidea' render={props => <NewIdeaPage {...props} />} />
           <Route exact path='/:user/idea/:idea' render={props => <IdeaPage {...props} />} />
