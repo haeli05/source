@@ -86,7 +86,7 @@ class GetStarted extends Component {
                 Get Started
                 </Typography>
                 <Typography variant='subtitle1'>
-                Please reach out if you need immediate assistance.<br /><br />
+                What do you want to build?<br /><br />
                 </Typography>
                 <div className='GetStartedFabContainer'>
                   <Fab
@@ -116,7 +116,7 @@ class GetStarted extends Component {
             <Grid item sm={12} md={6}>
               <div className='Form'>
                 <Typography className='Mission' variant='subtitle2' color='textPrimary'>
-            Fill up this form for general enquiries, we will reply as soon as possible.
+                What's on your mind?
                 </Typography>
                 <TextField
                   fullWidth
