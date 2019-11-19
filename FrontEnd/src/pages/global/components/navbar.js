@@ -296,7 +296,7 @@ class MenuAppBar extends React.Component {
                 {(this.props.token === false || this.props.token === undefined) && (
                   <div className='Actions'>
                     <Button className='NavbarButton' component={Link} to={{ pathname: '/login', state: { from: window.location.pathname } }}>Login</Button>
-                    <Button className='NavbarButton' component={Link} to='/createaccount'>Register</Button>
+                    <Button className='NavbarButton' component={Link} to='/#'>Register</Button>
                   </div>
                 )}
               </div>

@@ -23,8 +23,7 @@ class NewRepoPage extends Component {
       name: '',
       nameError: false,
       nameErrorText: '',
-      description: '',
-      import_url: ''
+      description: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -82,13 +81,6 @@ class NewRepoPage extends Component {
             label='Project Description'
             value={this.state.description}
             onChange={(e) => { this.handleChange('description', e) }}
-            margin='normal'
-            variant='outlined'
-          />
-          <TextField
-            label='Import URL (optional)'
-            value={this.state.import_url}
-            onChange={(e) => { this.handleChange('import_url', e) }}
             margin='normal'
             variant='outlined'
           />

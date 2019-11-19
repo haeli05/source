@@ -127,19 +127,20 @@ export function newRepo (repo) {
   let token = JSON.parse(user).token
   return dispatch => {
     dispatch(addNewRepoStatus('PENDING'))
-    axios.post(`${config.production_url}/api/repos/new`, {
+    axios.post(`${config.production_url}/api/project/new`, {
       name: repo.name,
       description: repo.description,
-      import_url: repo.import_url,
       token
     })
-      .then(res => {
-        return dispatch(addNewRepo(res.data.project))
-      })
-      .catch(err => {
-        dispatch(addError(err))
-        return dispatch(addNewRepoStatus('ERROR'))
-      })
+    .then(res => {
+      console.log(res)
+      return dispatch(addNewRepo(res.data.project))
+    })
+    .catch(err => {
+      console.log(err)
+      dispatch(addError(err))
+      return dispatch(addNewRepoStatus('ERROR'))
+    })
   }
 }
 export function addNewRepo (repo) {
