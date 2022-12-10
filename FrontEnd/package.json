@@ -19,7 +19,7 @@
     "dist": "^0.1.2",
     "draft-convert": "^2.1.8",
     "draft-js": "^0.10.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "gulp": "^4.0.2",
     "gulp-changed": "^4.0.1",
     "gulp-clean-css": "^4.2.0",
