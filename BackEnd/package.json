@@ -36,7 +36,7 @@
     "import": "0.0.6",
     "knex": "^0.19.1",
     "knex-upsert": "0.0.4",
-    "mocha": "^6.2.0",
+    "mocha": "^10.2.0",
     "mongo-sanitize": "^1.0.1",
     "mongoose": "^5.4.15",
     "mongoose-autopopulate": "^0.8.2",
